@@ -1,0 +1,10 @@
+[package]
+name = "vkvk"
+description = "vk"
+repository = "https://github.com/Lokathor/vkvk"
+version = "0.0.1-alpha"
+authors = ["Lokathor <zefria@gmail.com>"]
+edition = "2018"
+license = "Zlib"
+
+[dependencies]
