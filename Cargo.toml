@@ -8,3 +8,4 @@ edition = "2018"
 license = "Zlib"
 
 [dependencies]
+tinyvec = "0.3"

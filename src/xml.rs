@@ -6,8 +6,13 @@
 ///
 /// ```
 /// use vkvk::*;
-/// assert_eq!(drop_declaration(r#"<?xml version="1.0" encoding="UTF-8"?>
-/// <registry>"#), "<registry>");
+/// assert_eq!(
+///   drop_declaration(
+///     r#"<?xml version="1.0" encoding="UTF-8"?>
+/// <registry>"#
+///   ),
+///   "<registry>"
+/// );
 /// ```
 pub fn drop_declaration(words: &str) -> &str {
   let words = words.trim_start();
