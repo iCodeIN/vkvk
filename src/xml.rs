@@ -252,6 +252,7 @@ impl<'s> Iterator for XmlIterator<'s> {
   }
 }
 
+#[derive(Debug, Clone, Default)]
 pub struct Attribute<'s> {
   pub key: &'s str,
   pub value: &'s str,
