@@ -9,3 +9,4 @@ license = "Zlib"
 
 [dependencies]
 tinyvec = "0.3"
+magnesium = "0.0.4"

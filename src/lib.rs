@@ -1,139 +1,183 @@
-#![allow(unused)]
+#![allow(unused_mut)]
+#![allow(unused_imports)]
 
-use core::marker::PhantomData;
+use std::collections::HashMap;
 
-use tinyvec::ArrayVec;
+use magnesium::{XmlElement::*, *};
 
-pub mod xml;
-use xml::{XmlElement::*, *};
-
-pub mod types_entry;
-use types_entry::*;
-
-pub mod type_entry;
-use type_entry::*;
-
-#[derive(Debug, Clone, Default)]
-pub struct Registry<'s> {
-  types_list: Option<TypesEntry<'s>>,
-  _marker: PhantomData<&'s str>,
-}
-impl<'s> Registry<'s> {
-  /// Construct a registry from an [`XmlIterator`](XmlIterator).
-  ///
-  /// The iterator should have _just_ processed the `registry` opening tag,
-  /// without having yet processed any other elements.
-  pub fn from_xml(iter: &mut XmlIterator<'s>) -> Registry<'s> {
-    let mut registry = Registry::default();
-    'registry_loop: loop {
-      match iter.next() {
-        Some(EndTag { name: "registry", .. }) => break 'registry_loop,
-        Some(StartTag { name: "comment", attrs }) => {
-          do_comment(iter, attrs);
-        }
-        Some(StartTag { name: "platforms", attrs }) => {
-          Self::do_platforms(iter, attrs)
-        }
-        Some(StartTag { name: "tags", attrs }) => {
-          Self::do_vendor_tags(iter, attrs)
-        }
-        Some(StartTag { name: "types", attrs }) => {
-          registry.types_list = Some(TypesEntry::from_xml(iter, attrs))
-        }
-        Some(StartTag { name: "enums", attrs }) => Self::do_enums(iter, attrs),
-        Some(StartTag { name: "commands", attrs }) => {
-          Self::do_commands(iter, attrs)
-        }
-        Some(StartTag { name: "feature", attrs }) => {
-          Self::do_feature(iter, attrs)
-        }
-        Some(StartTag { name: "extensions", attrs }) => {
-          Self::do_extensions(iter, attrs)
-        }
-        other => panic!("Registry::from_xml> unknown {:?}", other),
-      }
-    }
-    registry
-  }
-
-  /// Consume the platform names. Not very important.
-  pub fn do_platforms(iter: &mut XmlIterator<'s>, attrs: &'s str) {
-    loop {
-      match iter.next() {
-        Some(EndTag { name: "platforms" }) => return,
-        other => (),
-      }
-    }
-  }
-
-  /// Consume vulkan vendor/author tags for extensions and layers. Not very
-  /// important.
-  pub fn do_vendor_tags(iter: &mut XmlIterator<'s>, attrs: &'s str) {
-    loop {
-      match iter.next() {
-        Some(EndTag { name: "tags" }) => return,
-        other => (),
-      }
-    }
-  }
-
-  /// Consume vulkan enumerations / bitflags. Critical.
-  pub fn do_enums(iter: &mut XmlIterator<'s>, attrs: &'s str) {
-    // TODO: enum and bitflag stuff
-    loop {
-      match iter.next() {
-        Some(EndTag { name: "enums" }) => return,
-        other => (),
-      }
-    }
-  }
-
-  /// Consume vulkan function calls. Critical.
-  pub fn do_commands(iter: &mut XmlIterator<'s>, attrs: &'s str) {
-    // TODO: function calls.
-    loop {
-      match iter.next() {
-        Some(EndTag { name: "commands" }) => return,
-        other => (),
-      }
-    }
-  }
-
-  /// Consume vulkan API level descriptions. Critical.
-  pub fn do_feature(iter: &mut XmlIterator<'s>, attrs: &'s str) {
-    // TODO: api features.
-    loop {
-      match iter.next() {
-        Some(EndTag { name: "feature" }) => return,
-        other => (),
-      }
-    }
-  }
-
-  /// Consume vulkan extension info. Critical.
-  pub fn do_extensions(iter: &mut XmlIterator<'s>, attrs: &'s str) {
-    // TODO: extension info.
-    loop {
-      match iter.next() {
-        Some(EndTag { name: "extensions" }) => return,
-        other => (),
-      }
-    }
-  }
+pub fn hashmap_from_attrs(attrs: &str) -> HashMap<String, String> {
+  TagAttributeIterator::new(attrs)
+    .map(|ta| (ta.key.to_string(), ta.value.to_string()))
+    .collect()
 }
 
-/// Consume a comment text and end tag.
-///
-/// Returns the comment text.
-pub fn do_comment<'s>(iter: &mut XmlIterator<'s>, attrs: &'s str) -> &'s str {
-  assert_eq!(attrs, "");
-  let t = match iter.next() {
-    Some(Text(t)) => t,
-    other => panic!("do_comment> unknown {:?}", other),
+pub fn grab_text_and_end_tag<'s>(
+  iter: &mut impl Iterator<Item = XmlElement<'s>>,
+  end_tag: &str,
+) -> &'s str {
+  let text = match iter.next().unwrap() {
+    Text(t) => t,
+    unknown => panic!("grab_text_and_end_tag::not text> {:?}", unknown),
   };
-  match iter.next() {
-    Some(EndTag { name: "comment" }) => (),
-    other => panic!("do_comment> unknown {:?}", other),
+  match iter.next().unwrap() {
+    EndTag { name } if name == end_tag => (),
+    unknown => panic!("grab_text_and_end_tag::end tag> {:?}", unknown),
   }
-  t
+  text
+}
+
+#[derive(Debug, Default, Clone)]
+pub struct Registry {
+  pub platforms: Platforms,
+  pub tags: Tags,
+  pub types: Types,
+}
+
+pub fn parse_registry<'s>(
+  iter: &mut impl Iterator<Item = XmlElement<'s>>,
+) -> Registry {
+  let mut registry = Registry::default();
+  loop {
+    match iter.next().unwrap() {
+      EndTag { name: "registry" } => return registry,
+      StartTag { name: "comment", attrs: "" } => parse_comment(iter),
+      StartTag { name: "platforms", attrs } => {
+        registry.platforms = parse_platforms(iter, attrs);
+      }
+      StartTag { name: "tags", attrs } => {
+        registry.tags = parse_tags(iter, attrs);
+      }
+      StartTag { name: "types", attrs } => {
+        registry.types = parse_types(iter, attrs);
+      }
+      unknown => panic!("parse_registry> {:?}", unknown),
+    }
+  }
+}
+
+pub fn parse_comment<'s>(iter: &mut impl Iterator<Item = XmlElement<'s>>) {
+  loop {
+    match iter.next().unwrap() {
+      EndTag { name: "comment" } => return,
+      Text(_) => (),
+      unknown => panic!("parse_comment> {:?}", unknown),
+    }
+  }
+}
+
+#[derive(Debug, Default, Clone)]
+pub struct Platforms {
+  pub attrs: HashMap<String, String>,
+  pub platforms: Vec<Platform>,
+}
+
+#[derive(Debug, Default, Clone)]
+pub struct Platform {
+  pub name: String,
+  pub comment: String,
+  pub protect: String,
+}
+
+pub fn parse_platforms<'s>(
+  iter: &mut impl Iterator<Item = XmlElement<'s>>,
+  attrs: &'s str,
+) -> Platforms {
+  let mut platforms = Platforms::default();
+  platforms.attrs = hashmap_from_attrs(attrs);
+  loop {
+    match iter.next().unwrap() {
+      EndTag { name: "platforms" } => return platforms,
+      EmptyTag { name: "platform", attrs } => {
+        let a = hashmap_from_attrs(attrs);
+        assert_eq!(a.len(), 3);
+        platforms.platforms.push(Platform {
+          name: a["name"].to_string(),
+          comment: a["comment"].to_string(),
+          protect: a["protect"].to_string(),
+        });
+      }
+      unknown => panic!("parse_platforms> {:?}", unknown),
+    }
+  }
+}
+
+#[derive(Debug, Default, Clone)]
+pub struct Tags {
+  pub attrs: HashMap<String, String>,
+  pub tags: Vec<Tag>,
+}
+
+#[derive(Debug, Default, Clone)]
+pub struct Tag {
+  pub name: String,
+  pub contact: String,
+  pub author: String,
+}
+
+pub fn parse_tags<'s>(
+  iter: &mut impl Iterator<Item = XmlElement<'s>>,
+  attrs: &'s str,
+) -> Tags {
+  let mut tags = Tags::default();
+  tags.attrs = hashmap_from_attrs(attrs);
+  loop {
+    match iter.next().unwrap() {
+      EndTag { name: "tags" } => return tags,
+      EmptyTag { name: "tag", attrs } => {
+        let a = hashmap_from_attrs(attrs);
+        assert_eq!(a.len(), 3);
+        tags.tags.push(Tag {
+          name: a["name"].to_string(),
+          contact: a["contact"].to_string(),
+          author: a["author"].to_string(),
+        });
+      }
+      unknown => panic!("parse_tags> {:?}", unknown),
+    }
+  }
+}
+
+#[derive(Debug, Default, Clone)]
+pub struct Types {
+  pub attrs: HashMap<String, String>,
+  pub types: Vec<Type>,
+}
+
+pub fn parse_types<'s>(
+  iter: &mut impl Iterator<Item = XmlElement<'s>>,
+  attrs: &'s str,
+) -> Types {
+  let mut types = Types::default();
+  types.attrs = hashmap_from_attrs(attrs);
+  loop {
+    match iter.next().unwrap() {
+      EndTag { name: "types" } => return types,
+      StartTag { name: "comment", attrs: "" } => parse_comment(iter),
+      StartTag { name: "type", attrs } => {
+        types.types.push(parse_type_start(iter, attrs));
+      }
+      EmptyTag { name: "type", attrs } => {
+        types.types.push(parse_type_empty(attrs));
+      }
+      unknown => panic!("parse_types> {:?}", unknown),
+    }
+  }
+}
+
+#[derive(Debug, Clone)]
+pub enum Type {
+  // TODO
+}
+
+/// Parse from a start tag's attrs and an iter into a Type
+pub fn parse_type_start<'s>(
+  iter: &mut impl Iterator<Item = XmlElement<'s>>,
+  attrs: &'s str,
+) -> Type {
+  todo!()
+}
+
+/// Parse from an empty tag's attrs into a Type
+pub fn parse_type_empty<'s>(attrs: &'s str) -> Type {
+  todo!()
 }

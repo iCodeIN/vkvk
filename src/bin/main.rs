@@ -1,19 +1,24 @@
-use vkvk::{
-  xml::{XmlElement::*, *},
-  *,
-};
+#![allow(unused_mut)]
+#![allow(unused_imports)]
+
+use std::collections::HashMap;
+
+use magnesium::{XmlElement::*, *};
+
+use vkvk::*;
 
 fn main() {
-  let bytes = std::fs::read("vk.xml").unwrap();
-  let text = String::from_utf8(bytes).unwrap();
-  let main_text = drop_declaration(&text);
-  let mut iter = XmlIterator::new(main_text);
-  let _registry = loop {
-    match iter.next() {
-      Some(StartTag { name: "registry", .. }) => {
-        break Registry::from_xml(&mut iter);
-      }
-      other => panic!("bin_main:{:?}", other),
+  let file_data =
+    std::fs::read_to_string("vk.xml").expect("Couldn't read vk.xml");
+  let mut iter = &mut ElementIterator::new(&file_data)
+    .filter_map(skip_comments)
+    .filter_map(skip_empty_text_elements);
+  let registry = loop {
+    match iter.next().unwrap() {
+      StartTag { name: "registry", attrs: "" } => break parse_registry(iter),
+      unknown => panic!("main> {:?}", unknown),
     }
   };
+  println!("got a Registry!");
+  println!("{:?}", registry);
 }
