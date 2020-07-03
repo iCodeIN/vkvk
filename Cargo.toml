@@ -1,12 +1,12 @@
 [package]
 name = "vkvk"
-description = "vk"
+description = "Vulkan bindings. Don't use this, use `ash` instead."
 repository = "https://github.com/Lokathor/vkvk"
 version = "0.0.1-alpha"
 authors = ["Lokathor <zefria@gmail.com>"]
 edition = "2018"
-license = "Zlib"
+license = "Zlib OR Apache-2.0 OR MIT"
 
-[dependencies]
+[dev-dependencies]
 tinyvec = "0.3"
 magnesium = "0.0.4"
