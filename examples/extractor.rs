@@ -5,10 +5,41 @@ use std::collections::HashMap;
 
 use magnesium::{XmlElement::*, *};
 
-pub fn hashmap_from_attrs(attrs: &str) -> HashMap<String, String> {
+fn hashmap_from_attrs(attrs: &str) -> HashMap<String, String> {
   TagAttributeIterator::new(attrs)
     .map(|ta| (ta.key.to_string(), ta.value.to_string()))
     .collect()
+}
+
+fn revert_xml_encoding(text: String) -> String {
+  let mut out = String::with_capacity(text.as_bytes().len());
+  let mut chars = text.chars();
+  while let Some(c) = chars.next() {
+    if c != '&' {
+      out.push(c);
+    } else {
+      match chars.next().unwrap() {
+        'l' => {
+          assert_eq!(chars.next().unwrap(), 't');
+          assert_eq!(chars.next().unwrap(), ';');
+          out.push('<');
+        }
+        'g' => {
+          assert_eq!(chars.next().unwrap(), 't');
+          assert_eq!(chars.next().unwrap(), ';');
+          out.push('>');
+        }
+        'a' => {
+          assert_eq!(chars.next().unwrap(), 'm');
+          assert_eq!(chars.next().unwrap(), 'p');
+          assert_eq!(chars.next().unwrap(), ';');
+          out.push('&');
+        }
+        other => panic!("{}", other),
+      }
+    }
+  }
+  out
 }
 
 fn eat_to_comment_close<'s>(iter: &mut impl Iterator<Item = XmlElement<'s>>) {
@@ -39,33 +70,29 @@ fn eat_to_tags_close<'s>(iter: &mut impl Iterator<Item = XmlElement<'s>>) {
 }
 
 fn main() {
-  let file_data =
+  let vk_xml =
     std::fs::read_to_string("target/vk.xml").expect("Couldn't read vk.xml");
-  let mut iter = &mut ElementIterator::new(&file_data)
+  let mut iter = &mut ElementIterator::new(&vk_xml)
     .filter_map(skip_comments)
     .filter_map(skip_empty_text_elements);
-  let registry = loop {
-    match iter.next().unwrap() {
-      StartTag { name: "registry", attrs: "" } => {
-        break VkRegistry::from_iter(iter)
-      }
-      unknown => panic!("{:?}", unknown),
-    }
-  };
+  assert!(matches!(
+    iter.next().unwrap(),
+    StartTag { name: "registry", attrs: "" }
+  ));
+  let registry = VkRegistry::from_iter(iter);
   println!("Got A Registry!");
   println!("{:?}", registry);
 }
 
-#[derive(Debug)]
+#[derive(Debug, Default)]
 pub struct VkRegistry {
-  //
+  vk_types: VkTypes,
 }
-
 impl VkRegistry {
   pub fn from_iter<'s>(
     iter: &mut impl Iterator<Item = XmlElement<'s>>,
   ) -> Self {
-    let mut registry = VkRegistry {};
+    let mut registry = VkRegistry::default();
     loop {
       match iter.next().unwrap() {
         EndTag { name: "registry" } => return registry,
@@ -74,7 +101,9 @@ impl VkRegistry {
           eat_to_platforms_close(iter)
         }
         StartTag { name: "tags", attrs: _ } => eat_to_tags_close(iter),
-        StartTag { name: "types", attrs: _ } => drop(VkTypes::from_iter(iter)),
+        StartTag { name: "types", attrs: _ } => {
+          registry.vk_types = VkTypes::from_iter(iter)
+        }
         StartTag { name: "enums", attrs: _ } => loop {
           // TODO
           match iter.next().unwrap() {
@@ -113,7 +142,6 @@ impl VkRegistry {
 pub struct VkTypes {
   the_types: Vec<VkType>,
 }
-
 impl VkTypes {
   pub fn from_iter<'s>(
     iter: &mut impl Iterator<Item = XmlElement<'s>>,
@@ -146,6 +174,7 @@ impl VkTypes {
 pub enum VkType {
   TypeAlias(VkTypeAlias),
   Enumerant(VkEnumerant),
+  Define(String),
 }
 impl VkType {
   fn from_empty_type_tag(attrs: &str) -> Option<Self> {
@@ -217,14 +246,56 @@ impl VkType {
     attrs: &str,
   ) -> Option<Self> {
     let attrs = hashmap_from_attrs(attrs);
-    //
-    loop {
-      match iter.next().unwrap() {
-        EndTag { name: "type" } => {
-          return None;
+    if attrs.get("category").map(String::as_ref) == Some("include") {
+      assert!(matches!(iter.next().unwrap(), Text(_)));
+      assert!(matches!(iter.next().unwrap(), EndTag { name: "type" }));
+      return None;
+    } else if attrs.get("category").map(String::as_ref) == Some("define") {
+      // TODO: extract this to its own method.
+      let mut text = String::new();
+      loop {
+        match iter.next().unwrap() {
+          EndTag { name: "type" } => {
+            text = revert_xml_encoding(text);
+            return Some(VkType::Define(text));
+          }
+          StartTag { name: "type", attrs } => {
+            assert!(attrs.is_empty());
+            text.push(' ');
+            loop {
+              match iter.next().unwrap() {
+                EndTag { name: "type" } => break,
+                Text(t) => {
+                  text.push_str(t);
+                }
+                _ => (),
+              }
+            }
+          }
+          Text(t) => {
+            if text.is_empty() {
+              text.push_str(t.trim_start());
+            } else {
+              text.push_str(t)
+            }
+          }
+          StartTag { name: "name", attrs: "" } => (),
+          EndTag { name: "name" } => (),
+          unknown => panic!("{:?}", unknown),
         }
-        // TODO: handle start/end tag type entries.
-        other => panic!("UNKNOWN FROM ITER ({:?}): {:?}", attrs, other),
+      }
+    } else if attrs.get("category").map(String::as_ref) == Some("basetype") {
+      // TODO: process base types
+      panic!("{:?}", attrs);
+    } else {
+      loop {
+        match iter.next().unwrap() {
+          EndTag { name: "type" } => {
+            return None;
+          }
+          // TODO: handle start/end tag type entries.
+          other => panic!("UNKNOWN FROM ITER ({:?}): {:?}", attrs, other),
+        }
       }
     }
   }
