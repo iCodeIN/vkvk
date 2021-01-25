@@ -1,0 +1,10 @@
+[package]
+name = "vkvk_generator"
+version = "0.1.0"
+authors = ["Lokathor <zefria@gmail.com>"]
+edition = "2018"
+license = "Zlib OR Apache-2.0 OR MIT"
+
+[dependencies]
+magnesium = "1"
+tinyvec = { version = "1", features = ["alloc"] }
