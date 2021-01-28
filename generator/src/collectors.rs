@@ -1,7 +1,7 @@
 use super::*;
 
 /// Grabs up all the `<types>` tag info.
-pub fn collect_types<'s>(elem_iter: &mut impl Iterator<Item = XmlElement<'s>>, attrs: &'s str) -> Vec<VulkanTypeDefinition> {
+pub fn collect_types<'s>(elem_iter: &mut impl Iterator<Item = XmlElement<'s>>, attrs: &'s str) -> Vec<VulkanDefinition> {
   let attrs: AttrList<'s> = TagAttributeIterator::new(attrs).collect();
   assert_eq!(attrs.len(), 1);
   assert_eq!(attrs[0].key, "comment");
@@ -27,7 +27,7 @@ pub fn collect_types<'s>(elem_iter: &mut impl Iterator<Item = XmlElement<'s>>, a
 }
 
 #[allow(unused)]
-pub fn collect_type_start<'s>(elem_iter: &mut impl Iterator<Item = XmlElement<'s>>, attrs: &'s str) -> Option<VulkanTypeDefinition> {
+pub fn collect_type_start<'s>(elem_iter: &mut impl Iterator<Item = XmlElement<'s>>, attrs: &'s str) -> Option<VulkanDefinition> {
   // TODO
   let mut attrs: AttrList<'s> = TagAttributeIterator::new(attrs).collect();
   attrs.sort();
@@ -132,9 +132,9 @@ pub fn collect_type_start<'s>(elem_iter: &mut impl Iterator<Item = XmlElement<'s
     }
 
     match the_type {
-      "VK_DEFINE_HANDLE" => return Some(VulkanTypeDefinition::Handle(Handle { name: the_name.to_string(), objtypeenum, parent })),
+      "VK_DEFINE_HANDLE" => return Some(VulkanDefinition::Handle(Handle { name: the_name.to_string(), objtypeenum, parent })),
       "VK_DEFINE_NON_DISPATCHABLE_HANDLE" => {
-        return Some(VulkanTypeDefinition::NonDispatchableHandle(NonDispatchableHandle { name: the_name.to_string(), objtypeenum, parent }))
+        return Some(VulkanDefinition::NonDispatchableHandle(NonDispatchableHandle { name: the_name.to_string(), objtypeenum, parent }))
       }
       other => panic!("{:?}", other),
     }
@@ -142,10 +142,15 @@ pub fn collect_type_start<'s>(elem_iter: &mut impl Iterator<Item = XmlElement<'s
 
   // function pointers are simple to understand but long to parse.
   if attrs.iter().find(|a| a == &&TagAttribute { key: "category", value: "funcpointer" }).is_some() {
-    match elem_iter.next().unwrap() {
-      Text(_vk_api_ptr) => (),
+    let return_type = match elem_iter.next().unwrap() {
+      Text(vk_api_ptr) => {
+        let t = &vk_api_ptr["typedef ".len()..];
+        let end = t.find(' ').unwrap();
+        let t = &t[..end];
+        t.to_string()
+      }
       other => panic!("{:?}", other),
-    }
+    };
     match elem_iter.next().unwrap() {
       StartTag { name: "name", attrs: "" } => (),
       other => panic!("{:?}", other),
@@ -206,7 +211,7 @@ pub fn collect_type_start<'s>(elem_iter: &mut impl Iterator<Item = XmlElement<'s
       next_is_const = arg_name.contains("const");
       args.push((arg_name, arg_ty));
     }
-    return Some(VulkanTypeDefinition::FnPtrAlias(FnPtrAlias { name, args }));
+    return Some(VulkanDefinition::FnPtrAlias(FnPtrAlias { name, args, return_type }));
   }
 
   // Structs are a whole thing
@@ -214,10 +219,10 @@ pub fn collect_type_start<'s>(elem_iter: &mut impl Iterator<Item = XmlElement<'s
     let name = attrs.iter().find(|a| matches!(a, TagAttribute { key: "name", value: _ })).unwrap().value.to_string();
     let structextends = attrs.iter().find(|a| matches!(a, TagAttribute { key: "structextends", value: _ })).map(|t| t.value.to_string());
     let mut fields = Vec::new();
-    'field_gather: loop {
+    'struct_field_gather: loop {
       let mut field = StructField::default();
       match elem_iter.next().unwrap() {
-        EndTag { name: "type" } => break 'field_gather,
+        EndTag { name: "type" } => break 'struct_field_gather,
         StartTag { name: "comment", attrs: "" } => burn_comment(elem_iter),
         StartTag { name: "member", attrs } => {
           field.attrs = TagAttributeIterator::new(attrs).map(|t| (t.key.to_string(), t.value.to_string())).collect();
@@ -260,7 +265,7 @@ pub fn collect_type_start<'s>(elem_iter: &mut impl Iterator<Item = XmlElement<'s
             match elem_iter.next().unwrap() {
               EndTag { name: "member" } => {
                 fields.push(field);
-                continue 'field_gather;
+                continue 'struct_field_gather;
               }
               Text("[") => {
                 assert!(matches!(elem_iter.next().unwrap(), StartTag { name: "enum", attrs: "" }));
@@ -288,17 +293,17 @@ pub fn collect_type_start<'s>(elem_iter: &mut impl Iterator<Item = XmlElement<'s
         other => panic!("{:?}", other),
       }
     }
-    return Some(VulkanTypeDefinition::Struct(Struct { name, structextends, fields }));
+    return Some(VulkanDefinition::Struct(Struct { name, structextends, fields }));
   }
 
   // Unions are a whole thing too
   if attrs.iter().find(|a| a == &&TagAttribute { key: "category", value: "union" }).is_some() {
     let name = attrs.iter().find(|a| matches!(a, TagAttribute { key: "name", value: _ })).unwrap().value.to_string();
     let mut fields = Vec::new();
-    'field_gather: loop {
+    'union_field_gather: loop {
       let mut field = StructField::default();
       match elem_iter.next().unwrap() {
-        EndTag { name: "type" } => break 'field_gather,
+        EndTag { name: "type" } => break 'union_field_gather,
         StartTag { name: "comment", attrs: "" } => burn_comment(elem_iter),
         StartTag { name: "member", attrs } => {
           field.attrs = TagAttributeIterator::new(attrs).map(|t| (t.key.to_string(), t.value.to_string())).collect();
@@ -341,7 +346,7 @@ pub fn collect_type_start<'s>(elem_iter: &mut impl Iterator<Item = XmlElement<'s
             match elem_iter.next().unwrap() {
               EndTag { name: "member" } => {
                 fields.push(field);
-                continue 'field_gather;
+                continue 'union_field_gather;
               }
               Text("[") => {
                 assert!(matches!(elem_iter.next().unwrap(), StartTag { name: "enum", attrs: "" }));
@@ -369,7 +374,7 @@ pub fn collect_type_start<'s>(elem_iter: &mut impl Iterator<Item = XmlElement<'s
         other => panic!("{:?}", other),
       }
     }
-    return Some(VulkanTypeDefinition::Union(Union { name, fields }));
+    return Some(VulkanDefinition::Union(Union { name, fields }));
   }
 
   // unknown
@@ -389,7 +394,7 @@ pub fn collect_type_start<'s>(elem_iter: &mut impl Iterator<Item = XmlElement<'s
 ///
 /// Empty tags can have "enum" names, but that name is also elsewhere so we
 /// don't generate it here.
-pub fn collect_type_empty<'s>(attrs: &'s str) -> Option<VulkanTypeDefinition> {
+pub fn collect_type_empty<'s>(attrs: &'s str) -> Option<VulkanDefinition> {
   let attrs: AttrList<'s> = TagAttributeIterator::new(attrs).collect();
 
   if attrs.iter().find(|a| a == &&TagAttribute { key: "category", value: "include" }).is_some() {
@@ -413,7 +418,7 @@ pub fn collect_type_empty<'s>(attrs: &'s str) -> Option<VulkanTypeDefinition> {
   if name_attr.is_some() && alias_attr.is_some() {
     match (name_attr, alias_attr) {
       (Some(n), Some(a)) => {
-        return Some(VulkanTypeDefinition::TypeAlias(TypeAlias { old: n.value.to_string(), new: a.value.to_string() }));
+        return Some(VulkanDefinition::TypeAlias(TypeAlias { old: n.value.to_string(), new: a.value.to_string() }));
       }
       _ => panic!(),
     }
@@ -431,7 +436,7 @@ pub fn collect_type_empty<'s>(attrs: &'s str) -> Option<VulkanTypeDefinition> {
 /// Collects a single `<enums>` instance.
 ///
 /// Each `<enums>` instance holds either an Enumeration or a Bitmask.
-pub fn collect_enums<'s>(elem_iter: &mut impl Iterator<Item = XmlElement<'s>>, attrs: &'s str) -> Option<VulkanTypeDefinition> {
+pub fn collect_enums<'s>(elem_iter: &mut impl Iterator<Item = XmlElement<'s>>, attrs: &'s str) -> Option<VulkanDefinition> {
   let attrs: AttrList<'s> = TagAttributeIterator::new(attrs).collect();
   //
   let name = attrs.iter().find(|a| matches!(a, TagAttribute { key: "name", value: _ })).unwrap().value;
@@ -456,7 +461,7 @@ pub fn collect_enums<'s>(elem_iter: &mut impl Iterator<Item = XmlElement<'s>>, a
       loop {
         match elem_iter.next().unwrap() {
           EndTag { name: "enums" } => {
-            return Some(VulkanTypeDefinition::Enumeration(e));
+            return Some(VulkanDefinition::Enumeration(e));
           }
           StartTag { name: "comment", .. } => burn_comment(elem_iter),
           EmptyTag { name: "enum", attrs } => {
@@ -476,7 +481,7 @@ pub fn collect_enums<'s>(elem_iter: &mut impl Iterator<Item = XmlElement<'s>>, a
       loop {
         match elem_iter.next().unwrap() {
           EndTag { name: "enums" } => {
-            return Some(VulkanTypeDefinition::Bitmask(b));
+            return Some(VulkanDefinition::Bitmask(b));
           }
           StartTag { name: "comment", .. } => burn_comment(elem_iter),
           EmptyTag { name: "enum", attrs } => {
@@ -489,4 +494,171 @@ pub fn collect_enums<'s>(elem_iter: &mut impl Iterator<Item = XmlElement<'s>>, a
     }
     other => panic!("{}", other),
   }
+}
+
+pub fn collect_commands<'s>(elem_iter: &mut impl Iterator<Item = XmlElement<'s>>) -> Vec<VulkanDefinition> {
+  let mut commands = Vec::new();
+  loop {
+    match elem_iter.next().unwrap() {
+      EndTag { name: "commands" } => return commands,
+      StartTag { name: "comment", attrs: "" } => burn_comment(elem_iter),
+      StartTag { name: "command", attrs } => commands.push(collect_command_start(elem_iter, attrs)),
+      EmptyTag { name: "command", .. } => (/* TODO */),
+      other => panic!("{:?}", other),
+    }
+  }
+}
+
+pub fn collect_command_start<'s>(elem_iter: &mut impl Iterator<Item = XmlElement<'s>>, attrs: &'s str) -> VulkanDefinition {
+  let attrs: AttrList<'s> = TagAttributeIterator::new(attrs).collect();
+  //
+  let success_codes = attrs
+    .iter()
+    .find(|a| matches!(a, TagAttribute { key: "successcodes", value: _ }))
+    .map(|s| s.value.split(',').map(|s| s.to_string()).collect())
+    .unwrap_or(Vec::new());
+  let error_codes = attrs
+    .iter()
+    .find(|a| matches!(a, TagAttribute { key: "errorcodes", value: _ }))
+    .map(|s| s.value.split(',').map(|s| s.to_string()).collect())
+    .unwrap_or(Vec::new());
+  let queues = attrs
+    .iter()
+    .find(|a| matches!(a, TagAttribute { key: "queues", value: _ }))
+    .map(|s| s.value.split(',').map(|s| s.to_string()).collect())
+    .unwrap_or(Vec::new());
+  let render_passes = attrs
+    .iter()
+    .find(|a| matches!(a, TagAttribute { key: "renderpass", value: _ }))
+    .map(|s| s.value.split(',').map(|s| s.to_string()).collect())
+    .unwrap_or(Vec::new());
+  let cmd_buffer_levels = attrs
+    .iter()
+    .find(|a| matches!(a, TagAttribute { key: "cmdbufferlevel", value: _ }))
+    .map(|s| s.value.split(',').map(|s| s.to_string()).collect())
+    .unwrap_or(Vec::new());
+  let pipelines = attrs
+    .iter()
+    .find(|a| matches!(a, TagAttribute { key: "pipeline", value: _ }))
+    .map(|s| s.value.split(',').map(|s| s.to_string()).collect())
+    .unwrap_or(Vec::new());
+  let comment = attrs.iter().find(|a| matches!(a, TagAttribute { key: "comment", value: _ })).map(|t| t.value.to_string());
+  // check for any unknown attribute keys
+  attrs.iter().for_each(|t| {
+    if !["successcodes", "errorcodes", "queues", "renderpass", "cmdbufferlevel", "pipeline", "comment"].contains(&t.key) {
+      panic!("unknown command attr: {:?}", t);
+    }
+  });
+
+  assert!(matches!(elem_iter.next().unwrap(), StartTag { name: "proto", attrs: "" }));
+  assert!(matches!(elem_iter.next().unwrap(), StartTag { name: "type", attrs: "" }));
+  let return_type = match elem_iter.next().unwrap() {
+    Text(t) => t.to_string(),
+    other => panic!("{:?}", other),
+  };
+  assert!(matches!(elem_iter.next().unwrap(), EndTag { name: "type" }));
+  assert!(matches!(elem_iter.next().unwrap(), StartTag { name: "name", attrs: "" }));
+  let fn_name = match elem_iter.next().unwrap() {
+    Text(t) => t.to_string(),
+    other => panic!("{:?}", other),
+  };
+  assert!(matches!(elem_iter.next().unwrap(), EndTag { name: "name" }));
+  assert!(matches!(elem_iter.next().unwrap(), EndTag { name: "proto" }));
+
+  let mut params = Vec::new();
+  let mut implicit_extern_sync_params = None;
+
+  loop {
+    match elem_iter.next().unwrap() {
+      EndTag { name: "command" } => break,
+      StartTag { name: "param", attrs } => params.push(collect_proto_param(elem_iter, attrs)),
+      StartTag { name: "implicitexternsyncparams", attrs: "" } => {
+        assert!(matches!(elem_iter.next().unwrap(), StartTag { name: "param", attrs: "" }));
+        implicit_extern_sync_params = match elem_iter.next().unwrap() {
+          Text(t) => Some(t.to_string()),
+          other => panic!("{:?}", other),
+        };
+        assert!(matches!(elem_iter.next().unwrap(), EndTag { name: "param" }));
+        assert!(matches!(elem_iter.next().unwrap(), EndTag { name: "implicitexternsyncparams" }));
+      }
+      other => panic!("{:?}", other),
+    }
+  }
+
+  VulkanDefinition::FunctionPrototype(FunctionPrototype {
+    success_codes,
+    error_codes,
+    queues,
+    render_passes,
+    cmd_buffer_levels,
+    pipelines,
+    comment,
+    return_type,
+    fn_name,
+    params,
+    implicit_extern_sync_params,
+  })
+}
+
+pub fn collect_proto_param<'s>(elem_iter: &mut impl Iterator<Item = XmlElement<'s>>, attrs: &'s str) -> ProtoParam {
+  let attrs: AttrList<'s> = TagAttributeIterator::new(attrs).collect();
+
+  let mut p = ProtoParam::default();
+
+  p.optional =
+    attrs.iter().find(|a| matches!(a, TagAttribute { key: "optional", value: _ })).map(|s| s.value.split(',').map(|s| s.to_string()).collect());
+  p.extern_sync =
+    attrs.iter().find(|a| matches!(a, TagAttribute { key: "externsync", value: _ })).map(|s| s.value.split(',').map(|s| s.to_string()).collect());
+  p.len = attrs.iter().find(|a| matches!(a, TagAttribute { key: "len", value: _ })).map(|t| t.value.to_string());
+  p.no_auto_validity =
+    attrs.iter().find(|a| matches!(a, TagAttribute { key: "noautovalidity", value: _ })).map(|s| s.value.split(',').map(|s| s.to_string()).collect());
+  // check against any unexpected attributes
+  attrs.iter().for_each(|t| {
+    if !["optional", "externsync", "len", "noautovalidity"].contains(&t.key) {
+      panic!("unknown command attr: {:?}", t);
+    }
+  });
+
+  match elem_iter.next().unwrap() {
+    StartTag { name: "type", attrs: "" } => (),
+    Text(t) => {
+      let t = t.trim();
+      assert!(t == "const" || t == "struct" || t == "const struct", "t:{}", t);
+      if t.contains("const") {
+        p.const_count += 1;
+      }
+      assert!(matches!(elem_iter.next().unwrap(), StartTag { name: "type", attrs: "" }));
+    }
+    other => panic!("{:?}", other),
+  }
+  p.param_type = match elem_iter.next().unwrap() {
+    Text(t) => t.to_string(),
+    other => panic!("{:?}", other),
+  };
+  assert!(matches!(elem_iter.next().unwrap(), EndTag { name: "type" }));
+  //
+  match elem_iter.next().unwrap() {
+    StartTag { name: "name", attrs: "" } => (),
+    Text(t) => {
+      p.star_count += t.chars().filter(|c| *c == '*').count();
+      assert!(matches!(elem_iter.next().unwrap(), StartTag { name: "name", attrs: "" }));
+    }
+    other => panic!("{:?}", other),
+  }
+  p.param_name = match elem_iter.next().unwrap() {
+    Text(t) => t.to_string(),
+    other => panic!("{:?}", other),
+  };
+  assert!(matches!(elem_iter.next().unwrap(), EndTag { name: "name" }));
+  match elem_iter.next().unwrap() {
+    Text(t) => {
+      let t = t.trim();
+      p.fixed_len = t[1..t.len() - 1].parse::<usize>().unwrap();
+      assert!(matches!(elem_iter.next().unwrap(), EndTag { name: "param" }));
+    }
+    EndTag { name: "param" } => (),
+    other => panic!("{:?}", other),
+  }
+
+  p
 }
