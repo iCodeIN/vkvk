@@ -6,5 +6,8 @@ edition = "2018"
 license = "Zlib OR Apache-2.0 OR MIT"
 
 [dependencies]
-magnesium = "1"
+magnesium = "1.1"
 tinyvec = { version = "1", features = ["alloc"] }
+
+[profile.dev]
+debug = 0

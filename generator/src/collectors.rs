@@ -28,9 +28,8 @@ pub fn collect_types<'s>(elem_iter: &mut impl Iterator<Item = XmlElement<'s>>, a
 
 #[allow(unused)]
 pub fn collect_type_start<'s>(elem_iter: &mut impl Iterator<Item = XmlElement<'s>>, attrs: &'s str) -> Option<VulkanDefinition> {
-  // TODO
   let mut attrs: AttrList<'s> = TagAttributeIterator::new(attrs).collect();
-  attrs.sort();
+  //attrs.sort();
 
   // skip includes
   if attrs.iter().find(|a| a == &&TagAttribute { key: "category", value: "include" }).is_some() {
@@ -225,7 +224,22 @@ pub fn collect_type_start<'s>(elem_iter: &mut impl Iterator<Item = XmlElement<'s
         EndTag { name: "type" } => break 'struct_field_gather,
         StartTag { name: "comment", attrs: "" } => burn_comment(elem_iter),
         StartTag { name: "member", attrs } => {
-          field.attrs = TagAttributeIterator::new(attrs).map(|t| (t.key.to_string(), t.value.to_string())).collect();
+          let mut field_attrs: AttrList<'s> = TagAttributeIterator::new(attrs).collect();
+          field.values = field_attrs.iter().find(|a| matches!(a, TagAttribute { key: "values", value: _ })).map(|t| t.value.to_string());
+          field.optional = field_attrs.iter().find(|a| matches!(a, TagAttribute { key: "optional", value: _ })).map(|t| t.value.to_string());
+          field.no_auto_validity =
+            field_attrs.iter().find(|a| matches!(a, TagAttribute { key: "noautovalidity", value: _ })).map(|t| t.value.to_string());
+          field.len = field_attrs.iter().find(|a| matches!(a, TagAttribute { key: "len", value: _ })).map(|t| t.value.to_string());
+          field.alt_len = field_attrs.iter().find(|a| matches!(a, TagAttribute { key: "altlen", value: _ })).map(|t| t.value.to_string());
+          field.extern_sync = field_attrs.iter().find(|a| matches!(a, TagAttribute { key: "externsync", value: _ })).map(|t| t.value.to_string());
+          field.selection = field_attrs.iter().find(|a| matches!(a, TagAttribute { key: "selection", value: _ })).map(|t| t.value.to_string());
+          field.selector = field_attrs.iter().find(|a| matches!(a, TagAttribute { key: "selection", value: _ })).map(|t| t.value.to_string());
+          // check against any unexpected attributes
+          field_attrs.iter().for_each(|t| {
+            if !["values", "optional", "noautovalidity", "len", "altlen", "externsync", "selector"].contains(&t.key) {
+              panic!("unknown command attr: {:?}; for struct {name}", t, name = name);
+            }
+          });
           // grab up the type
           {
             match elem_iter.next().unwrap() {
@@ -277,7 +291,7 @@ pub fn collect_type_start<'s>(elem_iter: &mut impl Iterator<Item = XmlElement<'s
                 assert!(matches!(elem_iter.next().unwrap(), Text("]")));
               }
               Text(t) => {
-                field.array_count = Some(t[1..t.len() - 1].to_string());
+                field.array_count = Some(t.to_string());
               }
               StartTag { name: "comment", attrs: "" } => {
                 field.comment = match elem_iter.next().unwrap() {
@@ -306,7 +320,18 @@ pub fn collect_type_start<'s>(elem_iter: &mut impl Iterator<Item = XmlElement<'s
         EndTag { name: "type" } => break 'union_field_gather,
         StartTag { name: "comment", attrs: "" } => burn_comment(elem_iter),
         StartTag { name: "member", attrs } => {
-          field.attrs = TagAttributeIterator::new(attrs).map(|t| (t.key.to_string(), t.value.to_string())).collect();
+          let mut field_attrs: AttrList<'s> = TagAttributeIterator::new(attrs).collect();
+          field.no_auto_validity =
+            field_attrs.iter().find(|a| matches!(a, TagAttribute { key: "noautovalidity", value: _ })).map(|t| t.value.to_string());
+          field.selection = field_attrs.iter().find(|a| matches!(a, TagAttribute { key: "selection", value: _ })).map(|t| t.value.to_string());
+          field.selector = field_attrs.iter().find(|a| matches!(a, TagAttribute { key: "selector", value: _ })).map(|t| t.value.to_string());
+          field.len = field_attrs.iter().find(|a| matches!(a, TagAttribute { key: "len", value: _ })).map(|t| t.value.to_string());
+          // check against any unexpected attributes
+          field_attrs.iter().for_each(|t| {
+            if !["noautovalidity", "selection", "len", "selector"].contains(&t.key) {
+              panic!("unknown command attr: {:?}", t);
+            }
+          });
           // grab up the type
           {
             match elem_iter.next().unwrap() {
@@ -465,8 +490,19 @@ pub fn collect_enums<'s>(elem_iter: &mut impl Iterator<Item = XmlElement<'s>>, a
           }
           StartTag { name: "comment", .. } => burn_comment(elem_iter),
           EmptyTag { name: "enum", attrs } => {
-            let entry_attrs: HashMap<String, String> = TagAttributeIterator::new(attrs).map(|t| (t.key.to_string(), t.value.to_string())).collect();
-            e.entries.push(entry_attrs);
+            let mut entry = EnumerationEntry::default();
+            let entry_attrs: AttrList<'s> = TagAttributeIterator::new(attrs).collect();
+            entry.name = entry_attrs.iter().find(|a| matches!(a, TagAttribute { key: "name", value: _ })).map(|t| t.value.to_string()).unwrap();
+            entry.value = entry_attrs.iter().find(|a| matches!(a, TagAttribute { key: "value", value: _ })).map(|t| t.value.to_string());
+            entry.alias = entry_attrs.iter().find(|a| matches!(a, TagAttribute { key: "alias", value: _ })).map(|t| t.value.to_string());
+            entry.comment = entry_attrs.iter().find(|a| matches!(a, TagAttribute { key: "comment", value: _ })).map(|t| t.value.to_string());
+            // check against any unexpected attributes
+            entry_attrs.iter().for_each(|t| {
+              if !["name", "value", "alias", "comment"].contains(&t.key) {
+                panic!("unknown command attr: {:?}", t);
+              }
+            });
+            e.entries.push(entry);
           }
           EmptyTag { name: "unused", .. } => {
             // these are comment-like tags, we ignore them.
@@ -485,8 +521,20 @@ pub fn collect_enums<'s>(elem_iter: &mut impl Iterator<Item = XmlElement<'s>>, a
           }
           StartTag { name: "comment", .. } => burn_comment(elem_iter),
           EmptyTag { name: "enum", attrs } => {
-            let entry_attrs: HashMap<String, String> = TagAttributeIterator::new(attrs).map(|t| (t.key.to_string(), t.value.to_string())).collect();
-            b.entries.push(entry_attrs);
+            let mut entry = BitmaskEntry::default();
+            let entry_attrs: AttrList<'s> = TagAttributeIterator::new(attrs).collect();
+            entry.name = entry_attrs.iter().find(|a| matches!(a, TagAttribute { key: "name", value: _ })).map(|t| t.value.to_string()).unwrap();
+            entry.bit_position = entry_attrs.iter().find(|a| matches!(a, TagAttribute { key: "bitpos", value: _ })).map(|t| t.value.to_string());
+            entry.value = entry_attrs.iter().find(|a| matches!(a, TagAttribute { key: "value", value: _ })).map(|t| t.value.to_string());
+            entry.comment = entry_attrs.iter().find(|a| matches!(a, TagAttribute { key: "comment", value: _ })).map(|t| t.value.to_string());
+            entry.alias = entry_attrs.iter().find(|a| matches!(a, TagAttribute { key: "alias", value: _ })).map(|t| t.value.to_string());
+            // check against any unexpected attributes
+            entry_attrs.iter().for_each(|t| {
+              if !["name", "bitpos", "value", "comment", "alias"].contains(&t.key) {
+                panic!("unknown command attr: {:?}", t);
+              }
+            });
+            b.entries.push(entry);
           }
           other => panic!("{:?}", other),
         }
@@ -653,7 +701,16 @@ pub fn collect_proto_param<'s>(elem_iter: &mut impl Iterator<Item = XmlElement<'
   match elem_iter.next().unwrap() {
     Text(t) => {
       let t = t.trim();
-      p.fixed_len = t[1..t.len() - 1].parse::<usize>().unwrap();
+      match t.as_bytes()[0] {
+        b'[' => {
+          assert_eq!(t.as_bytes().last().unwrap(), &b']');
+          p.fixed_len = t[1..t.len() - 1].parse::<usize>().unwrap();
+        }
+        b':' => {
+          p.fixed_len = t[1..].parse::<usize>().unwrap();
+        }
+        other => panic!("{:?}", other),
+      }
       assert!(matches!(elem_iter.next().unwrap(), EndTag { name: "param" }));
     }
     EndTag { name: "param" } => (),
