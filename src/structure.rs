@@ -4,14 +4,14 @@ macro_rules! structure {
   (
     $(#[$s_meta:meta])*
     $s_name:ident {
-      $($(#[$f_meta:meta])* $f_name:ident: $s_ty:ty),*
+      $($(#[$f_meta:meta])* $f_name:ident: $f_ty:ty),*
       $(,)?
     }
   ) => {
     $(#[$s_meta])*
     #[repr(C)]
     pub struct $s_name {
-      $($(#[$f_meta])* pub $f_name: $s_ty),*
+      $($(#[$f_meta])* pub $f_name: $f_ty),*
     }
     impl Copy for $s_name { }
     impl Clone for $s_name {
