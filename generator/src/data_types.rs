@@ -21,17 +21,9 @@ pub struct FnPtrAlias {
 }
 impl core::fmt::Display for FnPtrAlias {
   fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-    writeln!(
-      f,
-      "/// Nullable form of [{pfn_name}](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{pfn_name}.html)",
-      pfn_name = self.name
-    )?;
+    writeln!(f, "/// Nullable form of [{pfn_name}](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{pfn_name}.html)", pfn_name = self.name)?;
     writeln!(f, "pub type {pfn_name} = Option<{name}_t>;", pfn_name = self.name, name = &self.name[4..])?;
-    writeln!(
-      f,
-      "/// Non-nullable form of [{pfn_name}](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{pfn_name}.html)",
-      pfn_name = self.name
-    )?;
+    writeln!(f, "/// Non-nullable form of [{pfn_name}](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{pfn_name}.html)", pfn_name = self.name)?;
     let mut s = format!("pub type {name}_t = unsafe extern \"system\" fn(", name = &self.name[4..]);
     for arg in self.args.iter() {
       s.push_str(&format!("{arg_name}: {arg_ty}, ", arg_name = arg.0, arg_ty = arg.1));
@@ -81,11 +73,7 @@ pub struct NonDispatchableHandle {
 }
 impl core::fmt::Display for NonDispatchableHandle {
   fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-    writeln!(
-      f,
-      "/// (Non-dispatchable Handle) [{name}](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{name}.html)",
-      name = self.name
-    )?;
+    writeln!(f, "/// (Non-dispatchable Handle) [{name}](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{name}.html)", name = self.name)?;
     writeln!(f, "///")?;
     writeln!(f, "/// [`VkObjectType`] value: [`{objtypeenum}`]", objtypeenum = self.objtypeenum)?;
     writeln!(f, "#[repr(transparent)]")?;
@@ -188,6 +176,7 @@ pub struct Struct {
   pub structextends: Option<String>,
   pub fields: Vec<StructField>,
 }
+#[cfg(FALSE)]
 impl core::fmt::Display for Struct {
   fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
     writeln!(f, "/// [{name}](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{name}.html)", name = self.name)?;
@@ -212,6 +201,30 @@ impl core::fmt::Display for Struct {
     Ok(())
   }
 }
+impl core::fmt::Display for Struct {
+  fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+    writeln!(f, "structure! {{")?;
+    writeln!(f, "  /// [{name}](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{name}.html)", name = self.name)?;
+    if let Some(struct_extends) = self.structextends.as_ref() {
+      writeln!(f, "  ///")?;
+      write!(f, "  /// Struct Extends: ")?;
+      for (i, ex) in struct_extends.split(',').enumerate() {
+        if i > 0 {
+          write!(f, ", ")?;
+        }
+        write!(f, "[`{ex}`]", ex = ex)?;
+      }
+      writeln!(f)?;
+    }
+    writeln!(f, "  {name} {{", name = self.name)?;
+    for field in self.fields.iter() {
+      write!(f, "{}", field)?;
+    }
+    writeln!(f, "  }}")?;
+    writeln!(f, "}}")?;
+    Ok(())
+  }
+}
 
 #[derive(Debug, PartialEq, PartialOrd, Ord, Eq)]
 pub struct Union {
@@ -220,14 +233,14 @@ pub struct Union {
 }
 impl core::fmt::Display for Union {
   fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-    writeln!(f, "/// [{name}](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{name}.html)", name = self.name)?;
-    writeln!(f, "#[repr(C)]")?;
-    writeln!(f, "pub union {name} {{", name = self.name)?;
+    writeln!(f, "unionize! {{")?;
+    writeln!(f, "  /// [{name}](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{name}.html)", name = self.name)?;
+    writeln!(f, "  {name} {{", name = self.name)?;
     for field in self.fields.iter() {
       write!(f, "{}", field)?;
     }
+    writeln!(f, "  }}")?;
     writeln!(f, "}}")?;
-    writeln!(f, "impl Copy for {name} {{}} impl Clone for {name}{{ fn clone(&self) -> Self {{ *self }} }}", name = self.name)?;
     Ok(())
   }
 }
@@ -249,6 +262,7 @@ pub struct StructField {
   pub array_count: Option<String>,
   pub comment: Option<String>,
 }
+#[cfg(FALSE)]
 impl core::fmt::Display for StructField {
   fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
     if let Some(comment) = self.comment.as_ref() {
@@ -294,13 +308,7 @@ impl core::fmt::Display for StructField {
           format!("{ptr_prefix}[{base_ty}; {count}]", ptr_prefix = ptr_prefix, base_ty = self.type_, count = &array_count[1..])
         } else if array_count.starts_with('[') {
           if array_count.contains("][") {
-            format!(
-              "{ptr_prefix}[[{base_ty}; {count1}]; {count2}]",
-              ptr_prefix = ptr_prefix,
-              base_ty = self.type_,
-              count2 = &array_count[1..2],
-              count1 = &array_count[4..5]
-            )
+            format!("{ptr_prefix}[[{base_ty}; {count1}]; {count2}]", ptr_prefix = ptr_prefix, base_ty = self.type_, count2 = &array_count[1..2], count1 = &array_count[4..5])
           } else {
             format!("{ptr_prefix}[{base_ty}; {count}]", ptr_prefix = ptr_prefix, base_ty = self.type_, count = &array_count[1..2])
           }
@@ -310,6 +318,63 @@ impl core::fmt::Display for StructField {
       }
     };
     writeln!(f, "  pub {name}: {ty},", name = name, ty = ty)
+  }
+}
+impl core::fmt::Display for StructField {
+  fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+    if let Some(comment) = self.comment.as_ref() {
+      writeln!(f, "    /// {comment}", comment = comment)?;
+    }
+    if let Some(values) = self.values.as_ref() {
+      writeln!(f, "    /// * **Values:** [`{values}`]", values = values)?;
+    }
+    if let Some(optional) = self.optional.as_ref() {
+      writeln!(f, "    /// * **Optional:** {optional}", optional = optional)?;
+    }
+    if let Some(no_auto_validity) = self.no_auto_validity.as_ref() {
+      writeln!(f, "    /// * **No Auto-validity:** {no_auto_validity}", no_auto_validity = no_auto_validity)?;
+    }
+    if let Some(len) = self.len.as_ref() {
+      writeln!(f, "    /// * **Len:** {len}", len = len)?;
+    }
+    if let Some(alt_len) = self.alt_len.as_ref() {
+      writeln!(f, "    /// * **Alt Len:** {alt_len}", alt_len = alt_len)?;
+    }
+    if let Some(extern_sync) = self.extern_sync.as_ref() {
+      writeln!(f, "    /// * **Extern Sync:** {extern_sync}", extern_sync = extern_sync)?;
+    }
+    if let Some(selection) = self.selection.as_ref() {
+      writeln!(f, "    /// * **Selection:** {selection}", selection = selection)?;
+    }
+    if let Some(selector) = self.selector.as_ref() {
+      writeln!(f, "    /// * **Selector:** {selector}", selector = selector)?;
+    }
+    let name = if self.name == "type" { "type_" } else { self.name.as_str() };
+    let ptr_prefix = match (self.is_ptr, self.is_const) {
+      (true, true) => "*const ",
+      (true, false) => "*mut ",
+      (false, true) => unimplemented!(),
+      (false, false) => "",
+    };
+    let ty = match self.array_count.as_ref() {
+      None => format!("{ptr_prefix}{base_ty}", ptr_prefix = ptr_prefix, base_ty = self.type_),
+      Some(array_count) => {
+        if array_count.starts_with('V') {
+          format!("{ptr_prefix}[{base_ty}; {count} as usize]", ptr_prefix = ptr_prefix, base_ty = self.type_, count = array_count)
+        } else if array_count.starts_with(':') {
+          format!("{ptr_prefix}[{base_ty}; {count}]", ptr_prefix = ptr_prefix, base_ty = self.type_, count = &array_count[1..])
+        } else if array_count.starts_with('[') {
+          if array_count.contains("][") {
+            format!("{ptr_prefix}[[{base_ty}; {count1}]; {count2}]", ptr_prefix = ptr_prefix, base_ty = self.type_, count2 = &array_count[1..2], count1 = &array_count[4..5])
+          } else {
+            format!("{ptr_prefix}[{base_ty}; {count}]", ptr_prefix = ptr_prefix, base_ty = self.type_, count = &array_count[1..2])
+          }
+        } else {
+          format!("{ptr_prefix}[{base_ty}; {count}]", ptr_prefix = ptr_prefix, base_ty = self.type_, count = array_count)
+        }
+      }
+    };
+    writeln!(f, "    {name}: {ty},", name = name, ty = ty)
   }
 }
 
@@ -329,17 +394,9 @@ pub struct FunctionPrototype {
 }
 impl core::fmt::Display for FunctionPrototype {
   fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-    writeln!(
-      f,
-      "/// Nullable pointer to [{name}](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{name}.html)",
-      name = self.fn_name
-    )?;
+    writeln!(f, "/// Nullable pointer to [{name}](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{name}.html)", name = self.fn_name)?;
     writeln!(f, "pub type PFN_{name} = Option<{name}_t>;", name = self.fn_name)?;
-    writeln!(
-      f,
-      "/// Non-nullable pointer to [{name}](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{name}.html)",
-      name = self.fn_name
-    )?;
+    writeln!(f, "/// Non-nullable pointer to [{name}](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{name}.html)", name = self.fn_name)?;
     let mut args = String::new();
     for arg in self.params.iter() {
       let arg_name = arg.get_name();

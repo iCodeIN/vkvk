@@ -8,9 +8,16 @@ macro_rules! enumeration {
       $(,)?
     }
   ) => {
+    #[derive(PartialEq, Eq, Hash)]
     #[repr(transparent)]
     $(#[$e_meta])*
     pub struct $enumeration(int);
+    impl Copy for $enumeration { }
+    impl Clone for $enumeration {
+      fn clone(&self) -> Self {
+        *self
+      }
+    }
     $( $(#[$c_meta])* pub const $i: $enumeration = $enumeration($val); )*
     #[cfg(feature = "impl_enumeration_precise_debug")]
     impl core::fmt::Debug for $enumeration {

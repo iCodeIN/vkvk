@@ -121,11 +121,15 @@ pub const VK_CULL_MODE_FRONT_AND_BACK: VkCullModeFlagBits = VkCullModeFlagBits(0
 
 flag_bits!(
   /// [VkRenderPassCreateFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkRenderPassCreateFlagBits.html)
+  ///
+  /// currently reserved for future use.
   VkRenderPassCreateFlagBits = VkRenderPassCreateFlags {}
 );
 
 flag_bits!(
   /// [VkDeviceQueueCreateFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceQueueCreateFlagBits.html)
+  ///
+  /// currently reserved for future use.
   VkDeviceQueueCreateFlagBits = VkDeviceQueueCreateFlags {}
 );
 
@@ -283,11 +287,15 @@ flag_bits!(
 
 flag_bits!(
   /// [VkImageViewCreateFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageViewCreateFlagBits.html)
+  ///
+  /// currently reserved for future use.
   VkImageViewCreateFlagBits = VkImageViewCreateFlags {}
 );
 
 flag_bits!(
   /// [VkSamplerCreateFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSamplerCreateFlagBits.html)
+  ///
+  /// currently reserved for future use.
   VkSamplerCreateFlagBits = VkSamplerCreateFlags {}
 );
 
@@ -686,11 +694,15 @@ flag_bits!(
 
 flag_bits!(
   /// [VkPrivateDataSlotCreateFlagBitsEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPrivateDataSlotCreateFlagBitsEXT.html)
+  ///
+  /// currently reserved for future use.
   VkPrivateDataSlotCreateFlagBitsEXT = VkPrivateDataSlotCreateFlagsEXT {}
 );
 
 flag_bits!(
   /// [VkDescriptorSetLayoutCreateFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorSetLayoutCreateFlagBits.html)
+  ///
+  /// currently reserved for future use.
   VkDescriptorSetLayoutCreateFlagBits = VkDescriptorSetLayoutCreateFlags {}
 );
 
@@ -731,40 +743,40 @@ pub const VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D11_FENCE_BIT: VkExternalSemaphore
 flag_bits!(
   /// [VkExternalSemaphoreFeatureFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExternalSemaphoreFeatureFlagBits.html)
   VkExternalSemaphoreFeatureFlagBits {
-      VK_EXTERNAL_SEMAPHORE_FEATURE_EXPORTABLE_BIT = (1<<0),
-      VK_EXTERNAL_SEMAPHORE_FEATURE_IMPORTABLE_BIT = (1<<1),
+    VK_EXTERNAL_SEMAPHORE_FEATURE_EXPORTABLE_BIT = (1<<0),
+    VK_EXTERNAL_SEMAPHORE_FEATURE_IMPORTABLE_BIT = (1<<1),
   }
 );
 
 flag_bits!(
   /// [VkSemaphoreImportFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSemaphoreImportFlagBits.html)
   VkSemaphoreImportFlagBits {
-      VK_SEMAPHORE_IMPORT_TEMPORARY_BIT = (1<<0),
+    VK_SEMAPHORE_IMPORT_TEMPORARY_BIT = (1<<0),
   }
 );
 
 flag_bits!(
   /// [VkExternalFenceHandleTypeFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExternalFenceHandleTypeFlagBits.html)
   VkExternalFenceHandleTypeFlagBits {
-      VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT = (1<<0),
-      VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT = (1<<1),
-      VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT = (1<<2),
-      VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT = (1<<3),
+    VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT = (1<<0),
+    VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT = (1<<1),
+    VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT = (1<<2),
+    VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT = (1<<3),
   }
 );
 
 flag_bits!(
   /// [VkExternalFenceFeatureFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExternalFenceFeatureFlagBits.html)
   VkExternalFenceFeatureFlagBits {
-      VK_EXTERNAL_FENCE_FEATURE_EXPORTABLE_BIT = (1<<0),
-      VK_EXTERNAL_FENCE_FEATURE_IMPORTABLE_BIT = (1<<1),
+    VK_EXTERNAL_FENCE_FEATURE_EXPORTABLE_BIT = (1<<0),
+    VK_EXTERNAL_FENCE_FEATURE_IMPORTABLE_BIT = (1<<1),
   }
 );
 
 flag_bits!(
   /// [VkFenceImportFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFenceImportFlagBits.html)
   VkFenceImportFlagBits {
-      VK_FENCE_IMPORT_TEMPORARY_BIT = (1<<0),
+    VK_FENCE_IMPORT_TEMPORARY_BIT = (1<<0),
   }
 );
 
@@ -779,7 +791,7 @@ pub const VK_SURFACE_COUNTER_VBLANK_EXT: VkSurfaceCounterFlagBitsEXT = VK_SURFAC
 
 flag_bits!(
   /// [VkPeerMemoryFeatureFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPeerMemoryFeatureFlagBits.html)
-  VkPeerMemoryFeatureFlagBits {
+  VkPeerMemoryFeatureFlagBits = VkPeerMemoryFeatureFlags {
     /// Can read with vkCmdCopy commands
     VK_PEER_MEMORY_FEATURE_COPY_SRC_BIT = (1<<0),
     /// Can write with vkCmdCopy commands
@@ -815,11 +827,15 @@ flag_bits!(
 
 flag_bits!(
   /// [VkSwapchainCreateFlagBitsKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSwapchainCreateFlagBitsKHR.html)
+  ///
+  /// currently reserved for future use.
   VkSwapchainCreateFlagBitsKHR {}
 );
 
 flag_bits!(
   /// [VkSubpassDescriptionFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSubpassDescriptionFlagBits.html)
+  ///
+  /// currently reserved for future use.
   VkSubpassDescriptionFlagBits = VkSubpassDescriptionFlags {}
 );
 
@@ -943,16 +959,22 @@ pub const VK_PERFORMANCE_COUNTER_DESCRIPTION_CONCURRENTLY_IMPACTED_KHR: VkPerfor
 
 flag_bits!(
   /// [VkAcquireProfilingLockFlagBitsKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkAcquireProfilingLockFlagBitsKHR.html)
+  ///
+  /// currently reserved for future use.
   VkAcquireProfilingLockFlagBitsKHR = VkAcquireProfilingLockFlagsKHR {}
 );
 
 flag_bits!(
   /// [VkShaderCorePropertiesFlagBitsAMD](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkShaderCorePropertiesFlagBitsAMD.html)
+  ///
+  /// currently reserved for future use.
   VkShaderCorePropertiesFlagBitsAMD = VkShaderCorePropertiesFlagsAMD {}
 );
 
 flag_bits!(
   /// [VkShaderModuleCreateFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkShaderModuleCreateFlagBits.html)
+  ///
+  /// currently reserved for future use.
   VkShaderModuleCreateFlagBits = VkShaderModuleCreateFlags {}
 );
 
@@ -980,6 +1002,451 @@ flag_bits!(
   }
 );
 
+flag_bits!(
+  /// [VkDescriptorUpdateTemplateCreateFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorUpdateTemplateCreateFlags.html)
+  ///
+  /// currently reserved for future use.
+  VkDescriptorUpdateTemplateCreateFlags {}
+);
+flag_bits!(
+  /// [VkDebugUtilsMessengerCallbackDataFlagsEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDebugUtilsMessengerCallbackDataFlagsEXT.html)
+  ///
+  /// currently reserved for future use.
+  VkDebugUtilsMessengerCallbackDataFlagsEXT {}
+);
+flag_bits!(
+  /// [VkAndroidSurfaceCreateFlagsKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkAndroidSurfaceCreateFlagsKHR.html)
+  ///
+  /// currently reserved for future use.
+  VkAndroidSurfaceCreateFlagsKHR {}
+);
+flag_bits!(
+  /// [VkBufferViewCreateFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBufferViewCreateFlags.html)
+  ///
+  /// currently reserved for future use.
+  VkBufferViewCreateFlags {}
+);
+flag_bits!(
+  /// [VkCommandBuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCommandBuffer.html)
+  ///
+  /// currently reserved for future use.
+  VkCommandBuffer {}
+);
+flag_bits!(
+  /// [VkCompositeAlphaFlagsKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCompositeAlphaFlagsKHR.html)
+  ///
+  /// currently reserved for future use.
+  VkCompositeAlphaFlagsKHR {}
+);
+flag_bits!(
+  /// [VkConditionalRenderingFlagsEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkConditionalRenderingFlagsEXT.html)
+  ///
+  /// currently reserved for future use.
+  VkConditionalRenderingFlagsEXT {}
+);
+flag_bits!(
+  /// [VkDebugUtilsMessageSeverityFlagsEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDebugUtilsMessageSeverityFlagsEXT.html)
+  ///
+  /// currently reserved for future use.
+  VkDebugUtilsMessageSeverityFlagsEXT {}
+);
+flag_bits!(
+  /// [VkDebugUtilsMessengerCreateFlagsEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDebugUtilsMessengerCreateFlagsEXT.html)
+  ///
+  /// currently reserved for future use.
+  VkDebugUtilsMessengerCreateFlagsEXT {}
+);
+flag_bits!(
+  /// [VkDescriptorBindingFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorBindingFlags.html)
+  ///
+  /// currently reserved for future use.
+  VkDescriptorBindingFlags {}
+);
+flag_bits!(
+  /// [VkDeviceCreateFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceCreateFlags.html)
+  ///
+  /// currently reserved for future use.
+  VkDeviceCreateFlags {}
+);
+flag_bits!(
+  /// [VkDeviceGroupPresentModeFlagsKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceGroupPresentModeFlagsKHR.html)
+  ///
+  /// currently reserved for future use.
+  VkDeviceGroupPresentModeFlagsKHR {}
+);
+flag_bits!(
+  /// [VkDeviceMemoryReportFlagsEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceMemoryReportFlagsEXT.html)
+  ///
+  /// currently reserved for future use.
+  VkDeviceMemoryReportFlagsEXT {}
+);
+flag_bits!(
+  /// [VkDirectFBSurfaceCreateFlagsEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDirectFBSurfaceCreateFlagsEXT.html)
+  ///
+  /// currently reserved for future use.
+  VkDirectFBSurfaceCreateFlagsEXT {}
+);
+flag_bits!(
+  /// [VkDisplayKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDisplayKHR.html)
+  ///
+  /// currently reserved for future use.
+  VkDisplayKHR {}
+);
+flag_bits!(
+  /// [VkDisplayModeCreateFlagsKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDisplayModeCreateFlagsKHR.html)
+  ///
+  /// currently reserved for future use.
+  VkDisplayModeCreateFlagsKHR {}
+);
+flag_bits!(
+  /// [VkDisplayModeKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDisplayModeKHR.html)
+  ///
+  /// currently reserved for future use.
+  VkDisplayModeKHR {}
+);
+flag_bits!(
+  /// [VkDisplayPlaneAlphaFlagsKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDisplayPlaneAlphaFlagsKHR.html)
+  ///
+  /// currently reserved for future use.
+  VkDisplayPlaneAlphaFlagsKHR {}
+);
+flag_bits!(
+  /// [VkDisplaySurfaceCreateFlagsKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDisplaySurfaceCreateFlagsKHR.html)
+  ///
+  /// currently reserved for future use.
+  VkDisplaySurfaceCreateFlagsKHR {}
+);
+flag_bits!(
+  /// [VkEventCreateFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkEventCreateFlags.html)
+  ///
+  /// currently reserved for future use.
+  VkEventCreateFlags {}
+);
+flag_bits!(
+  /// [VkExternalFenceFeatureFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExternalFenceFeatureFlags.html)
+  ///
+  /// currently reserved for future use.
+  VkExternalFenceFeatureFlags {}
+);
+flag_bits!(
+  /// [VkExternalFenceHandleTypeFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExternalFenceHandleTypeFlags.html)
+  ///
+  /// currently reserved for future use.
+  VkExternalFenceHandleTypeFlags {}
+);
+flag_bits!(
+  /// [VkExternalMemoryFeatureFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExternalMemoryFeatureFlags.html)
+  ///
+  /// currently reserved for future use.
+  VkExternalMemoryFeatureFlags {}
+);
+flag_bits!(
+  /// [VkExternalMemoryFeatureFlagsNV](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExternalMemoryFeatureFlagsNV.html)
+  ///
+  /// currently reserved for future use.
+  VkExternalMemoryFeatureFlagsNV {}
+);
+flag_bits!(
+  /// [VkExternalMemoryHandleTypeFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExternalMemoryHandleTypeFlags.html)
+  ///
+  /// currently reserved for future use.
+  VkExternalMemoryHandleTypeFlags {}
+);
+flag_bits!(
+  /// [VkExternalMemoryHandleTypeFlagsNV](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExternalMemoryHandleTypeFlagsNV.html)
+  ///
+  /// currently reserved for future use.
+  VkExternalMemoryHandleTypeFlagsNV {}
+);
+flag_bits!(
+  /// [VkExternalSemaphoreFeatureFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExternalSemaphoreFeatureFlags.html)
+  ///
+  /// currently reserved for future use.
+  VkExternalSemaphoreFeatureFlags {}
+);
+flag_bits!(
+  /// [VkExternalSemaphoreHandleTypeFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExternalSemaphoreHandleTypeFlags.html)
+  ///
+  /// currently reserved for future use.
+  VkExternalSemaphoreHandleTypeFlags {}
+);
+flag_bits!(
+  /// [VkFenceImportFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFenceImportFlags.html)
+  ///
+  /// currently reserved for future use.
+  VkFenceImportFlags {}
+);
+flag_bits!(
+  /// [VkHeadlessSurfaceCreateFlagsEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkHeadlessSurfaceCreateFlagsEXT.html)
+  ///
+  /// currently reserved for future use.
+  VkHeadlessSurfaceCreateFlagsEXT {}
+);
+flag_bits!(
+  /// [VkImagePipeSurfaceCreateFlagsFUCHSIA](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImagePipeSurfaceCreateFlagsFUCHSIA.html)
+  ///
+  /// currently reserved for future use.
+  VkImagePipeSurfaceCreateFlagsFUCHSIA {}
+);
+flag_bits!(
+  /// [VkInstanceCreateFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkInstanceCreateFlags.html)
+  ///
+  /// currently reserved for future use.
+  VkInstanceCreateFlags {}
+);
+flag_bits!(
+  /// [VkIOSSurfaceCreateFlagsMVK](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkIOSSurfaceCreateFlagsMVK.html)
+  ///
+  /// currently reserved for future use.
+  VkIOSSurfaceCreateFlagsMVK {}
+);
+flag_bits!(
+  /// [VkMacOSSurfaceCreateFlagsMVK](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkMacOSSurfaceCreateFlagsMVK.html)
+  ///
+  /// currently reserved for future use.
+  VkMacOSSurfaceCreateFlagsMVK {}
+);
+flag_bits!(
+  /// [VkMemoryAllocateFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkMemoryAllocateFlags.html)
+  ///
+  /// currently reserved for future use.
+  VkMemoryAllocateFlags {}
+);
+flag_bits!(
+  /// [VkMetalSurfaceCreateFlagsEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkMetalSurfaceCreateFlagsEXT.html)
+  ///
+  /// currently reserved for future use.
+  VkMetalSurfaceCreateFlagsEXT {}
+);
+flag_bits!(
+  /// [VkPipelineColorBlendStateCreateFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineColorBlendStateCreateFlags.html)
+  ///
+  /// currently reserved for future use.
+  VkPipelineColorBlendStateCreateFlags {}
+);
+flag_bits!(
+  /// [VkPipelineCoverageModulationStateCreateFlagsNV](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineCoverageModulationStateCreateFlagsNV.html)
+  ///
+  /// currently reserved for future use.
+  VkPipelineCoverageModulationStateCreateFlagsNV {}
+);
+flag_bits!(
+  /// [VkPipelineCoverageReductionStateCreateFlagsNV](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineCoverageReductionStateCreateFlagsNV.html)
+  ///
+  /// currently reserved for future use.
+  VkPipelineCoverageReductionStateCreateFlagsNV {}
+);
+flag_bits!(
+  /// [VkPipelineCoverageToColorStateCreateFlagsNV](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineCoverageToColorStateCreateFlagsNV.html)
+  ///
+  /// currently reserved for future use.
+  VkPipelineCoverageToColorStateCreateFlagsNV {}
+);
+flag_bits!(
+  /// [VkPipelineDepthStencilStateCreateFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineDepthStencilStateCreateFlags.html)
+  ///
+  /// currently reserved for future use.
+  VkPipelineDepthStencilStateCreateFlags {}
+);
+flag_bits!(
+  /// [VkPipelineDiscardRectangleStateCreateFlagsEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineDiscardRectangleStateCreateFlagsEXT.html)
+  ///
+  /// currently reserved for future use.
+  VkPipelineDiscardRectangleStateCreateFlagsEXT {}
+);
+flag_bits!(
+  /// [VkPipelineDynamicStateCreateFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineDynamicStateCreateFlags.html)
+  ///
+  /// currently reserved for future use.
+  VkPipelineDynamicStateCreateFlags {}
+);
+flag_bits!(
+  /// [VkPipelineInputAssemblyStateCreateFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineInputAssemblyStateCreateFlags.html)
+  ///
+  /// currently reserved for future use.
+  VkPipelineInputAssemblyStateCreateFlags {}
+);
+flag_bits!(
+  /// [VkPipelineLayoutCreateFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineLayoutCreateFlags.html)
+  ///
+  /// currently reserved for future use.
+  VkPipelineLayoutCreateFlags {}
+);
+flag_bits!(
+  /// [VkPipelineMultisampleStateCreateFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineMultisampleStateCreateFlags.html)
+  ///
+  /// currently reserved for future use.
+  VkPipelineMultisampleStateCreateFlags {}
+);
+flag_bits!(
+  /// [VkPipelineRasterizationConservativeStateCreateFlagsEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineRasterizationConservativeStateCreateFlagsEXT.html)
+  ///
+  /// currently reserved for future use.
+  VkPipelineRasterizationConservativeStateCreateFlagsEXT {}
+);
+flag_bits!(
+  /// [VkPipelineRasterizationDepthClipStateCreateFlagsEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineRasterizationDepthClipStateCreateFlagsEXT.html)
+  ///
+  /// currently reserved for future use.
+  VkPipelineRasterizationDepthClipStateCreateFlagsEXT {}
+);
+flag_bits!(
+  /// [VkPipelineRasterizationStateCreateFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineRasterizationStateCreateFlags.html)
+  ///
+  /// currently reserved for future use.
+  VkPipelineRasterizationStateCreateFlags {}
+);
+flag_bits!(
+  /// [VkPipelineRasterizationStateStreamCreateFlagsEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineRasterizationStateStreamCreateFlagsEXT.html)
+  ///
+  /// currently reserved for future use.
+  VkPipelineRasterizationStateStreamCreateFlagsEXT {}
+);
+flag_bits!(
+  /// [VkPipelineTessellationStateCreateFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineTessellationStateCreateFlags.html)
+  ///
+  /// currently reserved for future use.
+  VkPipelineTessellationStateCreateFlags {}
+);
+flag_bits!(
+  /// [VkPipelineVertexInputStateCreateFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineVertexInputStateCreateFlags.html)
+  ///
+  /// currently reserved for future use.
+  VkPipelineVertexInputStateCreateFlags {}
+);
+flag_bits!(
+  /// [VkPipelineViewportStateCreateFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineViewportStateCreateFlags.html)
+  ///
+  /// currently reserved for future use.
+  VkPipelineViewportStateCreateFlags {}
+);
+flag_bits!(
+  /// [VkPipelineViewportSwizzleStateCreateFlagsNV](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineViewportSwizzleStateCreateFlagsNV.html)
+  ///
+  /// currently reserved for future use.
+  VkPipelineViewportSwizzleStateCreateFlagsNV {}
+);
+flag_bits!(
+  /// [VkQueryPoolCreateFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueryPoolCreateFlags.html)
+  ///
+  /// currently reserved for future use.
+  VkQueryPoolCreateFlags {}
+);
+flag_bits!(
+  /// [VkResolveModeFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkResolveModeFlags.html)
+  ///
+  /// currently reserved for future use.
+  VkResolveModeFlags {}
+);
+flag_bits!(
+  /// [VkSemaphoreCreateFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSemaphoreCreateFlags.html)
+  ///
+  /// currently reserved for future use.
+  VkSemaphoreCreateFlags {}
+);
+flag_bits!(
+  /// [VkSemaphoreImportFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSemaphoreImportFlags.html)
+  ///
+  /// currently reserved for future use.
+  VkSemaphoreImportFlags {}
+);
+flag_bits!(
+  /// [VkStreamDescriptorSurfaceCreateFlagsGGP](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkStreamDescriptorSurfaceCreateFlagsGGP.html)
+  ///
+  /// currently reserved for future use.
+  VkStreamDescriptorSurfaceCreateFlagsGGP {}
+);
+flag_bits!(
+  /// [VkSurfaceCounterFlagsEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSurfaceCounterFlagsEXT.html)
+  ///
+  /// currently reserved for future use.
+  VkSurfaceCounterFlagsEXT {}
+);
+flag_bits!(
+  /// [VkSurfaceKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSurfaceKHR.html)
+  ///
+  /// currently reserved for future use.
+  VkSurfaceKHR {}
+);
+flag_bits!(
+  /// [VkSurfaceTransformFlagsKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSurfaceTransformFlagsKHR.html)
+  ///
+  /// currently reserved for future use.
+  VkSurfaceTransformFlagsKHR {}
+);
+flag_bits!(
+  /// [VkSwapchainCreateFlagsKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSwapchainCreateFlagsKHR.html)
+  ///
+  /// currently reserved for future use.
+  VkSwapchainCreateFlagsKHR {}
+);
+flag_bits!(
+  /// [VkSwapchainImageUsageFlagsANDROID](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSwapchainImageUsageFlagsANDROID.html)
+  ///
+  /// currently reserved for future use.
+  VkSwapchainImageUsageFlagsANDROID {}
+);
+flag_bits!(
+  /// [VkToolPurposeFlagsEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkToolPurposeFlagsEXT.html)
+  ///
+  /// currently reserved for future use.
+  VkToolPurposeFlagsEXT {}
+);
+flag_bits!(
+  /// [VkValidationCacheCreateFlagsEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkValidationCacheCreateFlagsEXT.html)
+  ///
+  /// currently reserved for future use.
+  VkValidationCacheCreateFlagsEXT {}
+);
+flag_bits!(
+  /// [VkViSurfaceCreateFlagsNN](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkViSurfaceCreateFlagsNN.html)
+  ///
+  /// currently reserved for future use.
+  VkViSurfaceCreateFlagsNN {}
+);
+flag_bits!(
+  /// [VkWaylandSurfaceCreateFlagsKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkWaylandSurfaceCreateFlagsKHR.html)
+  ///
+  /// currently reserved for future use.
+  VkWaylandSurfaceCreateFlagsKHR {}
+);
+flag_bits!(
+  /// [VkWin32SurfaceCreateFlagsKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkWin32SurfaceCreateFlagsKHR.html)
+  ///
+  /// currently reserved for future use.
+  VkWin32SurfaceCreateFlagsKHR {}
+);
+flag_bits!(
+  /// [VkXcbSurfaceCreateFlagsKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkXcbSurfaceCreateFlagsKHR.html)
+  ///
+  /// currently reserved for future use.
+  VkXcbSurfaceCreateFlagsKHR {}
+);
+flag_bits!(
+  /// [VkXlibSurfaceCreateFlagsKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkXlibSurfaceCreateFlagsKHR.html)
+  ///
+  /// currently reserved for future use.
+  VkXlibSurfaceCreateFlagsKHR {}
+);
+flag_bits!(
+  /// [VkXlibSurfaceCreateFlagsKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkXlibSurfaceCreateFlagsKHR.html)
+  ///
+  /// currently reserved for future use.
+  VkCommandPoolTrimFlags {}
+);
+flag_bits!(
+  /// [VkXlibSurfaceCreateFlagsKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkXlibSurfaceCreateFlagsKHR.html)
+  ///
+  /// currently reserved for future use.
+  VkDescriptorPoolResetFlags {}
+);
+flag_bits!(
+  /// [VkXlibSurfaceCreateFlagsKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkXlibSurfaceCreateFlagsKHR.html)
+  ///
+  /// currently reserved for future use.
+  VkMemoryMapFlags {}
+);
+
 pub type VkSemaphoreWaitFlagBitsKHR = VkSemaphoreWaitFlagBits;
 pub type VkExternalMemoryHandleTypeFlagBitsKHR = VkExternalMemoryHandleTypeFlagBits;
 pub type VkExternalMemoryFeatureFlagBitsKHR = VkExternalMemoryFeatureFlagBits;
@@ -1000,12 +1467,3 @@ pub type VkGeometryFlagsNV = VkGeometryFlagsKHR;
 pub type VkGeometryInstanceFlagsNV = VkGeometryInstanceFlagsKHR;
 pub type VkSemaphoreImportFlagBitsKHR = VkSemaphoreImportFlagBits;
 pub type VkSemaphoreWaitFlagsKHR = VkSemaphoreWaitFlags;
-
-/// currently reserved for future use.
-pub type VkDescriptorUpdateTemplateCreateFlags = u32;
-
-/// currently reserved for future use.
-pub type VkDebugUtilsMessengerCallbackDataFlagsEXT = u32;
-
-/// currently reserved for future use.
-pub type VkDeviceMemoryReportFlagsEXT = u32;

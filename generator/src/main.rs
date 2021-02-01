@@ -22,18 +22,8 @@ fn main() {
   assert_eq!(elem_iter.next(), Some(StartTag { name: "registry", attrs: "" }));
   let mut registry = collect_registry(&mut elem_iter);
   registry.definitions.sort();
-  print_standard_definitions();
-  for def in registry.definitions.iter().filter(|f| {
-    matches!(
-      f,
-      VulkanDefinition::Handle(_)
-        | VulkanDefinition::NonDispatchableHandle(_)
-        | VulkanDefinition::Enumeration(_)
-        | VulkanDefinition::Bitmask(_)
-        | VulkanDefinition::Struct(_)
-        | VulkanDefinition::Union(_)
-    )
-  }) {
+  //print_standard_definitions();
+  for def in registry.definitions.iter().filter(|f| matches!(f, VulkanDefinition::FunctionPrototype(_))) {
     println!("{}", def);
   }
 }
@@ -139,9 +129,7 @@ pub fn print_standard_definitions() {
   println!("pub const VK_MAX_EXTENSION_NAME_SIZE: usize = 256;");
   println!("pub const VK_MAX_DESCRIPTION_SIZE: usize = 256;");
   println!("pub const VK_MAX_MEMORY_TYPES: usize = 32;");
-  println!(
-    "#[doc=\"The maximum number of unique memory heaps, each of which supporting 1 or more memory types\"]pub const VK_MAX_MEMORY_HEAPS: usize = 16;"
-  );
+  println!("#[doc=\"The maximum number of unique memory heaps, each of which supporting 1 or more memory types\"]pub const VK_MAX_MEMORY_HEAPS: usize = 16;");
   println!("pub const VK_LOD_CLAMP_NONE: f32 = 1000.0;");
   println!("pub const VK_REMAINING_MIP_LEVELS: usize = usize::MAX;");
   println!("pub const VK_REMAINING_ARRAY_LAYERS: usize = usize::MAX;");

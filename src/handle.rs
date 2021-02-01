@@ -2,10 +2,17 @@ use super::*;
 
 macro_rules! define_handle {
   ($(#[$m:meta])* $handle:ident) => {
-    #[derive(PartialEq, Eq, Hash)]
+    #[derive(PartialEq, Eq)]
+    #[cfg_attr(feature="derive_hash", derive(Hash))]
     #[repr(transparent)]
     $(#[$m])*
     pub struct $handle(*mut c_void);
+    impl Copy for $handle { }
+    impl Clone for $handle {
+      fn clone(&self) -> Self {
+        *self
+      }
+    }
     impl Default for $handle {
       fn default() -> Self {
         Self::null()
@@ -24,9 +31,21 @@ macro_rules! define_handle {
 
 macro_rules! define_non_dispatchable_handle {
   ($(#[$m:meta])* $handle:ident) => {
+    #[derive(PartialEq, Eq, Hash)]
     #[repr(transparent)]
     $(#[$m])*
     pub struct $handle(u64);
+    impl Copy for $handle { }
+    impl Clone for $handle {
+      fn clone(&self) -> Self {
+        *self
+      }
+    }
+    impl Default for $handle {
+      fn default() -> Self {
+        Self(0)
+      }
+    }
   };
 }
 
@@ -298,6 +317,49 @@ define_non_dispatchable_handle!(
   ///
   /// [VkPrivateDataSlotEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPrivateDataSlotEXT.html)
   VkPrivateDataSlotEXT
+);
+
+define_non_dispatchable_handle!(
+  ///
+  /// * Parent: [`VkPhysicalDevice`]
+  /// * ObjTypeEnum: [`VK_OBJECT_TYPE_DISPLAY_KHR`]
+  /// [VkDisplayKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDisplayKHR.html)
+  VkDisplayKHR
+);
+define_non_dispatchable_handle!(
+  ///
+  /// * Parent: [`VkDisplayKHR`]
+  /// * ObjTypeEnum: [`VK_OBJECT_TYPE_DISPLAY_MODE_KHR`]
+  /// [VkDisplayModeKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDisplayModeKHR.html)
+  VkDisplayModeKHR
+);
+define_non_dispatchable_handle!(
+  ///
+  /// * Parent: [`VkInstance`]
+  /// * ObjTypeEnum: [`VK_OBJECT_TYPE_SURFACE_KHR`]
+  /// [VkSurfaceKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSurfaceKHR.html)
+  VkSurfaceKHR
+);
+define_non_dispatchable_handle!(
+  ///
+  /// * Parent: [`VkSurfaceKHR`]
+  /// * ObjTypeEnum: [`VK_OBJECT_TYPE_SWAPCHAIN_KHR`]
+  /// [VkSwapchainKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSwapchainKHR.html)
+  VkSwapchainKHR
+);
+define_non_dispatchable_handle!(
+  ///
+  /// * Parent: [`VkInstance`]
+  /// * ObjTypeEnum: [`VK_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT`]
+  /// [VkDebugReportCallbackEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDebugReportCallbackEXT.html)
+  VkDebugReportCallbackEXT
+);
+define_non_dispatchable_handle!(
+  ///
+  /// * Parent: [`VkInstance`]
+  /// * ObjTypeEnum: [`VK_OBJECT_TYPE_DEBUG_UTILS_MESSENGER_EXT`]
+  /// [VkDebugUtilsMessengerEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDebugUtilsMessengerEXT.html)
+  VkDebugUtilsMessengerEXT
 );
 
 pub type VkDescriptorUpdateTemplateKHR = VkDescriptorUpdateTemplate;

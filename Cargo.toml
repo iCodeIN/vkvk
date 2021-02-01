@@ -7,7 +7,10 @@ authors = ["Lokathor <zefria@gmail.com>"]
 edition = "2018"
 license = "Zlib OR Apache-2.0 OR MIT"
 
+[dependencies]
+chlorine = "1"
+
 [features]
-default = ["impl_enumeration_precise_debug"]
+default = ["impl_enumeration_precise_debug", "impl_flag_bits_precise_debug"]
 impl_enumeration_precise_debug = []
 impl_flag_bits_precise_debug = []
