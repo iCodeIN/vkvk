@@ -2,21 +2,31 @@ use super::*;
 
 macro_rules! unionize {
   (
-    $(#[$s_meta:meta])*
-    $s_name:ident {
-      $($(#[$f_meta:meta])* $f_name:ident: $s_ty:ty),*
+    $(#[$u_meta:meta])*
+    $u_name:ident {
+      $($(#[$f_meta:meta])* $f_name:ident: $f_ty:ty),*
       $(,)?
     }
   ) => {
-    $(#[$s_meta])*
+    $(#[$u_meta])*
     #[repr(C)]
-    pub union $s_name {
-      $($(#[$f_meta])* pub $f_name: $s_ty),*
+    pub union $u_name {
+      $($(#[$f_meta])* pub $f_name: $f_ty),*
     }
-    impl Copy for $s_name { }
-    impl Clone for $s_name {
+    impl Copy for $u_name { }
+    impl Clone for $u_name {
       fn clone(&self) -> Self {
         *self
+      }
+    }
+    impl Default for $u_name {
+      fn default() -> Self {
+        unsafe { core::mem::zeroed() }
+      }
+    }
+    impl core::fmt::Debug for $u_name {
+      fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.write_str(concat!(stringify!($u_name),"{union}"))
       }
     }
   };

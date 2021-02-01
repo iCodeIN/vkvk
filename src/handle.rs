@@ -2,7 +2,7 @@ use super::*;
 
 macro_rules! define_handle {
   ($(#[$m:meta])* $handle:ident) => {
-    #[derive(PartialEq, Eq)]
+    #[derive(Debug, PartialEq, Eq)]
     #[cfg_attr(feature="derive_hash", derive(Hash))]
     #[repr(transparent)]
     $(#[$m])*
@@ -31,7 +31,7 @@ macro_rules! define_handle {
 
 macro_rules! define_non_dispatchable_handle {
   ($(#[$m:meta])* $handle:ident) => {
-    #[derive(PartialEq, Eq, Hash)]
+    #[derive(Debug, PartialEq, Eq, Hash)]
     #[repr(transparent)]
     $(#[$m])*
     pub struct $handle(u64);
