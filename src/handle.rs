@@ -21,6 +21,15 @@ macro_rules! define_handle {
     }
   };
 }
+
+macro_rules! define_non_dispatchable_handle {
+  ($(#[$m:meta])* $handle:ident) => {
+    #[repr(transparent)]
+    $(#[$m])*
+    pub struct $handle(u64);
+  };
+}
+
 define_handle!(
   /// Handle to an Instance.
   ///
@@ -57,14 +66,6 @@ define_handle!(
   /// [VkQueue](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueue.html)
   VkQueue
 );
-
-macro_rules! define_non_dispatchable_handle {
-  ($(#[$m: meta])*$handle:ident) => {
-    #[repr(transparent)]
-    $(#[$m])*
-    pub struct $handle(u64);
-  };
-}
 
 define_non_dispatchable_handle!(
   ///

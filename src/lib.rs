@@ -5,14 +5,23 @@
 
 use core::ffi::c_void;
 
-mod version;
-pub use version::*;
+mod enumeration;
+pub use enumeration::*;
 
-mod bitmask;
-pub use bitmask::*;
+mod flag_bits;
+pub use flag_bits::*;
+
+mod fn_ptr;
+pub use fn_ptr::*;
 
 mod handle;
 pub use handle::*;
+
+mod structure;
+pub use structure::*;
+
+mod version;
+pub use version::*;
 
 type TODO = ();
 /// requires="X11/Xlib.h"
@@ -65,6 +74,8 @@ pub struct AHardwareBuffer(c_void);
 #[repr(transparent)]
 pub struct CAMetalLayer(c_void);
 
+// TODO: traits and such for these newtypes
+
 pub struct VkSampleMask(pub uint32_t);
 pub struct VkBool32(pub uint32_t);
 pub struct VkDeviceSize(pub uint64_t);
@@ -81,4 +92,42 @@ type uint64_t = u64;
 type int32_t = i32;
 type int64_t = i64;
 type size_t = usize;
-type c_int = i32;
+type int = i32;
+
+pub const VK_MAX_PHYSICAL_DEVICE_NAME_SIZE: usize = 256;
+pub const VK_UUID_SIZE: usize = 16;
+pub const VK_LUID_SIZE: usize = 8;
+pub const VK_MAX_EXTENSION_NAME_SIZE: usize = 256;
+pub const VK_MAX_DESCRIPTION_SIZE: usize = 256;
+pub const VK_MAX_MEMORY_TYPES: usize = 32;
+/// The maximum number of unique memory heaps, each of which supporting 1 or
+/// more memory types.
+pub const VK_MAX_MEMORY_HEAPS: usize = 16;
+pub const VK_LOD_CLAMP_NONE: f32 = 1000.0;
+pub const VK_REMAINING_MIP_LEVELS: u32 = !0;
+pub const VK_REMAINING_ARRAY_LAYERS: u32 = !0;
+pub const VK_WHOLE_SIZE: u64 = !0;
+pub const VK_ATTACHMENT_UNUSED: u32 = !0;
+pub const VK_TRUE: VkBool32 = VkBool32(1);
+pub const VK_FALSE: VkBool32 = VkBool32(0);
+pub const VK_QUEUE_FAMILY_IGNORED: u32 = !0;
+pub const VK_QUEUE_FAMILY_EXTERNAL: u32 = (!0) - 1;
+pub const VK_QUEUE_FAMILY_FOREIGN_EXT: u32 = (!0) - 2;
+pub const VK_SUBPASS_EXTERNAL: u32 = !0;
+pub const VK_MAX_DEVICE_GROUP_SIZE: usize = 32;
+pub const VK_MAX_DRIVER_NAME_SIZE: usize = 256;
+pub const VK_MAX_DRIVER_INFO_SIZE: usize = 256;
+pub const VK_SHADER_UNUSED_KHR: u32 = !0;
+
+/// ALias for [`VK_QUEUE_FAMILY_EXTERNAL`]
+pub const VK_QUEUE_FAMILY_EXTERNAL_KHR: u32 = VK_QUEUE_FAMILY_EXTERNAL;
+/// ALias for [`VK_LUID_SIZE`]
+pub const VK_LUID_SIZE_KHR: usize = VK_LUID_SIZE;
+/// ALias for [`VK_MAX_DEVICE_GROUP_SIZE`]
+pub const VK_MAX_DEVICE_GROUP_SIZE_KHR: usize = VK_MAX_DEVICE_GROUP_SIZE;
+/// ALias for [`VK_MAX_DRIVER_NAME_SIZE`]
+pub const VK_MAX_DRIVER_NAME_SIZE_KHR: usize = VK_MAX_DRIVER_NAME_SIZE;
+/// ALias for [`VK_MAX_DRIVER_INFO_SIZE`]
+pub const VK_MAX_DRIVER_INFO_SIZE_KHR: usize = VK_MAX_DRIVER_INFO_SIZE;
+/// ALias for [`VK_SHADER_UNUSED_KHR`]
+pub const VK_SHADER_UNUSED_NV: u32 = VK_SHADER_UNUSED_KHR;
