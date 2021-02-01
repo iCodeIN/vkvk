@@ -9325,7 +9325,7 @@ structure! {
     /// * **No Auto-validity:** true
     /// * **Len:** descriptorCount
     pImageInfo: *const VkDescriptorImageInfo,
-    /// Raw buffer, size, and offset for {UNIFORM,STORAGE}_BUFFER[_DYNAMIC] descriptor types.
+    /// Raw buffer, size, and offset for {UNIFORM,STORAGE}_BUFFER{_DYNAMIC} descriptor types.
     /// * **No Auto-validity:** true
     /// * **Len:** descriptorCount
     pBufferInfo: *const VkDescriptorBufferInfo,

@@ -5,25 +5,25 @@
 
 use core::ffi::c_void;
 
-mod enumeration;
+pub mod enumeration;
 pub use enumeration::*;
 
-mod flag_bits;
+pub mod flag_bits;
 pub use flag_bits::*;
 
-mod fn_ptr;
+pub mod fn_ptr;
 pub use fn_ptr::*;
 
-mod handle;
+pub mod handle;
 pub use handle::*;
 
-mod structure;
+pub mod structure;
 pub use structure::*;
 
-mod unionize;
+pub mod unionize;
 pub use unionize::*;
 
-mod version;
+pub mod version;
 pub use version::*;
 
 // Note(Lokathor): Do not make these types pub!
