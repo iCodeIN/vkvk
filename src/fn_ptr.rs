@@ -1233,7 +1233,7 @@ pub type vkDisplayPowerControlEXT_t = unsafe extern "system" fn(device: VkDevice
 /// Nullable pointer to [vkEnumerateInstanceVersion](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEnumerateInstanceVersion.html)
 pub type PFN_vkEnumerateInstanceVersion = Option<vkEnumerateInstanceVersion_t>;
 /// Non-nullable pointer to [vkEnumerateInstanceVersion](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEnumerateInstanceVersion.html)
-pub type vkEnumerateInstanceVersion_t = unsafe extern "system" fn(pApiVersion: *mut uint32_t) -> VkResult;
+pub type vkEnumerateInstanceVersion_t = extern "system" fn(pApiVersion: &mut VulkanVersion) -> VkResult;
 
 /// Nullable pointer to [vkGetImageDrmFormatModifierPropertiesEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetImageDrmFormatModifierPropertiesEXT.html)
 pub type PFN_vkGetImageDrmFormatModifierPropertiesEXT = Option<vkGetImageDrmFormatModifierPropertiesEXT_t>;
@@ -1658,7 +1658,7 @@ pub type vkCreateDevice_t = unsafe extern "system" fn(physicalDevice: VkPhysical
 /// Nullable pointer to [vkCreateInstance](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateInstance.html)
 pub type PFN_vkCreateInstance = Option<vkCreateInstance_t>;
 /// Non-nullable pointer to [vkCreateInstance](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateInstance.html)
-pub type vkCreateInstance_t = unsafe extern "system" fn(pCreateInfo: *const VkInstanceCreateInfo, pAllocator: *const VkAllocationCallbacks, pInstance: *mut VkInstance) -> VkResult;
+pub type vkCreateInstance_t = unsafe extern "system" fn(pCreateInfo: &VkInstanceCreateInfo, pAllocator: Option<&VkAllocationCallbacks>, pInstance: &mut VkInstance) -> VkResult;
 
 /// Nullable pointer to [vkAcquireFullScreenExclusiveModeEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkAcquireFullScreenExclusiveModeEXT.html)
 pub type PFN_vkAcquireFullScreenExclusiveModeEXT = Option<vkAcquireFullScreenExclusiveModeEXT_t>;
@@ -1880,7 +1880,7 @@ pub type vkEnumerateDeviceLayerProperties_t = unsafe extern "system" fn(physical
 /// Nullable pointer to [vkEnumerateInstanceLayerProperties](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEnumerateInstanceLayerProperties.html)
 pub type PFN_vkEnumerateInstanceLayerProperties = Option<vkEnumerateInstanceLayerProperties_t>;
 /// Non-nullable pointer to [vkEnumerateInstanceLayerProperties](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEnumerateInstanceLayerProperties.html)
-pub type vkEnumerateInstanceLayerProperties_t = unsafe extern "system" fn(pPropertyCount: *mut uint32_t, pProperties: *mut VkLayerProperties) -> VkResult;
+pub type vkEnumerateInstanceLayerProperties_t = unsafe extern "system" fn(pPropertyCount: &mut uint32_t, pProperties: *mut VkLayerProperties) -> VkResult;
 
 /// Nullable pointer to [vkGetDisplayModeProperties2KHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetDisplayModeProperties2KHR.html)
 pub type PFN_vkGetDisplayModeProperties2KHR = Option<vkGetDisplayModeProperties2KHR_t>;
@@ -1990,7 +1990,7 @@ pub type vkEnumerateDeviceExtensionProperties_t = unsafe extern "system" fn(phys
 /// Nullable pointer to [vkEnumerateInstanceExtensionProperties](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEnumerateInstanceExtensionProperties.html)
 pub type PFN_vkEnumerateInstanceExtensionProperties = Option<vkEnumerateInstanceExtensionProperties_t>;
 /// Non-nullable pointer to [vkEnumerateInstanceExtensionProperties](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEnumerateInstanceExtensionProperties.html)
-pub type vkEnumerateInstanceExtensionProperties_t = unsafe extern "system" fn(pLayerName: *const char, pPropertyCount: *mut uint32_t, pProperties: *mut VkExtensionProperties) -> VkResult;
+pub type vkEnumerateInstanceExtensionProperties_t = unsafe extern "system" fn(pLayerName: *const char, pPropertyCount: &mut uint32_t, pProperties: *mut VkExtensionProperties) -> VkResult;
 
 /// Nullable pointer to [vkGetPhysicalDeviceSurfaceFormats2KHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPhysicalDeviceSurfaceFormats2KHR.html)
 pub type PFN_vkGetPhysicalDeviceSurfaceFormats2KHR = Option<vkGetPhysicalDeviceSurfaceFormats2KHR_t>;

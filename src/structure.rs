@@ -4275,6 +4275,7 @@ structure! {
   }
 }
 
+#[cfg(feature = "VK_ANDROID_native_buffer")]
 structure! {
   /// [VkNativeBufferANDROID](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkNativeBufferANDROID.html)
   VkNativeBufferANDROID {
@@ -5841,6 +5842,7 @@ structure! {
   }
 }
 
+#[cfg(feature = "VK_ANDROID_native_buffer")]
 structure! {
   /// [VkPhysicalDevicePresentationPropertiesANDROID](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPhysicalDevicePresentationPropertiesANDROID.html)
   VkPhysicalDevicePresentationPropertiesANDROID {
@@ -9034,6 +9036,7 @@ structure! {
   }
 }
 
+#[cfg(feature = "VK_ANDROID_native_buffer")]
 structure! {
   /// [VkSwapchainImageCreateInfoANDROID](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSwapchainImageCreateInfoANDROID.html)
   VkSwapchainImageCreateInfoANDROID {

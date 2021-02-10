@@ -3,6 +3,9 @@
 #![allow(dead_code)]
 #![allow(unused)]
 
+extern crate alloc;
+use alloc::vec::Vec;
+
 use core::ffi::c_void;
 
 pub mod enumeration;
@@ -25,6 +28,9 @@ pub use unionize::*;
 
 pub mod version;
 pub use version::*;
+
+pub mod managers;
+pub use managers::*;
 
 // Note(Lokathor): Do not make these types pub!
 type void = c_void;
@@ -97,19 +103,25 @@ type GgpStreamDescriptor = TODO;
 /// requires="ggp_c/vulkan_types.h"
 type GgpFrameToken = TODO;
 
+/// Android Native Window
 #[repr(transparent)]
 pub struct ANativeWindow(c_void);
+/// Android Hardware Buffer
 #[repr(transparent)]
 pub struct AHardwareBuffer(c_void);
+/// Core Animation Metal Layer
 #[repr(transparent)]
 pub struct CAMetalLayer(c_void);
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(transparent)]
-pub struct VkSampleMask(pub uint32_t);
+pub struct VkBool32(pub uint32_t);
+pub const VK_TRUE: VkBool32 = VkBool32(1);
+pub const VK_FALSE: VkBool32 = VkBool32(0);
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(transparent)]
-pub struct VkBool32(pub uint32_t);
+pub struct VkSampleMask(pub uint32_t);
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(transparent)]
 pub struct VkDeviceSize(pub uint64_t);
@@ -123,16 +135,15 @@ pub const VK_LUID_SIZE: usize = 8;
 pub const VK_MAX_EXTENSION_NAME_SIZE: usize = 256;
 pub const VK_MAX_DESCRIPTION_SIZE: usize = 256;
 pub const VK_MAX_MEMORY_TYPES: usize = 32;
-/// The maximum number of unique memory heaps, each of which supporting 1 or
-/// more memory types.
+/// The maximum number of unique memory heaps.
+///
+/// Each heap supports 1 or more memory types.
 pub const VK_MAX_MEMORY_HEAPS: usize = 16;
 pub const VK_LOD_CLAMP_NONE: f32 = 1000.0;
 pub const VK_REMAINING_MIP_LEVELS: u32 = !0;
 pub const VK_REMAINING_ARRAY_LAYERS: u32 = !0;
 pub const VK_WHOLE_SIZE: u64 = !0;
 pub const VK_ATTACHMENT_UNUSED: u32 = !0;
-pub const VK_TRUE: VkBool32 = VkBool32(1);
-pub const VK_FALSE: VkBool32 = VkBool32(0);
 pub const VK_QUEUE_FAMILY_IGNORED: u32 = !0;
 pub const VK_QUEUE_FAMILY_EXTERNAL: u32 = (!0) - 1;
 pub const VK_QUEUE_FAMILY_FOREIGN_EXT: u32 = (!0) - 2;
