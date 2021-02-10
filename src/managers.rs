@@ -4,7 +4,6 @@ use core::ptr::{null, null_mut};
 
 #[repr(C)]
 pub struct PreInstanceFns {
-  vkGetInstanceProcAddr_p: vkGetInstanceProcAddr_t,
   vkEnumerateInstanceVersion_p: Option<vkEnumerateInstanceVersion_t>,
   vkEnumerateInstanceExtensionProperties_p: vkEnumerateInstanceExtensionProperties_t,
   vkEnumerateInstanceLayerProperties_p: vkEnumerateInstanceLayerProperties_t,
@@ -30,7 +29,7 @@ impl PreInstanceFns {
     let vkEnumerateInstanceExtensionProperties_p = t(vkGetInstanceProcAddr_p(VkInstance::null(), b"vkEnumerateInstanceExtensionProperties\0".as_ptr()).ok_or("vkEnumerateInstanceExtensionProperties")?);
     let vkEnumerateInstanceLayerProperties_p = t(vkGetInstanceProcAddr_p(VkInstance::null(), b"vkEnumerateInstanceLayerProperties\0".as_ptr()).ok_or("vkEnumerateInstanceLayerProperties")?);
     let vkCreateInstance_p = t(vkGetInstanceProcAddr_p(VkInstance::null(), b"vkCreateInstance\0".as_ptr()).ok_or("vkCreateInstance")?);
-    Ok(Self { vkGetInstanceProcAddr_p, vkEnumerateInstanceVersion_p, vkEnumerateInstanceExtensionProperties_p, vkEnumerateInstanceLayerProperties_p, vkCreateInstance_p })
+    Ok(Self { vkEnumerateInstanceVersion_p, vkEnumerateInstanceExtensionProperties_p, vkEnumerateInstanceLayerProperties_p, vkCreateInstance_p })
   }
 
   /// Checks the maximum Instance version you'll be able to create.
