@@ -478,7 +478,7 @@ structure! {
     /// layer name
     layerName: [char; VK_MAX_EXTENSION_NAME_SIZE],
     /// version of the layer specification implemented
-    specVersion: uint32_t,
+    specVersion: VulkanVersion,
     /// build or release version of the layer's library
     implementationVersion: uint32_t,
     /// Free-form description of the layer

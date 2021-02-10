@@ -2,6 +2,16 @@ use super::*;
 
 use core::ptr::{null, null_mut};
 
+/// A struct that lets you easily use the pre-instance vulkan functions.
+///
+/// The "pre-instance" functions are those functions that you can obtain from
+/// [vkGetInstanceProcAddr](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetInstanceProcAddr.html)
+/// with a null value as the `instance` parameter.
+///
+/// These functions are critical because they let you determine what the local
+/// Vulkan supports in terms of layers and extensions. This is how you'll know
+/// what you can ask for in the [`VkInstanceCreateInfo`] that you pass to
+/// [`create_instance`](Self::create_instance)
 #[repr(C)]
 pub struct PreInstanceFns {
   vkEnumerateInstanceVersion_p: Option<vkEnumerateInstanceVersion_t>,
@@ -17,7 +27,7 @@ impl PreInstanceFns {
   /// See [vkGetInstanceProcAddr](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetInstanceProcAddr.html)
   ///
   /// ## Failure
-  /// * If any function *other than* `vkEnumerateInstanceVersion` fail to load,
+  /// * If any function *other than* `vkEnumerateInstanceVersion` fails to load,
   ///   this will fail. The `Err` will be the name of the first required
   ///   function that failed to load.
   ///
@@ -76,8 +86,8 @@ impl PreInstanceFns {
   ///   extension properties of.
   ///
   /// A reference to the `layerName` field of a `VkLayerProperties` from
-  /// [enumerate_instance_layer_properties][eilp] will work as a valid input to
-  /// this function.
+  /// [`enumerate_instance_layer_properties`][eilp] will work as a valid input
+  /// to this function.
   ///
   /// [eilp]: [Self::enumerate_instance_layer_properties]
   ///
