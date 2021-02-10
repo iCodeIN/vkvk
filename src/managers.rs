@@ -21,6 +21,9 @@ impl PreInstanceFns {
   /// * If any function *other than* `vkEnumerateInstanceVersion` fail to load,
   ///   this will fail. The `Err` will be the name of the first required
   ///   function that failed to load.
+  ///
+  /// ## Safety
+  /// * The pointer given must be an actual `vkGetInstanceProcAddr` function.
   pub unsafe fn new(vkGetInstanceProcAddr_p: vkGetInstanceProcAddr_t) -> Result<Self, &'static str> {
     use core::mem::transmute as t;
     let vkEnumerateInstanceVersion_p = t(vkGetInstanceProcAddr_p(VkInstance::null(), b"vkEnumerateInstanceVersion\0".as_ptr()));
@@ -110,7 +113,12 @@ impl PreInstanceFns {
 
   /// Creates a Vulkan Instance.
   ///
-  /// See [vkCreateInstance](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateInstance.html)
+  /// See
+  /// [vkCreateInstance](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateInstance.html)
+  ///
+  /// ## Safety
+  /// * Both the `create_info` and `allocator` arguments must be filled out
+  ///   correctly.
   pub unsafe fn create_instance(&self, create_info: &VkInstanceCreateInfo, allocator: Option<&VkAllocationCallbacks>) -> Result<VkInstance, VkResult> {
     let mut instance = VkInstance::null();
     let create_result = (self.vkCreateInstance_p)(create_info, allocator, &mut instance);
