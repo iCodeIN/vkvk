@@ -10,6 +10,9 @@ license = "Zlib OR Apache-2.0 OR MIT"
 [dependencies]
 chlorine = "1"
 
+[dev-dependencies]
+magnesium = "1"
+
 [features]
 default = ["impl_enumeration_precise_debug", "impl_flag_bits_precise_debug"]
 impl_enumeration_precise_debug = []

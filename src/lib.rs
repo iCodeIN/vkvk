@@ -6,31 +6,35 @@
 extern crate alloc;
 use alloc::vec::Vec;
 
-use core::ffi::c_void;
+pub use core::ffi::c_void;
 
-pub mod enumeration;
-pub use enumeration::*;
+pub mod spare_parts {
+  use super::*;
 
-pub mod flag_bits;
-pub use flag_bits::*;
+  pub mod enumeration;
+  pub use enumeration::*;
 
-pub mod fn_ptr;
-pub use fn_ptr::*;
+  pub mod flag_bits;
+  pub use flag_bits::*;
 
-pub mod handle;
-pub use handle::*;
+  pub mod fn_ptr_types;
+  pub use fn_ptr_types::*;
 
-pub mod structure;
-pub use structure::*;
+  pub mod handle;
+  pub use handle::*;
 
-pub mod unionize;
-pub use unionize::*;
+  pub mod structure;
+  pub use structure::*;
 
-pub mod version;
-pub use version::*;
+  pub mod unionize;
+  pub use unionize::*;
 
-pub mod managers;
-pub use managers::*;
+  pub mod version;
+  pub use version::*;
+
+  pub mod fn_managers;
+  pub use fn_managers::*;
+}
 
 // Note(Lokathor): Do not make these types pub!
 type void = c_void;
@@ -52,12 +56,12 @@ pub type Display = *mut c_void;
 pub type VisualID = chlorine::c_ulong;
 /// requires="X11/Xlib.h"
 pub type Window = chlorine::c_ulong;
-/// requires="X11/extensions/Xrandr..h"
+/// requires="X11/extensions/Xrandr.h"
 pub type RROutput = chlorine::c_ulong;
 
-/// requires="wayland-client..h"
+/// requires="wayland-client.h"
 pub type wl_display = c_void;
-/// requires="wayland-client..h"
+/// requires="wayland-client.h"
 pub type wl_surface = c_void;
 
 /// requires="windows.h"
@@ -118,6 +122,16 @@ pub struct CAMetalLayer(c_void);
 pub struct VkBool32(pub uint32_t);
 pub const VK_TRUE: VkBool32 = VkBool32(1);
 pub const VK_FALSE: VkBool32 = VkBool32(0);
+impl From<bool> for VkBool32 {
+  fn from(b: bool) -> Self {
+    Self(b as _)
+  }
+}
+impl From<VkBool32> for bool {
+  fn from(vk_b: VkBool32) -> Self {
+    vk_b.0 != 0
+  }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(transparent)]
