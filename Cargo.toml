@@ -14,6 +14,7 @@ chlorine = "1"
 magnesium = "1"
 
 [features]
-default = ["impl_enumeration_precise_debug", "impl_flag_bits_precise_debug"]
+default = ["alloc", "impl_enumeration_precise_debug", "impl_flag_bits_precise_debug"]
+alloc = []
 impl_enumeration_precise_debug = []
 impl_flag_bits_precise_debug = []

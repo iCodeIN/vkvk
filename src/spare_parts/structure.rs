@@ -1,27 +1,5 @@
 use super::*;
 
-macro_rules! structure {
-  (
-    $(#[$s_meta:meta])*
-    $s_name:ident {
-      $($(#[$f_meta:meta])* $f_name:ident: $f_ty:ty),*
-      $(,)?
-    }
-  ) => {
-    $(#[$s_meta])*
-    #[repr(C)]
-    pub struct $s_name {
-      $($(#[$f_meta])* pub $f_name: $f_ty),*
-    }
-    impl Copy for $s_name { }
-    impl Clone for $s_name {
-      fn clone(&self) -> Self {
-        *self
-      }
-    }
-  };
-}
-
 structure! {
   VkDebugUtilsMessengerCallbackDataEXT {
     ///
@@ -132,40 +110,6 @@ structure! {
 }
 
 structure! {
-  /// [VkOffset2D](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkOffset2D.html)
-  VkOffset2D {
-    x: int32_t,
-    y: int32_t,
-  }
-}
-
-structure! {
-  /// [VkOffset3D](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkOffset3D.html)
-  VkOffset3D {
-    x: int32_t,
-    y: int32_t,
-    z: int32_t,
-  }
-}
-
-structure! {
-  /// [VkExtent2D](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExtent2D.html)
-  VkExtent2D {
-    width: uint32_t,
-    height: uint32_t,
-  }
-}
-
-structure! {
-  /// [VkExtent3D](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExtent3D.html)
-  VkExtent3D {
-    width: uint32_t,
-    height: uint32_t,
-    depth: uint32_t,
-  }
-}
-
-structure! {
   /// [VkViewport](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkViewport.html)
   VkViewport {
     x: float,
@@ -174,14 +118,6 @@ structure! {
     height: float,
     minDepth: float,
     maxDepth: float,
-  }
-}
-
-structure! {
-  /// [VkRect2D](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkRect2D.html)
-  VkRect2D {
-    offset: VkOffset2D,
-    extent: VkExtent2D,
   }
 }
 
