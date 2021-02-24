@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["VK_FALSE",""],["VK_TRUE",""]],"mod":[["handles",""],["non_dispatchable_handles",""],["vk_platform",""],["vk_result",""],["vk_structure_type",""]],"struct":[["VkBool32",""]]});

@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["vkvk"] = [{"text":"impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/cmp/trait.PartialOrd.html\" title=\"trait core::cmp::PartialOrd\">PartialOrd</a>&lt;<a class=\"struct\" href=\"vkvk/struct.VkBool32.html\" title=\"struct vkvk::VkBool32\">VkBool32</a>&gt; for <a class=\"struct\" href=\"vkvk/struct.VkBool32.html\" title=\"struct vkvk::VkBool32\">VkBool32</a>","synthetic":false,"types":["vkvk::vk_bool::VkBool32"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()
