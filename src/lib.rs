@@ -15,6 +15,7 @@ mod macros;
 pub mod vk_platform;
 use vk_platform::*;
 
+pub use version_1_0::*;
 mod version_1_0 {
   use super::*;
 
