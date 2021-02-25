@@ -106,7 +106,7 @@
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
 
-<span class="macro">vk_enumeration</span><span class="macro">!</span>(
+<span class="macro">vk_enumeration</span><span class="macro">!</span> {
   <span class="doccomment">/// API result codes.</span>
   <span class="doccomment">///</span>
   <span class="doccomment">/// * Successful codes (non-negative values)</span>
@@ -193,7 +193,7 @@
     <span class="doccomment">/// Provided by `VK_EXT_pipeline_creation_cache_control`</span>
     <span class="ident">VK_PIPELINE_COMPILE_REQUIRED_EXT</span> <span class="op">=</span> <span class="number">1000297000</span>,
   }
-);
+}
 
 <span class="doccomment">/// Provided by `VK_KHR_maintenance1`</span>
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">VK_ERROR_OUT_OF_POOL_MEMORY_KHR</span>: <span class="ident">VkResult</span> <span class="op">=</span> <span class="ident">VK_ERROR_OUT_OF_POOL_MEMORY</span>;
