@@ -15,9 +15,6 @@ mod macros;
 pub mod vk_platform;
 use vk_platform::*;
 
-pub mod vk_version;
-use vk_version::*;
-
 pub use version_1_0::*;
 mod version_1_0 {
   use super::*;
@@ -40,6 +37,9 @@ use non_dispatchable_handles::*;
 
 mod vk_bool;
 pub use vk_bool::*;
+
+mod vk_version;
+pub use vk_version::*;
 
 pub mod vk_result;
 use vk_result::*;
