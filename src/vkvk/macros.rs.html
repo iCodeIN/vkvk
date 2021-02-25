@@ -31,54 +31,10 @@
 <span id="28">28</span>
 <span id="29">29</span>
 <span id="30">30</span>
-<span id="31">31</span>
-<span id="32">32</span>
-<span id="33">33</span>
-<span id="34">34</span>
-<span id="35">35</span>
-<span id="36">36</span>
-<span id="37">37</span>
-<span id="38">38</span>
-<span id="39">39</span>
-<span id="40">40</span>
-<span id="41">41</span>
-<span id="42">42</span>
-<span id="43">43</span>
-<span id="44">44</span>
-<span id="45">45</span>
-<span id="46">46</span>
-<span id="47">47</span>
-<span id="48">48</span>
-<span id="49">49</span>
-<span id="50">50</span>
-<span id="51">51</span>
-<span id="52">52</span>
-<span id="53">53</span>
-<span id="54">54</span>
-<span id="55">55</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="comment">// Note(Lokathor): All the macro_rules! here should be `#[macro_export]` and</span>
 <span class="comment">// `#[doc(hidden)]`, which lets us use them anywhere in our crate without</span>
 <span class="comment">// actually having them show up in the generated docs.</span>
-
-<span class="attribute">#[<span class="ident">macro_export</span>]</span>
-<span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
-<span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">vk_struct</span> {
-  (
-    $(<span class="attribute">#[<span class="macro-nonterminal">$</span><span class="macro-nonterminal">s_meta</span>:<span class="ident">meta</span>]</span>)<span class="op">*</span>
-    <span class="macro-nonterminal">$</span><span class="macro-nonterminal">s_name</span>:<span class="ident">ident</span> {
-      $($(<span class="attribute">#[<span class="macro-nonterminal">$</span><span class="macro-nonterminal">f_meta</span>:<span class="ident">meta</span>]</span>)<span class="op">*</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">f_name</span>:<span class="ident">ident</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">f_ty</span>:<span class="ident">ty</span>),<span class="op">*</span>
-      $(,)<span class="question-mark">?</span>
-    }
-  ) <span class="op">=</span><span class="op">&gt;</span> {
-    $(<span class="attribute">#[<span class="macro-nonterminal">$</span><span class="macro-nonterminal">s_meta</span>]</span>)<span class="op">*</span>
-    <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
-    <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">s_name</span> {
-      $($(<span class="attribute">#[<span class="macro-nonterminal">$</span><span class="macro-nonterminal">f_meta</span>]</span>)<span class="op">*</span> <span class="kw">pub</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">f_name</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">f_ty</span>),<span class="op">*</span>
-    }
-  };
-}
 
 <span class="attribute">#[<span class="ident">macro_export</span>]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
@@ -90,16 +46,10 @@
       $(,)<span class="question-mark">?</span>
     }
   ) <span class="op">=</span><span class="op">&gt;</span> {
-    <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>)]</span>
+    <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Default</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>)]</span>
     <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">transparent</span>)]</span>
     $(<span class="attribute">#[<span class="macro-nonterminal">$</span><span class="macro-nonterminal">e_meta</span>]</span>)<span class="op">*</span>
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">enumeration</span>(<span class="ident">int</span>);
-    <span class="kw">impl</span> <span class="ident">Copy</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">enumeration</span> { }
-    <span class="kw">impl</span> <span class="ident">Clone</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">enumeration</span> {
-      <span class="kw">fn</span> <span class="ident">clone</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="kw-2">*</span><span class="self">self</span>
-      }
-    }
     $( $(<span class="attribute">#[<span class="macro-nonterminal">$</span><span class="macro-nonterminal">c_meta</span>]</span>)<span class="op">*</span> <span class="kw">pub</span> <span class="kw">const</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">i</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">enumeration</span> <span class="op">=</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">enumeration</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">val</span>); )<span class="op">*</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;impl_enumeration_precise_debug&quot;</span>)]</span>
     <span class="kw">impl</span> <span class="ident">core</span>::<span class="ident">fmt</span>::<span class="ident">Debug</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">enumeration</span> {

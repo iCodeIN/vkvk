@@ -52,58 +52,106 @@
 <span id="49">49</span>
 <span id="50">50</span>
 <span id="51">51</span>
+<span id="52">52</span>
+<span id="53">53</span>
+<span id="54">54</span>
+<span id="55">55</span>
+<span id="56">56</span>
+<span id="57">57</span>
+<span id="58">58</span>
+<span id="59">59</span>
+<span id="60">60</span>
+<span id="61">61</span>
+<span id="62">62</span>
+<span id="63">63</span>
+<span id="64">64</span>
+<span id="65">65</span>
+<span id="66">66</span>
+<span id="67">67</span>
+<span id="68">68</span>
+<span id="69">69</span>
+<span id="70">70</span>
+<span id="71">71</span>
+<span id="72">72</span>
+<span id="73">73</span>
+<span id="74">74</span>
+<span id="75">75</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
 
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>)]</span>
+<span class="doccomment">/// [VkDeviceAddress](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceAddress.html)</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Default</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>)]</span>
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">transparent</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">VkDeviceAddress</span>(<span class="kw">pub</span> <span class="ident">uint64_t</span>);
 
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>)]</span>
+<span class="doccomment">/// [VkDeviceSize](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceSize.html)</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Default</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>)]</span>
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">transparent</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">VkDeviceSize</span>(<span class="kw">pub</span> <span class="ident">uint64_t</span>);
 
-<span class="macro">vk_struct</span><span class="macro">!</span> {
-  <span class="doccomment">/// [VkExtent2D](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExtent2D.html)</span>
-  <span class="ident">VkExtent2D</span> {
-    <span class="ident">width</span>: <span class="ident">uint32_t</span>,
-    <span class="ident">height</span>: <span class="ident">uint32_t</span>,
-  }
+<span class="doccomment">/// [VkExtent2D](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExtent2D.html)</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Default</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>)]</span>
+<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">VkExtent2D</span> {
+  <span class="kw">pub</span> <span class="ident">width</span>: <span class="ident">uint32_t</span>,
+  <span class="kw">pub</span> <span class="ident">height</span>: <span class="ident">uint32_t</span>,
 }
 
-<span class="macro">vk_struct</span><span class="macro">!</span> {
-  <span class="doccomment">/// [VkExtent3D](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExtent3D.html)</span>
-  <span class="ident">VkExtent3D</span> {
-    <span class="ident">width</span>: <span class="ident">uint32_t</span>,
-    <span class="ident">height</span>: <span class="ident">uint32_t</span>,
-    <span class="ident">depth</span>: <span class="ident">uint32_t</span>,
-  }
+<span class="doccomment">/// [VkExtent3D](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExtent3D.html)</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Default</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>)]</span>
+<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">VkExtent3D</span> {
+  <span class="kw">pub</span> <span class="ident">width</span>: <span class="ident">uint32_t</span>,
+  <span class="kw">pub</span> <span class="ident">height</span>: <span class="ident">uint32_t</span>,
+  <span class="kw">pub</span> <span class="ident">depth</span>: <span class="ident">uint32_t</span>,
 }
 
-<span class="macro">vk_struct</span><span class="macro">!</span> {
-  <span class="doccomment">/// [VkOffset2D](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkOffset2D.html)</span>
-  <span class="ident">VkOffset2D</span> {
-    <span class="ident">x</span>: <span class="ident">int32_t</span>,
-    <span class="ident">y</span>: <span class="ident">int32_t</span>,
-  }
+<span class="doccomment">/// [VkOffset2D](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkOffset2D.html)</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Default</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>)]</span>
+<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">VkOffset2D</span> {
+  <span class="kw">pub</span> <span class="ident">x</span>: <span class="ident">int32_t</span>,
+  <span class="kw">pub</span> <span class="ident">y</span>: <span class="ident">int32_t</span>,
 }
 
-<span class="macro">vk_struct</span><span class="macro">!</span> {
-  <span class="doccomment">/// [VkOffset3D](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkOffset3D.html)</span>
-  <span class="ident">VkOffset3D</span> {
-    <span class="ident">x</span>: <span class="ident">int32_t</span>,
-    <span class="ident">y</span>: <span class="ident">int32_t</span>,
-    <span class="ident">z</span>: <span class="ident">int32_t</span>,
-  }
+<span class="doccomment">/// [VkOffset3D](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkOffset3D.html)</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Default</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>)]</span>
+<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">VkOffset3D</span> {
+  <span class="kw">pub</span> <span class="ident">x</span>: <span class="ident">int32_t</span>,
+  <span class="kw">pub</span> <span class="ident">y</span>: <span class="ident">int32_t</span>,
+  <span class="kw">pub</span> <span class="ident">z</span>: <span class="ident">int32_t</span>,
 }
 
-<span class="macro">vk_struct</span><span class="macro">!</span> {
-  <span class="doccomment">/// [VkRect2D](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkRect2D.html)</span>
-  <span class="ident">VkRect2D</span> {
-    <span class="ident">offset</span>: <span class="ident">VkOffset2D</span>,
-    <span class="ident">extent</span>: <span class="ident">VkExtent2D</span>,
-  }
+<span class="doccomment">/// [VkRect2D](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkRect2D.html)</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The `extent` forms the *exclusive* edges of the rectangle.</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Default</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>)]</span>
+<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">VkRect2D</span> {
+  <span class="kw">pub</span> <span class="ident">offset</span>: <span class="ident">VkOffset2D</span>,
+  <span class="kw">pub</span> <span class="ident">extent</span>: <span class="ident">VkExtent2D</span>,
 }
+
+<span class="comment">// TODO: VkBaseInStructure</span>
+
+<span class="comment">// TODO: VkBaseOutStructure</span>
+
+<span class="comment">// TODO: VkBufferMemoryBarrier</span>
+
+<span class="comment">// TODO: VkDispatchIndirectCommand</span>
+
+<span class="comment">// TODO: VkDrawIndexedIndirectCommand</span>
+
+<span class="comment">// TODO: VkDrawIndirectCommand</span>
+
+<span class="comment">// TODO: VkImageMemoryBarrier</span>
+
+<span class="comment">// TODO: VkMemoryBarrier</span>
+
+<span class="comment">// TODO: VkObjectType</span>
+
+<span class="comment">// TODO: VkVendorId</span>
 </pre></div>
 </section><section id="search" class="content hidden"></section><section class="footer"></section><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="vkvk"></div>
     <script src="../../../main.js"></script><script src="../../../source-script.js"></script><script src="../../../source-files.js"></script><script defer src="../../../search-index.js"></script></body></html>
