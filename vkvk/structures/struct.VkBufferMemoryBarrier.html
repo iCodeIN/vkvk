@@ -4,8 +4,8 @@
                 <a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class="fqn"><span class="in-band">Struct <a href="../index.html">vkvk</a>::<wbr><a href="index.html">structures</a>::<wbr><a class="struct" href="">VkBufferMemoryBarrier</a></span><span class="out-of-band"><span id="render-detail"><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span><a class="srclink" href="../../src/vkvk/structures.rs.html#92-115" title="goto source code">[src]</a></span></h1><div class="docblock type-decl hidden-by-usual-hider"><pre class="rust struct"><span class="docblock attributes top-attr">#[repr(C)]</span>pub struct VkBufferMemoryBarrier {
     pub sType: <a class="struct" href="../../vkvk/enumerations/struct.VkStructureType.html" title="struct vkvk::enumerations::VkStructureType">VkStructureType</a>,
     pub pNext: *const <a class="enum" href="../../vkvk/vk_platform/enum.c_void.html" title="enum vkvk::vk_platform::c_void">c_void</a>,
-    pub srcAccessMask: <a class="struct" href="../../vkvk/flag_bits/struct.VkAccessFlags.html" title="struct vkvk::flag_bits::VkAccessFlags">VkAccessFlags</a>,
-    pub dstAccessMask: <a class="struct" href="../../vkvk/flag_bits/struct.VkAccessFlags.html" title="struct vkvk::flag_bits::VkAccessFlags">VkAccessFlags</a>,
+    pub srcAccessMask: <a class="type" href="../../vkvk/flag_bits/type.VkAccessFlags.html" title="type vkvk::flag_bits::VkAccessFlags">VkAccessFlags</a>,
+    pub dstAccessMask: <a class="type" href="../../vkvk/flag_bits/type.VkAccessFlags.html" title="type vkvk::flag_bits::VkAccessFlags">VkAccessFlags</a>,
     pub srcQueueFamilyIndex: u32,
     pub dstQueueFamilyIndex: u32,
     pub buffer: <a class="struct" href="../../vkvk/non_dispatchable_handles/struct.VkBuffer.html" title="struct vkvk::non_dispatchable_handles::VkBuffer">VkBuffer</a>,
@@ -19,11 +19,11 @@
 </div><span id="structfield.pNext" class="structfield small-section-header"><a href="#structfield.pNext" class="anchor field"></a><code>pNext: *const <a class="enum" href="../../vkvk/vk_platform/enum.c_void.html" title="enum vkvk::vk_platform::c_void">c_void</a></code></span><div class="docblock"><ul>
 <li><strong>Optional:</strong> true</li>
 </ul>
-</div><span id="structfield.srcAccessMask" class="structfield small-section-header"><a href="#structfield.srcAccessMask" class="anchor field"></a><code>srcAccessMask: <a class="struct" href="../../vkvk/flag_bits/struct.VkAccessFlags.html" title="struct vkvk::flag_bits::VkAccessFlags">VkAccessFlags</a></code></span><div class="docblock"><p>Memory accesses from the source of the dependency to synchronize</p>
+</div><span id="structfield.srcAccessMask" class="structfield small-section-header"><a href="#structfield.srcAccessMask" class="anchor field"></a><code>srcAccessMask: <a class="type" href="../../vkvk/flag_bits/type.VkAccessFlags.html" title="type vkvk::flag_bits::VkAccessFlags">VkAccessFlags</a></code></span><div class="docblock"><p>Memory accesses from the source of the dependency to synchronize</p>
 <ul>
 <li><strong>No Auto-validity:</strong> true</li>
 </ul>
-</div><span id="structfield.dstAccessMask" class="structfield small-section-header"><a href="#structfield.dstAccessMask" class="anchor field"></a><code>dstAccessMask: <a class="struct" href="../../vkvk/flag_bits/struct.VkAccessFlags.html" title="struct vkvk::flag_bits::VkAccessFlags">VkAccessFlags</a></code></span><div class="docblock"><p>Memory accesses from the destination of the dependency to synchronize</p>
+</div><span id="structfield.dstAccessMask" class="structfield small-section-header"><a href="#structfield.dstAccessMask" class="anchor field"></a><code>dstAccessMask: <a class="type" href="../../vkvk/flag_bits/type.VkAccessFlags.html" title="type vkvk::flag_bits::VkAccessFlags">VkAccessFlags</a></code></span><div class="docblock"><p>Memory accesses from the destination of the dependency to synchronize</p>
 <ul>
 <li><strong>No Auto-validity:</strong> true</li>
 </ul>
