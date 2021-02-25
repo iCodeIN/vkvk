@@ -24,8 +24,14 @@
 <span id="21">21</span>
 <span id="22">22</span>
 <span id="23">23</span>
+<span id="24">24</span>
+<span id="25">25</span>
+<span id="26">26</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">dead_code</span>)]</span>
+
+<span class="doccomment">//! The parts of the Vulkan API that are presumed to be provided by an outside</span>
+<span class="doccomment">//! source.</span>
 
 <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
 
@@ -46,7 +52,7 @@
 <span class="doccomment">/// Basically this is `i32`</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// Technically it could be `i16` or `i164` on rare platforms, so we use this</span>
-<span class="doccomment">/// alias to aid and potential future porting. It&#39;s harmless enough.</span>
+<span class="doccomment">/// alias to aid any potential future porting. It&#39;s a harmless enough alias.</span>
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">int</span> <span class="op">=</span> <span class="ident">i32</span>;
 </pre></div>
 </section><section id="search" class="content hidden"></section><section class="footer"></section><div id="rustdoc-vars" data-root-path="../../" data-current-crate="vkvk"></div>

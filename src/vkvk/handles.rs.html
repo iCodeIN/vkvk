@@ -31,7 +31,17 @@
 <span id="28">28</span>
 <span id="29">29</span>
 <span id="30">30</span>
+<span id="31">31</span>
+<span id="32">32</span>
+<span id="33">33</span>
+<span id="34">34</span>
+<span id="35">35</span>
 </pre><div class="example-wrap"><pre class="rust ">
+<span class="doccomment">//! Handles are pointer-like values to objects that *can* accept commands.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! Because they&#39;re pointers, handles are either 32-bit or 64-bit depending on</span>
+<span class="doccomment">//! the platform (the same size as `usize`).</span>
+
 <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
 
 <span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">define_handle</span> {

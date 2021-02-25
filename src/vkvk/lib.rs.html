@@ -71,12 +71,12 @@
 <span id="68">68</span>
 <span id="69">69</span>
 <span id="70">70</span>
-<span id="71">71</span>
-<span id="72">72</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="attribute">#![<span class="ident">no_std</span>]</span>
 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">non_camel_case_types</span>)]</span>
 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">unused_imports</span>)]</span>
+
+<span class="doccomment">//! Don&#39;t use this crate. Use [ash](https://docs.rs/ash) if you need Vulkan bindings.</span>
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;alloc&quot;</span>)]</span>
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">alloc</span>;
@@ -88,46 +88,31 @@
 
 <span class="attribute">#[<span class="ident">rustfmt</span>::<span class="ident">skip</span>]</span>
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">prelude</span> {
+  <span class="doccomment">//! Lets you grab the entire crate as a single flat API.</span>
+  
   <span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">vk_platform</span>::<span class="kw-2">*</span>;
-  <span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">version_1_0</span>::<span class="kw-2">*</span>;
+  <span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">vk_version</span>::<span class="kw-2">*</span>;
   <span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">handles</span>::<span class="kw-2">*</span>;
   <span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">non_dispatchable_handles</span>::<span class="kw-2">*</span>;
-  <span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">vk_bool</span>::<span class="kw-2">*</span>;
-  <span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">vk_version</span>::<span class="kw-2">*</span>;
-  <span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">vk_result</span>::<span class="kw-2">*</span>;
-  <span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">vk_structure_type</span>::<span class="kw-2">*</span>;
+  <span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">enumerations</span>::<span class="kw-2">*</span>;
+  <span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">flag_bits</span>::<span class="kw-2">*</span>;
+  <span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">structures</span>::<span class="kw-2">*</span>;
+  <span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span>::{
+    <span class="ident">VK_ATTACHMENT_UNUSED</span>,
+    <span class="ident">VK_LOD_CLAMP_NONE</span>,
+    <span class="ident">VK_QUEUE_FAMILY_IGNORED</span>,
+    <span class="ident">VK_REMAINING_ARRAY_LAYERS</span>,
+    <span class="ident">VK_REMAINING_MIP_LEVELS</span>,
+    <span class="ident">VK_SUBPASS_EXTERNAL</span>,
+    <span class="ident">VK_WHOLE_SIZE</span>,
+  };
 }
 
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">vk_platform</span>;
 <span class="kw">use</span> <span class="ident">vk_platform</span>::<span class="kw-2">*</span>;
 
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">version_1_0</span>::<span class="kw-2">*</span>;
-<span class="kw">mod</span> <span class="ident">version_1_0</span> {
-  <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
-
-  <span class="kw">mod</span> <span class="ident">enumerations</span>;
-  <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">enumerations</span>::<span class="kw-2">*</span>;
-
-  <span class="kw">mod</span> <span class="ident">flag_bits</span>;
-  <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">flag_bits</span>::<span class="kw-2">*</span>;
-
-  <span class="kw">mod</span> <span class="ident">structures</span>;
-  <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">structures</span>::<span class="kw-2">*</span>;
-
-  <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">VK_ATTACHMENT_UNUSED</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="op">!</span><span class="number">0</span>;
-
-  <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">VK_LOD_CLAMP_NONE</span>: <span class="ident">f32</span> <span class="op">=</span> <span class="number">1000.0</span>;
-
-  <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">VK_QUEUE_FAMILY_IGNORED</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="op">!</span><span class="number">0</span>;
-
-  <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">VK_REMAINING_ARRAY_LAYERS</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="op">!</span><span class="number">0</span>;
-
-  <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">VK_REMAINING_MIP_LEVELS</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="op">!</span><span class="number">0</span>;
-
-  <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">VK_SUBPASS_EXTERNAL</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="op">!</span><span class="number">0</span>;
-
-  <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">VK_WHOLE_SIZE</span>: <span class="ident">u64</span> <span class="op">=</span> <span class="op">!</span><span class="number">0</span>;
-}
+<span class="kw">mod</span> <span class="ident">vk_version</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">vk_version</span>::<span class="kw-2">*</span>;
 
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">handles</span>;
 <span class="kw">use</span> <span class="ident">handles</span>::<span class="kw-2">*</span>;
@@ -135,17 +120,28 @@
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">non_dispatchable_handles</span>;
 <span class="kw">use</span> <span class="ident">non_dispatchable_handles</span>::<span class="kw-2">*</span>;
 
-<span class="kw">mod</span> <span class="ident">vk_bool</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">vk_bool</span>::<span class="kw-2">*</span>;
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">enumerations</span>;
+<span class="kw">use</span> <span class="ident">enumerations</span>::<span class="kw-2">*</span>;
 
-<span class="kw">mod</span> <span class="ident">vk_version</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">vk_version</span>::<span class="kw-2">*</span>;
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">flag_bits</span>;
+<span class="kw">use</span> <span class="ident">flag_bits</span>::<span class="kw-2">*</span>;
 
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">vk_result</span>;
-<span class="kw">use</span> <span class="ident">vk_result</span>::<span class="kw-2">*</span>;
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">structures</span>;
+<span class="kw">use</span> <span class="ident">structures</span>::<span class="kw-2">*</span>;
 
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">vk_structure_type</span>;
-<span class="kw">use</span> <span class="ident">vk_structure_type</span>::<span class="kw-2">*</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">VK_ATTACHMENT_UNUSED</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="op">!</span><span class="number">0</span>;
+
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">VK_LOD_CLAMP_NONE</span>: <span class="ident">f32</span> <span class="op">=</span> <span class="number">1000.0</span>;
+
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">VK_QUEUE_FAMILY_IGNORED</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="op">!</span><span class="number">0</span>;
+
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">VK_REMAINING_ARRAY_LAYERS</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="op">!</span><span class="number">0</span>;
+
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">VK_REMAINING_MIP_LEVELS</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="op">!</span><span class="number">0</span>;
+
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">VK_SUBPASS_EXTERNAL</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="op">!</span><span class="number">0</span>;
+
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">VK_WHOLE_SIZE</span>: <span class="ident">u64</span> <span class="op">=</span> <span class="op">!</span><span class="number">0</span>;
 </pre></div>
 </section><section id="search" class="content hidden"></section><section class="footer"></section><div id="rustdoc-vars" data-root-path="../../" data-current-crate="vkvk"></div>
     <script src="../../main.js"></script><script src="../../source-script.js"></script><script src="../../source-files.js"></script><script defer src="../../search-index.js"></script></body></html>
