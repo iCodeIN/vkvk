@@ -5,7 +5,7 @@ use super::*;
 vk_enumeration!(
   /// Structure type enumerant.
   ///
-  /// [VkFormat](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFormat.html)
+  /// [VkStructureType](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkStructureType.html)
   VkStructureType {
     VK_STRUCTURE_TYPE_APPLICATION_INFO = 0,
     VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO = 1,
