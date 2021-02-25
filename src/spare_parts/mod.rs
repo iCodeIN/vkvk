@@ -119,15 +119,8 @@ pub const VK_MAX_MEMORY_TYPES: usize = 32;
 ///
 /// Each heap supports 1 or more memory types.
 pub const VK_MAX_MEMORY_HEAPS: usize = 16;
-pub const VK_LOD_CLAMP_NONE: f32 = 1000.0;
-pub const VK_REMAINING_MIP_LEVELS: u32 = !0;
-pub const VK_REMAINING_ARRAY_LAYERS: u32 = !0;
-pub const VK_WHOLE_SIZE: u64 = !0;
-pub const VK_ATTACHMENT_UNUSED: u32 = !0;
-pub const VK_QUEUE_FAMILY_IGNORED: u32 = !0;
 pub const VK_QUEUE_FAMILY_EXTERNAL: u32 = (!0) - 1;
 pub const VK_QUEUE_FAMILY_FOREIGN_EXT: u32 = (!0) - 2;
-pub const VK_SUBPASS_EXTERNAL: u32 = !0;
 pub const VK_MAX_DEVICE_GROUP_SIZE: usize = 32;
 pub const VK_MAX_DRIVER_NAME_SIZE: usize = 256;
 pub const VK_MAX_DRIVER_INFO_SIZE: usize = 256;

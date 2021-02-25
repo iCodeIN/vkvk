@@ -41,17 +41,17 @@
             <!-- <type name="VK_VERSION_PATCH"/> -->
         </require>
         <require comment="API constants">
-            <enum name="VK_ATTACHMENT_UNUSED"/>
-            <enum name="VK_FALSE"/>
-            <enum name="VK_LOD_CLAMP_NONE"/>
-            <enum name="VK_QUEUE_FAMILY_IGNORED"/>
-            <enum name="VK_REMAINING_ARRAY_LAYERS"/>
-            <enum name="VK_REMAINING_MIP_LEVELS"/>
-            <enum name="VK_SUBPASS_EXTERNAL"/>
-            <enum name="VK_TRUE"/>
-            <enum name="VK_WHOLE_SIZE"/>
-            <type name="VK_NULL_HANDLE"/>
-            <type name="VkPipelineCacheHeaderVersion"/>
+            <!-- <enum name="VK_ATTACHMENT_UNUSED"/> -->
+            <!-- <enum name="VK_FALSE"/> -->
+            <!-- <enum name="VK_LOD_CLAMP_NONE"/> -->
+            <!-- <enum name="VK_QUEUE_FAMILY_IGNORED"/> -->
+            <!-- <enum name="VK_REMAINING_ARRAY_LAYERS"/> -->
+            <!-- <enum name="VK_REMAINING_MIP_LEVELS"/> -->
+            <!-- <enum name="VK_SUBPASS_EXTERNAL"/> -->
+            <!-- <enum name="VK_TRUE"/> -->
+            <!-- <enum name="VK_WHOLE_SIZE"/> -->
+            <!-- <type name="VK_NULL_HANDLE"/> -->
+            <!-- <type name="VkPipelineCacheHeaderVersion"/> -->
         </require>
         <require comment="Device initialization">
             <type name="PFN_vkAllocationFunction"/>

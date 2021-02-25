@@ -10,7 +10,17 @@ use alloc::vec::Vec;
 #[macro_use]
 mod macros;
 
-// TODO: prelude module
+#[rustfmt::skip]
+pub mod prelude {
+  pub use crate::vk_platform::*;
+  pub use crate::version_1_0::*;
+  pub use crate::handles::*;
+  pub use crate::non_dispatchable_handles::*;
+  pub use crate::vk_bool::*;
+  pub use crate::vk_version::*;
+  pub use crate::vk_result::*;
+  pub use crate::vk_structure_type::*;
+}
 
 pub mod vk_platform;
 use vk_platform::*;
@@ -27,6 +37,20 @@ mod version_1_0 {
 
   mod structures;
   pub use structures::*;
+
+  pub const VK_ATTACHMENT_UNUSED: u32 = !0;
+
+  pub const VK_LOD_CLAMP_NONE: f32 = 1000.0;
+
+  pub const VK_QUEUE_FAMILY_IGNORED: u32 = !0;
+
+  pub const VK_REMAINING_ARRAY_LAYERS: u32 = !0;
+
+  pub const VK_REMAINING_MIP_LEVELS: u32 = !0;
+
+  pub const VK_SUBPASS_EXTERNAL: u32 = !0;
+
+  pub const VK_WHOLE_SIZE: u64 = !0;
 }
 
 pub mod handles;

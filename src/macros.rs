@@ -49,19 +49,23 @@ macro_rules! flag_bits {
     #[cfg(feature = "impl_flag_bits_precise_debug")]
     impl core::fmt::Debug for $bits_name {
       fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        let mut printed_yet = false;
-        f.write_str(concat!(stringify!($bits_name)," {"))?;
-        $(if self.0 & $val > 0 {
-          if printed_yet {
-            f.write_str(", ")?;
-          }
-          f.write_str(stringify!($i))?;
-          #[allow(unused_assignments)]
-          {
-            printed_yet = true;
-          }
-        })*
-        f.write_str(" }")
+        if self.0 != 0 {
+          let mut printed_yet = false;
+          f.write_str(concat!(stringify!($bits_name)," {"))?;
+          $(if self.0 & $val > 0 {
+            if printed_yet {
+              f.write_str(", ")?;
+            }
+            f.write_str(stringify!($i))?;
+            #[allow(unused_assignments)]
+            {
+              printed_yet = true;
+            }
+          })*
+          f.write_str(" }")
+        } else {
+          f.write_str(concat!(stringify!($bits_name)," { none }"))
+        }
       }
     }
     impl core::ops::BitAnd for $bits_name {
