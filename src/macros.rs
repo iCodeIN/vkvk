@@ -4,25 +4,6 @@
 
 #[macro_export]
 #[doc(hidden)]
-macro_rules! vk_struct {
-  (
-    $(#[$s_meta:meta])*
-    $s_name:ident {
-      $($(#[$f_meta:meta])* $f_name:ident: $f_ty:ty),*
-      $(,)?
-    }
-  ) => {
-    $(#[$s_meta])*
-    #[repr(C)]
-    #[derive(Debug, Clone, Copy)]
-    pub struct $s_name {
-      $($(#[$f_meta])* pub $f_name: $f_ty),*
-    }
-  };
-}
-
-#[macro_export]
-#[doc(hidden)]
 macro_rules! vk_enumeration {
   (
     $(#[$e_meta:meta])*
@@ -31,16 +12,10 @@ macro_rules! vk_enumeration {
       $(,)?
     }
   ) => {
-    #[derive(PartialEq, Eq, Hash)]
+    #[derive(Clone, Copy, Default, PartialEq, Eq, Hash)]
     #[repr(transparent)]
     $(#[$e_meta])*
     pub struct $enumeration(int);
-    impl Copy for $enumeration { }
-    impl Clone for $enumeration {
-      fn clone(&self) -> Self {
-        *self
-      }
-    }
     $( $(#[$c_meta])* pub const $i: $enumeration = $enumeration($val); )*
     #[cfg(feature = "impl_enumeration_precise_debug")]
     impl core::fmt::Debug for $enumeration {

@@ -19,16 +19,16 @@
             <!-- <type name="VkStructureType"/> -->
         </require>
         <require comment="These types are part of the API, though not directly used in API commands or data structures">
-            <type name="VkBaseInStructure"/>
-            <type name="VkBaseOutStructure"/>
-            <type name="VkBufferMemoryBarrier"/>
-            <type name="VkDispatchIndirectCommand"/>
-            <type name="VkDrawIndexedIndirectCommand"/>
-            <type name="VkDrawIndirectCommand"/>
-            <type name="VkImageMemoryBarrier"/>
-            <type name="VkMemoryBarrier"/>
-            <type name="VkObjectType"/>
-            <type name="VkVendorId"/>
+            <!-- <type name="VkBaseInStructure"/> -->
+            <!-- <type name="VkBaseOutStructure"/> -->
+            <!-- <type name="VkBufferMemoryBarrier"/> -->
+            <!-- <type name="VkDispatchIndirectCommand"/> -->
+            <!-- <type name="VkDrawIndexedIndirectCommand"/> -->
+            <!-- <type name="VkDrawIndirectCommand"/> -->
+            <!-- <type name="VkImageMemoryBarrier"/> -->
+            <!-- <type name="VkMemoryBarrier"/> -->
+            <!-- <type name="VkObjectType"/> -->
+            <!-- <type name="VkVendorId"/> -->
         </require>
         <require comment="API version macros">
             <type name="VK_API_VERSION"/>
