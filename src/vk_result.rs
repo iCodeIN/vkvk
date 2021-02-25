@@ -1,6 +1,6 @@
 use super::*;
 
-vk_enumeration!(
+vk_enumeration! {
   /// API result codes.
   ///
   /// * Successful codes (non-negative values)
@@ -87,7 +87,7 @@ vk_enumeration!(
     /// Provided by `VK_EXT_pipeline_creation_cache_control`
     VK_PIPELINE_COMPILE_REQUIRED_EXT = 1000297000,
   }
-);
+}
 
 /// Provided by `VK_KHR_maintenance1`
 pub const VK_ERROR_OUT_OF_POOL_MEMORY_KHR: VkResult = VK_ERROR_OUT_OF_POOL_MEMORY;

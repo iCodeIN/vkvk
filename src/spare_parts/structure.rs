@@ -94,22 +94,6 @@ structure! {
 }
 
 structure! {
-  /// [VkBaseOutStructure](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBaseOutStructure.html)
-  VkBaseOutStructure {
-    sType: VkStructureType,
-    pNext: *mut VkBaseOutStructure,
-  }
-}
-
-structure! {
-  /// [VkBaseInStructure](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBaseInStructure.html)
-  VkBaseInStructure {
-    sType: VkStructureType,
-    pNext: *const VkBaseInStructure,
-  }
-}
-
-structure! {
   /// [VkViewport](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkViewport.html)
   VkViewport {
     x: float,
@@ -1176,32 +1160,6 @@ structure! {
     imageOffset: VkOffset3D,
     /// Specified in pixels for both compressed and uncompressed images
     imageExtent: VkExtent3D,
-  }
-}
-
-structure! {
-  /// [VkBufferMemoryBarrier](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBufferMemoryBarrier.html)
-  VkBufferMemoryBarrier {
-    /// * **Values:** [`VK_STRUCTURE_TYPE_BUFFER_MEMORY_BARRIER`]
-    sType: VkStructureType,
-    /// * **Optional:** true
-    pNext: *const c_void,
-    /// Memory accesses from the source of the dependency to synchronize
-    /// * **No Auto-validity:** true
-    srcAccessMask: VkAccessFlags,
-    /// Memory accesses from the destination of the dependency to synchronize
-    /// * **No Auto-validity:** true
-    dstAccessMask: VkAccessFlags,
-    /// Queue family to transition ownership from
-    srcQueueFamilyIndex: uint32_t,
-    /// Queue family to transition ownership to
-    dstQueueFamilyIndex: uint32_t,
-    /// Buffer to sync
-    buffer: VkBuffer,
-    /// Offset within the buffer to sync
-    offset: VkDeviceSize,
-    /// Amount of bytes to sync
-    size: VkDeviceSize,
   }
 }
 
@@ -2287,18 +2245,6 @@ structure! {
 }
 
 structure! {
-  /// [VkDispatchIndirectCommand](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDispatchIndirectCommand.html)
-  VkDispatchIndirectCommand {
-    /// * **No Auto-validity:** true
-    x: uint32_t,
-    /// * **No Auto-validity:** true
-    y: uint32_t,
-    /// * **No Auto-validity:** true
-    z: uint32_t,
-  }
-}
-
-structure! {
   /// [VkDisplayEventInfoEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDisplayEventInfoEXT.html)
   VkDisplayEventInfoEXT {
     /// * **Values:** [`VK_STRUCTURE_TYPE_DISPLAY_EVENT_INFO_EXT`]
@@ -2516,29 +2462,6 @@ structure! {
     alphaMode: VkDisplayPlaneAlphaFlagBitsKHR,
     /// size of the images to use with this surface
     imageExtent: VkExtent2D,
-  }
-}
-
-structure! {
-  /// [VkDrawIndexedIndirectCommand](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDrawIndexedIndirectCommand.html)
-  VkDrawIndexedIndirectCommand {
-    indexCount: uint32_t,
-    instanceCount: uint32_t,
-    firstIndex: uint32_t,
-    vertexOffset: int32_t,
-    /// * **No Auto-validity:** true
-    firstInstance: uint32_t,
-  }
-}
-
-structure! {
-  /// [VkDrawIndirectCommand](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDrawIndirectCommand.html)
-  VkDrawIndirectCommand {
-    vertexCount: uint32_t,
-    instanceCount: uint32_t,
-    firstVertex: uint32_t,
-    /// * **No Auto-validity:** true
-    firstInstance: uint32_t,
   }
 }
 
@@ -3438,34 +3361,6 @@ structure! {
 }
 
 structure! {
-  /// [VkImageMemoryBarrier](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageMemoryBarrier.html)
-  VkImageMemoryBarrier {
-    /// * **Values:** [`VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER`]
-    sType: VkStructureType,
-    /// * **Optional:** true
-    pNext: *const c_void,
-    /// Memory accesses from the source of the dependency to synchronize
-    /// * **No Auto-validity:** true
-    srcAccessMask: VkAccessFlags,
-    /// Memory accesses from the destination of the dependency to synchronize
-    /// * **No Auto-validity:** true
-    dstAccessMask: VkAccessFlags,
-    /// Current layout of the image
-    oldLayout: VkImageLayout,
-    /// New layout to transition the image to
-    newLayout: VkImageLayout,
-    /// Queue family to transition ownership from
-    srcQueueFamilyIndex: uint32_t,
-    /// Queue family to transition ownership to
-    dstQueueFamilyIndex: uint32_t,
-    /// Image to sync
-    image: VkImage,
-    /// Subresource range to sync
-    subresourceRange: VkImageSubresourceRange,
-  }
-}
-
-structure! {
   /// [VkImageMemoryRequirementsInfo2](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageMemoryRequirementsInfo2.html)
   VkImageMemoryRequirementsInfo2 {
     /// * **Values:** [`VK_STRUCTURE_TYPE_IMAGE_MEMORY_REQUIREMENTS_INFO_2`]
@@ -3566,17 +3461,6 @@ structure! {
   VkImageSubresourceLayers {
     aspectMask: VkImageAspectFlags,
     mipLevel: uint32_t,
-    baseArrayLayer: uint32_t,
-    layerCount: uint32_t,
-  }
-}
-
-structure! {
-  /// [VkImageSubresourceRange](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageSubresourceRange.html)
-  VkImageSubresourceRange {
-    aspectMask: VkImageAspectFlags,
-    baseMipLevel: uint32_t,
-    levelCount: uint32_t,
     baseArrayLayer: uint32_t,
     layerCount: uint32_t,
   }
@@ -3970,22 +3854,6 @@ structure! {
     allocationSize: VkDeviceSize,
     /// Index of the of the memory type to allocate from
     memoryTypeIndex: uint32_t,
-  }
-}
-
-structure! {
-  /// [VkMemoryBarrier](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkMemoryBarrier.html)
-  VkMemoryBarrier {
-    /// * **Values:** [`VK_STRUCTURE_TYPE_MEMORY_BARRIER`]
-    sType: VkStructureType,
-    /// * **Optional:** true
-    pNext: *const c_void,
-    /// Memory accesses from the source of the dependency to synchronize
-    /// * **Optional:** true
-    srcAccessMask: VkAccessFlags,
-    /// Memory accesses from the destination of the dependency to synchronize
-    /// * **Optional:** true
-    dstAccessMask: VkAccessFlags,
   }
 }
 

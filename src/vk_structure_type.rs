@@ -2,7 +2,7 @@ use super::*;
 
 // TODO: this macro invocation has *got* to be bad for compile times.
 
-vk_enumeration!(
+vk_enumeration! {
   /// Structure type enumerant.
   ///
   /// [VkStructureType](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkStructureType.html)
@@ -911,7 +911,7 @@ vk_enumeration!(
     /// Provided by VK_VALVE_mutable_descriptor_type
     VK_STRUCTURE_TYPE_MUTABLE_DESCRIPTOR_TYPE_CREATE_INFO_VALVE = 1000351002,
   }
-);
+}
 
 pub const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES: VkStructureType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES;
 pub const VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETER_FEATURES: VkStructureType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES;

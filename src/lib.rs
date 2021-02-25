@@ -15,17 +15,28 @@ mod macros;
 pub mod vk_platform;
 use vk_platform::*;
 
+pub mod vk_version;
+use vk_version::*;
+
 pub use version_1_0::*;
 mod version_1_0 {
   use super::*;
+
+  mod enumerations;
+  pub use enumerations::*;
+
+  mod flag_bits;
+  pub use flag_bits::*;
 
   mod structures;
   pub use structures::*;
 }
 
 pub mod handles;
+use handles::*;
 
 pub mod non_dispatchable_handles;
+use non_dispatchable_handles::*;
 
 mod vk_bool;
 pub use vk_bool::*;

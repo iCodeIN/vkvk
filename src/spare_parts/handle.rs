@@ -53,14 +53,7 @@ define_non_dispatchable_handle!(
   /// [VkCommandPool](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCommandPool.html)
   VkCommandPool
 );
-define_non_dispatchable_handle!(
-  ///
-  /// * Parent: [`VkDevice`]
-  /// * ObjectTypeEnum: [`VK_OBJECT_TYPE_BUFFER`]
-  ///
-  /// [VkBuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBuffer.html)
-  VkBuffer
-);
+
 define_non_dispatchable_handle!(
   ///
   /// * Parent: [`VkDevice`]
@@ -68,14 +61,6 @@ define_non_dispatchable_handle!(
   ///
   /// [VkBufferView](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBufferView.html)
   VkBufferView
-);
-define_non_dispatchable_handle!(
-  ///
-  /// * Parent: [`VkDevice`]
-  /// * ObjectTypeEnum: [`VK_OBJECT_TYPE_IMAGE`]
-  ///
-  /// [VkImage](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImage.html)
-  VkImage
 );
 define_non_dispatchable_handle!(
   ///

@@ -31,14 +31,14 @@
             <!-- <type name="VkVendorId"/> -->
         </require>
         <require comment="API version macros">
-            <type name="VK_API_VERSION"/>
-            <type name="VK_API_VERSION_1_0"/>
-            <type name="VK_HEADER_VERSION"/>
-            <type name="VK_HEADER_VERSION_COMPLETE"/>
-            <type name="VK_MAKE_VERSION"/>
-            <type name="VK_VERSION_MAJOR"/>
-            <type name="VK_VERSION_MINOR"/>
-            <type name="VK_VERSION_PATCH"/>
+            <!-- <type name="VK_API_VERSION"/> -->
+            <!-- <type name="VK_API_VERSION_1_0"/> -->
+            <!-- <type name="VK_HEADER_VERSION"/> -->
+            <!-- <type name="VK_HEADER_VERSION_COMPLETE"/> -->
+            <!-- <type name="VK_MAKE_VERSION"/> -->
+            <!-- <type name="VK_VERSION_MAJOR"/> -->
+            <!-- <type name="VK_VERSION_MINOR"/> -->
+            <!-- <type name="VK_VERSION_PATCH"/> -->
         </require>
         <require comment="API constants">
             <enum name="VK_ATTACHMENT_UNUSED"/>
