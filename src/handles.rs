@@ -1,3 +1,8 @@
+//! Handles are pointer-like values to objects that *can* accept commands.
+//!
+//! Because they're pointers, handles are either 32-bit or 64-bit depending on
+//! the platform (the same size as `usize`).
+
 use super::*;
 
 macro_rules! define_handle {

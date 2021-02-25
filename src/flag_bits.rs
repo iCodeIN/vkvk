@@ -1,6 +1,13 @@
+//! Vulkan types where one or more flags are bit-packed together.
+//!
+//! These types support the standard bitwise operations for enabling and
+//! disabling specific bits:
+//! * Add a new flag to a base value: `base | new`
+//! * Remove a flag from a base value: `base & (!removal)`
+
 use super::*;
 
-flag_bits! {
+vk_flag_bits! {
   /// [VkAccessFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkAccessFlagBits.html)
   VkAccessFlagBits = VkAccessFlags {
     /// Controls coherency of indirect command reads
@@ -62,15 +69,15 @@ flag_bits! {
   }
 }
 /// Provided by `VK_KHR_synchronization2`
-pub const VK_ACCESS_NONE_KHR: VkAccessFlagBits = VkAccessFlagBits(0);
+pub const VK_ACCESS_NONE_KHR: VkAccessFlags = VkAccessFlags(0);
 /// Provided by `VK_NV_ray_tracing`
-pub const VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_NV: VkAccessFlagBits = VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_KHR;
+pub const VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_NV: VkAccessFlags = VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_KHR;
 /// Provided by `VK_NV_ray_tracing`
-pub const VK_ACCESS_ACCELERATION_STRUCTURE_WRITE_BIT_NV: VkAccessFlagBits = VK_ACCESS_ACCELERATION_STRUCTURE_WRITE_BIT_KHR;
+pub const VK_ACCESS_ACCELERATION_STRUCTURE_WRITE_BIT_NV: VkAccessFlags = VK_ACCESS_ACCELERATION_STRUCTURE_WRITE_BIT_KHR;
 /// Provided by `VK_KHR_fragment_shading_rate`
-pub const VK_ACCESS_FRAGMENT_SHADING_RATE_ATTACHMENT_READ_BIT_KHR: VkAccessFlagBits = VK_ACCESS_SHADING_RATE_IMAGE_READ_BIT_NV;
+pub const VK_ACCESS_FRAGMENT_SHADING_RATE_ATTACHMENT_READ_BIT_KHR: VkAccessFlags = VK_ACCESS_SHADING_RATE_IMAGE_READ_BIT_NV;
 
-flag_bits! {
+vk_flag_bits! {
   /// [VkImageAspectFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageAspectFlagBits.html)
   VkImageAspectFlagBits = VkImageAspectFlags {
     VK_IMAGE_ASPECT_COLOR_BIT = (1<<0),
@@ -94,8 +101,8 @@ flag_bits! {
   }
 }
 /// Provided by `VK_KHR_sampler_ycbcr_conversion`
-pub const VK_IMAGE_ASPECT_PLANE_0_BIT_KHR: VkImageAspectFlagBits = VK_IMAGE_ASPECT_PLANE_0_BIT;
+pub const VK_IMAGE_ASPECT_PLANE_0_BIT_KHR: VkImageAspectFlags = VK_IMAGE_ASPECT_PLANE_0_BIT;
 /// Provided by `VK_KHR_sampler_ycbcr_conversion`
-pub const VK_IMAGE_ASPECT_PLANE_1_BIT_KHR: VkImageAspectFlagBits = VK_IMAGE_ASPECT_PLANE_1_BIT;
+pub const VK_IMAGE_ASPECT_PLANE_1_BIT_KHR: VkImageAspectFlags = VK_IMAGE_ASPECT_PLANE_1_BIT;
 /// Provided by `VK_KHR_sampler_ycbcr_conversion`
-pub const VK_IMAGE_ASPECT_PLANE_2_BIT_KHR: VkImageAspectFlagBits = VK_IMAGE_ASPECT_PLANE_2_BIT;
+pub const VK_IMAGE_ASPECT_PLANE_2_BIT_KHR: VkImageAspectFlags = VK_IMAGE_ASPECT_PLANE_2_BIT;

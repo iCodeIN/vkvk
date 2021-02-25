@@ -1,9 +1,24 @@
+//! Vulkan types where you're supposed to use one among a list of possible
+//! variants.
+//!
+//! The difference from a Rust `enum` is that illegal bit patterns are *not*
+//! actually prohibited from existing.
+
 use super::*;
 
+mod vk_bool;
+pub use vk_bool::*;
+
+mod vk_result;
+pub use vk_result::*;
+
+mod vk_structure_type;
+pub use vk_structure_type::*;
+
 vk_enumeration! {
-  /// Enums to track objects of various types - also see objtypeenum attributes on type tags.
-  ///
   /// [VkObjectType](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkObjectType.html)
+  ///
+  /// Enums to track objects of various types - also see objtypeenum attributes on type tags.
   VkObjectType {
     VK_OBJECT_TYPE_UNKNOWN = 0,
     VK_OBJECT_TYPE_INSTANCE = 1,

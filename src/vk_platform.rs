@@ -1,5 +1,8 @@
 #![allow(dead_code)]
 
+//! The parts of the Vulkan API that are presumed to be provided by an outside
+//! source.
+
 use super::*;
 
 pub use core::ffi::c_void;
@@ -19,5 +22,5 @@ pub(crate) type size_t = usize;
 /// Basically this is `i32`
 ///
 /// Technically it could be `i16` or `i164` on rare platforms, so we use this
-/// alias to aid and potential future porting. It's harmless enough.
+/// alias to aid any potential future porting. It's a harmless enough alias.
 pub type int = i32;

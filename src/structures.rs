@@ -1,5 +1,7 @@
 #![allow(non_snake_case)]
 
+//! Structure types to interface with Vulkan.
+
 use super::*;
 
 use core::mem::zeroed;

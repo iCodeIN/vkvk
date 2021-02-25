@@ -32,7 +32,7 @@ macro_rules! vk_enumeration {
 
 #[macro_export]
 #[doc(hidden)]
-macro_rules! flag_bits {
+macro_rules! vk_flag_bits {
   (
     $(#[$s_meta:meta])*
     $bits_name:ident = $flags_name:ident {
@@ -40,18 +40,22 @@ macro_rules! flag_bits {
       $(,)?
     }
   ) => {
-    pub type $flags_name = $bits_name;
+    pub type $bits_name = $flags_name;
+    #[allow(non_snake_case)]
+    pub const fn $bits_name(bits: u32) -> $flags_name {
+      $flags_name(bits)
+    }
     #[derive(Clone, Copy, Default, PartialEq, Eq, Hash)]
     #[cfg_attr(not(feature = "impl_flag_bits_precise_debug"), derive(Debug))]
     #[repr(transparent)]
     $(#[$s_meta])*
-    pub struct $bits_name(pub u32);
+    pub struct $flags_name(pub u32);
     #[cfg(feature = "impl_flag_bits_precise_debug")]
-    impl core::fmt::Debug for $bits_name {
+    impl core::fmt::Debug for $flags_name {
       fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
         if self.0 != 0 {
           let mut printed_yet = false;
-          f.write_str(concat!(stringify!($bits_name)," {"))?;
+          f.write_str(concat!(stringify!($flags_name)," {"))?;
           $(if self.0 & $val > 0 {
             if printed_yet {
               f.write_str(", ")?;
@@ -64,49 +68,49 @@ macro_rules! flag_bits {
           })*
           f.write_str(" }")
         } else {
-          f.write_str(concat!(stringify!($bits_name)," { none }"))
+          f.write_str(concat!(stringify!($flags_name)," { none }"))
         }
       }
     }
-    impl core::ops::BitAnd for $bits_name {
+    impl core::ops::BitAnd for $flags_name {
       type Output = Self;
       fn bitand(self, rhs: Self) -> Self::Output {
         Self(self.0 & rhs.0)
       }
     }
-    impl core::ops::BitAndAssign for $bits_name {
+    impl core::ops::BitAndAssign for $flags_name {
       fn bitand_assign(&mut self, rhs: Self) {
         *self = *self & rhs;
       }
     }
-    impl core::ops::BitOr for $bits_name {
+    impl core::ops::BitOr for $flags_name {
       type Output = Self;
       fn bitor(self, rhs: Self) -> Self::Output {
         Self(self.0 | rhs.0)
       }
     }
-    impl core::ops::BitOrAssign for $bits_name {
+    impl core::ops::BitOrAssign for $flags_name {
       fn bitor_assign(&mut self, rhs: Self) {
         *self = *self | rhs;
       }
     }
-    impl core::ops::BitXor for $bits_name {
+    impl core::ops::BitXor for $flags_name {
       type Output = Self;
       fn bitxor(self, rhs: Self) -> Self::Output {
         Self(self.0 ^ rhs.0)
       }
     }
-    impl core::ops::BitXorAssign for $bits_name {
+    impl core::ops::BitXorAssign for $flags_name {
       fn bitxor_assign(&mut self, rhs: Self) {
         *self = *self ^ rhs;
       }
     }
-    impl core::ops::Not for $bits_name {
+    impl core::ops::Not for $flags_name {
       type Output = Self;
       fn not(self) -> Self::Output {
         Self(!self.0)
       }
     }
-    $( #[allow(unused_parens)] $(#[$c_meta])* pub const $i: $bits_name = $bits_name($val); )*
+    $( #[allow(unused_parens)] $(#[$c_meta])* pub const $i: $flags_name = $flags_name($val); )*
   };
 }

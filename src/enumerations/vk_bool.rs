@@ -1,5 +1,7 @@
 use super::*;
 
+/// [VkBool32](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBool32.html)
+///
 /// The "truthy" type for Vulkan.
 ///
 /// The canonical values are [`VK_FALSE`] and [`VK_TRUE`], though the type is
