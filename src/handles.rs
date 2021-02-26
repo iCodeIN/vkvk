@@ -5,31 +5,71 @@
 
 use super::*;
 
-macro_rules! define_handle {
-  ($(#[$m:meta])* $handle:ident) => {
-    #[derive(Debug, PartialEq, Eq)]
-    #[cfg_attr(feature="derive_hash", derive(Hash))]
-    #[repr(transparent)]
-    $(#[$m])*
-    pub struct $handle(*mut c_void);
-    impl Copy for $handle { }
-    impl Clone for $handle {
-      fn clone(&self) -> Self {
-        *self
-      }
-    }
-    impl Default for $handle {
-      fn default() -> Self {
-        Self::null()
-      }
-    }
-    impl $handle {
-      pub const fn null() -> Self {
-        Self(core::ptr::null_mut())
-      }
-      pub fn is_null(&self) -> bool {
-        self.0.is_null()
-      }
-    }
-  };
+/// [VkInstance](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkInstance.html)
+///
+/// Handle to an Instance (a connection to a Vulkan implementation).
+///
+/// * Parent Object: none
+/// * ObjectTypeEnum: [`VK_OBJECT_TYPE_INSTANCE`]
+#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[repr(transparent)]
+pub struct VkInstance(*mut c_void);
+impl Default for VkInstance {
+  fn default() -> Self {
+    Self::null()
+  }
+}
+impl VkInstance {
+  pub const fn null() -> Self {
+    Self(core::ptr::null_mut())
+  }
+  pub fn is_null(&self) -> bool {
+    self.0.is_null()
+  }
+}
+
+/// [VkPhysicalDevice](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPhysicalDevice.html)
+///
+/// Handle to a Physical Device.
+///
+/// * Parent Object: [`VkInstance`]
+/// * ObjectTypeEnum: [`VK_OBJECT_TYPE_PHYSICAL_DEVICE`]
+#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[repr(transparent)]
+pub struct VkPhysicalDevice(*mut c_void);
+impl Default for VkPhysicalDevice {
+  fn default() -> Self {
+    Self::null()
+  }
+}
+impl VkPhysicalDevice {
+  pub const fn null() -> Self {
+    Self(core::ptr::null_mut())
+  }
+  pub fn is_null(&self) -> bool {
+    self.0.is_null()
+  }
+}
+
+/// [VkDevice](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDevice.html)
+///
+/// Handle to a Device.
+///
+/// * Parent: [`VkPhysicalDevice`]
+/// * ObjectTypeEnum: [`VK_OBJECT_TYPE_DEVICE`]
+#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[repr(transparent)]
+pub struct VkDevice(*mut c_void);
+impl Default for VkDevice {
+  fn default() -> Self {
+    Self::null()
+  }
+}
+impl VkDevice {
+  pub const fn null() -> Self {
+    Self(core::ptr::null_mut())
+  }
+  pub fn is_null(&self) -> bool {
+    self.0.is_null()
+  }
 }

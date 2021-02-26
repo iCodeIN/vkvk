@@ -109,16 +109,9 @@ pub struct VkDeviceSize(pub uint64_t);
 #[repr(transparent)]
 pub struct VkDeviceAddress(pub uint64_t);
 
-pub const VK_MAX_PHYSICAL_DEVICE_NAME_SIZE: usize = 256;
-pub const VK_UUID_SIZE: usize = 16;
 pub const VK_LUID_SIZE: usize = 8;
 pub const VK_MAX_EXTENSION_NAME_SIZE: usize = 256;
 pub const VK_MAX_DESCRIPTION_SIZE: usize = 256;
-pub const VK_MAX_MEMORY_TYPES: usize = 32;
-/// The maximum number of unique memory heaps.
-///
-/// Each heap supports 1 or more memory types.
-pub const VK_MAX_MEMORY_HEAPS: usize = 16;
 pub const VK_QUEUE_FAMILY_EXTERNAL: u32 = (!0) - 1;
 pub const VK_QUEUE_FAMILY_FOREIGN_EXT: u32 = (!0) - 2;
 pub const VK_MAX_DEVICE_GROUP_SIZE: usize = 32;

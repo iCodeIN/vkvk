@@ -6,7 +6,7 @@ use super::*;
 ///
 /// The canonical values are [`VK_FALSE`] and [`VK_TRUE`], though the type is
 /// 32-bit, so *theoretically* any non-zero value is also a "true" value.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, PartialOrd, Ord, Hash)]
 #[repr(transparent)]
 pub struct VkBool32(pub uint32_t);
 

@@ -55,6 +55,8 @@ macro_rules! vk_flag_bits {
     impl core::fmt::Debug for $bits_name {
       fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
         if self.0 != 0 {
+          #[allow(unused_mut)]
+          #[allow(unused_variables)]
           let mut printed_yet = false;
           f.write_str(concat!(stringify!($bits_name)," {"))?;
           $(if self.0 & $val > 0 {

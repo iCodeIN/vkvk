@@ -15,6 +15,9 @@ pub use vk_result::*;
 mod vk_structure_type;
 pub use vk_structure_type::*;
 
+mod vk_format;
+pub use vk_format::*;
+
 vk_enumeration! {
   /// [VkObjectType](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkObjectType.html)
   ///
@@ -168,5 +171,53 @@ vk_enumeration! {
   /// [VkPipelineCacheHeaderVersion](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineCacheHeaderVersion.html)
   VkPipelineCacheHeaderVersion {
     VK_PIPELINE_CACHE_HEADER_VERSION_ONE = 1,
+  }
+}
+
+vk_enumeration! {
+  /// [VkImageTiling](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageTiling.html)
+  VkImageTiling {
+    VK_IMAGE_TILING_OPTIMAL = 0,
+    VK_IMAGE_TILING_LINEAR = 1,
+    /// Provided by `VK_EXT_image_drm_format_modifier`
+    VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT = 1000158000,
+  }
+}
+
+vk_enumeration! {
+  /// [VkImageType](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageType.html)
+  VkImageType {
+    VK_IMAGE_TYPE_1D = 0,
+    VK_IMAGE_TYPE_2D = 1,
+    VK_IMAGE_TYPE_3D = 2,
+  }
+}
+
+vk_enumeration! {
+  /// [VkInternalAllocationType](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkInternalAllocationType.html)
+  VkInternalAllocationType {
+    VK_INTERNAL_ALLOCATION_TYPE_EXECUTABLE = 0,
+  }
+}
+
+vk_enumeration! {
+  /// [VkPhysicalDeviceType](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPhysicalDeviceType.html)
+  VkPhysicalDeviceType {
+    VK_PHYSICAL_DEVICE_TYPE_OTHER = 0,
+    VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU = 1,
+    VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU = 2,
+    VK_PHYSICAL_DEVICE_TYPE_VIRTUAL_GPU = 3,
+    VK_PHYSICAL_DEVICE_TYPE_CPU = 4,
+  }
+}
+
+vk_enumeration! {
+  /// [VkSystemAllocationScope](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSystemAllocationScope.html)
+  VkSystemAllocationScope {
+    VK_SYSTEM_ALLOCATION_SCOPE_COMMAND = 0,
+    VK_SYSTEM_ALLOCATION_SCOPE_OBJECT = 1,
+    VK_SYSTEM_ALLOCATION_SCOPE_CACHE = 2,
+    VK_SYSTEM_ALLOCATION_SCOPE_DEVICE = 3,
+    VK_SYSTEM_ALLOCATION_SCOPE_INSTANCE = 4,
   }
 }

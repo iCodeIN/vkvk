@@ -1,32 +1,4 @@
 use super::*;
-
-define_handle!(
-  /// Handle to an Instance.
-  ///
-  /// * Parent: none
-  /// * ObjectTypeEnum: [`VK_OBJECT_TYPE_INSTANCE`]
-  ///
-  /// [VkInstance](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkInstance.html)
-  VkInstance
-);
-define_handle!(
-  /// Handle to a Physical Device.
-  ///
-  /// * Parent: [`VkInstance`]
-  /// * ObjectTypeEnum: [`VK_OBJECT_TYPE_PHYSICAL_DEVICE`]
-  ///
-  /// [VkPhysicalDevice](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPhysicalDevice.html)
-  VkPhysicalDevice
-);
-define_handle!(
-  /// Handle to a Device.
-  ///
-  /// * Parent: [`VkPhysicalDevice`]
-  /// * ObjectTypeEnum: [`VK_OBJECT_TYPE_DEVICE`]
-  ///
-  /// [VkDevice](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDevice.html)
-  VkDevice
-);
 define_handle!(
   /// Handle to a Queue.
   ///

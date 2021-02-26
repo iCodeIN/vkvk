@@ -1,20 +1,6 @@
 use super::*;
 
 flag_bits! {
-  /// [VkQueueFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueueFlagBits.html)
-  VkQueueFlagBits = VkQueueFlags {
-    /// Queue supports graphics operations
-    VK_QUEUE_GRAPHICS_BIT = (1<<0),
-    /// Queue supports compute operations
-    VK_QUEUE_COMPUTE_BIT = (1<<1),
-    /// Queue supports transfer operations
-    VK_QUEUE_TRANSFER_BIT = (1<<2),
-    /// Queue supports sparse resource memory management operations
-    VK_QUEUE_SPARSE_BINDING_BIT = (1<<3),
-  }
-}
-
-flag_bits! {
   /// [VkCullModeFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCullModeFlagBits.html)
   VkCullModeFlagBits = VkCullModeFlags {
     VK_CULL_MODE_NONE = (1<<0),
@@ -36,30 +22,6 @@ flag_bits! {
   ///
   /// currently reserved for future use.
   VkDeviceQueueCreateFlagBits = VkDeviceQueueCreateFlags {}
-}
-
-flag_bits! {
-  /// [VkMemoryPropertyFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkMemoryPropertyFlagBits.html)
-  VkMemoryPropertyFlagBits = VkMemoryPropertyFlags {
-    /// If otherwise stated, then allocate memory on device
-    VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT = (1<<0),
-    /// Memory is mappable by host
-    VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT = (1<<1),
-    /// Memory will have i/o coherency. If not set, application may need to use vkFlushMappedMemoryRanges and vkInvalidateMappedMemoryRanges to flush/invalidate host cache
-    VK_MEMORY_PROPERTY_HOST_COHERENT_BIT = (1<<2),
-    /// Memory will be cached by the host
-    VK_MEMORY_PROPERTY_HOST_CACHED_BIT = (1<<3),
-    /// Memory may be allocated by the driver when it is required
-    VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT = (1<<4),
-  }
-}
-
-flag_bits! {
-  /// [VkMemoryHeapFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkMemoryHeapFlagBits.html)
-  VkMemoryHeapFlagBits = VkMemoryHeapFlags {
-    /// If set, heap represents device memory
-    VK_MEMORY_HEAP_DEVICE_LOCAL_BIT = (1<<0),
-  }
 }
 
 flag_bits! {
@@ -113,44 +75,6 @@ pub const VK_SHADER_STAGE_ALL_GRAPHICS: VkShaderStageFlagBits = VkShaderStageFla
 pub const VK_SHADER_STAGE_ALL: VkShaderStageFlagBits = VkShaderStageFlagBits(0x7FFFFFFF);
 
 flag_bits! {
-  /// [VkImageUsageFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageUsageFlagBits.html)
-  VkImageUsageFlagBits = VkImageUsageFlags {
-    /// Can be used as a source of transfer operations
-    VK_IMAGE_USAGE_TRANSFER_SRC_BIT = (1<<0),
-    /// Can be used as a destination of transfer operations
-    VK_IMAGE_USAGE_TRANSFER_DST_BIT = (1<<1),
-    /// Can be sampled from (SAMPLED_IMAGE and COMBINED_IMAGE_SAMPLER descriptor types)
-    VK_IMAGE_USAGE_SAMPLED_BIT = (1<<2),
-    /// Can be used as storage image (STORAGE_IMAGE descriptor type)
-    VK_IMAGE_USAGE_STORAGE_BIT = (1<<3),
-    /// Can be used as framebuffer color attachment
-    VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT = (1<<4),
-    /// Can be used as framebuffer depth/stencil attachment
-    VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT = (1<<5),
-    /// Image data not needed outside of rendering
-    VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT = (1<<6),
-    /// Can be used as framebuffer input attachment
-    VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT = (1<<7),
-  }
-}
-
-flag_bits! {
-  /// [VkImageCreateFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageCreateFlagBits.html)
-  VkImageCreateFlagBits = VkImageCreateFlags {
-    /// Image should support sparse backing
-    VK_IMAGE_CREATE_SPARSE_BINDING_BIT = (1<<0),
-    /// Image should support sparse backing with partial residency
-    VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT = (1<<1),
-    /// Image should support constant data access to physical memory ranges mapped into multiple locations of sparse images
-    VK_IMAGE_CREATE_SPARSE_ALIASED_BIT = (1<<2),
-    /// Allows image views to have different format than the base image
-    VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT = (1<<3),
-    /// Allows creating image views with cube type from the created image
-    VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT = (1<<4),
-  }
-}
-
-flag_bits! {
   /// [VkImageViewCreateFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageViewCreateFlagBits.html)
   ///
   /// currently reserved for future use.
@@ -192,38 +116,6 @@ flag_bits! {
   /// [VkFenceCreateFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFenceCreateFlagBits.html)
   VkFenceCreateFlagBits = VkFenceCreateFlags {
     VK_FENCE_CREATE_SIGNALED_BIT = (1<<0),
-  }
-}
-
-flag_bits! {
-  /// [VkFormatFeatureFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFormatFeatureFlagBits.html)
-  VkFormatFeatureFlagBits = VkFormatFeatureFlags {
-    /// Format can be used for sampled images (SAMPLED_IMAGE and COMBINED_IMAGE_SAMPLER descriptor types)
-    VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT = (1<<0),
-    /// Format can be used for storage images (STORAGE_IMAGE descriptor type)
-    VK_FORMAT_FEATURE_STORAGE_IMAGE_BIT = (1<<1),
-    /// Format supports atomic operations in case it is used for storage images
-    VK_FORMAT_FEATURE_STORAGE_IMAGE_ATOMIC_BIT = (1<<2),
-    /// Format can be used for uniform texel buffers (TBOs)
-    VK_FORMAT_FEATURE_UNIFORM_TEXEL_BUFFER_BIT = (1<<3),
-    /// Format can be used for storage texel buffers (IBOs)
-    VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_BIT = (1<<4),
-    /// Format supports atomic operations in case it is used for storage texel buffers
-    VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT = (1<<5),
-    /// Format can be used for vertex buffers (VBOs)
-    VK_FORMAT_FEATURE_VERTEX_BUFFER_BIT = (1<<6),
-    /// Format can be used for color attachment images
-    VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT = (1<<7),
-    /// Format supports blending in case it is used for color attachment images
-    VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BLEND_BIT = (1<<8),
-    /// Format can be used for depth/stencil attachment images
-    VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT = (1<<9),
-    /// Format can be used as the source image of blits with vkCmdBlitImage
-    VK_FORMAT_FEATURE_BLIT_SRC_BIT = (1<<10),
-    /// Format can be used as the destination image of blits with vkCmdBlitImage
-    VK_FORMAT_FEATURE_BLIT_DST_BIT = (1<<11),
-    /// Format can be filtered with VK_FILTER_LINEAR when being sampled
-    VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT = (1<<12),
   }
 }
 
@@ -370,26 +262,6 @@ flag_bits! {
   VkCommandBufferResetFlagBits = VkCommandBufferResetFlags {
     /// Release resources owned by the buffer
     VK_COMMAND_BUFFER_RESET_RELEASE_RESOURCES_BIT = (1<<0),
-  }
-}
-
-flag_bits! {
-  /// [VkSampleCountFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSampleCountFlagBits.html)
-  VkSampleCountFlagBits = VkSampleCountFlags {
-    /// Sample count 1 supported
-    VK_SAMPLE_COUNT_1_BIT = (1<<0),
-    /// Sample count 2 supported
-    VK_SAMPLE_COUNT_2_BIT = (1<<1),
-    /// Sample count 4 supported
-    VK_SAMPLE_COUNT_4_BIT = (1<<2),
-    /// Sample count 8 supported
-    VK_SAMPLE_COUNT_8_BIT = (1<<3),
-    /// Sample count 16 supported
-    VK_SAMPLE_COUNT_16_BIT = (1<<4),
-    /// Sample count 32 supported
-    VK_SAMPLE_COUNT_32_BIT = (1<<5),
-    /// Sample count 64 supported
-    VK_SAMPLE_COUNT_64_BIT = (1<<6),
   }
 }
 
@@ -1042,12 +914,6 @@ flag_bits! {
   ///
   /// currently reserved for future use.
   VkImagePipeSurfaceCreateFlagsFUCHSIA {}
-}
-flag_bits! {
-  /// [VkInstanceCreateFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkInstanceCreateFlags.html)
-  ///
-  /// currently reserved for future use.
-  VkInstanceCreateFlags {}
 }
 flag_bits! {
   /// [VkIOSSurfaceCreateFlagsMVK](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkIOSSurfaceCreateFlagsMVK.html)

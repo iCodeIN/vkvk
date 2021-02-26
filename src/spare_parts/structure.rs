@@ -125,264 +125,6 @@ structure! {
 }
 
 structure! {
-  /// [VkPhysicalDeviceProperties](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPhysicalDeviceProperties.html)
-  VkPhysicalDeviceProperties {
-    apiVersion: VulkanVersion,
-    driverVersion: uint32_t,
-    vendorID: uint32_t,
-    deviceID: uint32_t,
-    deviceType: VkPhysicalDeviceType,
-    deviceName: [char; VK_MAX_PHYSICAL_DEVICE_NAME_SIZE],
-    pipelineCacheUUID: [uint8_t; VK_UUID_SIZE],
-    limits: VkPhysicalDeviceLimits,
-    sparseProperties: VkPhysicalDeviceSparseProperties,
-  }
-}
-
-structure! {
-  /// [VkPhysicalDeviceLimits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPhysicalDeviceLimits.html)
-  VkPhysicalDeviceLimits {
-    /// max 1D image dimension
-    maxImageDimension1D: uint32_t,
-    /// max 2D image dimension
-    maxImageDimension2D: uint32_t,
-    /// max 3D image dimension
-    maxImageDimension3D: uint32_t,
-    /// max cubemap image dimension
-    maxImageDimensionCube: uint32_t,
-    /// max layers for image arrays
-    maxImageArrayLayers: uint32_t,
-    /// max texel buffer size (fstexels)
-    maxTexelBufferElements: uint32_t,
-    /// max uniform buffer range (bytes)
-    maxUniformBufferRange: uint32_t,
-    /// max storage buffer range (bytes)
-    maxStorageBufferRange: uint32_t,
-    /// max size of the push constants pool (bytes)
-    maxPushConstantsSize: uint32_t,
-    /// max number of device memory allocations supported
-    maxMemoryAllocationCount: uint32_t,
-    /// max number of samplers that can be allocated on a device
-    maxSamplerAllocationCount: uint32_t,
-    /// Granularity (in bytes) at which buffers and images can be bound to adjacent memory for simultaneous usage
-    bufferImageGranularity: VkDeviceSize,
-    /// Total address space available for sparse allocations (bytes)
-    sparseAddressSpaceSize: VkDeviceSize,
-    /// max number of descriptors sets that can be bound to a pipeline
-    maxBoundDescriptorSets: uint32_t,
-    /// max number of samplers allowed per-stage in a descriptor set
-    maxPerStageDescriptorSamplers: uint32_t,
-    /// max number of uniform buffers allowed per-stage in a descriptor set
-    maxPerStageDescriptorUniformBuffers: uint32_t,
-    /// max number of storage buffers allowed per-stage in a descriptor set
-    maxPerStageDescriptorStorageBuffers: uint32_t,
-    /// max number of sampled images allowed per-stage in a descriptor set
-    maxPerStageDescriptorSampledImages: uint32_t,
-    /// max number of storage images allowed per-stage in a descriptor set
-    maxPerStageDescriptorStorageImages: uint32_t,
-    /// max number of input attachments allowed per-stage in a descriptor set
-    maxPerStageDescriptorInputAttachments: uint32_t,
-    /// max number of resources allowed by a single stage
-    maxPerStageResources: uint32_t,
-    /// max number of samplers allowed in all stages in a descriptor set
-    maxDescriptorSetSamplers: uint32_t,
-    /// max number of uniform buffers allowed in all stages in a descriptor set
-    maxDescriptorSetUniformBuffers: uint32_t,
-    /// max number of dynamic uniform buffers allowed in all stages in a descriptor set
-    maxDescriptorSetUniformBuffersDynamic: uint32_t,
-    /// max number of storage buffers allowed in all stages in a descriptor set
-    maxDescriptorSetStorageBuffers: uint32_t,
-    /// max number of dynamic storage buffers allowed in all stages in a descriptor set
-    maxDescriptorSetStorageBuffersDynamic: uint32_t,
-    /// max number of sampled images allowed in all stages in a descriptor set
-    maxDescriptorSetSampledImages: uint32_t,
-    /// max number of storage images allowed in all stages in a descriptor set
-    maxDescriptorSetStorageImages: uint32_t,
-    /// max number of input attachments allowed in all stages in a descriptor set
-    maxDescriptorSetInputAttachments: uint32_t,
-    /// max number of vertex input attribute slots
-    maxVertexInputAttributes: uint32_t,
-    /// max number of vertex input binding slots
-    maxVertexInputBindings: uint32_t,
-    /// max vertex input attribute offset added to vertex buffer offset
-    maxVertexInputAttributeOffset: uint32_t,
-    /// max vertex input binding stride
-    maxVertexInputBindingStride: uint32_t,
-    /// max number of output components written by vertex shader
-    maxVertexOutputComponents: uint32_t,
-    /// max level supported by tessellation primitive generator
-    maxTessellationGenerationLevel: uint32_t,
-    /// max patch size (vertices)
-    maxTessellationPatchSize: uint32_t,
-    /// max number of input components per-vertex in TCS
-    maxTessellationControlPerVertexInputComponents: uint32_t,
-    /// max number of output components per-vertex in TCS
-    maxTessellationControlPerVertexOutputComponents: uint32_t,
-    /// max number of output components per-patch in TCS
-    maxTessellationControlPerPatchOutputComponents: uint32_t,
-    /// max total number of per-vertex and per-patch output components in TCS
-    maxTessellationControlTotalOutputComponents: uint32_t,
-    /// max number of input components per vertex in TES
-    maxTessellationEvaluationInputComponents: uint32_t,
-    /// max number of output components per vertex in TES
-    maxTessellationEvaluationOutputComponents: uint32_t,
-    /// max invocation count supported in geometry shader
-    maxGeometryShaderInvocations: uint32_t,
-    /// max number of input components read in geometry stage
-    maxGeometryInputComponents: uint32_t,
-    /// max number of output components written in geometry stage
-    maxGeometryOutputComponents: uint32_t,
-    /// max number of vertices that can be emitted in geometry stage
-    maxGeometryOutputVertices: uint32_t,
-    /// max total number of components (all vertices) written in geometry stage
-    maxGeometryTotalOutputComponents: uint32_t,
-    /// max number of input components read in fragment stage
-    maxFragmentInputComponents: uint32_t,
-    /// max number of output attachments written in fragment stage
-    maxFragmentOutputAttachments: uint32_t,
-    /// max number of output attachments written when using dual source blending
-    maxFragmentDualSrcAttachments: uint32_t,
-    /// max total number of storage buffers, storage images and output buffers
-    maxFragmentCombinedOutputResources: uint32_t,
-    /// max total storage size of work group local storage (bytes)
-    maxComputeSharedMemorySize: uint32_t,
-    /// max num of compute work groups that may be dispatched by a single command (x,y,z)
-    maxComputeWorkGroupCount: [uint32_t; 3],
-    /// max total compute invocations in a single local work group
-    maxComputeWorkGroupInvocations: uint32_t,
-    /// max local size of a compute work group (x,y,z)
-    maxComputeWorkGroupSize: [uint32_t; 3],
-    /// number bits of subpixel precision in screen x and y
-    subPixelPrecisionBits: uint32_t,
-    /// number bits of precision for selecting texel weights
-    subTexelPrecisionBits: uint32_t,
-    /// number bits of precision for selecting mipmap weights
-    mipmapPrecisionBits: uint32_t,
-    /// max index value for indexed draw calls (for 32-bit indices)
-    maxDrawIndexedIndexValue: uint32_t,
-    /// max draw count for indirect draw calls
-    maxDrawIndirectCount: uint32_t,
-    /// max absolute sampler LOD bias
-    maxSamplerLodBias: float,
-    /// max degree of sampler anisotropy
-    maxSamplerAnisotropy: float,
-    /// max number of active viewports
-    maxViewports: uint32_t,
-    /// max viewport dimensions (x,y)
-    maxViewportDimensions: [uint32_t; 2],
-    /// viewport bounds range (min,max)
-    viewportBoundsRange: [float; 2],
-    /// number bits of subpixel precision for viewport
-    viewportSubPixelBits: uint32_t,
-    /// min required alignment of pointers returned by MapMemory (bytes)
-    minMemoryMapAlignment: size_t,
-    /// min required alignment for texel buffer offsets (bytes)
-    minTexelBufferOffsetAlignment: VkDeviceSize,
-    /// min required alignment for uniform buffer sizes and offsets (bytes)
-    minUniformBufferOffsetAlignment: VkDeviceSize,
-    /// min required alignment for storage buffer offsets (bytes)
-    minStorageBufferOffsetAlignment: VkDeviceSize,
-    /// min texel offset for OpTextureSampleOffset
-    minTexelOffset: int32_t,
-    /// max texel offset for OpTextureSampleOffset
-    maxTexelOffset: uint32_t,
-    /// min texel offset for OpTextureGatherOffset
-    minTexelGatherOffset: int32_t,
-    /// max texel offset for OpTextureGatherOffset
-    maxTexelGatherOffset: uint32_t,
-    /// furthest negative offset for interpolateAtOffset
-    minInterpolationOffset: float,
-    /// furthest positive offset for interpolateAtOffset
-    maxInterpolationOffset: float,
-    /// number of subpixel bits for interpolateAtOffset
-    subPixelInterpolationOffsetBits: uint32_t,
-    /// max width for a framebuffer
-    maxFramebufferWidth: uint32_t,
-    /// max height for a framebuffer
-    maxFramebufferHeight: uint32_t,
-    /// max layer count for a layered framebuffer
-    maxFramebufferLayers: uint32_t,
-    /// supported color sample counts for a framebuffer
-    /// * Optional: true
-    framebufferColorSampleCounts: VkSampleCountFlags,
-    /// supported depth sample counts for a framebuffer
-    /// * Optional: true
-    framebufferDepthSampleCounts: VkSampleCountFlags,
-    /// supported stencil sample counts for a framebuffer
-    /// * Optional: true
-    framebufferStencilSampleCounts: VkSampleCountFlags,
-    /// supported sample counts for a subpass which uses no attachments
-    /// * Optional: true
-    framebufferNoAttachmentsSampleCounts: VkSampleCountFlags,
-    /// max number of color attachments per subpass
-    maxColorAttachments: uint32_t,
-    /// supported color sample counts for a non-integer sampled image
-    /// * Optional: true
-    sampledImageColorSampleCounts: VkSampleCountFlags,
-    /// supported sample counts for an integer image
-    /// * Optional: true
-    sampledImageIntegerSampleCounts: VkSampleCountFlags,
-    /// supported depth sample counts for a sampled image
-    /// * Optional: true
-    sampledImageDepthSampleCounts: VkSampleCountFlags,
-    /// supported stencil sample counts for a sampled image
-    /// * Optional: true
-    sampledImageStencilSampleCounts: VkSampleCountFlags,
-    /// supported sample counts for a storage image
-    /// * Optional: true
-    storageImageSampleCounts: VkSampleCountFlags,
-    /// max number of sample mask words
-    maxSampleMaskWords: uint32_t,
-    /// timestamps on graphics and compute queues
-    timestampComputeAndGraphics: VkBool32,
-    /// number of nanoseconds it takes for timestamp query value to increment by 1
-    timestampPeriod: float,
-    /// max number of clip distances
-    maxClipDistances: uint32_t,
-    /// max number of cull distances
-    maxCullDistances: uint32_t,
-    /// max combined number of user clipping
-    maxCombinedClipAndCullDistances: uint32_t,
-    /// distinct queue priorities available
-    discreteQueuePriorities: uint32_t,
-    /// range (min,max) of supported point sizes
-    pointSizeRange: [float; 2],
-    /// range (min,max) of supported line widths
-    lineWidthRange: [float; 2],
-    /// granularity of supported point sizes
-    pointSizeGranularity: float,
-    /// granularity of supported line widths
-    lineWidthGranularity: float,
-    /// line rasterization follows preferred rules
-    strictLines: VkBool32,
-    /// supports standard sample locations for all supported sample counts
-    standardSampleLocations: VkBool32,
-    /// optimal offset of buffer copies
-    optimalBufferCopyOffsetAlignment: VkDeviceSize,
-    /// optimal pitch of buffer copies
-    optimalBufferCopyRowPitchAlignment: VkDeviceSize,
-    /// minimum size and alignment for non-coherent host-mapped device memory access
-    nonCoherentAtomSize: VkDeviceSize,
-  }
-}
-
-structure! {
-  /// [VkPhysicalDeviceSparseProperties](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPhysicalDeviceSparseProperties.html)
-  VkPhysicalDeviceSparseProperties {
-    /// Sparse resources support: GPU will access all 2D (single sample) sparse resources using the standard sparse image block shapes (based on pixel format)
-    residencyStandard2DBlockShape: VkBool32,
-    /// Sparse resources support: GPU will access all 2D (multisample) sparse resources using the standard sparse image block shapes (based on pixel format)
-    residencyStandard2DMultisampleBlockShape: VkBool32,
-    /// Sparse resources support: GPU will access all 3D sparse resources using the standard sparse image block shapes (based on pixel format)
-    residencyStandard3DBlockShape: VkBool32,
-    /// Sparse resources support: Images with mip level dimensions that are NOT a multiple of the sparse image block dimensions will be placed in the mip tail
-    residencyAlignedMipSize: VkBool32,
-    /// Sparse resources support: GPU can consistently access non-resident regions of a resource, all reads return as if data is 0, writes are discarded
-    residencyNonResidentStrict: VkBool32,
-  }
-}
-
-structure! {
   /// [VkExtensionProperties](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExtensionProperties.html)
   VkExtensionProperties {
     /// extension name
@@ -403,40 +145,6 @@ structure! {
     implementationVersion: uint32_t,
     /// Free-form description of the layer
     description: [char; VK_MAX_DESCRIPTION_SIZE],
-  }
-}
-
-structure! {
-  /// [VkApplicationInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkApplicationInfo.html)
-  VkApplicationInfo {
-    /// * Values: [`VK_STRUCTURE_TYPE_APPLICATION_INFO`]
-    sType:VkStructureType,
-    /// * Optional: true
-    pNext: *const void,
-    /// * Optional: true
-    /// * Len: null-terminated
-    pApplicationName: *const char,
-    applicationVersion: uint32_t,
-    /// * Optional: true
-    /// * Len: null-terminated
-    pEngineName: *const char,
-    engineVersion: uint32_t,
-    apiVersion: VulkanVersion,
-  }
-}
-
-structure! {
-  /// [VkAllocationCallbacks](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkAllocationCallbacks.html)
-  VkAllocationCallbacks {
-    /// * Optional: true
-    pUserData: *mut void,
-    pfnAllocation: PFN_vkAllocationFunction,
-    pfnReallocation: PFN_vkReallocationFunction,
-    pfnFree: PFN_vkFreeFunction,
-    /// * Optional: true
-    pfnInternalAllocation: PFN_vkInternalAllocationNotification,
-    /// * Optional: true
-    pfnInternalFree: PFN_vkInternalFreeNotification,
   }
 }
 
@@ -2816,21 +2524,6 @@ structure! {
 }
 
 structure! {
-  /// [VkFormatProperties](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFormatProperties.html)
-  VkFormatProperties {
-    /// Format features in case of linear tiling
-    /// * **Optional:** true
-    linearTilingFeatures: VkFormatFeatureFlags,
-    /// Format features in case of optimal tiling
-    /// * **Optional:** true
-    optimalTilingFeatures: VkFormatFeatureFlags,
-    /// Format features supported by buffers
-    /// * **Optional:** true
-    bufferFeatures: VkFormatFeatureFlags,
-  }
-}
-
-structure! {
   /// [VkFormatProperties2](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFormatProperties2.html)
   VkFormatProperties2 {
     /// * **Values:** [`VK_STRUCTURE_TYPE_FORMAT_PROPERTIES_2`]
@@ -3333,23 +3026,6 @@ structure! {
 }
 
 structure! {
-  /// [VkImageFormatProperties](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageFormatProperties.html)
-  VkImageFormatProperties {
-    /// max image dimensions for this resource type
-    maxExtent: VkExtent3D,
-    /// max number of mipmap levels for this resource type
-    maxMipLevels: uint32_t,
-    /// max array size for this resource type
-    maxArrayLayers: uint32_t,
-    /// supported sample counts for this resource type
-    /// * **Optional:** true
-    sampleCounts: VkSampleCountFlags,
-    /// max size (in bytes) of this resource type
-    maxResourceSize: VkDeviceSize,
-  }
-}
-
-structure! {
   /// [VkImageFormatProperties2](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageFormatProperties2.html)
   VkImageFormatProperties2 {
     /// * **Values:** [`VK_STRUCTURE_TYPE_IMAGE_FORMAT_PROPERTIES_2`]
@@ -3775,30 +3451,6 @@ structure! {
 }
 
 structure! {
-  /// [VkInstanceCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkInstanceCreateInfo.html)
-  VkInstanceCreateInfo {
-    /// * **Values:** [`VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO`]
-    sType: VkStructureType,
-    /// * **Optional:** true
-    pNext: *const c_void,
-    /// * **Optional:** true
-    flags: VkInstanceCreateFlags,
-    /// * **Optional:** true
-    pApplicationInfo: *const VkApplicationInfo,
-    /// * **Optional:** true
-    enabledLayerCount: uint32_t,
-    /// Ordered list of layer names to be enabled
-    /// * **Len:** enabledLayerCount,null-terminated
-    ppEnabledLayerNames: *const u8,
-    /// * **Optional:** true
-    enabledExtensionCount: uint32_t,
-    /// Extension names to be enabled
-    /// * **Len:** enabledExtensionCount,null-terminated
-    ppEnabledExtensionNames: *const u8,
-  }
-}
-
-structure! {
   /// [VkMacOSSurfaceCreateInfoMVK](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkMacOSSurfaceCreateInfoMVK.html)
   VkMacOSSurfaceCreateInfoMVK {
     /// * **Values:** [`VK_STRUCTURE_TYPE_MACOS_SURFACE_CREATE_INFO_MVK`]
@@ -3936,17 +3588,6 @@ structure! {
 }
 
 structure! {
-  /// [VkMemoryHeap](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkMemoryHeap.html)
-  VkMemoryHeap {
-    /// Available memory in the heap
-    size: VkDeviceSize,
-    /// Flags for the heap
-    /// * **Optional:** true
-    flags: VkMemoryHeapFlags,
-  }
-}
-
-structure! {
   /// [VkMemoryHostPointerPropertiesEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkMemoryHostPointerPropertiesEXT.html)
   VkMemoryHostPointerPropertiesEXT {
     /// * **Values:** [`VK_STRUCTURE_TYPE_MEMORY_HOST_POINTER_PROPERTIES_EXT`]
@@ -4006,17 +3647,6 @@ structure! {
   }
 }
 pub type VkMemoryRequirements2KHR = VkMemoryRequirements2;
-
-structure! {
-  /// [VkMemoryType](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkMemoryType.html)
-  VkMemoryType {
-    /// Memory properties of this memory type
-    /// * **Optional:** true
-    propertyFlags: VkMemoryPropertyFlags,
-    /// Index of the memory heap allocations of this memory type are taken from
-    heapIndex: uint32_t,
-  }
-}
 
 structure! {
   /// [VkMemoryWin32HandlePropertiesKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkMemoryWin32HandlePropertiesKHR.html)
@@ -4823,122 +4453,6 @@ structure! {
 }
 
 structure! {
-  /// [VkPhysicalDeviceFeatures](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPhysicalDeviceFeatures.html)
-  VkPhysicalDeviceFeatures {
-    /// out of bounds buffer accesses are well defined
-    robustBufferAccess: VkBool32,
-    /// full 32-bit range of indices for indexed draw calls
-    fullDrawIndexUint32: VkBool32,
-    /// image views which are arrays of cube maps
-    imageCubeArray: VkBool32,
-    /// blending operations are controlled per-attachment
-    independentBlend: VkBool32,
-    /// geometry stage
-    geometryShader: VkBool32,
-    /// tessellation control and evaluation stage
-    tessellationShader: VkBool32,
-    /// per-sample shading and interpolation
-    sampleRateShading: VkBool32,
-    /// blend operations which take two sources
-    dualSrcBlend: VkBool32,
-    /// logic operations
-    logicOp: VkBool32,
-    /// multi draw indirect
-    multiDrawIndirect: VkBool32,
-    /// indirect draws can use non-zero firstInstance
-    drawIndirectFirstInstance: VkBool32,
-    /// depth clamping
-    depthClamp: VkBool32,
-    /// depth bias clamping
-    depthBiasClamp: VkBool32,
-    /// point and wireframe fill modes
-    fillModeNonSolid: VkBool32,
-    /// depth bounds test
-    depthBounds: VkBool32,
-    /// lines with width greater than 1
-    wideLines: VkBool32,
-    /// points with size greater than 1
-    largePoints: VkBool32,
-    /// the fragment alpha component can be forced to maximum representable alpha value
-    alphaToOne: VkBool32,
-    /// viewport arrays
-    multiViewport: VkBool32,
-    /// anisotropic sampler filtering
-    samplerAnisotropy: VkBool32,
-    /// ETC texture compression formats
-    textureCompressionETC2: VkBool32,
-    /// ASTC LDR texture compression formats
-    textureCompressionASTC_LDR: VkBool32,
-    /// BC1-7 texture compressed formats
-    textureCompressionBC: VkBool32,
-    /// precise occlusion queries returning actual sample counts
-    occlusionQueryPrecise: VkBool32,
-    /// pipeline statistics query
-    pipelineStatisticsQuery: VkBool32,
-    /// stores and atomic ops on storage buffers and images are supported in vertex, tessellation, and geometry stages
-    vertexPipelineStoresAndAtomics: VkBool32,
-    /// stores and atomic ops on storage buffers and images are supported in the fragment stage
-    fragmentStoresAndAtomics: VkBool32,
-    /// tessellation and geometry stages can export point size
-    shaderTessellationAndGeometryPointSize: VkBool32,
-    /// image gather with run-time values and independent offsets
-    shaderImageGatherExtended: VkBool32,
-    /// the extended set of formats can be used for storage images
-    shaderStorageImageExtendedFormats: VkBool32,
-    /// multisample images can be used for storage images
-    shaderStorageImageMultisample: VkBool32,
-    /// read from storage image does not require format qualifier
-    shaderStorageImageReadWithoutFormat: VkBool32,
-    /// write to storage image does not require format qualifier
-    shaderStorageImageWriteWithoutFormat: VkBool32,
-    /// arrays of uniform buffers can be accessed with dynamically uniform indices
-    shaderUniformBufferArrayDynamicIndexing: VkBool32,
-    /// arrays of sampled images can be accessed with dynamically uniform indices
-    shaderSampledImageArrayDynamicIndexing: VkBool32,
-    /// arrays of storage buffers can be accessed with dynamically uniform indices
-    shaderStorageBufferArrayDynamicIndexing: VkBool32,
-    /// arrays of storage images can be accessed with dynamically uniform indices
-    shaderStorageImageArrayDynamicIndexing: VkBool32,
-    /// clip distance in shaders
-    shaderClipDistance: VkBool32,
-    /// cull distance in shaders
-    shaderCullDistance: VkBool32,
-    /// 64-bit floats (doubles) in shaders
-    shaderFloat64: VkBool32,
-    /// 64-bit integers in shaders
-    shaderInt64: VkBool32,
-    /// 16-bit integers in shaders
-    shaderInt16: VkBool32,
-    /// shader can use texture operations that return resource residency information (requires sparseNonResident support)
-    shaderResourceResidency: VkBool32,
-    /// shader can use texture operations that specify minimum resource LOD
-    shaderResourceMinLod: VkBool32,
-    /// Sparse resources support: Resource memory can be managed at opaque page level rather than object level
-    sparseBinding: VkBool32,
-    /// Sparse resources support: GPU can access partially resident buffers
-    sparseResidencyBuffer: VkBool32,
-    /// Sparse resources support: GPU can access partially resident 2D (non-MSAA non-depth/stencil) images
-    sparseResidencyImage2D: VkBool32,
-    /// Sparse resources support: GPU can access partially resident 3D images
-    sparseResidencyImage3D: VkBool32,
-    /// Sparse resources support: GPU can access partially resident MSAA 2D images with 2 samples
-    sparseResidency2Samples: VkBool32,
-    /// Sparse resources support: GPU can access partially resident MSAA 2D images with 4 samples
-    sparseResidency4Samples: VkBool32,
-    /// Sparse resources support: GPU can access partially resident MSAA 2D images with 8 samples
-    sparseResidency8Samples: VkBool32,
-    /// Sparse resources support: GPU can access partially resident MSAA 2D images with 16 samples
-    sparseResidency16Samples: VkBool32,
-    /// Sparse resources support: GPU can correctly access data aliased into multiple locations (opt-in)
-    sparseResidencyAliased: VkBool32,
-    /// multisample rate must be the same for all pipelines in a subpass
-    variableMultisampleRate: VkBool32,
-    /// Queries may be inherited from primary to secondary command buffers
-    inheritedQueries: VkBool32,
-  }
-}
-
-structure! {
   /// [VkPhysicalDeviceFeatures2](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPhysicalDeviceFeatures2.html)
   ///
   /// Struct Extends: [`VkDeviceCreateInfo`]
@@ -5397,16 +4911,6 @@ structure! {
     /// * **Optional:** true
     pNext: *mut c_void,
     memoryPriority: VkBool32,
-  }
-}
-
-structure! {
-  /// [VkPhysicalDeviceMemoryProperties](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPhysicalDeviceMemoryProperties.html)
-  VkPhysicalDeviceMemoryProperties {
-    memoryTypeCount: uint32_t,
-    memoryTypes: [VkMemoryType; VK_MAX_MEMORY_TYPES as usize],
-    memoryHeapCount: uint32_t,
-    memoryHeaps: [VkMemoryHeap; VK_MAX_MEMORY_HEAPS as usize],
   }
 }
 
@@ -7615,19 +7119,6 @@ structure! {
     /// * **Optional:** true
     pNext: *mut c_void,
     checkpointExecutionStageMask: VkPipelineStageFlags,
-  }
-}
-
-structure! {
-  /// [VkQueueFamilyProperties](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueueFamilyProperties.html)
-  VkQueueFamilyProperties {
-    /// Queue flags
-    /// * **Optional:** true
-    queueFlags: VkQueueFlags,
-    queueCount: uint32_t,
-    timestampValidBits: uint32_t,
-    /// Minimum alignment requirement for image transfers
-    minImageTransferGranularity: VkExtent3D,
   }
 }
 
