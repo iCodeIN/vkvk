@@ -173,6 +173,57 @@
 <span id="170">170</span>
 <span id="171">171</span>
 <span id="172">172</span>
+<span id="173">173</span>
+<span id="174">174</span>
+<span id="175">175</span>
+<span id="176">176</span>
+<span id="177">177</span>
+<span id="178">178</span>
+<span id="179">179</span>
+<span id="180">180</span>
+<span id="181">181</span>
+<span id="182">182</span>
+<span id="183">183</span>
+<span id="184">184</span>
+<span id="185">185</span>
+<span id="186">186</span>
+<span id="187">187</span>
+<span id="188">188</span>
+<span id="189">189</span>
+<span id="190">190</span>
+<span id="191">191</span>
+<span id="192">192</span>
+<span id="193">193</span>
+<span id="194">194</span>
+<span id="195">195</span>
+<span id="196">196</span>
+<span id="197">197</span>
+<span id="198">198</span>
+<span id="199">199</span>
+<span id="200">200</span>
+<span id="201">201</span>
+<span id="202">202</span>
+<span id="203">203</span>
+<span id="204">204</span>
+<span id="205">205</span>
+<span id="206">206</span>
+<span id="207">207</span>
+<span id="208">208</span>
+<span id="209">209</span>
+<span id="210">210</span>
+<span id="211">211</span>
+<span id="212">212</span>
+<span id="213">213</span>
+<span id="214">214</span>
+<span id="215">215</span>
+<span id="216">216</span>
+<span id="217">217</span>
+<span id="218">218</span>
+<span id="219">219</span>
+<span id="220">220</span>
+<span id="221">221</span>
+<span id="222">222</span>
+<span id="223">223</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="doccomment">//! Vulkan types where you&#39;re supposed to use one among a list of possible</span>
 <span class="doccomment">//! variants.</span>
@@ -190,6 +241,9 @@
 
 <span class="kw">mod</span> <span class="ident">vk_structure_type</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">vk_structure_type</span>::<span class="kw-2">*</span>;
+
+<span class="kw">mod</span> <span class="ident">vk_format</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">vk_format</span>::<span class="kw-2">*</span>;
 
 <span class="macro">vk_enumeration</span><span class="macro">!</span> {
   <span class="doccomment">/// [VkObjectType](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkObjectType.html)</span>
@@ -344,6 +398,54 @@
   <span class="doccomment">/// [VkPipelineCacheHeaderVersion](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineCacheHeaderVersion.html)</span>
   <span class="ident">VkPipelineCacheHeaderVersion</span> {
     <span class="ident">VK_PIPELINE_CACHE_HEADER_VERSION_ONE</span> <span class="op">=</span> <span class="number">1</span>,
+  }
+}
+
+<span class="macro">vk_enumeration</span><span class="macro">!</span> {
+  <span class="doccomment">/// [VkImageTiling](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageTiling.html)</span>
+  <span class="ident">VkImageTiling</span> {
+    <span class="ident">VK_IMAGE_TILING_OPTIMAL</span> <span class="op">=</span> <span class="number">0</span>,
+    <span class="ident">VK_IMAGE_TILING_LINEAR</span> <span class="op">=</span> <span class="number">1</span>,
+    <span class="doccomment">/// Provided by `VK_EXT_image_drm_format_modifier`</span>
+    <span class="ident">VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT</span> <span class="op">=</span> <span class="number">1000158000</span>,
+  }
+}
+
+<span class="macro">vk_enumeration</span><span class="macro">!</span> {
+  <span class="doccomment">/// [VkImageType](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageType.html)</span>
+  <span class="ident">VkImageType</span> {
+    <span class="ident">VK_IMAGE_TYPE_1D</span> <span class="op">=</span> <span class="number">0</span>,
+    <span class="ident">VK_IMAGE_TYPE_2D</span> <span class="op">=</span> <span class="number">1</span>,
+    <span class="ident">VK_IMAGE_TYPE_3D</span> <span class="op">=</span> <span class="number">2</span>,
+  }
+}
+
+<span class="macro">vk_enumeration</span><span class="macro">!</span> {
+  <span class="doccomment">/// [VkInternalAllocationType](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkInternalAllocationType.html)</span>
+  <span class="ident">VkInternalAllocationType</span> {
+    <span class="ident">VK_INTERNAL_ALLOCATION_TYPE_EXECUTABLE</span> <span class="op">=</span> <span class="number">0</span>,
+  }
+}
+
+<span class="macro">vk_enumeration</span><span class="macro">!</span> {
+  <span class="doccomment">/// [VkPhysicalDeviceType](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPhysicalDeviceType.html)</span>
+  <span class="ident">VkPhysicalDeviceType</span> {
+    <span class="ident">VK_PHYSICAL_DEVICE_TYPE_OTHER</span> <span class="op">=</span> <span class="number">0</span>,
+    <span class="ident">VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU</span> <span class="op">=</span> <span class="number">1</span>,
+    <span class="ident">VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU</span> <span class="op">=</span> <span class="number">2</span>,
+    <span class="ident">VK_PHYSICAL_DEVICE_TYPE_VIRTUAL_GPU</span> <span class="op">=</span> <span class="number">3</span>,
+    <span class="ident">VK_PHYSICAL_DEVICE_TYPE_CPU</span> <span class="op">=</span> <span class="number">4</span>,
+  }
+}
+
+<span class="macro">vk_enumeration</span><span class="macro">!</span> {
+  <span class="doccomment">/// [VkSystemAllocationScope](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSystemAllocationScope.html)</span>
+  <span class="ident">VkSystemAllocationScope</span> {
+    <span class="ident">VK_SYSTEM_ALLOCATION_SCOPE_COMMAND</span> <span class="op">=</span> <span class="number">0</span>,
+    <span class="ident">VK_SYSTEM_ALLOCATION_SCOPE_OBJECT</span> <span class="op">=</span> <span class="number">1</span>,
+    <span class="ident">VK_SYSTEM_ALLOCATION_SCOPE_CACHE</span> <span class="op">=</span> <span class="number">2</span>,
+    <span class="ident">VK_SYSTEM_ALLOCATION_SCOPE_DEVICE</span> <span class="op">=</span> <span class="number">3</span>,
+    <span class="ident">VK_SYSTEM_ALLOCATION_SCOPE_INSTANCE</span> <span class="op">=</span> <span class="number">4</span>,
   }
 }
 </pre></div>
