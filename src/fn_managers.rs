@@ -12,8 +12,8 @@ use super::*;
 pub struct PreInstanceFns {
   vkGetInstanceProcAddr_p: vkGetInstanceProcAddr_t,
   // (1.1) vkEnumerateInstanceVersion
-  // vkEnumerateInstanceExtensionProperties
-  // vkEnumerateInstanceLayerProperties
+  vkEnumerateInstanceExtensionProperties_p: vkEnumerateInstanceExtensionProperties_t,
+  vkEnumerateInstanceLayerProperties_p: vkEnumerateInstanceLayerProperties_t,
   vkCreateInstance_p: vkCreateInstance_t,
 }
 
@@ -23,11 +23,13 @@ impl PreInstanceFns {
     // non-null-function
     type NNF = unsafe extern "system" fn();
     let vkCreateInstance_p = t::<NNF, _>(vkGetInstanceProcAddr_p(VkInstance::null(), b"vkCreateInstance\0".as_ptr()).ok_or("vkCreateInstance")?);
+    let vkEnumerateInstanceExtensionProperties_p = t::<NNF, _>(vkGetInstanceProcAddr_p(VkInstance::null(), b"vkEnumerateInstanceExtensionProperties\0".as_ptr()).ok_or("vkEnumerateInstanceExtensionProperties")?);
+    let vkEnumerateInstanceLayerProperties_p = t::<NNF, _>(vkGetInstanceProcAddr_p(VkInstance::null(), b"vkEnumerateInstanceLayerProperties\0".as_ptr()).ok_or("vkEnumerateInstanceLayerProperties")?);
     Ok(Self {
       vkGetInstanceProcAddr_p,
-      // vkEnumerateInstanceVersion
-      // vkEnumerateInstanceExtensionProperties
-      // vkEnumerateInstanceLayerProperties
+      // (1.1) vkEnumerateInstanceVersion_p
+      vkEnumerateInstanceExtensionProperties_p,
+      vkEnumerateInstanceLayerProperties_p,
       vkCreateInstance_p,
     })
   }
@@ -35,6 +37,16 @@ impl PreInstanceFns {
   /// [vkCreateInstance](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateInstance.html)
   pub unsafe fn CreateInstance(&self, pCreateInfo: &VkInstanceCreateInfo, pAllocator: Option<&VkAllocationCallbacks>, pInstance: &mut VkInstance) -> VkResult {
     (self.vkCreateInstance_p)(pCreateInfo, pAllocator, pInstance)
+  }
+
+  /// [vkEnumerateInstanceExtensionProperties](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEnumerateInstanceExtensionProperties.html)
+  pub unsafe fn EnumerateInstanceExtensionProperties(&self, pLayerName: *const char, pPropertyCount: &mut uint32_t, pProperties: *mut VkExtensionProperties) -> VkResult {
+    (self.vkEnumerateInstanceExtensionProperties_p)(pLayerName, pPropertyCount, pProperties)
+  }
+
+  /// [vkEnumerateInstanceLayerProperties](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEnumerateInstanceLayerProperties.html)
+  pub unsafe fn EnumerateInstanceLayerProperties(&self, pPropertyCount: &mut uint32_t, pProperties: *mut VkLayerProperties) -> VkResult {
+    (self.vkEnumerateInstanceLayerProperties_p)(pPropertyCount, pProperties)
   }
 
   /// [vkGetInstanceProcAddr](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetInstanceProcAddr.html)
@@ -59,6 +71,10 @@ pub struct InstanceFns {
   vkGetPhysicalDeviceQueueFamilyProperties_p: vkGetPhysicalDeviceQueueFamilyProperties_t,
   vkGetPhysicalDeviceMemoryProperties_p: vkGetPhysicalDeviceMemoryProperties_t,
   vkGetDeviceProcAddr_p: vkGetDeviceProcAddr_t,
+  vkCreateDevice_p: vkCreateDevice_t,
+  vkDestroyDevice_p: vkDestroyDevice_t,
+  vkEnumerateDeviceExtensionProperties_p: vkEnumerateDeviceExtensionProperties_t,
+  vkEnumerateDeviceLayerProperties_p: vkEnumerateDeviceLayerProperties_t,
 }
 
 impl core::ops::Deref for InstanceFns {
@@ -116,6 +132,26 @@ impl InstanceFns {
   /// [vkGetDeviceProcAddr](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetDeviceProcAddr.html)
   pub unsafe fn GetDeviceProcAddr(&self, device: VkDevice, pName: *const char) -> PFN_vkVoidFunction {
     (self.vkGetDeviceProcAddr_p)(device, pName)
+  }
+
+  /// [vkCreateDevice](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateDevice.html)
+  pub unsafe fn CreateDevice(&self, physicalDevice: VkPhysicalDevice, pCreateInfo: &VkDeviceCreateInfo, pAllocator: Option<&VkAllocationCallbacks>, pDevice: &mut VkDevice) -> VkResult {
+    (self.vkCreateDevice_p)(physicalDevice, pCreateInfo, pAllocator, pDevice)
+  }
+
+  /// [vkDestroyDevice](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyDevice.html)
+  pub unsafe fn DestroyDevice(&self, device: VkDevice, pAllocator: Option<&VkAllocationCallbacks>) {
+    (self.vkDestroyDevice_p)(device, pAllocator)
+  }
+
+  /// [vkEnumerateDeviceExtensionProperties](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEnumerateDeviceExtensionProperties.html)
+  pub unsafe fn EnumerateDeviceExtensionProperties(&self, physicalDevice: VkPhysicalDevice, pLayerName: *const char, pPropertyCount: *mut uint32_t, pProperties: *mut VkExtensionProperties) -> VkResult {
+    (self.vkEnumerateDeviceExtensionProperties_p)(physicalDevice, pLayerName, pPropertyCount, pProperties)
+  }
+
+  /// [vkEnumerateDeviceLayerProperties](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEnumerateDeviceLayerProperties.html)
+  pub unsafe fn EnumerateDeviceLayerProperties(&self, physicalDevice: VkPhysicalDevice, pPropertyCount: *mut uint32_t, pProperties: *mut VkLayerProperties) -> VkResult {
+    (self.vkEnumerateDeviceLayerProperties_p)(physicalDevice, pPropertyCount, pProperties)
   }
 }
 

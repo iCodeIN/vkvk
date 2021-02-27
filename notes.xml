@@ -110,24 +110,24 @@
             <!-- <command name="vkGetDeviceProcAddr"/> -->
         </require>
         <require comment="Device commands">
-            <type name="VkDevice"/>
-            <type name="VkDeviceCreateFlags"/>
-            <type name="VkDeviceCreateInfo"/>
-            <type name="VkDeviceQueueCreateFlagBits"/>
-            <type name="VkDeviceQueueCreateFlags"/>
-            <type name="VkDeviceQueueCreateInfo"/>
-            <command name="vkCreateDevice"/>
-            <command name="vkDestroyDevice"/>
+            <!-- <type name="VkDevice"/> -->
+            <!-- <type name="VkDeviceCreateFlags"/> -->
+            <!-- <type name="VkDeviceCreateInfo"/> -->
+            <!-- <type name="VkDeviceQueueCreateFlagBits"/> -->
+            <!-- <type name="VkDeviceQueueCreateFlags"/> -->
+            <!-- <type name="VkDeviceQueueCreateInfo"/> -->
+            <!-- <command name="vkCreateDevice"/> -->
+            <!-- <command name="vkDestroyDevice"/> -->
         </require>
         <require comment="Extension discovery commands">
-            <type name="VkExtensionProperties"/>
-            <command name="vkEnumerateInstanceExtensionProperties"/>
-            <command name="vkEnumerateDeviceExtensionProperties"/>
+            <!-- <type name="VkExtensionProperties"/> -->
+            <!-- <command name="vkEnumerateInstanceExtensionProperties"/> -->
+            <!-- <command name="vkEnumerateDeviceExtensionProperties"/> -->
         </require>
         <require comment="Layer discovery commands">
-            <type name="VkLayerProperties"/>
-            <command name="vkEnumerateInstanceLayerProperties"/>
-            <command name="vkEnumerateDeviceLayerProperties"/>
+            <!-- <type name="VkLayerProperties"/> -->
+            <!-- <command name="vkEnumerateInstanceLayerProperties"/> -->
+            <!-- <command name="vkEnumerateDeviceLayerProperties"/> -->
         </require>
         <require comment="Queue commands">
             <type name="VkPipelineStageFlagBits"/>

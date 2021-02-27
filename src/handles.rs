@@ -11,7 +11,7 @@ use super::*;
 ///
 /// * Parent Object: none
 /// * ObjectTypeEnum: [`VK_OBJECT_TYPE_INSTANCE`]
-#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
 #[repr(transparent)]
 pub struct VkInstance(*mut c_void);
 impl Default for VkInstance {
@@ -34,7 +34,7 @@ impl VkInstance {
 ///
 /// * Parent Object: [`VkInstance`]
 /// * ObjectTypeEnum: [`VK_OBJECT_TYPE_PHYSICAL_DEVICE`]
-#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
 #[repr(transparent)]
 pub struct VkPhysicalDevice(*mut c_void);
 impl Default for VkPhysicalDevice {
@@ -57,7 +57,7 @@ impl VkPhysicalDevice {
 ///
 /// * Parent: [`VkPhysicalDevice`]
 /// * ObjectTypeEnum: [`VK_OBJECT_TYPE_DEVICE`]
-#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
 #[repr(transparent)]
 pub struct VkDevice(*mut c_void);
 impl Default for VkDevice {

@@ -14,7 +14,7 @@ chlorine = "1"
 fermium = "20014"
 
 [features]
-default = ["alloc", "impl_enumeration_precise_debug", "impl_flag_bits_precise_debug", "dynamic_link_vkGetInstanceProcAddr"]
+default = ["alloc", "impl_enumeration_precise_debug", "impl_flag_bits_precise_debug"]
 alloc = []
 impl_enumeration_precise_debug = []
 impl_flag_bits_precise_debug = []

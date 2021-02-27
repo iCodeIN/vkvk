@@ -94,11 +94,6 @@ pub type PFN_vkDestroyDescriptorUpdateTemplate = Option<vkDestroyDescriptorUpdat
 /// Non-nullable pointer to [vkDestroyDescriptorUpdateTemplate](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyDescriptorUpdateTemplate.html)
 pub type vkDestroyDescriptorUpdateTemplate_t = unsafe extern "system" fn(device: VkDevice, descriptorUpdateTemplate: VkDescriptorUpdateTemplate, pAllocator: *const VkAllocationCallbacks);
 
-/// Nullable pointer to [vkDestroyDevice](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyDevice.html)
-pub type PFN_vkDestroyDevice = Option<vkDestroyDevice_t>;
-/// Non-nullable pointer to [vkDestroyDevice](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyDevice.html)
-pub type vkDestroyDevice_t = unsafe extern "system" fn(device: VkDevice, pAllocator: *const VkAllocationCallbacks);
-
 /// Nullable pointer to [vkDestroyEvent](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyEvent.html)
 pub type PFN_vkDestroyEvent = Option<vkDestroyEvent_t>;
 /// Non-nullable pointer to [vkDestroyEvent](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyEvent.html)
@@ -1569,11 +1564,6 @@ pub type PFN_vkCreateDisplayModeKHR = Option<vkCreateDisplayModeKHR_t>;
 /// Non-nullable pointer to [vkCreateDisplayModeKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateDisplayModeKHR.html)
 pub type vkCreateDisplayModeKHR_t = unsafe extern "system" fn(physicalDevice: VkPhysicalDevice, display: VkDisplayKHR, pCreateInfo: *const VkDisplayModeCreateInfoKHR, pAllocator: *const VkAllocationCallbacks, pMode: *mut VkDisplayModeKHR) -> VkResult;
 
-/// Nullable pointer to [vkCreateDevice](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateDevice.html)
-pub type PFN_vkCreateDevice = Option<vkCreateDevice_t>;
-/// Non-nullable pointer to [vkCreateDevice](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateDevice.html)
-pub type vkCreateDevice_t = unsafe extern "system" fn(physicalDevice: VkPhysicalDevice, pCreateInfo: *const VkDeviceCreateInfo, pAllocator: *const VkAllocationCallbacks, pDevice: *mut VkDevice) -> VkResult;
-
 /// Nullable pointer to [vkAcquireFullScreenExclusiveModeEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkAcquireFullScreenExclusiveModeEXT.html)
 pub type PFN_vkAcquireFullScreenExclusiveModeEXT = Option<vkAcquireFullScreenExclusiveModeEXT_t>;
 /// Non-nullable pointer to [vkAcquireFullScreenExclusiveModeEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkAcquireFullScreenExclusiveModeEXT.html)
@@ -1786,16 +1776,6 @@ pub type PFN_vkGetPastPresentationTimingGOOGLE = Option<vkGetPastPresentationTim
 /// Non-nullable pointer to [vkGetPastPresentationTimingGOOGLE](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPastPresentationTimingGOOGLE.html)
 pub type vkGetPastPresentationTimingGOOGLE_t = unsafe extern "system" fn(device: VkDevice, swapchain: VkSwapchainKHR, pPresentationTimingCount: *mut uint32_t, pPresentationTimings: *mut VkPastPresentationTimingGOOGLE) -> VkResult;
 
-/// Nullable pointer to [vkEnumerateDeviceLayerProperties](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEnumerateDeviceLayerProperties.html)
-pub type PFN_vkEnumerateDeviceLayerProperties = Option<vkEnumerateDeviceLayerProperties_t>;
-/// Non-nullable pointer to [vkEnumerateDeviceLayerProperties](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEnumerateDeviceLayerProperties.html)
-pub type vkEnumerateDeviceLayerProperties_t = unsafe extern "system" fn(physicalDevice: VkPhysicalDevice, pPropertyCount: *mut uint32_t, pProperties: *mut VkLayerProperties) -> VkResult;
-
-/// Nullable pointer to [vkEnumerateInstanceLayerProperties](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEnumerateInstanceLayerProperties.html)
-pub type PFN_vkEnumerateInstanceLayerProperties = Option<vkEnumerateInstanceLayerProperties_t>;
-/// Non-nullable pointer to [vkEnumerateInstanceLayerProperties](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEnumerateInstanceLayerProperties.html)
-pub type vkEnumerateInstanceLayerProperties_t = unsafe extern "system" fn(pPropertyCount: &mut uint32_t, pProperties: *mut VkLayerProperties) -> VkResult;
-
 /// Nullable pointer to [vkGetDisplayModeProperties2KHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetDisplayModeProperties2KHR.html)
 pub type PFN_vkGetDisplayModeProperties2KHR = Option<vkGetDisplayModeProperties2KHR_t>;
 /// Non-nullable pointer to [vkGetDisplayModeProperties2KHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetDisplayModeProperties2KHR.html)
@@ -1890,16 +1870,6 @@ pub type vkEnumeratePhysicalDeviceGroups_t = unsafe extern "system" fn(instance:
 pub type PFN_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR = Option<vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR_t>;
 /// Non-nullable pointer to [vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR.html)
 pub type vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR_t = unsafe extern "system" fn(physicalDevice: VkPhysicalDevice, queueFamilyIndex: uint32_t, pCounterCount: *mut uint32_t, pCounters: *mut VkPerformanceCounterKHR, pCounterDescriptions: *mut VkPerformanceCounterDescriptionKHR) -> VkResult;
-
-/// Nullable pointer to [vkEnumerateDeviceExtensionProperties](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEnumerateDeviceExtensionProperties.html)
-pub type PFN_vkEnumerateDeviceExtensionProperties = Option<vkEnumerateDeviceExtensionProperties_t>;
-/// Non-nullable pointer to [vkEnumerateDeviceExtensionProperties](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEnumerateDeviceExtensionProperties.html)
-pub type vkEnumerateDeviceExtensionProperties_t = unsafe extern "system" fn(physicalDevice: VkPhysicalDevice, pLayerName: *const char, pPropertyCount: *mut uint32_t, pProperties: *mut VkExtensionProperties) -> VkResult;
-
-/// Nullable pointer to [vkEnumerateInstanceExtensionProperties](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEnumerateInstanceExtensionProperties.html)
-pub type PFN_vkEnumerateInstanceExtensionProperties = Option<vkEnumerateInstanceExtensionProperties_t>;
-/// Non-nullable pointer to [vkEnumerateInstanceExtensionProperties](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEnumerateInstanceExtensionProperties.html)
-pub type vkEnumerateInstanceExtensionProperties_t = unsafe extern "system" fn(pLayerName: *const char, pPropertyCount: &mut uint32_t, pProperties: *mut VkExtensionProperties) -> VkResult;
 
 /// Nullable pointer to [vkGetPhysicalDeviceSurfaceFormats2KHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPhysicalDeviceSurfaceFormats2KHR.html)
 pub type PFN_vkGetPhysicalDeviceSurfaceFormats2KHR = Option<vkGetPhysicalDeviceSurfaceFormats2KHR_t>;

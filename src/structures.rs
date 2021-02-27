@@ -794,3 +794,121 @@ pub struct VkQueueFamilyProperties {
   /// Minimum alignment requirement for image transfers
   pub minImageTransferGranularity: VkExtent3D,
 }
+
+/// [VkDeviceCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceCreateInfo.html)
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkDeviceCreateInfo {
+  ///
+  /// * **Values:** [`VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO`]
+  pub sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pub pNext: *const c_void,
+  ///
+  /// * **Optional:** true
+  pub flags: VkDeviceCreateFlags,
+  pub queueCreateInfoCount: uint32_t,
+  ///
+  /// * **Len:** queueCreateInfoCount
+  pub pQueueCreateInfos: *const VkDeviceQueueCreateInfo,
+  ///
+  /// * **Optional:** true
+  pub enabledLayerCount: uint32_t,
+  /// Ordered list of layer names to be enabled
+  /// * **Len:** enabledLayerCount,null-terminated
+  pub ppEnabledLayerNames: *const u8,
+  ///
+  /// * **Optional:** true
+  pub enabledExtensionCount: uint32_t,
+  ///
+  /// * **Len:** enabledExtensionCount,null-terminated
+  pub ppEnabledExtensionNames: *const u8,
+  ///
+  /// * **Optional:** true
+  pub pEnabledFeatures: *const VkPhysicalDeviceFeatures,
+}
+impl Default for VkDeviceCreateInfo {
+  fn default() -> Self {
+    unsafe { zeroed() }
+  }
+}
+
+/// [VkDeviceQueueCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceQueueCreateInfo.html)
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkDeviceQueueCreateInfo {
+  ///
+  /// * Values: [`VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO`]
+  pub sType: VkStructureType,
+  ///
+  /// * Optional: true
+  pub pNext: *const void,
+  ///
+  /// * Optional: true
+  pub flags: VkDeviceQueueCreateFlags,
+  pub queueFamilyIndex: uint32_t,
+  pub queueCount: uint32_t,
+  ///
+  /// * Len: queueCount
+  pub pQueuePriorities: *const float,
+}
+impl Default for VkDeviceQueueCreateInfo {
+  fn default() -> Self {
+    unsafe { zeroed() }
+  }
+}
+
+/// [VkExtensionProperties](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExtensionProperties.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkExtensionProperties {
+  /// extension name
+  pub extensionName: [char; VK_MAX_EXTENSION_NAME_SIZE],
+  /// version of the extension specification implemented
+  pub specVersion: uint32_t,
+}
+impl Default for VkExtensionProperties {
+  fn default() -> Self {
+    unsafe { zeroed() }
+  }
+}
+impl core::fmt::Debug for VkExtensionProperties {
+  #[rustfmt::skip]
+  fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+    f.debug_struct("VkExtensionProperties")
+      .field("extensionName", &str_from_null_terminated_byte_slice(&self.extensionName).unwrap_or("<invalid utf8>"))
+      .field("specVersion", &self.specVersion)
+      .finish()
+  }
+}
+
+/// [VkLayerProperties](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkLayerProperties.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkLayerProperties {
+  /// layer name
+  pub layerName: [char; VK_MAX_EXTENSION_NAME_SIZE],
+  /// version of the layer specification implemented
+  pub specVersion: VulkanVersion,
+  /// build or release version of the layer's library
+  pub implementationVersion: uint32_t,
+  /// Free-form description of the layer
+  pub description: [char; VK_MAX_DESCRIPTION_SIZE],
+}
+impl Default for VkLayerProperties {
+  fn default() -> Self {
+    unsafe { zeroed() }
+  }
+}
+impl core::fmt::Debug for VkLayerProperties {
+  #[rustfmt::skip]
+  fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+    f.debug_struct("VkLayerProperties")
+      .field("layerName", &str_from_null_terminated_byte_slice(&self.layerName).unwrap_or("<invalid utf8>"))
+      .field("specVersion", &self.specVersion)
+      .field("implementationVersion", &self.implementationVersion)
+      .field("description", &str_from_null_terminated_byte_slice(&self.description).unwrap_or("<invalid utf8>"))
+      .finish()
+  }
+}

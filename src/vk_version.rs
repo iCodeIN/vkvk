@@ -54,14 +54,8 @@ impl VulkanVersion {
 }
 
 impl core::fmt::Debug for VulkanVersion {
-  ///
-  /// * Standard: "VulkanVersion({major}.{minor}.{patch})"
-  /// * Alternate: "VulkanVersion({self.0})"
+  /// Formats as "VulkanVersion({major}.{minor}.{patch})"
   fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-    if f.alternate() {
-      write!(f, "VulkanVersion({})", self.0)
-    } else {
-      write!(f, "VulkanVersion({major}.{minor}.{patch})", major = self.major(), minor = self.minor(), patch = self.patch(),)
-    }
+    write!(f, "VulkanVersion({major}.{minor}.{patch})", major = self.major(), minor = self.minor(), patch = self.patch(),)
   }
 }

@@ -18,13 +18,6 @@ flag_bits! {
 }
 
 flag_bits! {
-  /// [VkDeviceQueueCreateFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceQueueCreateFlagBits.html)
-  ///
-  /// currently reserved for future use.
-  VkDeviceQueueCreateFlagBits = VkDeviceQueueCreateFlags {}
-}
-
-flag_bits! {
   /// [VkBufferUsageFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBufferUsageFlagBits.html)
   VkBufferUsageFlagBits = VkBufferUsageFlags {
     /// Can be used as a source of transfer operations
@@ -788,12 +781,6 @@ flag_bits! {
   ///
   /// currently reserved for future use.
   VkDescriptorBindingFlags {}
-}
-flag_bits! {
-  /// [VkDeviceCreateFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceCreateFlags.html)
-  ///
-  /// currently reserved for future use.
-  VkDeviceCreateFlags {}
 }
 flag_bits! {
   /// [VkDeviceGroupPresentModeFlagsKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceGroupPresentModeFlagsKHR.html)

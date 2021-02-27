@@ -110,8 +110,6 @@ pub struct VkDeviceSize(pub uint64_t);
 pub struct VkDeviceAddress(pub uint64_t);
 
 pub const VK_LUID_SIZE: usize = 8;
-pub const VK_MAX_EXTENSION_NAME_SIZE: usize = 256;
-pub const VK_MAX_DESCRIPTION_SIZE: usize = 256;
 pub const VK_QUEUE_FAMILY_EXTERNAL: u32 = (!0) - 1;
 pub const VK_QUEUE_FAMILY_FOREIGN_EXT: u32 = (!0) - 2;
 pub const VK_MAX_DEVICE_GROUP_SIZE: usize = 32;

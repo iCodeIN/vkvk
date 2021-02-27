@@ -125,46 +125,6 @@ structure! {
 }
 
 structure! {
-  /// [VkExtensionProperties](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExtensionProperties.html)
-  VkExtensionProperties {
-    /// extension name
-    extensionName: [char; VK_MAX_EXTENSION_NAME_SIZE],
-    /// version of the extension specification implemented
-    specVersion: uint32_t,
-  }
-}
-
-structure! {
-  /// [VkLayerProperties](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkLayerProperties.html)
-  VkLayerProperties {
-    /// layer name
-    layerName: [char; VK_MAX_EXTENSION_NAME_SIZE],
-    /// version of the layer specification implemented
-    specVersion: VulkanVersion,
-    /// build or release version of the layer's library
-    implementationVersion: uint32_t,
-    /// Free-form description of the layer
-    description: [char; VK_MAX_DESCRIPTION_SIZE],
-  }
-}
-
-structure! {
-  /// [VkDeviceQueueCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceQueueCreateInfo.html)
-  VkDeviceQueueCreateInfo {
-    /// * Values: [`VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO`]
-    sType:VkStructureType,
-    /// * Optional: true
-    pNext: *const void,
-    /// * Optional: true
-    flags: VkDeviceQueueCreateFlags,
-    queueFamilyIndex: uint32_t,
-    queueCount: uint32_t,
-    /// * Len: queueCount
-    pQueuePriorities: *const float,
-  }
-}
-
-structure! {
   /// [VkAabbPositionsKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkAabbPositionsKHR.html)
   VkAabbPositionsKHR {
     minX: float,
@@ -1677,32 +1637,6 @@ structure! {
     offset: size_t,
     /// Stride between two descriptors in pData when writing more than one descriptor
     stride: size_t,
-  }
-}
-
-structure! {
-  /// [VkDeviceCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceCreateInfo.html)
-  VkDeviceCreateInfo {
-    /// * **Values:** [`VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO`]
-    sType: VkStructureType,
-    /// * **Optional:** true
-    pNext: *const c_void,
-    /// * **Optional:** true
-    flags: VkDeviceCreateFlags,
-    queueCreateInfoCount: uint32_t,
-    /// * **Len:** queueCreateInfoCount
-    pQueueCreateInfos: *const VkDeviceQueueCreateInfo,
-    /// * **Optional:** true
-    enabledLayerCount: uint32_t,
-    /// Ordered list of layer names to be enabled
-    /// * **Len:** enabledLayerCount,null-terminated
-    ppEnabledLayerNames: *const u8,
-    /// * **Optional:** true
-    enabledExtensionCount: uint32_t,
-    /// * **Len:** enabledExtensionCount,null-terminated
-    ppEnabledExtensionNames: *const u8,
-    /// * **Optional:** true
-    pEnabledFeatures: *const VkPhysicalDeviceFeatures,
   }
 }
 

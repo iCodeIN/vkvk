@@ -1,5 +1,3 @@
-#![allow(dead_code)]
-
 //! Function types.
 //!
 //! The naming convention here is that a `PFN_` prefix is a "pointer to a
@@ -54,3 +52,15 @@ pub(crate) type vkGetPhysicalDeviceProperties_t = unsafe extern "system" fn(phys
 pub(crate) type vkGetPhysicalDeviceQueueFamilyProperties_t = unsafe extern "system" fn(physicalDevice: VkPhysicalDevice, pQueueFamilyPropertyCount: &mut uint32_t, pQueueFamilyProperties: *mut VkQueueFamilyProperties);
 
 pub(crate) type vkGetPhysicalDeviceMemoryProperties_t = unsafe extern "system" fn(physicalDevice: VkPhysicalDevice, pMemoryProperties: &mut VkPhysicalDeviceMemoryProperties);
+
+pub(crate) type vkCreateDevice_t = unsafe extern "system" fn(physicalDevice: VkPhysicalDevice, pCreateInfo: &VkDeviceCreateInfo, pAllocator: Option<&VkAllocationCallbacks>, pDevice: &mut VkDevice) -> VkResult;
+
+pub(crate) type vkDestroyDevice_t = unsafe extern "system" fn(device: VkDevice, pAllocator: Option<&VkAllocationCallbacks>);
+
+pub(crate) type vkEnumerateInstanceExtensionProperties_t = unsafe extern "system" fn(pLayerName: *const char, pPropertyCount: &mut uint32_t, pProperties: *mut VkExtensionProperties) -> VkResult;
+
+pub(crate) type vkEnumerateDeviceExtensionProperties_t = unsafe extern "system" fn(physicalDevice: VkPhysicalDevice, pLayerName: *const char, pPropertyCount: *mut uint32_t, pProperties: *mut VkExtensionProperties) -> VkResult;
+
+pub(crate) type vkEnumerateInstanceLayerProperties_t = unsafe extern "system" fn(pPropertyCount: &mut uint32_t, pProperties: *mut VkLayerProperties) -> VkResult;
+
+pub(crate) type vkEnumerateDeviceLayerProperties_t = unsafe extern "system" fn(physicalDevice: VkPhysicalDevice, pPropertyCount: *mut uint32_t, pProperties: *mut VkLayerProperties) -> VkResult;

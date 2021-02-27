@@ -342,3 +342,17 @@ vk_flag_bits! {
     VK_SAMPLE_COUNT_64_BIT = (1<<6),
   }
 }
+
+vk_flag_bits! {
+  /// [VkDeviceCreateFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceCreateFlags.html)
+  ///
+  /// currently reserved for future use.
+  VkDeviceCreateFlagBits = VkDeviceCreateFlags {}
+}
+
+vk_flag_bits! {
+  /// [VkDeviceQueueCreateFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceQueueCreateFlagBits.html)
+  ///
+  /// currently reserved for future use.
+  VkDeviceQueueCreateFlagBits = VkDeviceQueueCreateFlags {}
+}

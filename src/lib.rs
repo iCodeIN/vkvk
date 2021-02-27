@@ -12,6 +12,14 @@ use alloc::vec::Vec;
 #[macro_use]
 mod macros;
 
+/// Makes a `&str` from all bytes before the first `0` within the byte slice.
+///
+/// If the slice has no `0` then the entire slice is used.
+pub fn str_from_null_terminated_byte_slice(bytes: &[u8]) -> Result<&str, core::str::Utf8Error> {
+  let terminal_position = bytes.iter().copied().position(|u| u == 0).unwrap_or(bytes.len());
+  core::str::from_utf8(&bytes[..terminal_position])
+}
+
 #[rustfmt::skip]
 pub mod prelude {
   //! Lets you grab the entire crate as a single flat API.
@@ -33,6 +41,12 @@ pub mod prelude {
     VK_REMAINING_MIP_LEVELS,
     VK_SUBPASS_EXTERNAL,
     VK_WHOLE_SIZE,
+    VK_MAX_MEMORY_TYPES,
+    VK_MAX_MEMORY_HEAPS,
+    VK_MAX_PHYSICAL_DEVICE_NAME_SIZE,
+    VK_UUID_SIZE,
+    VK_MAX_EXTENSION_NAME_SIZE,
+    VK_MAX_DESCRIPTION_SIZE,
   };
 }
 
@@ -87,3 +101,7 @@ pub const VK_MAX_MEMORY_HEAPS: usize = 16;
 pub const VK_MAX_PHYSICAL_DEVICE_NAME_SIZE: usize = 256;
 
 pub const VK_UUID_SIZE: usize = 16;
+
+pub const VK_MAX_EXTENSION_NAME_SIZE: usize = 256;
+
+pub const VK_MAX_DESCRIPTION_SIZE: usize = 256;
