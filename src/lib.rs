@@ -23,6 +23,7 @@ pub mod prelude {
   pub use crate::enumerations::*;
   pub use crate::flag_bits::*;
   pub use crate::fn_types::*;
+  pub use crate::fn_managers::*;
   pub use crate::structures::*;
   pub use crate::{
     VK_ATTACHMENT_UNUSED,
@@ -47,14 +48,14 @@ use handles::*;
 pub mod non_dispatchable_handles;
 use non_dispatchable_handles::*;
 
-pub mod dynamic_link;
-use dynamic_link::*;
-
 pub mod enumerations;
 use enumerations::*;
 
 pub mod flag_bits;
 use flag_bits::*;
+
+pub mod fn_managers;
+use fn_managers::*;
 
 pub mod fn_types;
 use fn_types::*;
@@ -80,15 +81,9 @@ pub const VK_MAX_MEMORY_TYPES: usize = 32;
 
 /// The maximum number of unique memory heaps.
 ///
-/// Each heap supports 1 or more memory types.
+/// Each heap supports one or more memory types.
 pub const VK_MAX_MEMORY_HEAPS: usize = 16;
 
 pub const VK_MAX_PHYSICAL_DEVICE_NAME_SIZE: usize = 256;
 
 pub const VK_UUID_SIZE: usize = 16;
-
-// TODO: PreInstanceFns
-
-// TODO: InstanceFns
-
-// TODO: PhysicalDeviceFns

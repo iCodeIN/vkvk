@@ -1,5 +1,12 @@
 #![allow(dead_code)]
 
+//! Function types.
+//!
+//! The naming convention here is that a `PFN_` prefix is a "pointer to a
+//! function". These are all Option types around some function type.
+//!
+//! There's also a `_t` suffix, which is the non-nullable "inner" function type.
+
 use super::*;
 
 pub type PFN_vkAllocationFunction = Option<vkAllocationFunction_t>;
@@ -13,6 +20,10 @@ pub type PFN_vkInternalFreeNotification = Option<vkInternalFreeNotification_t>;
 pub type PFN_vkReallocationFunction = Option<vkReallocationFunction_t>;
 
 pub type PFN_vkVoidFunction = Option<vkVoidFunction_t>;
+
+pub type vkGetInstanceProcAddr_t = unsafe extern "system" fn(instance: VkInstance, pName: *const char) -> PFN_vkVoidFunction;
+
+pub type vkGetDeviceProcAddr_t = unsafe extern "system" fn(device: VkDevice, pName: *const char) -> PFN_vkVoidFunction;
 
 pub(crate) type vkAllocationFunction_t = unsafe extern "system" fn(pUserData: *mut void, size: size_t, alignment: size_t, allocationScope: VkSystemAllocationScope) -> *mut void;
 
@@ -43,7 +54,3 @@ pub(crate) type vkGetPhysicalDeviceProperties_t = unsafe extern "system" fn(phys
 pub(crate) type vkGetPhysicalDeviceQueueFamilyProperties_t = unsafe extern "system" fn(physicalDevice: VkPhysicalDevice, pQueueFamilyPropertyCount: &mut uint32_t, pQueueFamilyProperties: *mut VkQueueFamilyProperties);
 
 pub(crate) type vkGetPhysicalDeviceMemoryProperties_t = unsafe extern "system" fn(physicalDevice: VkPhysicalDevice, pMemoryProperties: &mut VkPhysicalDeviceMemoryProperties);
-
-pub(crate) type vkGetInstanceProcAddr_t = unsafe extern "system" fn(instance: VkInstance, pName: *const char) -> PFN_vkVoidFunction;
-
-pub(crate) type vkGetDeviceProcAddr_t = unsafe extern "system" fn(device: VkDevice, pName: *const char) -> PFN_vkVoidFunction;
