@@ -2,6 +2,11 @@
 
 use super::*;
 
+use core::mem::transmute as t;
+
+/// non-null-function
+type NNF = unsafe extern "system" fn();
+
 /// Holds functions from [vkGetInstanceProcAddr][vkGIPA] that **do not** require
 /// a [`VkInstance`] to look up.
 ///
@@ -11,26 +16,23 @@ use super::*;
 #[derive(Clone, Copy)]
 pub struct PreInstanceFns {
   vkGetInstanceProcAddr_p: vkGetInstanceProcAddr_t,
-  // (1.1) vkEnumerateInstanceVersion
   vkEnumerateInstanceExtensionProperties_p: vkEnumerateInstanceExtensionProperties_t,
   vkEnumerateInstanceLayerProperties_p: vkEnumerateInstanceLayerProperties_t,
   vkCreateInstance_p: vkCreateInstance_t,
+  // (1.1) vkEnumerateInstanceVersion
 }
 
 impl PreInstanceFns {
   pub unsafe fn load_from(vkGetInstanceProcAddr_p: vkGetInstanceProcAddr_t) -> Result<Self, &'static str> {
-    use core::mem::transmute as t;
-    // non-null-function
-    type NNF = unsafe extern "system" fn();
     let vkCreateInstance_p = t::<NNF, _>(vkGetInstanceProcAddr_p(VkInstance::null(), b"vkCreateInstance\0".as_ptr()).ok_or("vkCreateInstance")?);
     let vkEnumerateInstanceExtensionProperties_p = t::<NNF, _>(vkGetInstanceProcAddr_p(VkInstance::null(), b"vkEnumerateInstanceExtensionProperties\0".as_ptr()).ok_or("vkEnumerateInstanceExtensionProperties")?);
     let vkEnumerateInstanceLayerProperties_p = t::<NNF, _>(vkGetInstanceProcAddr_p(VkInstance::null(), b"vkEnumerateInstanceLayerProperties\0".as_ptr()).ok_or("vkEnumerateInstanceLayerProperties")?);
     Ok(Self {
       vkGetInstanceProcAddr_p,
-      // (1.1) vkEnumerateInstanceVersion_p
       vkEnumerateInstanceExtensionProperties_p,
       vkEnumerateInstanceLayerProperties_p,
       vkCreateInstance_p,
+      // (1.1) vkEnumerateInstanceVersion_p
     })
   }
 
