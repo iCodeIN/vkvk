@@ -12,7 +12,7 @@ type NNF = unsafe extern "system" fn();
 ///
 /// These functions are used to create your `VkInstance` in the first place.
 ///
-/// [vkGIPA]: (https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetInstanceProcAddr.html)
+/// [vkGIPA]: https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetInstanceProcAddr.html
 #[derive(Clone, Copy)]
 pub struct PreInstanceFns {
   vkGetInstanceProcAddr_p: vkGetInstanceProcAddr_t,
@@ -60,7 +60,7 @@ impl PreInstanceFns {
 /// Holds functions from [vkGetInstanceProcAddr][vkGIPA] that require a
 /// [`VkInstance`] to look up.
 ///
-/// [vkGIPA]: (https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetInstanceProcAddr.html)
+/// [vkGIPA]: https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetInstanceProcAddr.html
 #[derive(Clone, Copy)]
 pub struct InstanceFns {
   pre_instance_fns: PreInstanceFns,

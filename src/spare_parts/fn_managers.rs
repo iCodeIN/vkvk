@@ -89,7 +89,7 @@ impl PreInstanceFns {
   /// [`enumerate_instance_layer_properties`][eilp] will work as a valid input
   /// to this function.
   ///
-  /// [eilp]: [Self::enumerate_instance_layer_properties]
+  /// [eilp]: Self::enumerate_instance_layer_properties
   ///
   /// See
   /// [vkEnumerateInstanceExtensionProperties](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEnumerateInstanceExtensionProperties.html)
