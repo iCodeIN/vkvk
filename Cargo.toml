@@ -11,7 +11,7 @@ license = "Zlib OR Apache-2.0 OR MIT"
 chlorine = "1"
 
 [dev-dependencies]
-fermium = "20014"
+fermium = { version = "20014.2", features = ["experimental_fast_build"] }
 
 [features]
 default = ["alloc", "impl_enumeration_precise_debug", "impl_flag_bits_precise_debug"]
