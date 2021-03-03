@@ -1,1 +1,1 @@
-initSidebarItems({"struct":[["VkBuffer","VkBuffer"],["VkImage","VkImage"]]});
+initSidebarItems({"struct":[["VkBuffer","VkBuffer"],["VkCommandPool","VkCommandPool"],["VkFence","VkFence"],["VkImage","VkImage"],["VkSemaphore","VkSemaphore"]]});

@@ -925,6 +925,44 @@
 <span id="922">922</span>
 <span id="923">923</span>
 <span id="924">924</span>
+<span id="925">925</span>
+<span id="926">926</span>
+<span id="927">927</span>
+<span id="928">928</span>
+<span id="929">929</span>
+<span id="930">930</span>
+<span id="931">931</span>
+<span id="932">932</span>
+<span id="933">933</span>
+<span id="934">934</span>
+<span id="935">935</span>
+<span id="936">936</span>
+<span id="937">937</span>
+<span id="938">938</span>
+<span id="939">939</span>
+<span id="940">940</span>
+<span id="941">941</span>
+<span id="942">942</span>
+<span id="943">943</span>
+<span id="944">944</span>
+<span id="945">945</span>
+<span id="946">946</span>
+<span id="947">947</span>
+<span id="948">948</span>
+<span id="949">949</span>
+<span id="950">950</span>
+<span id="951">951</span>
+<span id="952">952</span>
+<span id="953">953</span>
+<span id="954">954</span>
+<span id="955">955</span>
+<span id="956">956</span>
+<span id="957">957</span>
+<span id="958">958</span>
+<span id="959">959</span>
+<span id="960">960</span>
+<span id="961">961</span>
+<span id="962">962</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
 
@@ -1141,7 +1179,7 @@
 }
 <span class="kw">impl</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">VkMemoryBarrier</span> {
   <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-    <span class="ident">VkMemoryBarrier</span> { <span class="ident">sType</span>: <span class="ident">VK_STRUCTURE_TYPE_MEMORY_BARRIER</span>, ..<span class="kw">unsafe</span> { <span class="ident">zeroed</span>() } }
+    <span class="self">Self</span> { <span class="ident">sType</span>: <span class="ident">VK_STRUCTURE_TYPE_MEMORY_BARRIER</span>, ..<span class="kw">unsafe</span> { <span class="ident">zeroed</span>() } }
   }
 }
 
@@ -1250,7 +1288,7 @@
   <span class="doccomment">///</span>
   <span class="doccomment">/// * **Optional:** true</span>
   <span class="kw">pub</span> <span class="ident">pNext</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>,
-  <span class="doccomment">///</span>
+  <span class="doccomment">/// Reserved for future use.</span>
   <span class="doccomment">/// * **Optional:** true</span>
   <span class="kw">pub</span> <span class="ident">flags</span>: <span class="ident">VkInstanceCreateFlags</span>,
   <span class="doccomment">///</span>
@@ -1261,17 +1299,17 @@
   <span class="kw">pub</span> <span class="ident">enabledLayerCount</span>: <span class="ident">uint32_t</span>,
   <span class="doccomment">/// Ordered list of layer names to be enabled</span>
   <span class="doccomment">/// * **Len:** enabledLayerCount,null-terminated</span>
-  <span class="kw">pub</span> <span class="ident">ppEnabledLayerNames</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u8</span>,
+  <span class="kw">pub</span> <span class="ident">ppEnabledLayerNames</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u8</span>,
   <span class="doccomment">///</span>
   <span class="doccomment">/// * **Optional:** true</span>
   <span class="kw">pub</span> <span class="ident">enabledExtensionCount</span>: <span class="ident">uint32_t</span>,
   <span class="doccomment">/// Extension names to be enabled</span>
   <span class="doccomment">/// * **Len:** enabledExtensionCount,null-terminated</span>
-  <span class="kw">pub</span> <span class="ident">ppEnabledExtensionNames</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u8</span>,
+  <span class="kw">pub</span> <span class="ident">ppEnabledExtensionNames</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u8</span>,
 }
 <span class="kw">impl</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">VkInstanceCreateInfo</span> {
   <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-    <span class="kw">unsafe</span> { <span class="ident">zeroed</span>() }
+    <span class="self">Self</span> { <span class="ident">sType</span>: <span class="ident">VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO</span>, ..<span class="kw">unsafe</span> { <span class="ident">zeroed</span>() } }
   }
 }
 
@@ -1848,6 +1886,44 @@
 <span class="kw">impl</span> <span class="ident">VkLayerProperties</span> {
   <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">layer_name_str</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">str</span> {
     <span class="ident">str_from_null_terminated_byte_slice</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">layerName</span>).<span class="ident">unwrap_or</span>(<span class="string">&quot;&lt;invalid utf8&gt;&quot;</span>)
+  }
+}
+
+<span class="doccomment">/// [VkSubmitInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSubmitInfo.html)</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>)]</span>
+<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">VkSubmitInfo</span> {
+  <span class="doccomment">/// </span>
+  <span class="doccomment">/// * **Values:** [`VK_STRUCTURE_TYPE_SUBMIT_INFO`]</span>
+  <span class="ident">sType</span>: <span class="ident">VkStructureType</span>,
+  <span class="doccomment">/// </span>
+  <span class="doccomment">/// * **Optional:** true</span>
+  <span class="ident">pNext</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>,
+  <span class="doccomment">/// </span>
+  <span class="doccomment">/// * **Optional:** true</span>
+  <span class="ident">waitSemaphoreCount</span>: <span class="ident">uint32_t</span>,
+  <span class="doccomment">/// </span>
+  <span class="doccomment">/// * **Len:** waitSemaphoreCount</span>
+  <span class="ident">pWaitSemaphores</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">VkSemaphore</span>,
+  <span class="doccomment">/// </span>
+  <span class="doccomment">/// * **Len:** waitSemaphoreCount</span>
+  <span class="ident">pWaitDstStageMask</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">VkPipelineStageFlags</span>,
+  <span class="doccomment">/// </span>
+  <span class="doccomment">/// * **Optional:** true</span>
+  <span class="ident">commandBufferCount</span>: <span class="ident">uint32_t</span>,
+  <span class="doccomment">/// </span>
+  <span class="doccomment">/// * **Len:** commandBufferCount</span>
+  <span class="ident">pCommandBuffers</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">VkCommandBuffer</span>,
+  <span class="doccomment">/// </span>
+  <span class="doccomment">/// * **Optional:** true</span>
+  <span class="ident">signalSemaphoreCount</span>: <span class="ident">uint32_t</span>,
+  <span class="doccomment">/// </span>
+  <span class="doccomment">/// * **Len:** signalSemaphoreCount</span>
+  <span class="ident">pSignalSemaphores</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">VkSemaphore</span>,
+}
+<span class="kw">impl</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">VkSubmitInfo</span> {
+  <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="self">Self</span> { <span class="ident">sType</span>: <span class="ident">VK_STRUCTURE_TYPE_SUBMIT_INFO</span>, ..<span class="kw">unsafe</span> { <span class="ident">zeroed</span>() } }
   }
 }
 </pre></div>

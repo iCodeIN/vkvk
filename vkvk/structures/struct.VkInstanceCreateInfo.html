@@ -7,9 +7,9 @@
     pub flags: <a class="type" href="../../vkvk/flag_bits/type.VkInstanceCreateFlags.html" title="type vkvk::flag_bits::VkInstanceCreateFlags">VkInstanceCreateFlags</a>,
     pub pApplicationInfo: *const <a class="struct" href="../../vkvk/structures/struct.VkApplicationInfo.html" title="struct vkvk::structures::VkApplicationInfo">VkApplicationInfo</a>,
     pub enabledLayerCount: u32,
-    pub ppEnabledLayerNames: *const u8,
+    pub ppEnabledLayerNames: *const *const u8,
     pub enabledExtensionCount: u32,
-    pub ppEnabledExtensionNames: *const u8,
+    pub ppEnabledExtensionNames: *const *const u8,
 }</pre></div><div class="docblock"><p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkInstanceCreateInfo.html">VkInstanceCreateInfo</a></p>
 </div><h2 id="fields" class="fields small-section-header">
                        Fields<a href="#fields" class="anchor"></a></h2><span id="structfield.sType" class="structfield small-section-header"><a href="#structfield.sType" class="anchor field"></a><code>sType: <a class="struct" href="../../vkvk/enumerations/struct.VkStructureType.html" title="struct vkvk::enumerations::VkStructureType">VkStructureType</a></code></span><div class="docblock"><ul>
@@ -18,7 +18,8 @@
 </div><span id="structfield.pNext" class="structfield small-section-header"><a href="#structfield.pNext" class="anchor field"></a><code>pNext: *const <a class="enum" href="../../vkvk/vk_platform/enum.c_void.html" title="enum vkvk::vk_platform::c_void">c_void</a></code></span><div class="docblock"><ul>
 <li><strong>Optional:</strong> true</li>
 </ul>
-</div><span id="structfield.flags" class="structfield small-section-header"><a href="#structfield.flags" class="anchor field"></a><code>flags: <a class="type" href="../../vkvk/flag_bits/type.VkInstanceCreateFlags.html" title="type vkvk::flag_bits::VkInstanceCreateFlags">VkInstanceCreateFlags</a></code></span><div class="docblock"><ul>
+</div><span id="structfield.flags" class="structfield small-section-header"><a href="#structfield.flags" class="anchor field"></a><code>flags: <a class="type" href="../../vkvk/flag_bits/type.VkInstanceCreateFlags.html" title="type vkvk::flag_bits::VkInstanceCreateFlags">VkInstanceCreateFlags</a></code></span><div class="docblock"><p>Reserved for future use.</p>
+<ul>
 <li><strong>Optional:</strong> true</li>
 </ul>
 </div><span id="structfield.pApplicationInfo" class="structfield small-section-header"><a href="#structfield.pApplicationInfo" class="anchor field"></a><code>pApplicationInfo: *const <a class="struct" href="../../vkvk/structures/struct.VkApplicationInfo.html" title="struct vkvk::structures::VkApplicationInfo">VkApplicationInfo</a></code></span><div class="docblock"><ul>
@@ -27,14 +28,14 @@
 </div><span id="structfield.enabledLayerCount" class="structfield small-section-header"><a href="#structfield.enabledLayerCount" class="anchor field"></a><code>enabledLayerCount: u32</code></span><div class="docblock"><ul>
 <li><strong>Optional:</strong> true</li>
 </ul>
-</div><span id="structfield.ppEnabledLayerNames" class="structfield small-section-header"><a href="#structfield.ppEnabledLayerNames" class="anchor field"></a><code>ppEnabledLayerNames: *const u8</code></span><div class="docblock"><p>Ordered list of layer names to be enabled</p>
+</div><span id="structfield.ppEnabledLayerNames" class="structfield small-section-header"><a href="#structfield.ppEnabledLayerNames" class="anchor field"></a><code>ppEnabledLayerNames: *const *const u8</code></span><div class="docblock"><p>Ordered list of layer names to be enabled</p>
 <ul>
 <li><strong>Len:</strong> enabledLayerCount,null-terminated</li>
 </ul>
 </div><span id="structfield.enabledExtensionCount" class="structfield small-section-header"><a href="#structfield.enabledExtensionCount" class="anchor field"></a><code>enabledExtensionCount: u32</code></span><div class="docblock"><ul>
 <li><strong>Optional:</strong> true</li>
 </ul>
-</div><span id="structfield.ppEnabledExtensionNames" class="structfield small-section-header"><a href="#structfield.ppEnabledExtensionNames" class="anchor field"></a><code>ppEnabledExtensionNames: *const u8</code></span><div class="docblock"><p>Extension names to be enabled</p>
+</div><span id="structfield.ppEnabledExtensionNames" class="structfield small-section-header"><a href="#structfield.ppEnabledExtensionNames" class="anchor field"></a><code>ppEnabledExtensionNames: *const *const u8</code></span><div class="docblock"><p>Extension names to be enabled</p>
 <ul>
 <li><strong>Len:</strong> enabledExtensionCount,null-terminated</li>
 </ul>

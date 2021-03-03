@@ -106,6 +106,16 @@
 <span id="103">103</span>
 <span id="104">104</span>
 <span id="105">105</span>
+<span id="106">106</span>
+<span id="107">107</span>
+<span id="108">108</span>
+<span id="109">109</span>
+<span id="110">110</span>
+<span id="111">111</span>
+<span id="112">112</span>
+<span id="113">113</span>
+<span id="114">114</span>
+<span id="115">115</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="doccomment">//! Function types.</span>
 <span class="doccomment">//!</span>
@@ -203,7 +213,7 @@
 <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">type</span> <span class="ident">vkEnumerateDeviceExtensionProperties_t</span> <span class="op">=</span> <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;system&quot;</span> <span class="kw">fn</span>(
   <span class="ident">physicalDevice</span>: <span class="ident">VkPhysicalDevice</span>,
   <span class="ident">pLayerName</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">char</span>,
-  <span class="ident">pPropertyCount</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">uint32_t</span>,
+  <span class="ident">pPropertyCount</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">uint32_t</span>,
   <span class="ident">pProperties</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">VkExtensionProperties</span>,
 ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">VkResult</span>;
 
@@ -211,7 +221,17 @@
   <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;system&quot;</span> <span class="kw">fn</span>(<span class="ident">pPropertyCount</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">uint32_t</span>, <span class="ident">pProperties</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">VkLayerProperties</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">VkResult</span>;
 
 <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">type</span> <span class="ident">vkEnumerateDeviceLayerProperties_t</span> <span class="op">=</span>
-  <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;system&quot;</span> <span class="kw">fn</span>(<span class="ident">physicalDevice</span>: <span class="ident">VkPhysicalDevice</span>, <span class="ident">pPropertyCount</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">uint32_t</span>, <span class="ident">pProperties</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">VkLayerProperties</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">VkResult</span>;
+  <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;system&quot;</span> <span class="kw">fn</span>(<span class="ident">physicalDevice</span>: <span class="ident">VkPhysicalDevice</span>, <span class="ident">pPropertyCount</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">uint32_t</span>, <span class="ident">pProperties</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">VkLayerProperties</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">VkResult</span>;
+
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">type</span> <span class="ident">vkGetDeviceQueue_t</span> <span class="op">=</span>
+  <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;system&quot;</span> <span class="kw">fn</span>(<span class="ident">device</span>: <span class="ident">VkDevice</span>, <span class="ident">queueFamilyIndex</span>: <span class="ident">uint32_t</span>, <span class="ident">queueIndex</span>: <span class="ident">uint32_t</span>, <span class="ident">pQueue</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">VkQueue</span>);
+
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">type</span> <span class="ident">vkQueueSubmit_t</span> <span class="op">=</span>
+  <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;system&quot;</span> <span class="kw">fn</span>(<span class="ident">queue</span>: <span class="ident">VkQueue</span>, <span class="ident">submitCount</span>: <span class="ident">uint32_t</span>, <span class="ident">pSubmits</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">VkSubmitInfo</span>, <span class="ident">fence</span>: <span class="ident">VkFence</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">VkResult</span>;
+
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">type</span> <span class="ident">vkQueueWaitIdle_t</span> <span class="op">=</span> <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;system&quot;</span> <span class="kw">fn</span>(<span class="ident">queue</span>: <span class="ident">VkQueue</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">VkResult</span>;
+
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">type</span> <span class="ident">vkDeviceWaitIdle_t</span> <span class="op">=</span> <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;system&quot;</span> <span class="kw">fn</span>(<span class="ident">device</span>: <span class="ident">VkDevice</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">VkResult</span>;
 </pre></div>
 </section><section id="search" class="content hidden"></section><section class="footer"></section><div id="rustdoc-vars" data-root-path="../../" data-current-crate="vkvk"></div>
     <script src="../../main.js"></script><script src="../../source-script.js"></script><script src="../../source-files.js"></script><script defer src="../../search-index.js"></script></body></html>

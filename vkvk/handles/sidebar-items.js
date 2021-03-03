@@ -1,1 +1,1 @@
-initSidebarItems({"struct":[["VkDevice","VkDevice"],["VkInstance","VkInstance"],["VkPhysicalDevice","VkPhysicalDevice"]]});
+initSidebarItems({"struct":[["VkCommandBuffer","VkCommandBuffer"],["VkDevice","VkDevice"],["VkInstance","VkInstance"],["VkPhysicalDevice","VkPhysicalDevice"],["VkQueue","VkQueue"]]});

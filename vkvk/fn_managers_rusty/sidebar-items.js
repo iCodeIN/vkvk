@@ -1,1 +1,1 @@
-initSidebarItems({"struct":[["PreInstanceFnsRusty",""]]});
+initSidebarItems({"struct":[["InstanceFnsRusty",""],["PreInstanceFnsRusty",""]]});
