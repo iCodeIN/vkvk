@@ -32,6 +32,7 @@ pub mod prelude {
   pub use crate::flag_bits::*;
   pub use crate::fn_types::*;
   pub use crate::fn_managers::*;
+  pub use crate::fn_managers_rusty::*;
   pub use crate::structures::*;
   pub use crate::{
     VK_ATTACHMENT_UNUSED,
@@ -70,6 +71,9 @@ use flag_bits::*;
 
 pub mod fn_managers;
 use fn_managers::*;
+
+pub mod fn_managers_rusty;
+use fn_managers_rusty::*;
 
 pub mod fn_types;
 use fn_types::*;

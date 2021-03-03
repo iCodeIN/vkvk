@@ -882,6 +882,11 @@ impl core::fmt::Debug for VkExtensionProperties {
       .finish()
   }
 }
+impl VkExtensionProperties {
+  pub fn extension_name_str(&self) -> &str {
+    str_from_null_terminated_byte_slice(&self.extensionName).unwrap_or("<invalid utf8>")
+  }
+}
 
 /// [VkLayerProperties](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkLayerProperties.html)
 #[derive(Clone, Copy, PartialEq, Eq, Hash)]
@@ -910,5 +915,10 @@ impl core::fmt::Debug for VkLayerProperties {
       .field("implementationVersion", &self.implementationVersion)
       .field("description", &str_from_null_terminated_byte_slice(&self.description).unwrap_or("<invalid utf8>"))
       .finish()
+  }
+}
+impl VkLayerProperties {
+  pub fn layer_name_str(&self) -> &str {
+    str_from_null_terminated_byte_slice(&self.layerName).unwrap_or("<invalid utf8>")
   }
 }
