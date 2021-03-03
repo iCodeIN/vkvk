@@ -103,3 +103,13 @@ pub(crate) type vkEnumerateInstanceLayerProperties_t =
 
 pub(crate) type vkEnumerateDeviceLayerProperties_t =
   unsafe extern "system" fn(physicalDevice: VkPhysicalDevice, pPropertyCount: &mut uint32_t, pProperties: *mut VkLayerProperties) -> VkResult;
+
+pub(crate) type vkGetDeviceQueue_t =
+  unsafe extern "system" fn(device: VkDevice, queueFamilyIndex: uint32_t, queueIndex: uint32_t, pQueue: *mut VkQueue);
+
+pub(crate) type vkQueueSubmit_t =
+  unsafe extern "system" fn(queue: VkQueue, submitCount: uint32_t, pSubmits: *const VkSubmitInfo, fence: VkFence) -> VkResult;
+
+pub(crate) type vkQueueWaitIdle_t = unsafe extern "system" fn(queue: VkQueue) -> VkResult;
+
+pub(crate) type vkDeviceWaitIdle_t = unsafe extern "system" fn(device: VkDevice) -> VkResult;

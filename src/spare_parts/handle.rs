@@ -1,13 +1,4 @@
 use super::*;
-define_handle!(
-  /// Handle to a Queue.
-  ///
-  /// * Parent: [`VkDevice`]
-  /// * ObjectTypeEnum: [`VK_OBJECT_TYPE_QUEUE`]
-  ///
-  /// [VkQueue](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueue.html)
-  VkQueue
-);
 
 define_non_dispatchable_handle!(
   ///
@@ -16,14 +7,6 @@ define_non_dispatchable_handle!(
   ///
   /// [VkDeviceMemory](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceMemory.html)
   VkDeviceMemory
-);
-define_non_dispatchable_handle!(
-  ///
-  /// * Parent: [`VkDevice`]
-  /// * ObjectTypeEnum: [`VK_OBJECT_TYPE_COMMAND_POOL`]
-  ///
-  /// [VkCommandPool](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCommandPool.html)
-  VkCommandPool
 );
 
 define_non_dispatchable_handle!(
@@ -97,22 +80,6 @@ define_non_dispatchable_handle!(
   ///
   /// [VkDescriptorPool](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorPool.html)
   VkDescriptorPool
-);
-define_non_dispatchable_handle!(
-  ///
-  /// * Parent: [`VkDevice`]
-  /// * ObjectTypeEnum: [`VK_OBJECT_TYPE_FENCE`]
-  ///
-  /// [VkFence](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFence.html)
-  VkFence
-);
-define_non_dispatchable_handle!(
-  ///
-  /// * Parent: [`VkDevice`]
-  /// * ObjectTypeEnum: [`VK_OBJECT_TYPE_SEMAPHORE`]
-  ///
-  /// [VkSemaphore](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSemaphore.html)
-  VkSemaphore
 );
 define_non_dispatchable_handle!(
   ///

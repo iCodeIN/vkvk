@@ -922,3 +922,41 @@ impl VkLayerProperties {
     str_from_null_terminated_byte_slice(&self.layerName).unwrap_or("<invalid utf8>")
   }
 }
+
+/// [VkSubmitInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSubmitInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkSubmitInfo {
+  /// 
+  /// * **Values:** [`VK_STRUCTURE_TYPE_SUBMIT_INFO`]
+  sType: VkStructureType,
+  /// 
+  /// * **Optional:** true
+  pNext: *const c_void,
+  /// 
+  /// * **Optional:** true
+  waitSemaphoreCount: uint32_t,
+  /// 
+  /// * **Len:** waitSemaphoreCount
+  pWaitSemaphores: *const VkSemaphore,
+  /// 
+  /// * **Len:** waitSemaphoreCount
+  pWaitDstStageMask: *const VkPipelineStageFlags,
+  /// 
+  /// * **Optional:** true
+  commandBufferCount: uint32_t,
+  /// 
+  /// * **Len:** commandBufferCount
+  pCommandBuffers: *const VkCommandBuffer,
+  /// 
+  /// * **Optional:** true
+  signalSemaphoreCount: uint32_t,
+  /// 
+  /// * **Len:** signalSemaphoreCount
+  pSignalSemaphores: *const VkSemaphore,
+}
+impl Default for VkSubmitInfo {
+  fn default() -> Self {
+    Self { sType: VK_STRUCTURE_TYPE_SUBMIT_INFO, ..unsafe { zeroed() } }
+  }
+}

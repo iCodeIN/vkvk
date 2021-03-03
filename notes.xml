@@ -130,14 +130,14 @@
             <!-- <command name="vkEnumerateDeviceLayerProperties"/> -->
         </require>
         <require comment="Queue commands">
-            <type name="VkPipelineStageFlagBits"/>
-            <type name="VkPipelineStageFlags"/>
-            <type name="VkQueue"/>
-            <type name="VkSubmitInfo"/>
-            <command name="vkGetDeviceQueue"/>
-            <command name="vkQueueSubmit"/>
-            <command name="vkQueueWaitIdle"/>
-            <command name="vkDeviceWaitIdle"/>
+            <!-- <type name="VkPipelineStageFlagBits"/> -->
+            <!-- <type name="VkPipelineStageFlags"/> -->
+            <!-- <type name="VkQueue"/> -->
+            <!-- <type name="VkSubmitInfo"/> -->
+            <!-- <command name="vkGetDeviceQueue"/> -->
+            <!-- <command name="vkQueueSubmit"/> -->
+            <!-- <command name="vkQueueWaitIdle"/> -->
+            <!-- <command name="vkDeviceWaitIdle"/> -->
         </require>
         <require comment="Memory commands">
             <type name="VkMappedMemoryRange"/>
@@ -180,7 +180,7 @@
             <command name="vkQueueBindSparse"/>
         </require>
         <require comment="Fence commands">
-            <type name="VkFence"/>
+            <!-- <type name="VkFence"/> -->
             <type name="VkFenceCreateFlagBits"/>
             <type name="VkFenceCreateFlags"/>
             <type name="VkFenceCreateInfo"/>
@@ -411,7 +411,7 @@
             <command name="vkGetRenderAreaGranularity"/>
         </require>
         <require comment="Command pool commands">
-            <type name="VkCommandPool"/>
+            <!-- <type name="VkCommandPool"/> -->
             <type name="VkCommandPoolCreateFlagBits"/>
             <type name="VkCommandPoolCreateFlags"/>
             <type name="VkCommandPoolCreateInfo"/>

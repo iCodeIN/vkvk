@@ -73,3 +73,49 @@ impl VkDevice {
     self.0.is_null()
   }
 }
+
+/// [VkQueue](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueue.html)
+///
+/// Handle to a Queue.
+///
+/// * Parent: [`VkDevice`]
+/// * ObjectTypeEnum: [`VK_OBJECT_TYPE_QUEUE`]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[repr(transparent)]
+pub struct VkQueue(*mut c_void);
+impl Default for VkQueue {
+  fn default() -> Self {
+    Self::null()
+  }
+}
+impl VkQueue {
+  pub const fn null() -> Self {
+    Self(core::ptr::null_mut())
+  }
+  pub fn is_null(&self) -> bool {
+    self.0.is_null()
+  }
+}
+
+/// [VkCommandBuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCommandBuffer.html)
+///
+/// Handle to a command buffer object.
+///
+/// * Parent: [`VkCommandPool`]
+/// * ObjectTypeEnum: [`VK_OBJECT_TYPE_COMMAND_BUFFER`]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[repr(transparent)]
+pub struct VkCommandBuffer(*mut c_void);
+impl Default for VkCommandBuffer {
+  fn default() -> Self {
+    Self::null()
+  }
+}
+impl VkCommandBuffer {
+  pub const fn null() -> Self {
+    Self(core::ptr::null_mut())
+  }
+  pub fn is_null(&self) -> bool {
+    self.0.is_null()
+  }
+}

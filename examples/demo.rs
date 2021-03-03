@@ -78,16 +78,16 @@ fn main() {
     let mut surface = 0_u64;
     assert_eq!(SDL_Vulkan_CreateSurface(win, core::mem::transmute(instance), core::mem::transmute(&mut surface)), SDL_TRUE);
     assert!(surface != 0);
-    let ifr = InstanceFnsRusty(InstanceFns::load_from(pifr.0, instance).unwrap());
+    let vk = InstanceFnsRusty(InstanceFns::load_from(pifr.0, instance).unwrap());
 
     #[allow(non_snake_case)]
     let vkDestroySurfaceKHR = {
       core::mem::transmute::<unsafe extern "system" fn(), fn(vkvk::prelude::VkInstance, VkSurfaceKHR, Option<&VkAllocationCallbacks>)>(
-        ifr.GetInstanceProcAddr(instance, b"vkDestroySurfaceKHR\0".as_ptr()).unwrap(),
+        vk.GetInstanceProcAddr(instance, b"vkDestroySurfaceKHR\0".as_ptr()).unwrap(),
       )
     };
     vkDestroySurfaceKHR(instance, core::mem::transmute(surface), None);
-    ifr.DestroyInstance(instance, None);
+    vk.DestroyInstance(instance, None);
     SDL_Quit();
   }
 }

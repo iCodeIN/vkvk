@@ -7857,30 +7857,6 @@ structure! {
 }
 
 structure! {
-  /// [VkSubmitInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSubmitInfo.html)
-  VkSubmitInfo {
-    /// * **Values:** [`VK_STRUCTURE_TYPE_SUBMIT_INFO`]
-    sType: VkStructureType,
-    /// * **Optional:** true
-    pNext: *const c_void,
-    /// * **Optional:** true
-    waitSemaphoreCount: uint32_t,
-    /// * **Len:** waitSemaphoreCount
-    pWaitSemaphores: *const VkSemaphore,
-    /// * **Len:** waitSemaphoreCount
-    pWaitDstStageMask: *const VkPipelineStageFlags,
-    /// * **Optional:** true
-    commandBufferCount: uint32_t,
-    /// * **Len:** commandBufferCount
-    pCommandBuffers: *const VkCommandBuffer,
-    /// * **Optional:** true
-    signalSemaphoreCount: uint32_t,
-    /// * **Len:** signalSemaphoreCount
-    pSignalSemaphores: *const VkSemaphore,
-  }
-}
-
-structure! {
   /// [VkSubpassBeginInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSubpassBeginInfo.html)
   VkSubpassBeginInfo {
     /// * **Values:** [`VK_STRUCTURE_TYPE_SUBPASS_BEGIN_INFO`]

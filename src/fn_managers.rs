@@ -86,6 +86,9 @@ pub struct InstanceFns {
   vkDestroyDevice_p: vkDestroyDevice_t,
   vkEnumerateDeviceExtensionProperties_p: vkEnumerateDeviceExtensionProperties_t,
   vkEnumerateDeviceLayerProperties_p: vkEnumerateDeviceLayerProperties_t,
+  vkQueueSubmit_p: vkQueueSubmit_t,
+  vkQueueWaitIdle_p: vkQueueWaitIdle_t,
+  vkDeviceWaitIdle_p: vkDeviceWaitIdle_t,
 }
 
 impl core::ops::Deref for InstanceFns {
@@ -122,6 +125,9 @@ impl InstanceFns {
     );
     let vkEnumerateDeviceLayerProperties_p =
       t::<NNF, _>(pif.GetInstanceProcAddr(instance, b"vkEnumerateDeviceLayerProperties\0".as_ptr()).ok_or("vkEnumerateDeviceLayerProperties")?);
+    let vkQueueSubmit_p = t::<NNF, _>(pif.GetInstanceProcAddr(instance, b"vkQueueSubmit\0".as_ptr()).ok_or("vkQueueSubmit")?);
+    let vkQueueWaitIdle_p = t::<NNF, _>(pif.GetInstanceProcAddr(instance, b"vkQueueWaitIdle\0".as_ptr()).ok_or("vkQueueWaitIdle")?);
+    let vkDeviceWaitIdle_p = t::<NNF, _>(pif.GetInstanceProcAddr(instance, b"vkDeviceWaitIdle\0".as_ptr()).ok_or("vkDeviceWaitIdle")?);
     Ok(Self {
       pre_instance_fns: pif,
       vkDestroyInstance_p,
@@ -137,6 +143,9 @@ impl InstanceFns {
       vkDestroyDevice_p,
       vkEnumerateDeviceExtensionProperties_p,
       vkEnumerateDeviceLayerProperties_p,
+      vkQueueSubmit_p,
+      vkQueueWaitIdle_p,
+      vkDeviceWaitIdle_p,
     })
   }
 
@@ -219,17 +228,41 @@ impl InstanceFns {
   ) -> VkResult {
     (self.vkEnumerateDeviceLayerProperties_p)(physicalDevice, pPropertyCount, pProperties)
   }
+
+  /// [vkQueueSubmit](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkQueueSubmit.html)
+  pub unsafe fn QueueSubmit(&self, queue: VkQueue, submitCount: uint32_t, pSubmits: *const VkSubmitInfo, fence: VkFence) -> VkResult {
+    (self.vkQueueSubmit_p)(queue, submitCount, pSubmits, fence)
+  }
+
+  /// [vkQueueWaitIdle](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkQueueWaitIdle.html)
+  pub unsafe fn QueueWaitIdle(&self, queue: VkQueue) -> VkResult {
+    (self.vkQueueWaitIdle_p)(queue)
+  }
+
+  /// [vkDeviceWaitIdle](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDeviceWaitIdle.html)
+  pub unsafe fn DeviceWaitIdle(&self, device: VkDevice) -> VkResult {
+    (self.vkDeviceWaitIdle_p)(device)
+  }
 }
 
 /// Holds functions that come from a [`vkGetDeviceProcAddr_t`] value.
 #[derive(Clone, Copy)]
 pub struct DeviceFns {
-  //
+  vkGetDeviceQueue_p: vkGetDeviceQueue_t,
 }
 
 impl DeviceFns {
-  pub unsafe fn load_from(_instance_fns: InstanceFns, _device: VkDevice) -> Result<Self, &'static str> {
-    todo!()
+  pub unsafe fn load_from(in_fns: InstanceFns, device: VkDevice) -> Result<Self, &'static str> {
+    let vkGetDeviceQueue_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkGetDeviceQueue\0".as_ptr()).ok_or("vkGetDeviceQueue")?);
+    Ok(Self {
+      //
+      vkGetDeviceQueue_p,
+    })
+  }
+
+  /// [vkGetDeviceQueue](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetDeviceQueue.html)
+  pub unsafe fn GetDeviceQueue(&self, device: VkDevice, queueFamilyIndex: uint32_t, queueIndex: uint32_t, pQueue: *mut VkQueue) {
+    (self.vkGetDeviceQueue_p)(device, queueFamilyIndex, queueIndex, pQueue)
   }
 }
 

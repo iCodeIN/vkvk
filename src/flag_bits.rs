@@ -360,3 +360,69 @@ vk_flag_bits! {
   /// currently reserved for future use.
   VkDeviceQueueCreateFlagBits = VkDeviceQueueCreateFlags {}
 }
+
+vk_flag_bits! {
+  /// [VkPipelineStageFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineStageFlagBits.html)
+  VkPipelineStageFlagBits = VkPipelineStageFlags {
+    /// Before subsequent commands are processed
+    VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT = (1<<0),
+    /// Draw/DispatchIndirect command fetch
+    VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT = (1<<1),
+    /// Vertex/index fetch
+    VK_PIPELINE_STAGE_VERTEX_INPUT_BIT = (1<<2),
+    /// Vertex shading
+    VK_PIPELINE_STAGE_VERTEX_SHADER_BIT = (1<<3),
+    /// Tessellation control shading
+    VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT = (1<<4),
+    /// Tessellation evaluation shading
+    VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT = (1<<5),
+    /// Geometry shading
+    VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT = (1<<6),
+    /// Fragment shading
+    VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT = (1<<7),
+    /// Early fragment (depth and stencil) tests
+    VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT = (1<<8),
+    /// Late fragment (depth and stencil) tests
+    VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT = (1<<9),
+    /// Color attachment writes
+    VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT = (1<<10),
+    /// Compute shading
+    VK_PIPELINE_STAGE_COMPUTE_SHADER_BIT = (1<<11),
+    /// Transfer/copy operations
+    VK_PIPELINE_STAGE_TRANSFER_BIT = (1<<12),
+    /// After previous commands have completed
+    VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT = (1<<13),
+    /// Indicates host (CPU) is a source/sink of the dependency
+    VK_PIPELINE_STAGE_HOST_BIT = (1<<14),
+    /// All stages of the graphics pipeline
+    VK_PIPELINE_STAGE_ALL_GRAPHICS_BIT = (1<<15),
+    /// All stages supported on the queue
+    VK_PIPELINE_STAGE_ALL_COMMANDS_BIT = (1<<16),
+    // Provided by `VK_EXT_transform_feedback`
+    VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT = 0x01000000,
+    // Provided by `VK_EXT_conditional_rendering`
+    VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT = 0x00040000,
+    // Provided by `VK_KHR_acceleration_structure`
+    VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR = 0x02000000,
+    // Provided by `VK_KHR_ray_tracing_pipeline`
+    VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR = 0x00200000,
+    // Provided by `VK_NV_shading_rate_image`
+    VK_PIPELINE_STAGE_SHADING_RATE_IMAGE_BIT_NV = 0x00400000,
+    // Provided by `VK_NV_mesh_shader`
+    VK_PIPELINE_STAGE_TASK_SHADER_BIT_NV = 0x00080000,
+    // Provided by `VK_NV_mesh_shader`
+    VK_PIPELINE_STAGE_MESH_SHADER_BIT_NV = 0x00100000,
+    // Provided by `VK_EXT_fragment_density_map`
+    VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT = 0x00800000,
+    // Provided by `VK_NV_device_generated_commands`
+    VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_NV = 0x00020000,
+    // Provided by `VK_KHR_synchronization2`
+    VK_PIPELINE_STAGE_NONE_KHR = 0,
+  }
+}
+// Provided by `VK_NV_ray_tracing`
+pub const VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_NV: VkPipelineStageFlagBits = VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR;
+// Provided by `VK_NV_ray_tracing`
+pub const VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_NV: VkPipelineStageFlagBits = VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR;
+// Provided by `VK_KHR_fragment_shading_rate`
+pub const VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR: VkPipelineStageFlagBits = VK_PIPELINE_STAGE_SHADING_RATE_IMAGE_BIT_NV;
