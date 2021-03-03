@@ -183,6 +183,30 @@
 <span id="180">180</span>
 <span id="181">181</span>
 <span id="182">182</span>
+<span id="183">183</span>
+<span id="184">184</span>
+<span id="185">185</span>
+<span id="186">186</span>
+<span id="187">187</span>
+<span id="188">188</span>
+<span id="189">189</span>
+<span id="190">190</span>
+<span id="191">191</span>
+<span id="192">192</span>
+<span id="193">193</span>
+<span id="194">194</span>
+<span id="195">195</span>
+<span id="196">196</span>
+<span id="197">197</span>
+<span id="198">198</span>
+<span id="199">199</span>
+<span id="200">200</span>
+<span id="201">201</span>
+<span id="202">202</span>
+<span id="203">203</span>
+<span id="204">204</span>
+<span id="205">205</span>
+<span id="206">206</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
 
@@ -211,8 +235,13 @@
 <span class="kw">impl</span> <span class="ident">PreInstanceFns</span> {
   <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">load_from</span>(<span class="ident">vkGetInstanceProcAddr_p</span>: <span class="ident">vkGetInstanceProcAddr_t</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="ident">vkCreateInstance_p</span> <span class="op">=</span> <span class="ident">t</span>::<span class="op">&lt;</span><span class="ident">NNF</span>, <span class="kw">_</span><span class="op">&gt;</span>(<span class="ident">vkGetInstanceProcAddr_p</span>(<span class="ident">VkInstance</span>::<span class="ident">null</span>(), <span class="string">b&quot;vkCreateInstance\0&quot;</span>.<span class="ident">as_ptr</span>()).<span class="ident">ok_or</span>(<span class="string">&quot;vkCreateInstance&quot;</span>)<span class="question-mark">?</span>);
-    <span class="kw">let</span> <span class="ident">vkEnumerateInstanceExtensionProperties_p</span> <span class="op">=</span> <span class="ident">t</span>::<span class="op">&lt;</span><span class="ident">NNF</span>, <span class="kw">_</span><span class="op">&gt;</span>(<span class="ident">vkGetInstanceProcAddr_p</span>(<span class="ident">VkInstance</span>::<span class="ident">null</span>(), <span class="string">b&quot;vkEnumerateInstanceExtensionProperties\0&quot;</span>.<span class="ident">as_ptr</span>()).<span class="ident">ok_or</span>(<span class="string">&quot;vkEnumerateInstanceExtensionProperties&quot;</span>)<span class="question-mark">?</span>);
-    <span class="kw">let</span> <span class="ident">vkEnumerateInstanceLayerProperties_p</span> <span class="op">=</span> <span class="ident">t</span>::<span class="op">&lt;</span><span class="ident">NNF</span>, <span class="kw">_</span><span class="op">&gt;</span>(<span class="ident">vkGetInstanceProcAddr_p</span>(<span class="ident">VkInstance</span>::<span class="ident">null</span>(), <span class="string">b&quot;vkEnumerateInstanceLayerProperties\0&quot;</span>.<span class="ident">as_ptr</span>()).<span class="ident">ok_or</span>(<span class="string">&quot;vkEnumerateInstanceLayerProperties&quot;</span>)<span class="question-mark">?</span>);
+    <span class="kw">let</span> <span class="ident">vkEnumerateInstanceExtensionProperties_p</span> <span class="op">=</span> <span class="ident">t</span>::<span class="op">&lt;</span><span class="ident">NNF</span>, <span class="kw">_</span><span class="op">&gt;</span>(
+      <span class="ident">vkGetInstanceProcAddr_p</span>(<span class="ident">VkInstance</span>::<span class="ident">null</span>(), <span class="string">b&quot;vkEnumerateInstanceExtensionProperties\0&quot;</span>.<span class="ident">as_ptr</span>())
+        .<span class="ident">ok_or</span>(<span class="string">&quot;vkEnumerateInstanceExtensionProperties&quot;</span>)<span class="question-mark">?</span>,
+    );
+    <span class="kw">let</span> <span class="ident">vkEnumerateInstanceLayerProperties_p</span> <span class="op">=</span> <span class="ident">t</span>::<span class="op">&lt;</span><span class="ident">NNF</span>, <span class="kw">_</span><span class="op">&gt;</span>(
+      <span class="ident">vkGetInstanceProcAddr_p</span>(<span class="ident">VkInstance</span>::<span class="ident">null</span>(), <span class="string">b&quot;vkEnumerateInstanceLayerProperties\0&quot;</span>.<span class="ident">as_ptr</span>()).<span class="ident">ok_or</span>(<span class="string">&quot;vkEnumerateInstanceLayerProperties&quot;</span>)<span class="question-mark">?</span>,
+    );
     <span class="prelude-val">Ok</span>(<span class="self">Self</span> {
       <span class="ident">vkGetInstanceProcAddr_p</span>,
       <span class="ident">vkEnumerateInstanceExtensionProperties_p</span>,
@@ -223,12 +252,16 @@
   }
 
   <span class="doccomment">/// [vkCreateInstance](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateInstance.html)</span>
-  <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">CreateInstance</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">pCreateInfo</span>: <span class="kw-2">&amp;</span><span class="ident">VkInstanceCreateInfo</span>, <span class="ident">pAllocator</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">VkAllocationCallbacks</span><span class="op">&gt;</span>, <span class="ident">pInstance</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">VkInstance</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">VkResult</span> {
+  <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">CreateInstance</span>(
+    <span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">pCreateInfo</span>: <span class="kw-2">&amp;</span><span class="ident">VkInstanceCreateInfo</span>, <span class="ident">pAllocator</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">VkAllocationCallbacks</span><span class="op">&gt;</span>, <span class="ident">pInstance</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">VkInstance</span>,
+  ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">VkResult</span> {
     (<span class="self">self</span>.<span class="ident">vkCreateInstance_p</span>)(<span class="ident">pCreateInfo</span>, <span class="ident">pAllocator</span>, <span class="ident">pInstance</span>)
   }
 
   <span class="doccomment">/// [vkEnumerateInstanceExtensionProperties](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEnumerateInstanceExtensionProperties.html)</span>
-  <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">EnumerateInstanceExtensionProperties</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">pLayerName</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">char</span>, <span class="ident">pPropertyCount</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">uint32_t</span>, <span class="ident">pProperties</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">VkExtensionProperties</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">VkResult</span> {
+  <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">EnumerateInstanceExtensionProperties</span>(
+    <span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">pLayerName</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">char</span>, <span class="ident">pPropertyCount</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">uint32_t</span>, <span class="ident">pProperties</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">VkExtensionProperties</span>,
+  ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">VkResult</span> {
     (<span class="self">self</span>.<span class="ident">vkEnumerateInstanceExtensionProperties_p</span>)(<span class="ident">pLayerName</span>, <span class="ident">pPropertyCount</span>, <span class="ident">pProperties</span>)
   }
 
@@ -283,7 +316,9 @@
   }
 
   <span class="doccomment">/// [vkEnumeratePhysicalDevices](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEnumeratePhysicalDevices.html)</span>
-  <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">EnumeratePhysicalDevices</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">instance</span>: <span class="ident">VkInstance</span>, <span class="ident">pPhysicalDeviceCount</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">uint32_t</span>, <span class="ident">pPhysicalDevices</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">VkPhysicalDevice</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">VkResult</span> {
+  <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">EnumeratePhysicalDevices</span>(
+    <span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">instance</span>: <span class="ident">VkInstance</span>, <span class="ident">pPhysicalDeviceCount</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">uint32_t</span>, <span class="ident">pPhysicalDevices</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">VkPhysicalDevice</span>,
+  ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">VkResult</span> {
     (<span class="self">self</span>.<span class="ident">vkEnumeratePhysicalDevices_p</span>)(<span class="ident">instance</span>, <span class="ident">pPhysicalDeviceCount</span>, <span class="ident">pPhysicalDevices</span>)
   }
 
@@ -293,12 +328,17 @@
   }
 
   <span class="doccomment">/// [vkGetPhysicalDeviceFormatProperties](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPhysicalDeviceFormatProperties.html)</span>
-  <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">GetPhysicalDeviceFormatProperties</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">physicalDevice</span>: <span class="ident">VkPhysicalDevice</span>, <span class="ident">format</span>: <span class="ident">VkFormat</span>, <span class="ident">pFormatProperties</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">VkFormatProperties</span>) {
+  <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">GetPhysicalDeviceFormatProperties</span>(
+    <span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">physicalDevice</span>: <span class="ident">VkPhysicalDevice</span>, <span class="ident">format</span>: <span class="ident">VkFormat</span>, <span class="ident">pFormatProperties</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">VkFormatProperties</span>,
+  ) {
     (<span class="self">self</span>.<span class="ident">vkGetPhysicalDeviceFormatProperties_p</span>)(<span class="ident">physicalDevice</span>, <span class="ident">format</span>, <span class="ident">pFormatProperties</span>)
   }
 
   <span class="doccomment">/// [vkGetPhysicalDeviceImageFormatProperties](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPhysicalDeviceImageFormatProperties.html)</span>
-  <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">GetPhysicalDeviceImageFormatProperties</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">physicalDevice</span>: <span class="ident">VkPhysicalDevice</span>, <span class="ident">format</span>: <span class="ident">VkFormat</span>, <span class="ident">type_</span>: <span class="ident">VkImageType</span>, <span class="ident">tiling</span>: <span class="ident">VkImageTiling</span>, <span class="ident">usage</span>: <span class="ident">VkImageUsageFlags</span>, <span class="ident">flags</span>: <span class="ident">VkImageCreateFlags</span>, <span class="ident">pImageFormatProperties</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">VkImageFormatProperties</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">VkResult</span> {
+  <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">GetPhysicalDeviceImageFormatProperties</span>(
+    <span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">physicalDevice</span>: <span class="ident">VkPhysicalDevice</span>, <span class="ident">format</span>: <span class="ident">VkFormat</span>, <span class="ident">type_</span>: <span class="ident">VkImageType</span>, <span class="ident">tiling</span>: <span class="ident">VkImageTiling</span>, <span class="ident">usage</span>: <span class="ident">VkImageUsageFlags</span>,
+    <span class="ident">flags</span>: <span class="ident">VkImageCreateFlags</span>, <span class="ident">pImageFormatProperties</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">VkImageFormatProperties</span>,
+  ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">VkResult</span> {
     (<span class="self">self</span>.<span class="ident">vkGetPhysicalDeviceImageFormatProperties_p</span>)(<span class="ident">physicalDevice</span>, <span class="ident">format</span>, <span class="ident">type_</span>, <span class="ident">tiling</span>, <span class="ident">usage</span>, <span class="ident">flags</span>, <span class="ident">pImageFormatProperties</span>)
   }
 
@@ -308,7 +348,9 @@
   }
 
   <span class="doccomment">/// [vkGetPhysicalDeviceQueueFamilyProperties](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPhysicalDeviceQueueFamilyProperties.html)</span>
-  <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">GetPhysicalDeviceQueueFamilyProperties</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">physicalDevice</span>: <span class="ident">VkPhysicalDevice</span>, <span class="ident">pQueueFamilyPropertyCount</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">uint32_t</span>, <span class="ident">pQueueFamilyProperties</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">VkQueueFamilyProperties</span>) {
+  <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">GetPhysicalDeviceQueueFamilyProperties</span>(
+    <span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">physicalDevice</span>: <span class="ident">VkPhysicalDevice</span>, <span class="ident">pQueueFamilyPropertyCount</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">uint32_t</span>, <span class="ident">pQueueFamilyProperties</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">VkQueueFamilyProperties</span>,
+  ) {
     (<span class="self">self</span>.<span class="ident">vkGetPhysicalDeviceQueueFamilyProperties_p</span>)(<span class="ident">physicalDevice</span>, <span class="ident">pQueueFamilyPropertyCount</span>, <span class="ident">pQueueFamilyProperties</span>)
   }
 
@@ -323,7 +365,9 @@
   }
 
   <span class="doccomment">/// [vkCreateDevice](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateDevice.html)</span>
-  <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">CreateDevice</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">physicalDevice</span>: <span class="ident">VkPhysicalDevice</span>, <span class="ident">pCreateInfo</span>: <span class="kw-2">&amp;</span><span class="ident">VkDeviceCreateInfo</span>, <span class="ident">pAllocator</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">VkAllocationCallbacks</span><span class="op">&gt;</span>, <span class="ident">pDevice</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">VkDevice</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">VkResult</span> {
+  <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">CreateDevice</span>(
+    <span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">physicalDevice</span>: <span class="ident">VkPhysicalDevice</span>, <span class="ident">pCreateInfo</span>: <span class="kw-2">&amp;</span><span class="ident">VkDeviceCreateInfo</span>, <span class="ident">pAllocator</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">VkAllocationCallbacks</span><span class="op">&gt;</span>, <span class="ident">pDevice</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">VkDevice</span>,
+  ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">VkResult</span> {
     (<span class="self">self</span>.<span class="ident">vkCreateDevice_p</span>)(<span class="ident">physicalDevice</span>, <span class="ident">pCreateInfo</span>, <span class="ident">pAllocator</span>, <span class="ident">pDevice</span>)
   }
 
@@ -333,12 +377,16 @@
   }
 
   <span class="doccomment">/// [vkEnumerateDeviceExtensionProperties](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEnumerateDeviceExtensionProperties.html)</span>
-  <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">EnumerateDeviceExtensionProperties</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">physicalDevice</span>: <span class="ident">VkPhysicalDevice</span>, <span class="ident">pLayerName</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">char</span>, <span class="ident">pPropertyCount</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">uint32_t</span>, <span class="ident">pProperties</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">VkExtensionProperties</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">VkResult</span> {
+  <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">EnumerateDeviceExtensionProperties</span>(
+    <span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">physicalDevice</span>: <span class="ident">VkPhysicalDevice</span>, <span class="ident">pLayerName</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">char</span>, <span class="ident">pPropertyCount</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">uint32_t</span>, <span class="ident">pProperties</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">VkExtensionProperties</span>,
+  ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">VkResult</span> {
     (<span class="self">self</span>.<span class="ident">vkEnumerateDeviceExtensionProperties_p</span>)(<span class="ident">physicalDevice</span>, <span class="ident">pLayerName</span>, <span class="ident">pPropertyCount</span>, <span class="ident">pProperties</span>)
   }
 
   <span class="doccomment">/// [vkEnumerateDeviceLayerProperties](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEnumerateDeviceLayerProperties.html)</span>
-  <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">EnumerateDeviceLayerProperties</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">physicalDevice</span>: <span class="ident">VkPhysicalDevice</span>, <span class="ident">pPropertyCount</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">uint32_t</span>, <span class="ident">pProperties</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">VkLayerProperties</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">VkResult</span> {
+  <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">EnumerateDeviceLayerProperties</span>(
+    <span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">physicalDevice</span>: <span class="ident">VkPhysicalDevice</span>, <span class="ident">pPropertyCount</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">uint32_t</span>, <span class="ident">pProperties</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">VkLayerProperties</span>,
+  ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">VkResult</span> {
     (<span class="self">self</span>.<span class="ident">vkEnumerateDeviceLayerProperties_p</span>)(<span class="ident">physicalDevice</span>, <span class="ident">pPropertyCount</span>, <span class="ident">pProperties</span>)
   }
 }
