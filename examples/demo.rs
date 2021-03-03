@@ -25,7 +25,7 @@ fn main() {
     assert!(SDL_Init(SDL_INIT_EVERYTHING) == 0);
 
     let win = SDL_CreateWindow(
-      b"demo\0".as_ptr().cast(),
+      b"Demo\0".as_ptr().cast(),
       SDL_WINDOWPOS_CENTERED,
       SDL_WINDOWPOS_CENTERED,
       800,
@@ -73,13 +73,21 @@ fn main() {
       }
     }
 
-    let instance =
-      pifr.create_instance_simple("FermiumCreateInstance", VulkanVersion::new(1, 0, 0), &requested_layers, &requested_extensions).unwrap();
-    let surface = 0_u64;
-    assert_eq!(SDL_Vulkan_CreateSurface(win, core::mem::transmute(instance), &mut core::mem::transmute(surface)), SDL_TRUE);
-
+    let instance = pifr.create_instance_simple("Demo", VulkanVersion::new(1, 0, 0), &requested_layers, &requested_extensions).unwrap();
+    assert!(!instance.is_null());
+    let mut surface = 0_u64;
+    assert_eq!(SDL_Vulkan_CreateSurface(win, core::mem::transmute(instance), core::mem::transmute(&mut surface)), SDL_TRUE);
+    assert!(surface != 0);
     let ifr = InstanceFnsRusty(InstanceFns::load_from(pifr.0, instance).unwrap());
 
+    #[allow(non_snake_case)]
+    let vkDestroySurfaceKHR = {
+      core::mem::transmute::<unsafe extern "system" fn(), fn(vkvk::prelude::VkInstance, VkSurfaceKHR, Option<&VkAllocationCallbacks>)>(
+        ifr.GetInstanceProcAddr(instance, b"vkDestroySurfaceKHR\0".as_ptr()).unwrap(),
+      )
+    };
+    vkDestroySurfaceKHR(instance, core::mem::transmute(surface), None);
+    ifr.DestroyInstance(instance, None);
     SDL_Quit();
   }
 }

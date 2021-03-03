@@ -94,7 +94,7 @@ pub(crate) type vkEnumerateInstanceExtensionProperties_t =
 pub(crate) type vkEnumerateDeviceExtensionProperties_t = unsafe extern "system" fn(
   physicalDevice: VkPhysicalDevice,
   pLayerName: *const char,
-  pPropertyCount: *mut uint32_t,
+  pPropertyCount: &mut uint32_t,
   pProperties: *mut VkExtensionProperties,
 ) -> VkResult;
 
@@ -102,4 +102,4 @@ pub(crate) type vkEnumerateInstanceLayerProperties_t =
   unsafe extern "system" fn(pPropertyCount: &mut uint32_t, pProperties: *mut VkLayerProperties) -> VkResult;
 
 pub(crate) type vkEnumerateDeviceLayerProperties_t =
-  unsafe extern "system" fn(physicalDevice: VkPhysicalDevice, pPropertyCount: *mut uint32_t, pProperties: *mut VkLayerProperties) -> VkResult;
+  unsafe extern "system" fn(physicalDevice: VkPhysicalDevice, pPropertyCount: &mut uint32_t, pProperties: *mut VkLayerProperties) -> VkResult;
