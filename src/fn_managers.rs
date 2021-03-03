@@ -96,8 +96,48 @@ impl core::ops::Deref for InstanceFns {
 }
 
 impl InstanceFns {
-  pub unsafe fn load_from(_pre_instance_fns: PreInstanceFns, _instance: VkInstance) -> Result<Self, &'static str> {
-    todo!()
+  pub unsafe fn load_from(pif: PreInstanceFns, instance: VkInstance) -> Result<Self, &'static str> {
+    let vkDestroyInstance_p = t::<NNF, _>(pif.GetInstanceProcAddr(instance, b"vkDestroyInstance\0".as_ptr()).ok_or("vkDestroyInstance")?);
+    let vkEnumeratePhysicalDevices_p =
+      t::<NNF, _>(pif.GetInstanceProcAddr(instance, b"vkEnumeratePhysicalDevices\0".as_ptr()).ok_or("vkEnumeratePhysicalDevices")?);
+    let vkGetPhysicalDeviceFeatures_p =
+      t::<NNF, _>(pif.GetInstanceProcAddr(instance, b"vkGetPhysicalDeviceFeatures\0".as_ptr()).ok_or("vkGetPhysicalDeviceFeatures")?);
+    let vkGetPhysicalDeviceFormatProperties_p =
+      t::<NNF, _>(pif.GetInstanceProcAddr(instance, b"vkGetPhysicalDeviceFormatProperties\0".as_ptr()).ok_or("vkGetPhysicalDeviceFormatProperties")?);
+    let vkGetPhysicalDeviceImageFormatProperties_p = t::<NNF, _>(
+      pif.GetInstanceProcAddr(instance, b"vkGetPhysicalDeviceImageFormatProperties\0".as_ptr()).ok_or("vkGetPhysicalDeviceImageFormatProperties")?,
+    );
+    let vkGetPhysicalDeviceProperties_p =
+      t::<NNF, _>(pif.GetInstanceProcAddr(instance, b"vkGetPhysicalDeviceProperties\0".as_ptr()).ok_or("vkGetPhysicalDeviceProperties")?);
+    let vkGetPhysicalDeviceQueueFamilyProperties_p = t::<NNF, _>(
+      pif.GetInstanceProcAddr(instance, b"vkGetPhysicalDeviceQueueFamilyProperties\0".as_ptr()).ok_or("vkGetPhysicalDeviceQueueFamilyProperties")?,
+    );
+    let vkGetPhysicalDeviceMemoryProperties_p =
+      t::<NNF, _>(pif.GetInstanceProcAddr(instance, b"vkGetPhysicalDeviceMemoryProperties\0".as_ptr()).ok_or("vkGetPhysicalDeviceMemoryProperties")?);
+    let vkGetDeviceProcAddr_p = t::<NNF, _>(pif.GetInstanceProcAddr(instance, b"vkGetDeviceProcAddr\0".as_ptr()).ok_or("vkGetDeviceProcAddr")?);
+    let vkCreateDevice_p = t::<NNF, _>(pif.GetInstanceProcAddr(instance, b"vkCreateDevice\0".as_ptr()).ok_or("vkCreateDevice")?);
+    let vkDestroyDevice_p = t::<NNF, _>(pif.GetInstanceProcAddr(instance, b"vkDestroyDevice\0".as_ptr()).ok_or("vkDestroyDevice")?);
+    let vkEnumerateDeviceExtensionProperties_p = t::<NNF, _>(
+      pif.GetInstanceProcAddr(instance, b"vkEnumerateDeviceExtensionProperties\0".as_ptr()).ok_or("vkEnumerateDeviceExtensionProperties")?,
+    );
+    let vkEnumerateDeviceLayerProperties_p =
+      t::<NNF, _>(pif.GetInstanceProcAddr(instance, b"vkEnumerateDeviceLayerProperties\0".as_ptr()).ok_or("vkEnumerateDeviceLayerProperties")?);
+    Ok(Self {
+      pre_instance_fns: pif,
+      vkDestroyInstance_p,
+      vkEnumeratePhysicalDevices_p,
+      vkGetPhysicalDeviceFeatures_p,
+      vkGetPhysicalDeviceFormatProperties_p,
+      vkGetPhysicalDeviceImageFormatProperties_p,
+      vkGetPhysicalDeviceProperties_p,
+      vkGetPhysicalDeviceQueueFamilyProperties_p,
+      vkGetPhysicalDeviceMemoryProperties_p,
+      vkGetDeviceProcAddr_p,
+      vkCreateDevice_p,
+      vkDestroyDevice_p,
+      vkEnumerateDeviceExtensionProperties_p,
+      vkEnumerateDeviceLayerProperties_p,
+    })
   }
 
   /// [vkDestroyInstance](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyInstance.html)

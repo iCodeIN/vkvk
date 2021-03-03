@@ -35,7 +35,7 @@ impl PreInstanceFnsRusty {
     }
   }
 
-  /// Gets info about the extensions available.
+  /// Gets info about the extensions available per layer.
   ///
   /// Extensions are specific to a given layer, or to the "base" instance.
   /// * Use `Some(layer_name)` to get extension info for the named layer (layer
@@ -71,5 +71,59 @@ impl PreInstanceFnsRusty {
     }
   }
 
+  #[cfg(feature = "alloc")]
+  pub fn create_instance_simple(
+    &self, name: &str, api: VulkanVersion, layers: &[VkLayerProperties], extensions: &[VkExtensionProperties],
+  ) -> Result<VkInstance, VkResult> {
+    let name_null: Vec<u8> = name.as_bytes().iter().copied().chain(Some(0)).collect();
+    let application_info = VkApplicationInfo {
+      pApplicationName: name_null.as_ptr().cast(),
+      applicationVersion: 1,
+      engineVersion: 1,
+      apiVersion: api,
+      ..Default::default()
+    };
+    let requested_layers: Vec<*const u8> = layers
+      .iter()
+      .map(|la| {
+        assert!(la.layerName.contains(&0));
+        la.layerName.as_ptr()
+      })
+      .collect();
+    let requested_extensions: Vec<*const u8> = extensions
+      .iter()
+      .map(|ex| {
+        assert!(ex.extensionName.contains(&0));
+        ex.extensionName.as_ptr()
+      })
+      .collect();
+    let create_info = VkInstanceCreateInfo {
+      pApplicationInfo: &application_info,
+      enabledLayerCount: requested_layers.len() as _,
+      ppEnabledLayerNames: requested_layers.as_ptr(),
+      enabledExtensionCount: requested_extensions.len() as _,
+      ppEnabledExtensionNames: requested_extensions.as_ptr(),
+      ..Default::default()
+    };
+    let mut instance = VkInstance::null();
+    let create_instance_result = unsafe { self.CreateInstance(&create_info, None, &mut instance) };
+    if create_instance_result == VK_SUCCESS {
+      Ok(instance)
+    } else {
+      Err(create_instance_result)
+    }
+  }
+}
+
+pub struct InstanceFnsRusty(pub InstanceFns);
+
+impl core::ops::Deref for InstanceFnsRusty {
+  type Target = InstanceFns;
+  fn deref(&self) -> &InstanceFns {
+    &self.0
+  }
+}
+
+impl InstanceFnsRusty {
   //
 }

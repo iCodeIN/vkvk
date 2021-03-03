@@ -213,7 +213,7 @@ pub struct VkMemoryBarrier {
 }
 impl Default for VkMemoryBarrier {
   fn default() -> Self {
-    VkMemoryBarrier { sType: VK_STRUCTURE_TYPE_MEMORY_BARRIER, ..unsafe { zeroed() } }
+    Self { sType: VK_STRUCTURE_TYPE_MEMORY_BARRIER, ..unsafe { zeroed() } }
   }
 }
 
@@ -322,7 +322,7 @@ pub struct VkInstanceCreateInfo {
   ///
   /// * **Optional:** true
   pub pNext: *const c_void,
-  ///
+  /// Reserved for future use.
   /// * **Optional:** true
   pub flags: VkInstanceCreateFlags,
   ///
@@ -333,17 +333,17 @@ pub struct VkInstanceCreateInfo {
   pub enabledLayerCount: uint32_t,
   /// Ordered list of layer names to be enabled
   /// * **Len:** enabledLayerCount,null-terminated
-  pub ppEnabledLayerNames: *const u8,
+  pub ppEnabledLayerNames: *const *const u8,
   ///
   /// * **Optional:** true
   pub enabledExtensionCount: uint32_t,
   /// Extension names to be enabled
   /// * **Len:** enabledExtensionCount,null-terminated
-  pub ppEnabledExtensionNames: *const u8,
+  pub ppEnabledExtensionNames: *const *const u8,
 }
 impl Default for VkInstanceCreateInfo {
   fn default() -> Self {
-    unsafe { zeroed() }
+    Self { sType: VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO, ..unsafe { zeroed() } }
   }
 }
 
