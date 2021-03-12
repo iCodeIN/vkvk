@@ -113,3 +113,91 @@ pub(crate) type vkQueueSubmit_t =
 pub(crate) type vkQueueWaitIdle_t = unsafe extern "system" fn(queue: VkQueue) -> VkResult;
 
 pub(crate) type vkDeviceWaitIdle_t = unsafe extern "system" fn(device: VkDevice) -> VkResult;
+
+pub(crate) type vkAllocateMemory_t = unsafe extern "system" fn(
+  device: VkDevice,
+  pAllocateInfo: &VkMemoryAllocateInfo,
+  pAllocator: Option<&VkAllocationCallbacks>,
+  pMemory: &mut VkDeviceMemory,
+) -> VkResult;
+
+pub(crate) type vkFreeMemory_t = unsafe extern "system" fn(device: VkDevice, memory: VkDeviceMemory, pAllocator: Option<&VkAllocationCallbacks>);
+
+pub(crate) type vkMapMemory_t = unsafe extern "system" fn(
+  device: VkDevice,
+  memory: VkDeviceMemory,
+  offset: VkDeviceSize,
+  size: VkDeviceSize,
+  flags: VkMemoryMapFlags,
+  ppData: *mut c_void,
+) -> VkResult;
+
+pub(crate) type vkUnmapMemory_t = unsafe extern "system" fn(device: VkDevice, memory: VkDeviceMemory);
+
+pub(crate) type vkFlushMappedMemoryRanges_t =
+  unsafe extern "system" fn(device: VkDevice, memoryRangeCount: uint32_t, pMemoryRanges: *const VkMappedMemoryRange) -> VkResult;
+
+pub(crate) type vkInvalidateMappedMemoryRanges_t =
+  unsafe extern "system" fn(device: VkDevice, memoryRangeCount: uint32_t, pMemoryRanges: *const VkMappedMemoryRange) -> VkResult;
+
+pub(crate) type vkGetDeviceMemoryCommitment_t =
+  unsafe extern "system" fn(device: VkDevice, memory: VkDeviceMemory, pCommittedMemoryInBytes: &mut VkDeviceSize);
+
+pub(crate) type vkBindBufferMemory_t =
+  unsafe extern "system" fn(device: VkDevice, buffer: VkBuffer, memory: VkDeviceMemory, memoryOffset: VkDeviceSize) -> VkResult;
+
+pub(crate) type vkBindImageMemory_t =
+  unsafe extern "system" fn(device: VkDevice, image: VkImage, memory: VkDeviceMemory, memoryOffset: VkDeviceSize) -> VkResult;
+
+pub(crate) type vkGetBufferMemoryRequirements_t =
+  unsafe extern "system" fn(device: VkDevice, buffer: VkBuffer, pMemoryRequirements: &mut VkMemoryRequirements);
+
+pub(crate) type vkGetImageMemoryRequirements_t =
+  unsafe extern "system" fn(device: VkDevice, image: VkImage, pMemoryRequirements: &mut VkMemoryRequirements);
+
+pub(crate) type vkGetImageSparseMemoryRequirements_t = unsafe extern "system" fn(
+  device: VkDevice,
+  image: VkImage,
+  pSparseMemoryRequirementCount: &mut uint32_t,
+  pSparseMemoryRequirements: *mut VkSparseImageMemoryRequirements,
+);
+
+pub(crate) type vkGetPhysicalDeviceSparseImageFormatProperties_t = unsafe extern "system" fn(
+  physicalDevice: VkPhysicalDevice,
+  format: VkFormat,
+  type_: VkImageType,
+  samples: VkSampleCountFlagBits,
+  usage: VkImageUsageFlags,
+  tiling: VkImageTiling,
+  pPropertyCount: &mut uint32_t,
+  pProperties: *mut VkSparseImageFormatProperties,
+);
+
+pub(crate) type vkQueueBindSparse_t =
+  unsafe extern "system" fn(queue: VkQueue, bindInfoCount: uint32_t, pBindInfo: *const VkBindSparseInfo, fence: VkFence) -> VkResult;
+
+pub(crate) type vkCreateFence_t = unsafe extern "system" fn(
+  device: VkDevice,
+  pCreateInfo: &VkFenceCreateInfo,
+  pAllocator: Option<&VkAllocationCallbacks>,
+  pFence: &mut VkFence,
+) -> VkResult;
+
+pub(crate) type vkDestroyFence_t = unsafe extern "system" fn(device: VkDevice, fence: VkFence, pAllocator: Option<&VkAllocationCallbacks>);
+
+pub(crate) type vkResetFences_t = unsafe extern "system" fn(device: VkDevice, fenceCount: uint32_t, pFences: *const VkFence) -> VkResult;
+
+pub(crate) type vkGetFenceStatus_t = unsafe extern "system" fn(device: VkDevice, fence: VkFence) -> VkResult;
+
+pub(crate) type vkWaitForFences_t =
+  unsafe extern "system" fn(device: VkDevice, fenceCount: uint32_t, pFences: *const VkFence, waitAll: VkBool32, timeout: uint64_t) -> VkResult;
+
+pub(crate) type vkCreateSemaphore_t = unsafe extern "system" fn(
+  device: VkDevice,
+  pCreateInfo: &VkSemaphoreCreateInfo,
+  pAllocator: Option<&VkAllocationCallbacks>,
+  pSemaphore: &mut VkSemaphore,
+) -> VkResult;
+
+pub(crate) type vkDestroySemaphore_t =
+  unsafe extern "system" fn(device: VkDevice, semaphore: VkSemaphore, pAllocator: Option<&VkAllocationCallbacks>);

@@ -2,6 +2,8 @@
 
 //! Structure types to interface with Vulkan.
 
+// TODO: double check all Default impls
+
 use super::*;
 
 use core::mem::zeroed;
@@ -927,31 +929,31 @@ impl VkLayerProperties {
 #[derive(Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(C)]
 pub struct VkSubmitInfo {
-  /// 
+  ///
   /// * **Values:** [`VK_STRUCTURE_TYPE_SUBMIT_INFO`]
   sType: VkStructureType,
-  /// 
+  ///
   /// * **Optional:** true
   pNext: *const c_void,
-  /// 
+  ///
   /// * **Optional:** true
   waitSemaphoreCount: uint32_t,
-  /// 
+  ///
   /// * **Len:** waitSemaphoreCount
   pWaitSemaphores: *const VkSemaphore,
-  /// 
+  ///
   /// * **Len:** waitSemaphoreCount
   pWaitDstStageMask: *const VkPipelineStageFlags,
-  /// 
+  ///
   /// * **Optional:** true
   commandBufferCount: uint32_t,
-  /// 
+  ///
   /// * **Len:** commandBufferCount
   pCommandBuffers: *const VkCommandBuffer,
-  /// 
+  ///
   /// * **Optional:** true
   signalSemaphoreCount: uint32_t,
-  /// 
+  ///
   /// * **Len:** signalSemaphoreCount
   pSignalSemaphores: *const VkSemaphore,
 }
@@ -959,4 +961,230 @@ impl Default for VkSubmitInfo {
   fn default() -> Self {
     Self { sType: VK_STRUCTURE_TYPE_SUBMIT_INFO, ..unsafe { zeroed() } }
   }
+}
+
+/// [VkMappedMemoryRange](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkMappedMemoryRange.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkMappedMemoryRange {
+  ///
+  /// * **Values:** [`VK_STRUCTURE_TYPE_MAPPED_MEMORY_RANGE`]
+  sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pNext: *const c_void,
+  /// Mapped memory object
+  memory: VkDeviceMemory,
+  /// Offset within the memory object where the range starts
+  offset: VkDeviceSize,
+  /// Size of the range within the memory object
+  size: VkDeviceSize,
+}
+
+/// [VkMemoryAllocateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkMemoryAllocateInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkMemoryAllocateInfo {
+  ///
+  /// * **Values:** [`VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO`]
+  sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pNext: *const c_void,
+  /// Size of memory allocation
+  allocationSize: VkDeviceSize,
+  /// Index of the of the memory type to allocate from
+  memoryTypeIndex: uint32_t,
+}
+
+/// [VkMemoryRequirements](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkMemoryRequirements.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkMemoryRequirements {
+  /// Specified in bytes
+  size: VkDeviceSize,
+  /// Specified in bytes
+  alignment: VkDeviceSize,
+  /// Bitmask of the allowed memory type indices into memoryTypes[] for this
+  /// object
+  memoryTypeBits: uint32_t,
+}
+
+/// [VkBindSparseInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBindSparseInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkBindSparseInfo {
+  ///
+  /// * **Values:** [`VK_STRUCTURE_TYPE_BIND_SPARSE_INFO`]
+  sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pNext: *const c_void,
+  ///
+  /// * **Optional:** true
+  waitSemaphoreCount: uint32_t,
+  ///
+  /// * **Len:** waitSemaphoreCount
+  pWaitSemaphores: *const VkSemaphore,
+  ///
+  /// * **Optional:** true
+  bufferBindCount: uint32_t,
+  ///
+  /// * **Len:** bufferBindCount
+  pBufferBinds: *const VkSparseBufferMemoryBindInfo,
+  ///
+  /// * **Optional:** true
+  imageOpaqueBindCount: uint32_t,
+  ///
+  /// * **Len:** imageOpaqueBindCount
+  pImageOpaqueBinds: *const VkSparseImageOpaqueMemoryBindInfo,
+  ///
+  /// * **Optional:** true
+  imageBindCount: uint32_t,
+  ///
+  /// * **Len:** imageBindCount
+  pImageBinds: *const VkSparseImageMemoryBindInfo,
+  ///
+  /// * **Optional:** true
+  signalSemaphoreCount: uint32_t,
+  ///
+  /// * **Len:** signalSemaphoreCount
+  pSignalSemaphores: *const VkSemaphore,
+}
+
+/// [VkSparseBufferMemoryBindInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSparseBufferMemoryBindInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkSparseBufferMemoryBindInfo {
+  buffer: VkBuffer,
+  bindCount: uint32_t,
+  ///
+  /// * **Len:** bindCount
+  pBinds: *const VkSparseMemoryBind,
+}
+
+/// [VkSparseImageOpaqueMemoryBindInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSparseImageOpaqueMemoryBindInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkSparseImageOpaqueMemoryBindInfo {
+  image: VkImage,
+  bindCount: uint32_t,
+  ///
+  /// * **Len:** bindCount
+  pBinds: *const VkSparseMemoryBind,
+}
+
+/// [VkSparseMemoryBind](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSparseMemoryBind.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkSparseMemoryBind {
+  /// Specified in bytes
+  resourceOffset: VkDeviceSize,
+  /// Specified in bytes
+  size: VkDeviceSize,
+  ///
+  /// * **Optional:** true
+  memory: VkDeviceMemory,
+  /// Specified in bytes
+  memoryOffset: VkDeviceSize,
+  ///
+  /// * **Optional:** true
+  flags: VkSparseMemoryBindFlags,
+}
+
+/// [VkSparseImageMemoryBindInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSparseImageMemoryBindInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkSparseImageMemoryBindInfo {
+  image: VkImage,
+  bindCount: uint32_t,
+  ///
+  /// * **Len:** bindCount
+  pBinds: *const VkSparseImageMemoryBind,
+}
+
+/// [VkSparseImageMemoryBind](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSparseImageMemoryBind.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkSparseImageMemoryBind {
+  subresource: VkImageSubresource,
+  offset: VkOffset3D,
+  extent: VkExtent3D,
+  ///
+  /// * **Optional:** true
+  memory: VkDeviceMemory,
+  /// Specified in bytes
+  memoryOffset: VkDeviceSize,
+  ///
+  /// * **Optional:** true
+  flags: VkSparseMemoryBindFlags,
+}
+
+/// [VkImageSubresource](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageSubresource.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkImageSubresource {
+  aspectMask: VkImageAspectFlags,
+  mipLevel: uint32_t,
+  arrayLayer: uint32_t,
+}
+
+/// [VkSparseImageFormatProperties](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSparseImageFormatProperties.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkSparseImageFormatProperties {
+  ///
+  /// * **Optional:** true
+  aspectMask: VkImageAspectFlags,
+  imageGranularity: VkExtent3D,
+  ///
+  /// * **Optional:** true
+  flags: VkSparseImageFormatFlags,
+}
+
+/// [VkSparseImageMemoryRequirements](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSparseImageMemoryRequirements.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkSparseImageMemoryRequirements {
+  formatProperties: VkSparseImageFormatProperties,
+  imageMipTailFirstLod: uint32_t,
+  /// Specified in bytes, must be a multiple of sparse block size in bytes /
+  /// alignment
+  imageMipTailSize: VkDeviceSize,
+  /// Specified in bytes, must be a multiple of sparse block size in bytes /
+  /// alignment
+  imageMipTailOffset: VkDeviceSize,
+  /// Specified in bytes, must be a multiple of sparse block size in bytes /
+  /// alignment
+  imageMipTailStride: VkDeviceSize,
+}
+
+/// [VkFenceCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFenceCreateInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkFenceCreateInfo {
+  ///
+  /// * **Values:** [`VK_STRUCTURE_TYPE_FENCE_CREATE_INFO`]
+  sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pNext: *const c_void,
+  /// Fence creation flags
+  /// * **Optional:** true
+  flags: VkFenceCreateFlags,
+}
+
+/// [VkSemaphoreCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSemaphoreCreateInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkSemaphoreCreateInfo {
+  /// 
+  /// * **Values:** [`VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO`]
+  sType: VkStructureType,
+  /// 
+  /// * **Optional:** true
+  pNext: *const c_void,
+  /// Semaphore creation flags
+  /// * **Optional:** true
+  flags: VkSemaphoreCreateFlags,
 }

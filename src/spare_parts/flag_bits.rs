@@ -106,13 +106,6 @@ flag_bits! {
 }
 
 flag_bits! {
-  /// [VkFenceCreateFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFenceCreateFlagBits.html)
-  VkFenceCreateFlagBits = VkFenceCreateFlags {
-    VK_FENCE_CREATE_SIGNALED_BIT = (1<<0),
-  }
-}
-
-flag_bits! {
   /// [VkQueryControlFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueryControlFlagBits.html)
   VkQueryControlFlagBits = VkQueryControlFlags {
     /// Require precise results to be collected by the query
@@ -169,26 +162,6 @@ flag_bits! {
     VK_QUERY_PIPELINE_STATISTIC_TESSELLATION_EVALUATION_SHADER_INVOCATIONS_BIT = (1<<9),
     /// Optional
     VK_QUERY_PIPELINE_STATISTIC_COMPUTE_SHADER_INVOCATIONS_BIT = (1<<10),
-  }
-}
-
-flag_bits! {
-  /// [VkSparseImageFormatFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSparseImageFormatFlagBits.html)
-  VkSparseImageFormatFlagBits = VkSparseImageFormatFlags {
-    /// Image uses a single mip tail region for all array layers
-    VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT = (1<<0),
-    /// Image requires mip level dimensions to be an integer multiple of the sparse image block dimensions for non-tail mip levels.
-    VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT = (1<<1),
-    /// Image uses a non-standard sparse image block dimensions
-    VK_SPARSE_IMAGE_FORMAT_NONSTANDARD_BLOCK_SIZE_BIT = (1<<2),
-  }
-}
-
-flag_bits! {
-  /// [VkSparseMemoryBindFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSparseMemoryBindFlagBits.html)
-  VkSparseMemoryBindFlagBits = VkSparseMemoryBindFlags {
-    /// Operation binds resource metadata to memory
-    VK_SPARSE_MEMORY_BIND_METADATA_BIT = (1<<0),
   }
 }
 
@@ -1004,12 +977,6 @@ flag_bits! {
   VkResolveModeFlags {}
 }
 flag_bits! {
-  /// [VkSemaphoreCreateFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSemaphoreCreateFlags.html)
-  ///
-  /// currently reserved for future use.
-  VkSemaphoreCreateFlags {}
-}
-flag_bits! {
   /// [VkSemaphoreImportFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSemaphoreImportFlags.html)
   ///
   /// currently reserved for future use.
@@ -1104,12 +1071,6 @@ flag_bits! {
   ///
   /// currently reserved for future use.
   VkDescriptorPoolResetFlags {}
-}
-flag_bits! {
-  /// [VkXlibSurfaceCreateFlagsKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkXlibSurfaceCreateFlagsKHR.html)
-  ///
-  /// currently reserved for future use.
-  VkMemoryMapFlags {}
 }
 
 pub type VkSemaphoreWaitFlagBitsKHR = VkSemaphoreWaitFlagBits;

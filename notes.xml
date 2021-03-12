@@ -140,62 +140,62 @@
             <!-- <command name="vkDeviceWaitIdle"/> -->
         </require>
         <require comment="Memory commands">
-            <type name="VkMappedMemoryRange"/>
-            <type name="VkMemoryAllocateInfo"/>
-            <type name="VkMemoryMapFlags"/>
-            <command name="vkAllocateMemory"/>
-            <command name="vkFreeMemory"/>
-            <command name="vkMapMemory"/>
-            <command name="vkUnmapMemory"/>
-            <command name="vkFlushMappedMemoryRanges"/>
-            <command name="vkInvalidateMappedMemoryRanges"/>
-            <command name="vkGetDeviceMemoryCommitment"/>
+            <!-- <type name="VkMappedMemoryRange"/> -->
+            <!-- <type name="VkMemoryAllocateInfo"/> -->
+            <!-- <type name="VkMemoryMapFlags"/> -->
+            <!-- <command name="vkAllocateMemory"/> -->
+            <!-- <command name="vkFreeMemory"/> -->
+            <!-- <command name="vkMapMemory"/> -->
+            <!-- <command name="vkUnmapMemory"/> -->
+            <!-- <command name="vkFlushMappedMemoryRanges"/> -->
+            <!-- <command name="vkInvalidateMappedMemoryRanges"/> -->
+            <!-- <command name="vkGetDeviceMemoryCommitment"/> -->
         </require>
         <require comment="Memory management API commands">
-            <type name="VkDeviceMemory"/>
-            <type name="VkMemoryRequirements"/>
-            <command name="vkBindBufferMemory"/>
-            <command name="vkBindImageMemory"/>
-            <command name="vkGetBufferMemoryRequirements"/>
-            <command name="vkGetImageMemoryRequirements"/>
+            <!-- <type name="VkDeviceMemory"/> -->
+            <!-- <type name="VkMemoryRequirements"/> -->
+            <!-- <command name="vkBindBufferMemory"/> -->
+            <!-- <command name="vkBindImageMemory"/> -->
+            <!-- <command name="vkGetBufferMemoryRequirements"/> -->
+            <!-- <command name="vkGetImageMemoryRequirements"/> -->
         </require>
         <require comment="Sparse resource memory management API commands">
-            <type name="VkBindSparseInfo"/>
-            <type name="VkImageAspectFlagBits"/>
-            <type name="VkImageAspectFlags"/>
-            <type name="VkImageSubresource"/>
-            <type name="VkSparseBufferMemoryBindInfo"/>
-            <type name="VkSparseImageFormatFlagBits"/>
-            <type name="VkSparseImageFormatFlags"/>
-            <type name="VkSparseImageFormatProperties"/>
-            <type name="VkSparseImageMemoryBind"/>
-            <type name="VkSparseImageMemoryBindInfo"/>
-            <type name="VkSparseImageMemoryRequirements"/>
-            <type name="VkSparseImageOpaqueMemoryBindInfo"/>
-            <type name="VkSparseMemoryBind"/>
-            <type name="VkSparseMemoryBindFlagBits"/>
-            <type name="VkSparseMemoryBindFlags"/>
-            <command name="vkGetImageSparseMemoryRequirements"/>
-            <command name="vkGetPhysicalDeviceSparseImageFormatProperties"/>
-            <command name="vkQueueBindSparse"/>
+            <!-- <type name="VkBindSparseInfo"/> -->
+            <!-- <type name="VkImageAspectFlagBits"/> -->
+            <!-- <type name="VkImageAspectFlags"/> -->
+            <!-- <type name="VkImageSubresource"/> -->
+            <!-- <type name="VkSparseBufferMemoryBindInfo"/> -->
+            <!-- <type name="VkSparseImageFormatFlagBits"/> -->
+            <!-- <type name="VkSparseImageFormatFlags"/> -->
+            <!-- <type name="VkSparseImageFormatProperties"/> -->
+            <!-- <type name="VkSparseImageMemoryBind"/> -->
+            <!-- <type name="VkSparseImageMemoryBindInfo"/> -->
+            <!-- <type name="VkSparseImageMemoryRequirements"/> -->
+            <!-- <type name="VkSparseImageOpaqueMemoryBindInfo"/> -->
+            <!-- <type name="VkSparseMemoryBind"/> -->
+            <!-- <type name="VkSparseMemoryBindFlagBits"/> -->
+            <!-- <type name="VkSparseMemoryBindFlags"/> -->
+            <!-- <command name="vkGetImageSparseMemoryRequirements"/> -->
+            <!-- <command name="vkGetPhysicalDeviceSparseImageFormatProperties"/> -->
+            <!-- <command name="vkQueueBindSparse"/> -->
         </require>
         <require comment="Fence commands">
             <!-- <type name="VkFence"/> -->
-            <type name="VkFenceCreateFlagBits"/>
-            <type name="VkFenceCreateFlags"/>
-            <type name="VkFenceCreateInfo"/>
-            <command name="vkCreateFence"/>
-            <command name="vkDestroyFence"/>
-            <command name="vkResetFences"/>
-            <command name="vkGetFenceStatus"/>
-            <command name="vkWaitForFences"/>
+            <!-- <type name="VkFenceCreateFlagBits"/> -->
+            <!-- <type name="VkFenceCreateFlags"/> -->
+            <!-- <type name="VkFenceCreateInfo"/> -->
+            <!-- <command name="vkCreateFence"/> -->
+            <!-- <command name="vkDestroyFence"/> -->
+            <!-- <command name="vkResetFences"/> -->
+            <!-- <command name="vkGetFenceStatus"/> -->
+            <!-- <command name="vkWaitForFences"/> -->
         </require>
         <require comment="Queue semaphore commands">
-            <type name="VkSemaphore"/>
-            <type name="VkSemaphoreCreateFlags"/>
-            <type name="VkSemaphoreCreateInfo"/>
-            <command name="vkCreateSemaphore"/>
-            <command name="vkDestroySemaphore"/>
+            <!-- <type name="VkSemaphore"/> -->
+            <!-- <type name="VkSemaphoreCreateFlags"/> -->
+            <!-- <type name="VkSemaphoreCreateInfo"/> -->
+            <!-- <command name="vkCreateSemaphore"/> -->
+            <!-- <command name="vkDestroySemaphore"/> -->
         </require>
         <require comment="Event commands">
             <type name="VkEvent"/>
@@ -502,6 +502,24 @@
             <command name="vkCmdExecuteCommands"/>
         </require>
     </feature>
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
     <feature api="vulkan" name="VK_VERSION_1_1" number="1.1" comment="Vulkan 1.1 core API interface definitions.">
         <require>
             <type name="VK_API_VERSION_1_1"/>
@@ -833,6 +851,21 @@
             <type name="VkPhysicalDeviceShaderDrawParametersFeatures"/>
         </require>
     </feature>
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
     <feature api="vulkan" name="VK_VERSION_1_2" number="1.2" comment="Vulkan 1.2 core API interface definitions.">
         <require>
             <type name="VK_API_VERSION_1_2"/>
@@ -1029,7 +1062,21 @@
             <command name="vkGetDeviceMemoryOpaqueCaptureAddress"/>
         </require>
     </feature>
-
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
     <extensions comment="Vulkan extension interface definitions">
         <extension name="VK_KHR_surface" number="1" type="instance" author="KHR" contact="James Jones @cubanismo,Ian Elliott @ianelliottus" supported="vulkan">
             <require>

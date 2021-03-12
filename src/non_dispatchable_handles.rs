@@ -44,3 +44,11 @@ pub struct VkCommandPool(pub u64);
 #[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Hash)]
 #[repr(transparent)]
 pub struct VkFence(pub u64);
+
+/// [VkDeviceMemory](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceMemory.html)
+///
+/// * Parent: [`VkDevice`]
+/// * ObjectTypeEnum: [`VK_OBJECT_TYPE_DEVICE_MEMORY`]
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Hash)]
+#[repr(transparent)]
+pub struct VkDeviceMemory(pub u64);

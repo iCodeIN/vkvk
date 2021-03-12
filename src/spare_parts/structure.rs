@@ -662,36 +662,6 @@ structure! {
 }
 
 structure! {
-  /// [VkBindSparseInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBindSparseInfo.html)
-  VkBindSparseInfo {
-    /// * **Values:** [`VK_STRUCTURE_TYPE_BIND_SPARSE_INFO`]
-    sType: VkStructureType,
-    /// * **Optional:** true
-    pNext: *const c_void,
-    /// * **Optional:** true
-    waitSemaphoreCount: uint32_t,
-    /// * **Len:** waitSemaphoreCount
-    pWaitSemaphores: *const VkSemaphore,
-    /// * **Optional:** true
-    bufferBindCount: uint32_t,
-    /// * **Len:** bufferBindCount
-    pBufferBinds: *const VkSparseBufferMemoryBindInfo,
-    /// * **Optional:** true
-    imageOpaqueBindCount: uint32_t,
-    /// * **Len:** imageOpaqueBindCount
-    pImageOpaqueBinds: *const VkSparseImageOpaqueMemoryBindInfo,
-    /// * **Optional:** true
-    imageBindCount: uint32_t,
-    /// * **Len:** imageBindCount
-    pImageBinds: *const VkSparseImageMemoryBindInfo,
-    /// * **Optional:** true
-    signalSemaphoreCount: uint32_t,
-    /// * **Len:** signalSemaphoreCount
-    pSignalSemaphores: *const VkSemaphore,
-  }
-}
-
-structure! {
   /// [VkBindVertexBufferIndirectCommandNV](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBindVertexBufferIndirectCommandNV.html)
   VkBindVertexBufferIndirectCommandNV {
     bufferAddress: VkDeviceAddress,
@@ -2405,19 +2375,6 @@ structure! {
 }
 
 structure! {
-  /// [VkFenceCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFenceCreateInfo.html)
-  VkFenceCreateInfo {
-    /// * **Values:** [`VK_STRUCTURE_TYPE_FENCE_CREATE_INFO`]
-    sType: VkStructureType,
-    /// * **Optional:** true
-    pNext: *const c_void,
-    /// Fence creation flags
-    /// * **Optional:** true
-    flags: VkFenceCreateFlags,
-  }
-}
-
-structure! {
   /// [VkFenceGetFdInfoKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFenceGetFdInfoKHR.html)
   VkFenceGetFdInfoKHR {
     /// * **Values:** [`VK_STRUCTURE_TYPE_FENCE_GET_FD_INFO_KHR`]
@@ -3058,15 +3015,6 @@ structure! {
 }
 
 structure! {
-  /// [VkImageSubresource](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageSubresource.html)
-  VkImageSubresource {
-    aspectMask: VkImageAspectFlags,
-    mipLevel: uint32_t,
-    arrayLayer: uint32_t,
-  }
-}
-
-structure! {
   /// [VkImageSubresourceLayers](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageSubresourceLayers.html)
   VkImageSubresourceLayers {
     aspectMask: VkImageAspectFlags,
@@ -3399,22 +3347,6 @@ structure! {
 }
 
 structure! {
-  /// [VkMappedMemoryRange](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkMappedMemoryRange.html)
-  VkMappedMemoryRange {
-    /// * **Values:** [`VK_STRUCTURE_TYPE_MAPPED_MEMORY_RANGE`]
-    sType: VkStructureType,
-    /// * **Optional:** true
-    pNext: *const c_void,
-    /// Mapped memory object
-    memory: VkDeviceMemory,
-    /// Offset within the memory object where the range starts
-    offset: VkDeviceSize,
-    /// Size of the range within the memory object
-    size: VkDeviceSize,
-  }
-}
-
-structure! {
   /// [VkMemoryAllocateFlagsInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkMemoryAllocateFlagsInfo.html)
   ///
   /// Struct Extends: [`VkMemoryAllocateInfo`]
@@ -3426,20 +3358,6 @@ structure! {
     /// * **Optional:** true
     flags: VkMemoryAllocateFlags,
     deviceMask: uint32_t,
-  }
-}
-
-structure! {
-  /// [VkMemoryAllocateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkMemoryAllocateInfo.html)
-  VkMemoryAllocateInfo {
-    /// * **Values:** [`VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO`]
-    sType: VkStructureType,
-    /// * **Optional:** true
-    pNext: *const c_void,
-    /// Size of memory allocation
-    allocationSize: VkDeviceSize,
-    /// Index of the of the memory type to allocate from
-    memoryTypeIndex: uint32_t,
   }
 }
 
@@ -3555,18 +3473,6 @@ structure! {
     /// * **Optional:** true
     pNext: *const c_void,
     priority: float,
-  }
-}
-
-structure! {
-  /// [VkMemoryRequirements](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkMemoryRequirements.html)
-  VkMemoryRequirements {
-    /// Specified in bytes
-    size: VkDeviceSize,
-    /// Specified in bytes
-    alignment: VkDeviceSize,
-    /// Bitmask of the allowed memory type indices into memoryTypes[] for this object
-    memoryTypeBits: uint32_t,
   }
 }
 
@@ -7516,19 +7422,6 @@ structure! {
 }
 
 structure! {
-  /// [VkSemaphoreCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSemaphoreCreateInfo.html)
-  VkSemaphoreCreateInfo {
-    /// * **Values:** [`VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO`]
-    sType: VkStructureType,
-    /// * **Optional:** true
-    pNext: *const c_void,
-    /// Semaphore creation flags
-    /// * **Optional:** true
-    flags: VkSemaphoreCreateFlags,
-  }
-}
-
-structure! {
   /// [VkSemaphoreGetFdInfoKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSemaphoreGetFdInfoKHR.html)
   VkSemaphoreGetFdInfoKHR {
     /// * **Values:** [`VK_STRUCTURE_TYPE_SEMAPHORE_GET_FD_INFO_KHR`]
@@ -7681,27 +7574,6 @@ structure! {
 }
 
 structure! {
-  /// [VkSparseBufferMemoryBindInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSparseBufferMemoryBindInfo.html)
-  VkSparseBufferMemoryBindInfo {
-    buffer: VkBuffer,
-    bindCount: uint32_t,
-    /// * **Len:** bindCount
-    pBinds: *const VkSparseMemoryBind,
-  }
-}
-
-structure! {
-  /// [VkSparseImageFormatProperties](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSparseImageFormatProperties.html)
-  VkSparseImageFormatProperties {
-    /// * **Optional:** true
-    aspectMask: VkImageAspectFlags,
-    imageGranularity: VkExtent3D,
-    /// * **Optional:** true
-    flags: VkSparseImageFormatFlags,
-  }
-}
-
-structure! {
   /// [VkSparseImageFormatProperties2](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSparseImageFormatProperties2.html)
   VkSparseImageFormatProperties2 {
     /// * **Values:** [`VK_STRUCTURE_TYPE_SPARSE_IMAGE_FORMAT_PROPERTIES_2`]
@@ -7713,45 +7585,6 @@ structure! {
 }
 
 structure! {
-  /// [VkSparseImageMemoryBind](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSparseImageMemoryBind.html)
-  VkSparseImageMemoryBind {
-    subresource: VkImageSubresource,
-    offset: VkOffset3D,
-    extent: VkExtent3D,
-    /// * **Optional:** true
-    memory: VkDeviceMemory,
-    /// Specified in bytes
-    memoryOffset: VkDeviceSize,
-    /// * **Optional:** true
-    flags: VkSparseMemoryBindFlags,
-  }
-}
-
-structure! {
-  /// [VkSparseImageMemoryBindInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSparseImageMemoryBindInfo.html)
-  VkSparseImageMemoryBindInfo {
-    image: VkImage,
-    bindCount: uint32_t,
-    /// * **Len:** bindCount
-    pBinds: *const VkSparseImageMemoryBind,
-  }
-}
-
-structure! {
-  /// [VkSparseImageMemoryRequirements](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSparseImageMemoryRequirements.html)
-  VkSparseImageMemoryRequirements {
-    formatProperties: VkSparseImageFormatProperties,
-    imageMipTailFirstLod: uint32_t,
-    /// Specified in bytes, must be a multiple of sparse block size in bytes / alignment
-    imageMipTailSize: VkDeviceSize,
-    /// Specified in bytes, must be a multiple of sparse block size in bytes / alignment
-    imageMipTailOffset: VkDeviceSize,
-    /// Specified in bytes, must be a multiple of sparse block size in bytes / alignment
-    imageMipTailStride: VkDeviceSize,
-  }
-}
-
-structure! {
   /// [VkSparseImageMemoryRequirements2](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSparseImageMemoryRequirements2.html)
   VkSparseImageMemoryRequirements2 {
     /// * **Values:** [`VK_STRUCTURE_TYPE_SPARSE_IMAGE_MEMORY_REQUIREMENTS_2`]
@@ -7759,32 +7592,6 @@ structure! {
     /// * **Optional:** true
     pNext: *mut c_void,
     memoryRequirements: VkSparseImageMemoryRequirements,
-  }
-}
-
-structure! {
-  /// [VkSparseImageOpaqueMemoryBindInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSparseImageOpaqueMemoryBindInfo.html)
-  VkSparseImageOpaqueMemoryBindInfo {
-    image: VkImage,
-    bindCount: uint32_t,
-    /// * **Len:** bindCount
-    pBinds: *const VkSparseMemoryBind,
-  }
-}
-
-structure! {
-  /// [VkSparseMemoryBind](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSparseMemoryBind.html)
-  VkSparseMemoryBind {
-    /// Specified in bytes
-    resourceOffset: VkDeviceSize,
-    /// Specified in bytes
-    size: VkDeviceSize,
-    /// * **Optional:** true
-    memory: VkDeviceMemory,
-    /// Specified in bytes
-    memoryOffset: VkDeviceSize,
-    /// * **Optional:** true
-    flags: VkSparseMemoryBindFlags,
   }
 }
 

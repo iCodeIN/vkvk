@@ -3,15 +3,6 @@ use super::*;
 define_non_dispatchable_handle!(
   ///
   /// * Parent: [`VkDevice`]
-  /// * ObjectTypeEnum: [`VK_OBJECT_TYPE_DEVICE_MEMORY`]
-  ///
-  /// [VkDeviceMemory](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceMemory.html)
-  VkDeviceMemory
-);
-
-define_non_dispatchable_handle!(
-  ///
-  /// * Parent: [`VkDevice`]
   /// * ObjectTypeEnum: [`VK_OBJECT_TYPE_BUFFER_VIEW`]
   ///
   /// [VkBufferView](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBufferView.html)

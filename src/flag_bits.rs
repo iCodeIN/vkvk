@@ -426,3 +426,44 @@ pub const VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_NV: VkPipelineStageFlagBits =
 pub const VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_NV: VkPipelineStageFlagBits = VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR;
 // Provided by `VK_KHR_fragment_shading_rate`
 pub const VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR: VkPipelineStageFlagBits = VK_PIPELINE_STAGE_SHADING_RATE_IMAGE_BIT_NV;
+
+vk_flag_bits! {
+  /// [VkXlibSurfaceCreateFlagsKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkXlibSurfaceCreateFlagsKHR.html)
+  ///
+  /// currently reserved for future use.
+  VkMemoryMapFlagBits = VkMemoryMapFlags {}
+}
+
+vk_flag_bits! {
+  /// [VkSparseMemoryBindFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSparseMemoryBindFlagBits.html)
+  VkSparseMemoryBindFlagBits = VkSparseMemoryBindFlags {
+    /// Operation binds resource metadata to memory
+    VK_SPARSE_MEMORY_BIND_METADATA_BIT = (1<<0),
+  }
+}
+
+vk_flag_bits! {
+  /// [VkSparseImageFormatFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSparseImageFormatFlagBits.html)
+  VkSparseImageFormatFlagBits = VkSparseImageFormatFlags {
+    /// Image uses a single mip tail region for all array layers
+    VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT = (1<<0),
+    /// Image requires mip level dimensions to be an integer multiple of the sparse image block dimensions for non-tail mip levels.
+    VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT = (1<<1),
+    /// Image uses a non-standard sparse image block dimensions
+    VK_SPARSE_IMAGE_FORMAT_NONSTANDARD_BLOCK_SIZE_BIT = (1<<2),
+  }
+}
+
+vk_flag_bits! {
+  /// [VkFenceCreateFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFenceCreateFlagBits.html)
+  VkFenceCreateFlagBits = VkFenceCreateFlags {
+    VK_FENCE_CREATE_SIGNALED_BIT = (1<<0),
+  }
+}
+
+vk_flag_bits! {
+  /// [VkSemaphoreCreateFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSemaphoreCreateFlags.html)
+  ///
+  /// currently reserved for future use.
+  VkSemaphoreCreateFlagBits = VkSemaphoreCreateFlags {}
+}
