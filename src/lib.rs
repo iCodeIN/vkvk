@@ -81,6 +81,9 @@ use fn_types::*;
 pub mod structures;
 use structures::*;
 
+pub mod unions;
+use unions::*;
+
 pub const VK_ATTACHMENT_UNUSED: u32 = !0;
 
 pub const VK_LOD_CLAMP_NONE: f32 = 1000.0;
@@ -109,3 +112,9 @@ pub const VK_UUID_SIZE: usize = 16;
 pub const VK_MAX_EXTENSION_NAME_SIZE: usize = 256;
 
 pub const VK_MAX_DESCRIPTION_SIZE: usize = 256;
+
+// TODO: ???
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(transparent)]
+pub struct VkSampleMask(pub uint32_t);

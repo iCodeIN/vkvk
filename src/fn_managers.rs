@@ -299,6 +299,93 @@ pub struct DeviceFns {
   vkCreateQueryPool_p: vkCreateQueryPool_t,
   vkDestroyQueryPool_p: vkDestroyQueryPool_t,
   vkGetQueryPoolResults_p: vkGetQueryPoolResults_t,
+  vkCreateBuffer_p: vkCreateBuffer_t,
+  vkDestroyBuffer_p: vkDestroyBuffer_t,
+  vkCreateBufferView_p: vkCreateBufferView_t,
+  vkDestroyBufferView_p: vkDestroyBufferView_t,
+  vkCreateImage_p: vkCreateImage_t,
+  vkDestroyImage_p: vkDestroyImage_t,
+  vkGetImageSubresourceLayout_p: vkGetImageSubresourceLayout_t,
+  vkCreateImageView_p: vkCreateImageView_t,
+  vkDestroyImageView_p: vkDestroyImageView_t,
+  vkCreateShaderModule_p: vkCreateShaderModule_t,
+  vkDestroyShaderModule_p: vkDestroyShaderModule_t,
+  vkCreatePipelineCache_p: vkCreatePipelineCache_t,
+  vkDestroyPipelineCache_p: vkDestroyPipelineCache_t,
+  vkGetPipelineCacheData_p: vkGetPipelineCacheData_t,
+  vkMergePipelineCaches_p: vkMergePipelineCaches_t,
+  vkCreateGraphicsPipelines_p: vkCreateGraphicsPipelines_t,
+  vkCreateComputePipelines_p: vkCreateComputePipelines_t,
+  vkDestroyPipeline_p: vkDestroyPipeline_t,
+  vkCreatePipelineLayout_p: vkCreatePipelineLayout_t,
+  vkDestroyPipelineLayout_p: vkDestroyPipelineLayout_t,
+  vkCreateSampler_p: vkCreateSampler_t,
+  vkDestroySampler_p: vkDestroySampler_t,
+  vkCreateDescriptorSetLayout_p: vkCreateDescriptorSetLayout_t,
+  vkDestroyDescriptorSetLayout_p: vkDestroyDescriptorSetLayout_t,
+  vkCreateDescriptorPool_p: vkCreateDescriptorPool_t,
+  vkDestroyDescriptorPool_p: vkDestroyDescriptorPool_t,
+  vkResetDescriptorPool_p: vkResetDescriptorPool_t,
+  vkAllocateDescriptorSets_p: vkAllocateDescriptorSets_t,
+  vkFreeDescriptorSets_p: vkFreeDescriptorSets_t,
+  vkUpdateDescriptorSets_p: vkUpdateDescriptorSets_t,
+  vkCreateFramebuffer_p: vkCreateFramebuffer_t,
+  vkDestroyFramebuffer_p: vkDestroyFramebuffer_t,
+  vkCreateRenderPass_p: vkCreateRenderPass_t,
+  vkDestroyRenderPass_p: vkDestroyRenderPass_t,
+  vkGetRenderAreaGranularity_p: vkGetRenderAreaGranularity_t,
+  vkCreateCommandPool_p: vkCreateCommandPool_t,
+  vkDestroyCommandPool_p: vkDestroyCommandPool_t,
+  vkResetCommandPool_p: vkResetCommandPool_t,
+  vkAllocateCommandBuffers_p: vkAllocateCommandBuffers_t,
+  vkFreeCommandBuffers_p: vkFreeCommandBuffers_t,
+  vkBeginCommandBuffer_p: vkBeginCommandBuffer_t,
+  vkEndCommandBuffer_p: vkEndCommandBuffer_t,
+  vkResetCommandBuffer_p: vkResetCommandBuffer_t,
+  vkCmdBindPipeline_p: vkCmdBindPipeline_t,
+  vkCmdSetViewport_p: vkCmdSetViewport_t,
+  vkCmdSetScissor_p: vkCmdSetScissor_t,
+  vkCmdSetLineWidth_p: vkCmdSetLineWidth_t,
+  vkCmdSetDepthBias_p: vkCmdSetDepthBias_t,
+  vkCmdSetBlendConstants_p: vkCmdSetBlendConstants_t,
+  vkCmdSetDepthBounds_p: vkCmdSetDepthBounds_t,
+  vkCmdSetStencilCompareMask_p: vkCmdSetStencilCompareMask_t,
+  vkCmdSetStencilWriteMask_p: vkCmdSetStencilWriteMask_t,
+  vkCmdSetStencilReference_p: vkCmdSetStencilReference_t,
+  vkCmdBindDescriptorSets_p: vkCmdBindDescriptorSets_t,
+  vkCmdBindIndexBuffer_p: vkCmdBindIndexBuffer_t,
+  vkCmdBindVertexBuffers_p: vkCmdBindVertexBuffers_t,
+  vkCmdDraw_p: vkCmdDraw_t,
+  vkCmdDrawIndexed_p: vkCmdDrawIndexed_t,
+  vkCmdDrawIndirect_p: vkCmdDrawIndirect_t,
+  vkCmdDrawIndexedIndirect_p: vkCmdDrawIndexedIndirect_t,
+  vkCmdDispatch_p: vkCmdDispatch_t,
+  vkCmdDispatchIndirect_p: vkCmdDispatchIndirect_t,
+  vkCmdCopyBuffer_p: vkCmdCopyBuffer_t,
+  vkCmdCopyImage_p: vkCmdCopyImage_t,
+  vkCmdBlitImage_p: vkCmdBlitImage_t,
+  vkCmdCopyBufferToImage_p: vkCmdCopyBufferToImage_t,
+  vkCmdCopyImageToBuffer_p: vkCmdCopyImageToBuffer_t,
+  vkCmdUpdateBuffer_p: vkCmdUpdateBuffer_t,
+  vkCmdFillBuffer_p: vkCmdFillBuffer_t,
+  vkCmdClearColorImage_p: vkCmdClearColorImage_t,
+  vkCmdClearDepthStencilImage_p: vkCmdClearDepthStencilImage_t,
+  vkCmdClearAttachments_p: vkCmdClearAttachments_t,
+  vkCmdResolveImage_p: vkCmdResolveImage_t,
+  vkCmdSetEvent_p: vkCmdSetEvent_t,
+  vkCmdResetEvent_p: vkCmdResetEvent_t,
+  vkCmdWaitEvents_p: vkCmdWaitEvents_t,
+  vkCmdPipelineBarrier_p: vkCmdPipelineBarrier_t,
+  vkCmdBeginQuery_p: vkCmdBeginQuery_t,
+  vkCmdEndQuery_p: vkCmdEndQuery_t,
+  vkCmdResetQueryPool_p: vkCmdResetQueryPool_t,
+  vkCmdWriteTimestamp_p: vkCmdWriteTimestamp_t,
+  vkCmdCopyQueryPoolResults_p: vkCmdCopyQueryPoolResults_t,
+  vkCmdPushConstants_p: vkCmdPushConstants_t,
+  vkCmdBeginRenderPass_p: vkCmdBeginRenderPass_t,
+  vkCmdNextSubpass_p: vkCmdNextSubpass_t,
+  vkCmdEndRenderPass_p: vkCmdEndRenderPass_t,
+  vkCmdExecuteCommands_p: vkCmdExecuteCommands_t,
 }
 
 impl DeviceFns {
@@ -337,6 +424,119 @@ impl DeviceFns {
     let vkCreateQueryPool_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCreateQueryPool\0".as_ptr()).ok_or("vkCreateQueryPool")?);
     let vkDestroyQueryPool_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkDestroyQueryPool\0".as_ptr()).ok_or("vkDestroyQueryPool")?);
     let vkGetQueryPoolResults_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkGetQueryPoolResults\0".as_ptr()).ok_or("vkGetQueryPoolResults")?);
+    let vkCreateBuffer_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCreateBuffer\0".as_ptr()).ok_or("vkCreateBuffer")?);
+    let vkDestroyBuffer_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkDestroyBuffer\0".as_ptr()).ok_or("vkDestroyBuffer")?);
+    let vkCreateBufferView_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCreateBufferView\0".as_ptr()).ok_or("vkCreateBufferView")?);
+    let vkDestroyBufferView_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkDestroyBufferView\0".as_ptr()).ok_or("vkDestroyBufferView")?);
+    let vkCreateImage_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCreateImage\0".as_ptr()).ok_or("vkCreateImage")?);
+    let vkDestroyImage_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkDestroyImage\0".as_ptr()).ok_or("vkDestroyImage")?);
+    let vkGetImageSubresourceLayout_p =
+      t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkGetImageSubresourceLayout\0".as_ptr()).ok_or("vkGetImageSubresourceLayout")?);
+    let vkCreateImageView_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCreateImageView\0".as_ptr()).ok_or("vkCreateImageView")?);
+    let vkDestroyImageView_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkDestroyImageView\0".as_ptr()).ok_or("vkDestroyImageView")?);
+    let vkCreateShaderModule_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCreateShaderModule\0".as_ptr()).ok_or("vkCreateShaderModule")?);
+    let vkDestroyShaderModule_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkDestroyShaderModule\0".as_ptr()).ok_or("vkDestroyShaderModule")?);
+    let vkCreatePipelineCache_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCreatePipelineCache\0".as_ptr()).ok_or("vkCreatePipelineCache")?);
+    let vkDestroyPipelineCache_p =
+      t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkDestroyPipelineCache\0".as_ptr()).ok_or("vkDestroyPipelineCache")?);
+    let vkGetPipelineCacheData_p =
+      t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkGetPipelineCacheData\0".as_ptr()).ok_or("vkGetPipelineCacheData")?);
+    let vkMergePipelineCaches_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkMergePipelineCaches\0".as_ptr()).ok_or("vkMergePipelineCaches")?);
+    let vkCreateGraphicsPipelines_p =
+      t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCreateGraphicsPipelines\0".as_ptr()).ok_or("vkCreateGraphicsPipelines")?);
+    let vkCreateComputePipelines_p =
+      t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCreateComputePipelines\0".as_ptr()).ok_or("vkCreateComputePipelines")?);
+    let vkDestroyPipeline_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkDestroyPipeline\0".as_ptr()).ok_or("vkDestroyPipeline")?);
+    let vkCreatePipelineLayout_p =
+      t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCreatePipelineLayout\0".as_ptr()).ok_or("vkCreatePipelineLayout")?);
+    let vkDestroyPipelineLayout_p =
+      t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkDestroyPipelineLayout\0".as_ptr()).ok_or("vkDestroyPipelineLayout")?);
+    let vkCreateSampler_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCreatesampler\0".as_ptr()).ok_or("vkCreateSampler")?);
+    let vkDestroySampler_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkDestroysampler\0".as_ptr()).ok_or("vkDestroySampler")?);
+    let vkCreateDescriptorSetLayout_p =
+      t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCreateDescriptorSetLayout\0".as_ptr()).ok_or("vkCreateDescriptorSetLayout")?);
+    let vkDestroyDescriptorSetLayout_p =
+      t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkDestroyDescriptorSetLayout\0".as_ptr()).ok_or("vkDestroyDescriptorSetLayout")?);
+    let vkCreateDescriptorPool_p =
+      t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCreateDescriptorPool\0".as_ptr()).ok_or("vkCreateDescriptorPool")?);
+    let vkDestroyDescriptorPool_p =
+      t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkDestroyDescriptorPool\0".as_ptr()).ok_or("vkDestroyDescriptorPool")?);
+    let vkResetDescriptorPool_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkResetDescriptorPool\0".as_ptr()).ok_or("vkResetDescriptorPool")?);
+    let vkAllocateDescriptorSets_p =
+      t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkAllocateDescriptorSets\0".as_ptr()).ok_or("vkAllocateDescriptorSets")?);
+    let vkFreeDescriptorSets_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkFreeDescriptorSets\0".as_ptr()).ok_or("vkFreeDescriptorSets")?);
+    let vkUpdateDescriptorSets_p =
+      t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkUpdateDescriptorSets\0".as_ptr()).ok_or("vkUpdateDescriptorSets")?);
+    let vkCreateFramebuffer_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCreateFramebuffer\0".as_ptr()).ok_or("vkCreateFramebuffer")?);
+    let vkDestroyFramebuffer_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkDestroyFramebuffer\0".as_ptr()).ok_or("vkDestroyFramebuffer")?);
+    let vkCreateRenderPass_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCreateRenderPass\0".as_ptr()).ok_or("vkCreateRenderPass")?);
+    let vkDestroyRenderPass_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkDestroyRenderPass\0".as_ptr()).ok_or("vkDestroyRenderPass")?);
+    let vkGetRenderAreaGranularity_p =
+      t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkGetRenderAreaGranularity\0".as_ptr()).ok_or("vkGetRenderAreaGranularity")?);
+    let vkCreateCommandPool_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCreateCommandPool\0".as_ptr()).ok_or("vkCreateCommandPool")?);
+    let vkDestroyCommandPool_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkDestroyCommandPool\0".as_ptr()).ok_or("vkDestroyCommandPool")?);
+    let vkResetCommandPool_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkResetCommandPool\0".as_ptr()).ok_or("vkResetCommandPool")?);
+    let vkAllocateCommandBuffers_p =
+      t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkAllocateCommandBuffers\0".as_ptr()).ok_or("vkAllocateCommandBuffers")?);
+    let vkFreeCommandBuffers_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkFreeCommandBuffers\0".as_ptr()).ok_or("vkFreeCommandBuffers")?);
+    let vkBeginCommandBuffer_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkBeginCommandBuffer\0".as_ptr()).ok_or("vkBeginCommandBuffer")?);
+    let vkEndCommandBuffer_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkEndCommandBuffer\0".as_ptr()).ok_or("vkEndCommandBuffer")?);
+    let vkResetCommandBuffer_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkResetCommandBuffer\0".as_ptr()).ok_or("vkResetCommandBuffer")?);
+    let vkCmdBindPipeline_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdBindPipeline\0".as_ptr()).ok_or("vkCmdBindPipeline")?);
+    let vkCmdSetViewport_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdSetViewport\0".as_ptr()).ok_or("vkCmdSetViewport")?);
+    let vkCmdSetScissor_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdSetScissor\0".as_ptr()).ok_or("vkCmdSetScissor")?);
+    let vkCmdSetLineWidth_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdSetLineWidth\0".as_ptr()).ok_or("vkCmdSetLineWidth")?);
+    let vkCmdSetDepthBias_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdSetDepthBias\0".as_ptr()).ok_or("vkCmdSetDepthBias")?);
+    let vkCmdSetBlendConstants_p =
+      t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdSetBlendConstants\0".as_ptr()).ok_or("vkCmdSetBlendConstants")?);
+    let vkCmdSetDepthBounds_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdSetDepthBounds\0".as_ptr()).ok_or("vkCmdSetDepthBounds")?);
+    let vkCmdSetStencilCompareMask_p =
+      t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdSetStencilCompareMask\0".as_ptr()).ok_or("vkCmdSetStencilCompareMask")?);
+    let vkCmdSetStencilWriteMask_p =
+      t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdSetStencilWriteMask\0".as_ptr()).ok_or("vkCmdSetStencilWriteMask")?);
+    let vkCmdSetStencilReference_p =
+      t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdSetStencilReference\0".as_ptr()).ok_or("vkCmdSetStencilReference")?);
+    let vkCmdBindDescriptorSets_p =
+      t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdBindDescriptorSets\0".as_ptr()).ok_or("vkCmdBindDescriptorSets")?);
+    let vkCmdBindIndexBuffer_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdBindIndexBuffer\0".as_ptr()).ok_or("vkCmdBindIndexBuffer")?);
+    let vkCmdBindVertexBuffers_p =
+      t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdBindVertexBuffers\0".as_ptr()).ok_or("vkCmdBindVertexBuffers")?);
+    let vkCmdDraw_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdDraw\0".as_ptr()).ok_or("vkCmdDraw")?);
+    let vkCmdDrawIndexed_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdDrawIndexed\0".as_ptr()).ok_or("vkCmdDrawIndexed")?);
+    let vkCmdDrawIndirect_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdDrawIndirect\0".as_ptr()).ok_or("vkCmdDrawIndirect")?);
+    let vkCmdDrawIndexedIndirect_p =
+      t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdDrawIndexedIndirect\0".as_ptr()).ok_or("vkCmdDrawIndexedIndirect")?);
+    let vkCmdDispatch_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdDispatch\0".as_ptr()).ok_or("vkCmdDispatch")?);
+    let vkCmdDispatchIndirect_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdDispatchIndirect\0".as_ptr()).ok_or("vkCmdDispatchIndirect")?);
+    let vkCmdCopyBuffer_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdCopyBuffer\0".as_ptr()).ok_or("vkCmdCopyBuffer")?);
+    let vkCmdCopyImage_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdCopyImage\0".as_ptr()).ok_or("vkCmdCopyImage")?);
+    let vkCmdBlitImage_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdBlitImage\0".as_ptr()).ok_or("vkCmdBlitImage")?);
+    let vkCmdCopyBufferToImage_p =
+      t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdCopyBufferToImage\0".as_ptr()).ok_or("vkCmdCopyBufferToImage")?);
+    let vkCmdCopyImageToBuffer_p =
+      t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdCopyImageToBuffer\0".as_ptr()).ok_or("vkCmdCopyImageToBuffer")?);
+    let vkCmdUpdateBuffer_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdUpdateBuffer\0".as_ptr()).ok_or("vkCmdUpdateBuffer")?);
+    let vkCmdFillBuffer_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdFillBuffer\0".as_ptr()).ok_or("vkCmdFillBuffer")?);
+    let vkCmdClearColorImage_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdClearColorImage\0".as_ptr()).ok_or("vkCmdClearColorImage")?);
+    let vkCmdClearDepthStencilImage_p =
+      t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdClearDepthStencilImage\0".as_ptr()).ok_or("vkCmdClearDepthStencilImage")?);
+    let vkCmdClearAttachments_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdClearAttachments\0".as_ptr()).ok_or("vkCmdClearAttachments")?);
+    let vkCmdResolveImage_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdResolveImage\0".as_ptr()).ok_or("vkCmdResolveImage")?);
+    let vkCmdSetEvent_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdSetEvent\0".as_ptr()).ok_or("vkCmdSetEvent")?);
+    let vkCmdResetEvent_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdResetEvent\0".as_ptr()).ok_or("vkCmdResetEvent")?);
+    let vkCmdWaitEvents_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdWaitEvents\0".as_ptr()).ok_or("vkCmdWaitEvents")?);
+    let vkCmdPipelineBarrier_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdPipelineBarrier\0".as_ptr()).ok_or("vkCmdPipelineBarrier")?);
+    let vkCmdBeginQuery_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdBeginQuery\0".as_ptr()).ok_or("vkCmdBeginQuery")?);
+    let vkCmdEndQuery_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdEndQuery\0".as_ptr()).ok_or("vkCmdEndQuery")?);
+    let vkCmdResetQueryPool_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdResetQueryPool\0".as_ptr()).ok_or("vkCmdResetQueryPool")?);
+    let vkCmdWriteTimestamp_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdWriteTimestamp\0".as_ptr()).ok_or("vkCmdWriteTimestamp")?);
+    let vkCmdCopyQueryPoolResults_p =
+      t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdCopyQueryPoolResults\0".as_ptr()).ok_or("vkCmdCopyQueryPoolResults")?);
+    let vkCmdPushConstants_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdPushConstants\0".as_ptr()).ok_or("vkCmdPushConstants")?);
+    let vkCmdBeginRenderPass_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdBeginRenderPass\0".as_ptr()).ok_or("vkCmdBeginRenderPass")?);
+    let vkCmdNextSubpass_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdNextSubpass\0".as_ptr()).ok_or("vkCmdNextSubpass")?);
+    let vkCmdEndRenderPass_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdEndRenderPass\0".as_ptr()).ok_or("vkCmdEndRenderPass")?);
+    let vkCmdExecuteCommands_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCmdExecuteCommands\0".as_ptr()).ok_or("vkCmdExecuteCommands")?);
     Ok(Self {
       vkGetDeviceQueue_p,
       vkAllocateMemory_p,
@@ -366,6 +566,93 @@ impl DeviceFns {
       vkCreateQueryPool_p,
       vkDestroyQueryPool_p,
       vkGetQueryPoolResults_p,
+      vkCreateBuffer_p,
+      vkDestroyBuffer_p,
+      vkCreateBufferView_p,
+      vkDestroyBufferView_p,
+      vkCreateImage_p,
+      vkDestroyImage_p,
+      vkGetImageSubresourceLayout_p,
+      vkCreateImageView_p,
+      vkDestroyImageView_p,
+      vkCreateShaderModule_p,
+      vkDestroyShaderModule_p,
+      vkCreatePipelineCache_p,
+      vkDestroyPipelineCache_p,
+      vkGetPipelineCacheData_p,
+      vkMergePipelineCaches_p,
+      vkCreateGraphicsPipelines_p,
+      vkCreateComputePipelines_p,
+      vkDestroyPipeline_p,
+      vkCreatePipelineLayout_p,
+      vkDestroyPipelineLayout_p,
+      vkCreateSampler_p,
+      vkDestroySampler_p,
+      vkCreateDescriptorSetLayout_p,
+      vkDestroyDescriptorSetLayout_p,
+      vkCreateDescriptorPool_p,
+      vkDestroyDescriptorPool_p,
+      vkResetDescriptorPool_p,
+      vkAllocateDescriptorSets_p,
+      vkFreeDescriptorSets_p,
+      vkUpdateDescriptorSets_p,
+      vkCreateFramebuffer_p,
+      vkDestroyFramebuffer_p,
+      vkCreateRenderPass_p,
+      vkDestroyRenderPass_p,
+      vkGetRenderAreaGranularity_p,
+      vkCreateCommandPool_p,
+      vkDestroyCommandPool_p,
+      vkResetCommandPool_p,
+      vkAllocateCommandBuffers_p,
+      vkFreeCommandBuffers_p,
+      vkBeginCommandBuffer_p,
+      vkEndCommandBuffer_p,
+      vkResetCommandBuffer_p,
+      vkCmdBindPipeline_p,
+      vkCmdSetViewport_p,
+      vkCmdSetScissor_p,
+      vkCmdSetLineWidth_p,
+      vkCmdSetDepthBias_p,
+      vkCmdSetBlendConstants_p,
+      vkCmdSetDepthBounds_p,
+      vkCmdSetStencilCompareMask_p,
+      vkCmdSetStencilWriteMask_p,
+      vkCmdSetStencilReference_p,
+      vkCmdBindDescriptorSets_p,
+      vkCmdBindIndexBuffer_p,
+      vkCmdBindVertexBuffers_p,
+      vkCmdDraw_p,
+      vkCmdDrawIndexed_p,
+      vkCmdDrawIndirect_p,
+      vkCmdDrawIndexedIndirect_p,
+      vkCmdDispatch_p,
+      vkCmdDispatchIndirect_p,
+      vkCmdCopyBuffer_p,
+      vkCmdCopyImage_p,
+      vkCmdBlitImage_p,
+      vkCmdCopyBufferToImage_p,
+      vkCmdCopyImageToBuffer_p,
+      vkCmdUpdateBuffer_p,
+      vkCmdFillBuffer_p,
+      vkCmdClearColorImage_p,
+      vkCmdClearDepthStencilImage_p,
+      vkCmdClearAttachments_p,
+      vkCmdResolveImage_p,
+      vkCmdSetEvent_p,
+      vkCmdResetEvent_p,
+      vkCmdWaitEvents_p,
+      vkCmdPipelineBarrier_p,
+      vkCmdBeginQuery_p,
+      vkCmdEndQuery_p,
+      vkCmdResetQueryPool_p,
+      vkCmdWriteTimestamp_p,
+      vkCmdCopyQueryPoolResults_p,
+      vkCmdPushConstants_p,
+      vkCmdBeginRenderPass_p,
+      vkCmdNextSubpass_p,
+      vkCmdEndRenderPass_p,
+      vkCmdExecuteCommands_p,
     })
   }
 
@@ -529,6 +816,594 @@ impl DeviceFns {
     stride: VkDeviceSize, flags: VkQueryResultFlags,
   ) -> VkResult {
     (self.vkGetQueryPoolResults_p)(device, queryPool, firstQuery, queryCount, dataSize, pData, stride, flags)
+  }
+
+  /// [vkCreateBuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateBuffer.html)
+  pub unsafe fn CreateBuffer(
+    &self, device: VkDevice, pCreateInfo: &VkBufferCreateInfo, pAllocator: Option<&VkAllocationCallbacks>, pBuffer: &mut VkBuffer,
+  ) -> VkResult {
+    (self.vkCreateBuffer_p)(device, pCreateInfo, pAllocator, pBuffer)
+  }
+
+  /// [vkDestroyBuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyBuffer.html)
+  pub unsafe fn DestroyBuffer(&self, device: VkDevice, buffer: VkBuffer, pAllocator: Option<&VkAllocationCallbacks>) {
+    (self.vkDestroyBuffer_p)(device, buffer, pAllocator)
+  }
+
+  /// [vkCreateBufferView](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateBufferView.html)
+  pub unsafe fn CreateBufferView(
+    &self, device: VkDevice, pCreateInfo: &VkBufferViewCreateInfo, pAllocator: Option<&VkAllocationCallbacks>, pView: &mut VkBufferView,
+  ) -> VkResult {
+    (self.vkCreateBufferView_p)(device, pCreateInfo, pAllocator, pView)
+  }
+
+  /// [vkDestroyBufferView](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyBufferView.html)
+  pub unsafe fn DestroyBufferView(&self, device: VkDevice, bufferView: VkBufferView, pAllocator: Option<&VkAllocationCallbacks>) {
+    (self.vkDestroyBufferView_p)(device, bufferView, pAllocator)
+  }
+
+  /// [vkCreateImage](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateImage.html)
+  pub unsafe fn CreateImage(
+    &self, device: VkDevice, pCreateInfo: &VkImageCreateInfo, pAllocator: Option<&VkAllocationCallbacks>, pImage: &mut VkImage,
+  ) -> VkResult {
+    (self.vkCreateImage_p)(device, pCreateInfo, pAllocator, pImage)
+  }
+
+  /// [vkDestroyImage](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyImage.html)
+  pub unsafe fn DestroyImage(&self, device: VkDevice, image: VkImage, pAllocator: Option<&VkAllocationCallbacks>) {
+    (self.vkDestroyImage_p)(device, image, pAllocator)
+  }
+
+  /// [vkGetImageSubresourceLayout](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetImageSubresourceLayout.html)
+  pub unsafe fn GetImageSubresourceLayout(
+    &self, device: VkDevice, image: VkImage, pSubresource: &VkImageSubresource, pLayout: &mut VkSubresourceLayout,
+  ) {
+    (self.vkGetImageSubresourceLayout_p)(device, image, pSubresource, pLayout)
+  }
+
+  /// [vkCreateImageView](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateImageView.html)
+  pub unsafe fn CreateImageView(
+    &self, device: VkDevice, pCreateInfo: &VkImageViewCreateInfo, pAllocator: Option<&VkAllocationCallbacks>, pView: &mut VkImageView,
+  ) -> VkResult {
+    (self.vkCreateImageView_p)(device, pCreateInfo, pAllocator, pView)
+  }
+
+  /// [vkDestroyImageView](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyImageView.html)
+  pub unsafe fn DestroyImageView(&self, device: VkDevice, imageView: VkImageView, pAllocator: Option<&VkAllocationCallbacks>) {
+    (self.vkDestroyImageView_p)(device, imageView, pAllocator)
+  }
+
+  /// [vkCreateShaderModule](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateShaderModule.html)
+  pub unsafe fn CreateShaderModule(
+    &self, device: VkDevice, pCreateInfo: &VkShaderModuleCreateInfo, pAllocator: Option<&VkAllocationCallbacks>, pShaderModule: &mut VkShaderModule,
+  ) -> VkResult {
+    (self.vkCreateShaderModule_p)(device, pCreateInfo, pAllocator, pShaderModule)
+  }
+
+  /// [vkDestroyShaderModule](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyShaderModule.html)
+  pub unsafe fn DestroyShaderModule(&self, device: VkDevice, shaderModule: VkShaderModule, pAllocator: Option<&VkAllocationCallbacks>) {
+    (self.vkDestroyShaderModule_p)(device, shaderModule, pAllocator)
+  }
+
+  /// [vkCreatePipelineCache](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreatePipelineCache.html)
+  pub unsafe fn CreatePipelineCache(
+    &self, device: VkDevice, pCreateInfo: &VkPipelineCacheCreateInfo, pAllocator: Option<&VkAllocationCallbacks>,
+    pPipelineCache: &mut VkPipelineCache,
+  ) -> VkResult {
+    (self.vkCreatePipelineCache_p)(device, pCreateInfo, pAllocator, pPipelineCache)
+  }
+
+  /// [vkDestroyPipelineCache](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyPipelineCache.html)
+  pub unsafe fn DestroyPipelineCache(&self, device: VkDevice, pipelineCache: VkPipelineCache, pAllocator: Option<&VkAllocationCallbacks>) {
+    (self.vkDestroyPipelineCache_p)(device, pipelineCache, pAllocator)
+  }
+
+  /// [vkGetPipelineCacheData](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPipelineCacheData.html)
+  pub unsafe fn GetPipelineCacheData(
+    &self, device: VkDevice, pipelineCache: VkPipelineCache, pDataSize: &mut size_t, pData: *mut c_void,
+  ) -> VkResult {
+    (self.vkGetPipelineCacheData_p)(device, pipelineCache, pDataSize, pData)
+  }
+
+  /// [vkMergePipelineCaches](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/xkMergePipelineCaches.html)
+  pub unsafe fn MergePipelineCaches(
+    &self, device: VkDevice, dstCache: VkPipelineCache, srcCacheCount: uint32_t, pSrcCaches: *const VkPipelineCache,
+  ) -> VkResult {
+    (self.vkMergePipelineCaches_p)(device, dstCache, srcCacheCount, pSrcCaches)
+  }
+
+  /// [vkCreateGraphicsPipelines](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateGraphicsPipelines.html)
+  pub unsafe fn CreateGraphicsPipelines(
+    &self, device: VkDevice, pipelineCache: VkPipelineCache, createInfoCount: uint32_t, pCreateInfos: *const VkGraphicsPipelineCreateInfo,
+    pAllocator: Option<&VkAllocationCallbacks>, pPipelines: &mut VkPipeline,
+  ) -> VkResult {
+    (self.vkCreateGraphicsPipelines_p)(device, pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines)
+  }
+
+  /// [vkCreateComputePipelines](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateComputePipelines.html)
+  pub unsafe fn CreateComputePipelines(
+    &self, device: VkDevice, pipelineCache: VkPipelineCache, createInfoCount: uint32_t, pCreateInfos: *const VkComputePipelineCreateInfo,
+    pAllocator: Option<&VkAllocationCallbacks>, pPipelines: &mut VkPipeline,
+  ) -> VkResult {
+    (self.vkCreateComputePipelines_p)(device, pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines)
+  }
+
+  /// [vkDestroyPipeline](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyPipeline.html)
+  pub unsafe fn DestroyPipeline(&self, device: VkDevice, pipeline: VkPipeline, pAllocator: Option<&VkAllocationCallbacks>) {
+    (self.vkDestroyPipeline_p)(device, pipeline, pAllocator)
+  }
+
+  /// [vkCreatePipelineLayout](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreatePipelineLayout.html)
+  pub unsafe fn CreatePipelineLayout(
+    &self, device: VkDevice, pCreateInfo: &VkPipelineLayoutCreateInfo, pAllocator: Option<&VkAllocationCallbacks>,
+    pPipelineLayout: &mut VkPipelineLayout,
+  ) -> VkResult {
+    (self.vkCreatePipelineLayout_p)(device, pCreateInfo, pAllocator, pPipelineLayout)
+  }
+
+  /// [vkDestroyPipelineLayout](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyPipelineLayout.html)
+  pub unsafe fn DestroyPipelineLayout(&self, device: VkDevice, pipelineLayout: VkPipelineLayout, pAllocator: Option<&VkAllocationCallbacks>) {
+    (self.vkDestroyPipelineLayout_p)(device, pipelineLayout, pAllocator)
+  }
+
+  /// [vkCreateSampler](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateSampler.html)
+  pub unsafe fn CreateSampler(
+    &self, device: VkDevice, pCreateInfo: &VkSamplerCreateInfo, pAllocator: Option<&VkAllocationCallbacks>, pSampler: &mut VkSampler,
+  ) -> VkResult {
+    (self.vkCreateSampler_p)(device, pCreateInfo, pAllocator, pSampler)
+  }
+
+  /// [vkDestroySampler](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroySampler.html)
+  pub unsafe fn DestroySampler(&self, device: VkDevice, sampler: VkSampler, pAllocator: Option<&VkAllocationCallbacks>) {
+    (self.vkDestroySampler_p)(device, sampler, pAllocator)
+  }
+
+  /// [vkCreateDescriptorSetLayout](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateDescriptorSetLayout.html)
+  pub unsafe fn CreateDescriptorSetLayout(
+    &self, device: VkDevice, pCreateInfo: &VkDescriptorSetLayoutCreateInfo, pAllocator: Option<&VkAllocationCallbacks>,
+    pSetLayout: &mut VkDescriptorSetLayout,
+  ) -> VkResult {
+    (self.vkCreateDescriptorSetLayout_p)(device, pCreateInfo, pAllocator, pSetLayout)
+  }
+
+  /// [vkDestroyDescriptorSetLayout](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyDescriptorSetLayout.html)
+  pub unsafe fn DestroyDescriptorSetLayout(
+    &self, device: VkDevice, descriptorSetLayout: VkDescriptorSetLayout, pAllocator: Option<&VkAllocationCallbacks>,
+  ) {
+    (self.vkDestroyDescriptorSetLayout_p)(device, descriptorSetLayout, pAllocator)
+  }
+
+  /// [vkCreateDescriptorPool](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateDescriptorPool.html)
+  pub unsafe fn CreateDescriptorPool(
+    &self, device: VkDevice, pCreateInfo: &VkDescriptorPoolCreateInfo, pAllocator: Option<&VkAllocationCallbacks>,
+    pDescriptorPool: &mut VkDescriptorPool,
+  ) -> VkResult {
+    (self.vkCreateDescriptorPool_p)(device, pCreateInfo, pAllocator, pDescriptorPool)
+  }
+
+  /// [vkDestroyDescriptorPool](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyDescriptorPool.html)
+  pub unsafe fn DestroyDescriptorPool(&self, device: VkDevice, descriptorPool: VkDescriptorPool, pAllocator: Option<&VkAllocationCallbacks>) {
+    (self.vkDestroyDescriptorPool_p)(device, descriptorPool, pAllocator)
+  }
+
+  /// [vkResetDescriptorPool](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkResetDescriptorPool.html)
+  pub unsafe fn ResetDescriptorPool(&self, device: VkDevice, descriptorPool: VkDescriptorPool, flags: VkDescriptorPoolResetFlags) -> VkResult {
+    (self.vkResetDescriptorPool_p)(device, descriptorPool, flags)
+  }
+
+  /// [vkAllocateDescriptorSets](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkAllocateDescriptorSets.html)
+  pub unsafe fn AllocateDescriptorSets(
+    &self, device: VkDevice, pAllocateInfo: &VkDescriptorSetAllocateInfo, pDescriptorSets: &mut VkDescriptorSet,
+  ) -> VkResult {
+    (self.vkAllocateDescriptorSets_p)(device, pAllocateInfo, pDescriptorSets)
+  }
+
+  /// [vkFreeDescriptorSets](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkFreeDescriptorSets.html)
+  pub unsafe fn FreeDescriptorSets(
+    &self, device: VkDevice, descriptorPool: VkDescriptorPool, descriptorSetCount: uint32_t, pDescriptorSets: *const VkDescriptorSet,
+  ) -> VkResult {
+    (self.vkFreeDescriptorSets_p)(device, descriptorPool, descriptorSetCount, pDescriptorSets)
+  }
+
+  /// [vkUpdateDescriptorSets](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkUpdateDescriptorSets.html)
+  pub unsafe fn UpdateDescriptorSets(
+    &self, device: VkDevice, descriptorWriteCount: uint32_t, pDescriptorWrites: *const VkWriteDescriptorSet, descriptorCopyCount: uint32_t,
+    pDescriptorCopies: *const VkCopyDescriptorSet,
+  ) {
+    (self.vkUpdateDescriptorSets_p)(device, descriptorWriteCount, pDescriptorWrites, descriptorCopyCount, pDescriptorCopies)
+  }
+
+  /// [vkCreateFramebuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateFramebuffer.html)
+  pub unsafe fn CreateFramebuffer(
+    &self, device: VkDevice, pCreateInfo: &VkFramebufferCreateInfo, pAllocator: Option<&VkAllocationCallbacks>, pFramebuffer: &mut VkFramebuffer,
+  ) -> VkResult {
+    (self.vkCreateFramebuffer_p)(device, pCreateInfo, pAllocator, pFramebuffer)
+  }
+
+  /// [vkDestroyFramebuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyFramebuffer.html)
+  pub unsafe fn DestroyFramebuffer(&self, device: VkDevice, framebuffer: VkFramebuffer, pAllocator: Option<&VkAllocationCallbacks>) {
+    (self.vkDestroyFramebuffer_p)(device, framebuffer, pAllocator)
+  }
+
+  /// [vkCreateRenderPass](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateRenderPass.html)
+  pub unsafe fn CreateRenderPass(
+    &self, device: VkDevice, pCreateInfo: &VkRenderPassCreateInfo, pAllocator: Option<&VkAllocationCallbacks>, pRenderPass: &mut VkRenderPass,
+  ) -> VkResult {
+    (self.vkCreateRenderPass_p)(device, pCreateInfo, pAllocator, pRenderPass)
+  }
+
+  /// [vkDestroyRenderPass](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyRenderPass.html)
+  pub unsafe fn DestroyRenderPass(&self, device: VkDevice, renderPass: VkRenderPass, pAllocator: Option<&VkAllocationCallbacks>) {
+    (self.vkDestroyRenderPass_p)(device, renderPass, pAllocator)
+  }
+
+  /// [vkGetRenderAreaGranularity](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetRenderAreaGranularity.html)
+  pub unsafe fn GetRenderAreaGranularity(&self, device: VkDevice, renderPass: VkRenderPass, pGranularity: &mut VkExtent2D) {
+    (self.vkGetRenderAreaGranularity_p)(device, renderPass, pGranularity)
+  }
+
+  /// [vkCreateCommandPool](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateCommandPool.html)
+  pub unsafe fn CreateCommandPool(
+    &self, device: VkDevice, pCreateInfo: &VkCommandPoolCreateInfo, pAllocator: Option<&VkAllocationCallbacks>, pCommandPool: &mut VkCommandPool,
+  ) -> VkResult {
+    (self.vkCreateCommandPool_p)(device, pCreateInfo, pAllocator, pCommandPool)
+  }
+
+  /// [vkDestroyCommandPool](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyCommandPool.html)
+  pub unsafe fn DestroyCommandPool(&self, device: VkDevice, commandPool: VkCommandPool, pAllocator: Option<&VkAllocationCallbacks>) {
+    (self.vkDestroyCommandPool_p)(device, commandPool, pAllocator)
+  }
+
+  /// [vkResetCommandPool](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkResetCommandPool.html)
+  pub unsafe fn ResetCommandPool(&self, device: VkDevice, commandPool: VkCommandPool, flags: VkCommandPoolResetFlags) -> VkResult {
+    (self.vkResetCommandPool_p)(device, commandPool, flags)
+  }
+
+  //
+
+  /// [vkAllocateCommandBuffers](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkAllocateCommandBuffers.html)
+  pub unsafe fn AllocateCommandBuffers(
+    &self, device: VkDevice, pAllocateInfo: &VkCommandBufferAllocateInfo, pCommandBuffers: *mut VkCommandBuffer,
+  ) -> VkResult {
+    (self.vkAllocateCommandBuffers_p)(device, pAllocateInfo, pCommandBuffers)
+  }
+
+  /// [vkFreeCommandBuffers](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkFreeCommandBuffers.html)
+  pub unsafe fn FreeCommandBuffers(
+    &self, device: VkDevice, commandPool: VkCommandPool, commandBufferCount: uint32_t, pCommandBuffers: *const VkCommandBuffer,
+  ) {
+    (self.vkFreeCommandBuffers_p)(device, commandPool, commandBufferCount, pCommandBuffers)
+  }
+
+  /// [vkBeginCommandBuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkBeginCommandBuffer.html)
+  pub unsafe fn BeginCommandBuffer(&self, commandBuffer: VkCommandBuffer, pBeginInfo: &VkCommandBufferBeginInfo) -> VkResult {
+    (self.vkBeginCommandBuffer_p)(commandBuffer, pBeginInfo)
+  }
+
+  /// [vkEndCommandBuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEndCommandBuffer.html)
+  pub unsafe fn EndCommandBuffer(&self, commandBuffer: VkCommandBuffer) -> VkResult {
+    (self.vkEndCommandBuffer_p)(commandBuffer)
+  }
+
+  /// [vkResetCommandBuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkResetCommandBuffer.html)
+  pub unsafe fn ResetCommandBuffer(&self, commandBuffer: VkCommandBuffer, flags: VkCommandBufferResetFlags) -> VkResult {
+    (self.vkResetCommandBuffer_p)(commandBuffer, flags)
+  }
+
+  /// [vkCmdBindPipeline](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBindPipeline.html)
+  pub unsafe fn CmdBindPipeline(&self, commandBuffer: VkCommandBuffer, pipelineBindPoint: VkPipelineBindPoint, pipeline: VkPipeline) {
+    (self.vkCmdBindPipeline_p)(commandBuffer, pipelineBindPoint, pipeline)
+  }
+
+  /// [vkCmdSetViewport](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetViewport.html)
+  pub unsafe fn CmdSetViewport(
+    &self, commandBuffer: VkCommandBuffer, firstViewport: uint32_t, viewportCount: uint32_t, pViewports: *const VkViewport,
+  ) {
+    (self.vkCmdSetViewport_p)(commandBuffer, firstViewport, viewportCount, pViewports)
+  }
+
+  /// [vkCmdSetScissor](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetScissor.html)
+  pub unsafe fn CmdSetScissor(&self, commandBuffer: VkCommandBuffer, firstScissor: uint32_t, scissorCount: uint32_t, pScissors: &VkRect2D) {
+    (self.vkCmdSetScissor_p)(commandBuffer, firstScissor, scissorCount, pScissors)
+  }
+
+  /// [vkCmdSetLineWidth](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetLineWidth.html)
+  pub unsafe fn CmdSetLineWidth(&self, commandBuffer: VkCommandBuffer, lineWidth: float) {
+    (self.vkCmdSetLineWidth_p)(commandBuffer, lineWidth)
+  }
+
+  /// [vkCmdSetDepthBias](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetDepthBias.html)
+  pub unsafe fn CmdSetDepthBias(
+    &self, commandBuffer: VkCommandBuffer, depthBiasConstantFactor: float, depthBiasClamp: float, depthBiasSlopeFactor: float,
+  ) {
+    (self.vkCmdSetDepthBias_p)(commandBuffer, depthBiasConstantFactor, depthBiasClamp, depthBiasSlopeFactor)
+  }
+
+  /// [vkCmdSetBlendConstants](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetBlendConstants.html)
+  pub unsafe fn CmdSetBlendConstants(&self, commandBuffer: VkCommandBuffer, blendConstants: &[float; 4]) {
+    (self.vkCmdSetBlendConstants_p)(commandBuffer, blendConstants)
+  }
+
+  /// [vkCmdSetDepthBounds](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetDepthBounds.html)
+  pub unsafe fn CmdSetDepthBounds(&self, commandBuffer: VkCommandBuffer, minDepthBounds: float, maxDepthBounds: float) {
+    (self.vkCmdSetDepthBounds_p)(commandBuffer, minDepthBounds, maxDepthBounds)
+  }
+
+  /// [vkCmdSetStencilCompareMask](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetStencilCompareMask.html)
+  pub unsafe fn CmdSetStencilCompareMask(&self, commandBuffer: VkCommandBuffer, faceMask: VkStencilFaceFlags, compareMask: uint32_t) {
+    (self.vkCmdSetStencilCompareMask_p)(commandBuffer, faceMask, compareMask)
+  }
+
+  /// [vkCmdSetStencilWriteMask](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetStencilWriteMask.html)
+  pub unsafe fn CmdSetStencilWriteMask(&self, commandBuffer: VkCommandBuffer, faceMask: VkStencilFaceFlags, writeMask: uint32_t) {
+    (self.vkCmdSetStencilWriteMask_p)(commandBuffer, faceMask, writeMask)
+  }
+
+  /// [vkCmdSetStencilReference](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetStencilReference.html)
+  pub unsafe fn CmdSetStencilReference(&self, commandBuffer: VkCommandBuffer, faceMask: VkStencilFaceFlags, reference: uint32_t) {
+    (self.vkCmdSetStencilReference_p)(commandBuffer, faceMask, reference)
+  }
+
+  /// [vkCmdBindDescriptorSets](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBindDescriptorSets.html)
+  pub unsafe fn CmdBindDescriptorSets(
+    &self, commandBuffer: VkCommandBuffer, pipelineBindPoint: VkPipelineBindPoint, layout: VkPipelineLayout, firstSet: uint32_t,
+    descriptorSetCount: uint32_t, pDescriptorSets: *const VkDescriptorSet, dynamicOffsetCount: uint32_t, pDynamicOffsets: *const uint32_t,
+  ) {
+    (self.vkCmdBindDescriptorSets_p)(
+      commandBuffer,
+      pipelineBindPoint,
+      layout,
+      firstSet,
+      descriptorSetCount,
+      pDescriptorSets,
+      dynamicOffsetCount,
+      pDynamicOffsets,
+    )
+  }
+
+  /// [vkCmdBindIndexBuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBindIndexBuffer.html)
+  pub unsafe fn CmdBindIndexBuffer(&self, commandBuffer: VkCommandBuffer, buffer: VkBuffer, offset: VkDeviceSize, indexType: VkIndexType) {
+    (self.vkCmdBindIndexBuffer_p)(commandBuffer, buffer, offset, indexType)
+  }
+
+  /// [vkCmdBindVertexBuffers](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBindVertexBuffers.html)
+  pub unsafe fn CmdBindVertexBuffers(
+    &self, commandBuffer: VkCommandBuffer, firstBinding: uint32_t, bindingCount: uint32_t, pBuffers: *const VkBuffer, pOffsets: *const VkDeviceSize,
+  ) {
+    (self.vkCmdBindVertexBuffers_p)(commandBuffer, firstBinding, bindingCount, pBuffers, pOffsets)
+  }
+
+  /// [vkCmdDraw](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdDraw.html)
+  pub unsafe fn CmdDraw(
+    &self, commandBuffer: VkCommandBuffer, vertexCount: uint32_t, instanceCount: uint32_t, firstVertex: uint32_t, firstInstance: uint32_t,
+  ) {
+    (self.vkCmdDraw_p)(commandBuffer, vertexCount, instanceCount, firstVertex, firstInstance)
+  }
+
+  /// [vkCmdDrawIndexed](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdDrawIndexed.html)
+  pub unsafe fn CmdDrawIndexed(
+    &self, commandBuffer: VkCommandBuffer, indexCount: uint32_t, instanceCount: uint32_t, firstIndex: uint32_t, vertexOffset: int32_t,
+    firstInstance: uint32_t,
+  ) {
+    (self.vkCmdDrawIndexed_p)(commandBuffer, indexCount, instanceCount, firstIndex, vertexOffset, firstInstance)
+  }
+
+  /// [vkCmdDrawIndirect](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdDrawIndirect.html)
+  pub unsafe fn CmdDrawIndirect(
+    &self, commandBuffer: VkCommandBuffer, buffer: VkBuffer, offset: VkDeviceSize, drawCount: uint32_t, stride: uint32_t,
+  ) {
+    (self.vkCmdDrawIndirect_p)(commandBuffer, buffer, offset, drawCount, stride)
+  }
+
+  /// [vkCmdDrawIndexedIndirect](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdDrawIndexedIndirect.html)
+  pub unsafe fn CmdDrawIndexedIndirect(
+    &self, commandBuffer: VkCommandBuffer, buffer: VkBuffer, offset: VkDeviceSize, drawCount: uint32_t, stride: uint32_t,
+  ) {
+    (self.vkCmdDrawIndexedIndirect_p)(commandBuffer, buffer, offset, drawCount, stride)
+  }
+
+  /// [vkCmdDispatch](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdDispatch.html)
+  pub unsafe fn CmdDispatch(&self, commandBuffer: VkCommandBuffer, groupCountX: uint32_t, groupCountY: uint32_t, groupCountZ: uint32_t) {
+    (self.vkCmdDispatch_p)(commandBuffer, groupCountX, groupCountY, groupCountZ)
+  }
+
+  /// [vkCmdDispatchIndirect](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdDispatchIndirect.html)
+  pub unsafe fn CmdDispatchIndirect(&self, commandBuffer: VkCommandBuffer, buffer: VkBuffer, offset: VkDeviceSize) {
+    (self.vkCmdDispatchIndirect_p)(commandBuffer, buffer, offset)
+  }
+
+  /// [vkCmdCopyBuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdCopyBuffer.html)
+  pub unsafe fn CmdCopyBuffer(
+    &self, commandBuffer: VkCommandBuffer, srcBuffer: VkBuffer, dstBuffer: VkBuffer, regionCount: uint32_t, pRegions: *const VkBufferCopy,
+  ) {
+    (self.vkCmdCopyBuffer_p)(commandBuffer, srcBuffer, dstBuffer, regionCount, pRegions)
+  }
+
+  /// [vkCmdCopyImage](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdCopyImage.html)
+  pub unsafe fn CmdCopyImage(
+    &self, commandBuffer: VkCommandBuffer, srcImage: VkImage, srcImageLayout: VkImageLayout, dstImage: VkImage, dstImageLayout: VkImageLayout,
+    regionCount: uint32_t, pRegions: *const VkImageCopy,
+  ) {
+    (self.vkCmdCopyImage_p)(commandBuffer, srcImage, srcImageLayout, dstImage, dstImageLayout, regionCount, pRegions)
+  }
+
+  /// [vkCmdBlitImage](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBlitImage.html)
+  pub unsafe fn CmdBlitImage(
+    &self, commandBuffer: VkCommandBuffer, srcImage: VkImage, srcImageLayout: VkImageLayout, dstImage: VkImage, dstImageLayout: VkImageLayout,
+    regionCount: uint32_t, pRegions: *const VkImageBlit, filter: VkFilter,
+  ) {
+    (self.vkCmdBlitImage_p)(commandBuffer, srcImage, srcImageLayout, dstImage, dstImageLayout, regionCount, pRegions, filter)
+  }
+
+  /// [vkCmdCopyBufferToImage](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdCopyBufferToImage.html)
+  pub unsafe fn CmdCopyBufferToImage(
+    &self, commandBuffer: VkCommandBuffer, srcBuffer: VkBuffer, dstImage: VkImage, dstImageLayout: VkImageLayout, regionCount: uint32_t,
+    pRegions: *const VkBufferImageCopy,
+  ) {
+    (self.vkCmdCopyBufferToImage_p)(commandBuffer, srcBuffer, dstImage, dstImageLayout, regionCount, pRegions)
+  }
+
+  /// [vkCmdCopyImageToBuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdCopyImageToBuffer.html)
+  pub unsafe fn CmdCopyImageToBuffer(
+    &self, commandBuffer: VkCommandBuffer, srcImage: VkImage, srcImageLayout: VkImageLayout, dstBuffer: VkBuffer, regionCount: uint32_t,
+    pRegions: *const VkBufferImageCopy,
+  ) {
+    (self.vkCmdCopyImageToBuffer_p)(commandBuffer, srcImage, srcImageLayout, dstBuffer, regionCount, pRegions)
+  }
+
+  /// [vkCmdUpdateBuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdUpdateBuffer.html)
+  pub unsafe fn CmdUpdateBuffer(
+    &self, commandBuffer: VkCommandBuffer, dstBuffer: VkBuffer, dstOffset: VkDeviceSize, dataSize: VkDeviceSize, pData: *const c_void,
+  ) {
+    (self.vkCmdUpdateBuffer_p)(commandBuffer, dstBuffer, dstOffset, dataSize, pData)
+  }
+
+  /// [vkCmdFillBuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdFillBuffer.html)
+  pub unsafe fn CmdFillBuffer(
+    &self, commandBuffer: VkCommandBuffer, dstBuffer: VkBuffer, dstOffset: VkDeviceSize, size: VkDeviceSize, data: uint32_t,
+  ) {
+    (self.vkCmdFillBuffer_p)(commandBuffer, dstBuffer, dstOffset, size, data)
+  }
+
+  /// [vkCmdClearColorImage](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdClearColorImage.html)
+  pub unsafe fn CmdClearColorImage(
+    &self, commandBuffer: VkCommandBuffer, image: VkImage, imageLayout: VkImageLayout, pColor: *const VkClearColorValue, rangeCount: uint32_t,
+    pRanges: *const VkImageSubresourceRange,
+  ) {
+    (self.vkCmdClearColorImage_p)(commandBuffer, image, imageLayout, pColor, rangeCount, pRanges)
+  }
+
+  /// [vkCmdClearDepthStencilImage](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdClearDepthStencilImage.html)
+  pub unsafe fn CmdClearDepthStencilImage(
+    &self, commandBuffer: VkCommandBuffer, image: VkImage, imageLayout: VkImageLayout, pDepthStencil: *const VkClearDepthStencilValue,
+    rangeCount: uint32_t, pRanges: *const VkImageSubresourceRange,
+  ) {
+    (self.vkCmdClearDepthStencilImage_p)(commandBuffer, image, imageLayout, pDepthStencil, rangeCount, pRanges)
+  }
+
+  /// [vkCmdClearAttachments](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdClearAttachments.html)
+  pub unsafe fn CmdClearAttachments(
+    &self, commandBuffer: VkCommandBuffer, attachmentCount: uint32_t, pAttachments: *const VkClearAttachment, rectCount: uint32_t,
+    pRects: *const VkClearRect,
+  ) {
+    (self.vkCmdClearAttachments_p)(commandBuffer, attachmentCount, pAttachments, rectCount, pRects)
+  }
+
+  /// [vkCmdResolveImage](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdResolveImage.html)
+  pub unsafe fn CmdResolveImage(
+    &self, commandBuffer: VkCommandBuffer, srcImage: VkImage, srcImageLayout: VkImageLayout, dstImage: VkImage, dstImageLayout: VkImageLayout,
+    regionCount: uint32_t, pRegions: *const VkImageResolve,
+  ) {
+    (self.vkCmdResolveImage_p)(commandBuffer, srcImage, srcImageLayout, dstImage, dstImageLayout, regionCount, pRegions)
+  }
+
+  /// [vkCmdSetEvent](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetEvent.html)
+  pub unsafe fn CmdSetEvent(&self, commandBuffer: VkCommandBuffer, event: VkEvent, stageMask: VkPipelineStageFlags) {
+    (self.vkCmdSetEvent_p)(commandBuffer, event, stageMask)
+  }
+
+  /// [vkCmdResetEvent](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdResetEvent.html)
+  pub unsafe fn CmdResetEvent(&self, commandBuffer: VkCommandBuffer, event: VkEvent, stageMask: VkPipelineStageFlags) {
+    (self.vkCmdResetEvent_p)(commandBuffer, event, stageMask)
+  }
+
+  /// [vkCmdWaitEvents](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdWaitEvents.html)
+  pub unsafe fn CmdWaitEvents(
+    &self, commandBuffer: VkCommandBuffer, eventCount: uint32_t, pEvents: *const VkEvent, srcStageMask: VkPipelineStageFlags,
+    dstStageMask: VkPipelineStageFlags, memoryBarrierCount: uint32_t, pMemoryBarriers: *const VkMemoryBarrier, bufferMemoryBarrierCount: uint32_t,
+    pBufferMemoryBarriers: *const VkBufferMemoryBarrier, imageMemoryBarrierCount: uint32_t, pImageMemoryBarriers: *const VkImageMemoryBarrier,
+  ) {
+    (self.vkCmdWaitEvents_p)(
+      commandBuffer,
+      eventCount,
+      pEvents,
+      srcStageMask,
+      dstStageMask,
+      memoryBarrierCount,
+      pMemoryBarriers,
+      bufferMemoryBarrierCount,
+      pBufferMemoryBarriers,
+      imageMemoryBarrierCount,
+      pImageMemoryBarriers,
+    )
+  }
+
+  /// [vkCmdPipelineBarrier](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdPipelineBarrier.html)
+  pub unsafe fn CmdPipelineBarrier(
+    &self, commandBuffer: VkCommandBuffer, srcStageMask: VkPipelineStageFlags, dstStageMask: VkPipelineStageFlags,
+    dependencyFlags: VkDependencyFlags, memoryBarrierCount: uint32_t, pMemoryBarriers: *const VkMemoryBarrier, bufferMemoryBarrierCount: uint32_t,
+    pBufferMemoryBarriers: *const VkBufferMemoryBarrier, imageMemoryBarrierCount: uint32_t, pImageMemoryBarriers: *const VkImageMemoryBarrier,
+  ) {
+    (self.vkCmdPipelineBarrier_p)(
+      commandBuffer,
+      srcStageMask,
+      dstStageMask,
+      dependencyFlags,
+      memoryBarrierCount,
+      pMemoryBarriers,
+      bufferMemoryBarrierCount,
+      pBufferMemoryBarriers,
+      imageMemoryBarrierCount,
+      pImageMemoryBarriers,
+    )
+  }
+
+  /// [vkCmdBeginQuery](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBeginQuery.html)
+  pub unsafe fn CmdBeginQuery(&self, commandBuffer: VkCommandBuffer, queryPool: VkQueryPool, query: uint32_t, flags: VkQueryControlFlags) {
+    (self.vkCmdBeginQuery_p)(commandBuffer, queryPool, query, flags)
+  }
+
+  /// [vkCmdEndQuery](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdEndQuery.html)
+  pub unsafe fn CmdEndQuery(&self, commandBuffer: VkCommandBuffer, queryPool: VkQueryPool, query: uint32_t) {
+    (self.vkCmdEndQuery_p)(commandBuffer, queryPool, query)
+  }
+
+  /// [vkCmdResetQueryPool](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdResetQueryPool.html)
+  pub unsafe fn CmdResetQueryPool(&self, commandBuffer: VkCommandBuffer, queryPool: VkQueryPool, firstQuery: uint32_t, queryCount: uint32_t) {
+    (self.vkCmdResetQueryPool_p)(commandBuffer, queryPool, firstQuery, queryCount)
+  }
+
+  /// [vkCmdWriteTimestamp](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdWriteTimestamp.html)
+  pub unsafe fn CmdWriteTimestamp(
+    &self, commandBuffer: VkCommandBuffer, pipelineStage: VkPipelineStageFlagBits, queryPool: VkQueryPool, query: uint32_t,
+  ) {
+    (self.vkCmdWriteTimestamp_p)(commandBuffer, pipelineStage, queryPool, query)
+  }
+
+  /// [vkCmdCopyQueryPoolResults](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdCopyQueryPoolResults.html)
+  pub unsafe fn CmdCopyQueryPoolResults(
+    &self, commandBuffer: VkCommandBuffer, queryPool: VkQueryPool, firstQuery: uint32_t, queryCount: uint32_t, dstBuffer: VkBuffer,
+    dstOffset: VkDeviceSize, stride: VkDeviceSize, flags: VkQueryResultFlags,
+  ) {
+    (self.vkCmdCopyQueryPoolResults_p)(commandBuffer, queryPool, firstQuery, queryCount, dstBuffer, dstOffset, stride, flags)
+  }
+
+  /// [vkCmdPushConstants](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdPushConstants.html)
+  pub unsafe fn CmdPushConstants(
+    &self, commandBuffer: VkCommandBuffer, layout: VkPipelineLayout, stageFlags: VkShaderStageFlags, offset: uint32_t, size: uint32_t,
+    pValues: *const c_void,
+  ) {
+    (self.vkCmdPushConstants_p)(commandBuffer, layout, stageFlags, offset, size, pValues)
+  }
+
+  /// [vkCmdBeginRenderPass](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBeginRenderPass.html)
+  pub unsafe fn CmdBeginRenderPass(&self, commandBuffer: VkCommandBuffer, pRenderPassBegin: &VkRenderPassBeginInfo, contents: VkSubpassContents) {
+    (self.vkCmdBeginRenderPass_p)(commandBuffer, pRenderPassBegin, contents)
+  }
+
+  /// [vkCmdNextSubpass](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdNextSubpass.html)
+  pub unsafe fn CmdNextSubpass(&self, commandBuffer: VkCommandBuffer, contents: VkSubpassContents) {
+    (self.vkCmdNextSubpass_p)(commandBuffer, contents)
+  }
+
+  /// [vkCmdEndRenderPass](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdEndRenderPass.html)
+  pub unsafe fn CmdEndRenderPass(&self, commandBuffer: VkCommandBuffer) {
+    (self.vkCmdEndRenderPass_p)(commandBuffer)
+  }
+
+  /// [vkCmdExecuteCommands](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdExecuteCommands.html)
+  pub unsafe fn CmdExecuteCommands(&self, commandBuffer: VkCommandBuffer, commandBufferCount: uint32_t, pCommandBuffers: *const VkCommandBuffer) {
+    (self.vkCmdExecuteCommands_p)(commandBuffer, commandBufferCount, pCommandBuffers)
   }
 }
 

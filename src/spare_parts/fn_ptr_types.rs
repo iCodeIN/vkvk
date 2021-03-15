@@ -61,21 +61,6 @@ pub type PFN_vkDestroyAccelerationStructureNV = Option<vkDestroyAccelerationStru
 pub type vkDestroyAccelerationStructureNV_t =
   unsafe extern "system" fn(device: VkDevice, accelerationStructure: VkAccelerationStructureNV, pAllocator: *const VkAllocationCallbacks);
 
-/// Nullable pointer to [vkDestroyBuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyBuffer.html)
-pub type PFN_vkDestroyBuffer = Option<vkDestroyBuffer_t>;
-/// Non-nullable pointer to [vkDestroyBuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyBuffer.html)
-pub type vkDestroyBuffer_t = unsafe extern "system" fn(device: VkDevice, buffer: VkBuffer, pAllocator: *const VkAllocationCallbacks);
-
-/// Nullable pointer to [vkDestroyBufferView](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyBufferView.html)
-pub type PFN_vkDestroyBufferView = Option<vkDestroyBufferView_t>;
-/// Non-nullable pointer to [vkDestroyBufferView](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyBufferView.html)
-pub type vkDestroyBufferView_t = unsafe extern "system" fn(device: VkDevice, bufferView: VkBufferView, pAllocator: *const VkAllocationCallbacks);
-
-/// Nullable pointer to [vkDestroyCommandPool](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyCommandPool.html)
-pub type PFN_vkDestroyCommandPool = Option<vkDestroyCommandPool_t>;
-/// Non-nullable pointer to [vkDestroyCommandPool](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyCommandPool.html)
-pub type vkDestroyCommandPool_t = unsafe extern "system" fn(device: VkDevice, commandPool: VkCommandPool, pAllocator: *const VkAllocationCallbacks);
-
 /// Nullable pointer to [vkDestroyDebugReportCallbackEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyDebugReportCallbackEXT.html)
 pub type PFN_vkDestroyDebugReportCallbackEXT = Option<vkDestroyDebugReportCallbackEXT_t>;
 /// Non-nullable pointer to [vkDestroyDebugReportCallbackEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyDebugReportCallbackEXT.html)
@@ -94,38 +79,11 @@ pub type PFN_vkDestroyDeferredOperationKHR = Option<vkDestroyDeferredOperationKH
 pub type vkDestroyDeferredOperationKHR_t =
   unsafe extern "system" fn(device: VkDevice, operation: VkDeferredOperationKHR, pAllocator: *const VkAllocationCallbacks);
 
-/// Nullable pointer to [vkDestroyDescriptorPool](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyDescriptorPool.html)
-pub type PFN_vkDestroyDescriptorPool = Option<vkDestroyDescriptorPool_t>;
-/// Non-nullable pointer to [vkDestroyDescriptorPool](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyDescriptorPool.html)
-pub type vkDestroyDescriptorPool_t =
-  unsafe extern "system" fn(device: VkDevice, descriptorPool: VkDescriptorPool, pAllocator: *const VkAllocationCallbacks);
-
-/// Nullable pointer to [vkDestroyDescriptorSetLayout](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyDescriptorSetLayout.html)
-pub type PFN_vkDestroyDescriptorSetLayout = Option<vkDestroyDescriptorSetLayout_t>;
-/// Non-nullable pointer to [vkDestroyDescriptorSetLayout](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyDescriptorSetLayout.html)
-pub type vkDestroyDescriptorSetLayout_t =
-  unsafe extern "system" fn(device: VkDevice, descriptorSetLayout: VkDescriptorSetLayout, pAllocator: *const VkAllocationCallbacks);
-
 /// Nullable pointer to [vkDestroyDescriptorUpdateTemplate](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyDescriptorUpdateTemplate.html)
 pub type PFN_vkDestroyDescriptorUpdateTemplate = Option<vkDestroyDescriptorUpdateTemplate_t>;
 /// Non-nullable pointer to [vkDestroyDescriptorUpdateTemplate](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyDescriptorUpdateTemplate.html)
 pub type vkDestroyDescriptorUpdateTemplate_t =
   unsafe extern "system" fn(device: VkDevice, descriptorUpdateTemplate: VkDescriptorUpdateTemplate, pAllocator: *const VkAllocationCallbacks);
-
-/// Nullable pointer to [vkDestroyFramebuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyFramebuffer.html)
-pub type PFN_vkDestroyFramebuffer = Option<vkDestroyFramebuffer_t>;
-/// Non-nullable pointer to [vkDestroyFramebuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyFramebuffer.html)
-pub type vkDestroyFramebuffer_t = unsafe extern "system" fn(device: VkDevice, framebuffer: VkFramebuffer, pAllocator: *const VkAllocationCallbacks);
-
-/// Nullable pointer to [vkDestroyImage](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyImage.html)
-pub type PFN_vkDestroyImage = Option<vkDestroyImage_t>;
-/// Non-nullable pointer to [vkDestroyImage](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyImage.html)
-pub type vkDestroyImage_t = unsafe extern "system" fn(device: VkDevice, image: VkImage, pAllocator: *const VkAllocationCallbacks);
-
-/// Nullable pointer to [vkDestroyImageView](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyImageView.html)
-pub type PFN_vkDestroyImageView = Option<vkDestroyImageView_t>;
-/// Non-nullable pointer to [vkDestroyImageView](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyImageView.html)
-pub type vkDestroyImageView_t = unsafe extern "system" fn(device: VkDevice, imageView: VkImageView, pAllocator: *const VkAllocationCallbacks);
 
 /// Nullable pointer to [vkDestroyIndirectCommandsLayoutNV](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyIndirectCommandsLayoutNV.html)
 pub type PFN_vkDestroyIndirectCommandsLayoutNV = Option<vkDestroyIndirectCommandsLayoutNV_t>;
@@ -133,50 +91,17 @@ pub type PFN_vkDestroyIndirectCommandsLayoutNV = Option<vkDestroyIndirectCommand
 pub type vkDestroyIndirectCommandsLayoutNV_t =
   unsafe extern "system" fn(device: VkDevice, indirectCommandsLayout: VkIndirectCommandsLayoutNV, pAllocator: *const VkAllocationCallbacks);
 
-/// Nullable pointer to [vkDestroyPipeline](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyPipeline.html)
-pub type PFN_vkDestroyPipeline = Option<vkDestroyPipeline_t>;
-/// Non-nullable pointer to [vkDestroyPipeline](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyPipeline.html)
-pub type vkDestroyPipeline_t = unsafe extern "system" fn(device: VkDevice, pipeline: VkPipeline, pAllocator: *const VkAllocationCallbacks);
-
-/// Nullable pointer to [vkDestroyPipelineCache](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyPipelineCache.html)
-pub type PFN_vkDestroyPipelineCache = Option<vkDestroyPipelineCache_t>;
-/// Non-nullable pointer to [vkDestroyPipelineCache](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyPipelineCache.html)
-pub type vkDestroyPipelineCache_t =
-  unsafe extern "system" fn(device: VkDevice, pipelineCache: VkPipelineCache, pAllocator: *const VkAllocationCallbacks);
-
-/// Nullable pointer to [vkDestroyPipelineLayout](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyPipelineLayout.html)
-pub type PFN_vkDestroyPipelineLayout = Option<vkDestroyPipelineLayout_t>;
-/// Non-nullable pointer to [vkDestroyPipelineLayout](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyPipelineLayout.html)
-pub type vkDestroyPipelineLayout_t =
-  unsafe extern "system" fn(device: VkDevice, pipelineLayout: VkPipelineLayout, pAllocator: *const VkAllocationCallbacks);
-
 /// Nullable pointer to [vkDestroyPrivateDataSlotEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyPrivateDataSlotEXT.html)
 pub type PFN_vkDestroyPrivateDataSlotEXT = Option<vkDestroyPrivateDataSlotEXT_t>;
 /// Non-nullable pointer to [vkDestroyPrivateDataSlotEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyPrivateDataSlotEXT.html)
 pub type vkDestroyPrivateDataSlotEXT_t =
   unsafe extern "system" fn(device: VkDevice, privateDataSlot: VkPrivateDataSlotEXT, pAllocator: *const VkAllocationCallbacks);
 
-/// Nullable pointer to [vkDestroyRenderPass](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyRenderPass.html)
-pub type PFN_vkDestroyRenderPass = Option<vkDestroyRenderPass_t>;
-/// Non-nullable pointer to [vkDestroyRenderPass](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyRenderPass.html)
-pub type vkDestroyRenderPass_t = unsafe extern "system" fn(device: VkDevice, renderPass: VkRenderPass, pAllocator: *const VkAllocationCallbacks);
-
-/// Nullable pointer to [vkDestroySampler](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroySampler.html)
-pub type PFN_vkDestroySampler = Option<vkDestroySampler_t>;
-/// Non-nullable pointer to [vkDestroySampler](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroySampler.html)
-pub type vkDestroySampler_t = unsafe extern "system" fn(device: VkDevice, sampler: VkSampler, pAllocator: *const VkAllocationCallbacks);
-
 /// Nullable pointer to [vkDestroySamplerYcbcrConversion](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroySamplerYcbcrConversion.html)
 pub type PFN_vkDestroySamplerYcbcrConversion = Option<vkDestroySamplerYcbcrConversion_t>;
 /// Non-nullable pointer to [vkDestroySamplerYcbcrConversion](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroySamplerYcbcrConversion.html)
 pub type vkDestroySamplerYcbcrConversion_t =
   unsafe extern "system" fn(device: VkDevice, ycbcrConversion: VkSamplerYcbcrConversion, pAllocator: *const VkAllocationCallbacks);
-
-/// Nullable pointer to [vkDestroyShaderModule](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyShaderModule.html)
-pub type PFN_vkDestroyShaderModule = Option<vkDestroyShaderModule_t>;
-/// Non-nullable pointer to [vkDestroyShaderModule](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyShaderModule.html)
-pub type vkDestroyShaderModule_t =
-  unsafe extern "system" fn(device: VkDevice, shaderModule: VkShaderModule, pAllocator: *const VkAllocationCallbacks);
 
 /// Nullable pointer to [vkDestroySurfaceKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroySurfaceKHR.html)
 pub type PFN_vkDestroySurfaceKHR = Option<vkDestroySurfaceKHR_t>;
@@ -193,12 +118,6 @@ pub type PFN_vkDestroyValidationCacheEXT = Option<vkDestroyValidationCacheEXT_t>
 /// Non-nullable pointer to [vkDestroyValidationCacheEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyValidationCacheEXT.html)
 pub type vkDestroyValidationCacheEXT_t =
   unsafe extern "system" fn(device: VkDevice, validationCache: VkValidationCacheEXT, pAllocator: *const VkAllocationCallbacks);
-
-/// Nullable pointer to [vkFreeCommandBuffers](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkFreeCommandBuffers.html)
-pub type PFN_vkFreeCommandBuffers = Option<vkFreeCommandBuffers_t>;
-/// Non-nullable pointer to [vkFreeCommandBuffers](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkFreeCommandBuffers.html)
-pub type vkFreeCommandBuffers_t =
-  unsafe extern "system" fn(device: VkDevice, commandPool: VkCommandPool, commandBufferCount: uint32_t, pCommandBuffers: *const VkCommandBuffer);
 
 /// Nullable pointer to [vkGetAccelerationStructureBuildSizesKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetAccelerationStructureBuildSizesKHR.html)
 pub type PFN_vkGetAccelerationStructureBuildSizesKHR = Option<vkGetAccelerationStructureBuildSizesKHR_t>;
@@ -308,12 +227,6 @@ pub type vkGetImageSparseMemoryRequirements2_t = unsafe extern "system" fn(
   pSparseMemoryRequirementCount: *mut uint32_t,
   pSparseMemoryRequirements: *mut VkSparseImageMemoryRequirements2,
 );
-
-/// Nullable pointer to [vkGetImageSubresourceLayout](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetImageSubresourceLayout.html)
-pub type PFN_vkGetImageSubresourceLayout = Option<vkGetImageSubresourceLayout_t>;
-/// Non-nullable pointer to [vkGetImageSubresourceLayout](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetImageSubresourceLayout.html)
-pub type vkGetImageSubresourceLayout_t =
-  unsafe extern "system" fn(device: VkDevice, image: VkImage, pSubresource: *const VkImageSubresource, pLayout: *mut VkSubresourceLayout);
 
 /// Nullable pointer to [vkGetImageViewHandleNVX](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetImageViewHandleNVX.html)
 pub type PFN_vkGetImageViewHandleNVX = Option<vkGetImageViewHandleNVX_t>;
@@ -464,11 +377,6 @@ pub type PFN_vkGetRayTracingShaderGroupStackSizeKHR = Option<vkGetRayTracingShad
 pub type vkGetRayTracingShaderGroupStackSizeKHR_t =
   unsafe extern "system" fn(device: VkDevice, pipeline: VkPipeline, group: uint32_t, groupShader: VkShaderGroupShaderKHR) -> VkDeviceSize;
 
-/// Nullable pointer to [vkGetRenderAreaGranularity](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetRenderAreaGranularity.html)
-pub type PFN_vkGetRenderAreaGranularity = Option<vkGetRenderAreaGranularity_t>;
-/// Non-nullable pointer to [vkGetRenderAreaGranularity](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetRenderAreaGranularity.html)
-pub type vkGetRenderAreaGranularity_t = unsafe extern "system" fn(device: VkDevice, renderPass: VkRenderPass, pGranularity: *mut VkExtent2D);
-
 /// Nullable pointer to [vkGetSwapchainGrallocUsage2ANDROID](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetSwapchainGrallocUsage2ANDROID.html)
 pub type PFN_vkGetSwapchainGrallocUsage2ANDROID = Option<vkGetSwapchainGrallocUsage2ANDROID_t>;
 /// Non-nullable pointer to [vkGetSwapchainGrallocUsage2ANDROID](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetSwapchainGrallocUsage2ANDROID.html)
@@ -562,17 +470,6 @@ pub type vkUpdateDescriptorSetWithTemplate_t = unsafe extern "system" fn(
   descriptorSet: VkDescriptorSet,
   descriptorUpdateTemplate: VkDescriptorUpdateTemplate,
   pData: *const c_void,
-);
-
-/// Nullable pointer to [vkUpdateDescriptorSets](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkUpdateDescriptorSets.html)
-pub type PFN_vkUpdateDescriptorSets = Option<vkUpdateDescriptorSets_t>;
-/// Non-nullable pointer to [vkUpdateDescriptorSets](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkUpdateDescriptorSets.html)
-pub type vkUpdateDescriptorSets_t = unsafe extern "system" fn(
-  device: VkDevice,
-  descriptorWriteCount: uint32_t,
-  pDescriptorWrites: *const VkWriteDescriptorSet,
-  descriptorCopyCount: uint32_t,
-  pDescriptorCopies: *const VkCopyDescriptorSet,
 );
 
 /// Nullable pointer to [vkCmdBuildAccelerationStructureNV](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBuildAccelerationStructureNV.html)
@@ -728,24 +625,6 @@ pub type vkCmdWriteAccelerationStructuresPropertiesNV_t = unsafe extern "system"
   queryPool: VkQueryPool,
   firstQuery: uint32_t,
 );
-
-/// Nullable pointer to [vkCmdDispatch](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdDispatch.html)
-pub type PFN_vkCmdDispatch = Option<vkCmdDispatch_t>;
-/// Non-nullable pointer to [vkCmdDispatch](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdDispatch.html)
-pub type vkCmdDispatch_t =
-  unsafe extern "system" fn(commandBuffer: VkCommandBuffer, groupCountX: uint32_t, groupCountY: uint32_t, groupCountZ: uint32_t);
-
-/// Nullable pointer to [vkCmdDispatchIndirect](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdDispatchIndirect.html)
-pub type PFN_vkCmdDispatchIndirect = Option<vkCmdDispatchIndirect_t>;
-/// Non-nullable pointer to [vkCmdDispatchIndirect](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdDispatchIndirect.html)
-pub type vkCmdDispatchIndirect_t = unsafe extern "system" fn(commandBuffer: VkCommandBuffer, buffer: VkBuffer, offset: VkDeviceSize);
-
-/// Nullable pointer to [vkCmdBindIndexBuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBindIndexBuffer.html)
-pub type PFN_vkCmdBindIndexBuffer = Option<vkCmdBindIndexBuffer_t>;
-/// Non-nullable pointer to [vkCmdBindIndexBuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBindIndexBuffer.html)
-pub type vkCmdBindIndexBuffer_t =
-  unsafe extern "system" fn(commandBuffer: VkCommandBuffer, buffer: VkBuffer, offset: VkDeviceSize, indexType: VkIndexType);
-
 /// Nullable pointer to [vkCmdBindShadingRateImageNV](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBindShadingRateImageNV.html)
 pub type PFN_vkCmdBindShadingRateImageNV = Option<vkCmdBindShadingRateImageNV_t>;
 /// Non-nullable pointer to [vkCmdBindShadingRateImageNV](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBindShadingRateImageNV.html)
@@ -764,17 +643,6 @@ pub type vkCmdBindTransformFeedbackBuffersEXT_t = unsafe extern "system" fn(
   pSizes: *const VkDeviceSize,
 );
 
-/// Nullable pointer to [vkCmdBindVertexBuffers](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBindVertexBuffers.html)
-pub type PFN_vkCmdBindVertexBuffers = Option<vkCmdBindVertexBuffers_t>;
-/// Non-nullable pointer to [vkCmdBindVertexBuffers](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBindVertexBuffers.html)
-pub type vkCmdBindVertexBuffers_t = unsafe extern "system" fn(
-  commandBuffer: VkCommandBuffer,
-  firstBinding: uint32_t,
-  bindingCount: uint32_t,
-  pBuffers: *const VkBuffer,
-  pOffsets: *const VkDeviceSize,
-);
-
 /// Nullable pointer to [vkCmdBindVertexBuffers2EXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBindVertexBuffers2EXT.html)
 pub type PFN_vkCmdBindVertexBuffers2EXT = Option<vkCmdBindVertexBuffers2EXT_t>;
 /// Non-nullable pointer to [vkCmdBindVertexBuffers2EXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBindVertexBuffers2EXT.html)
@@ -787,11 +655,6 @@ pub type vkCmdBindVertexBuffers2EXT_t = unsafe extern "system" fn(
   pSizes: *const VkDeviceSize,
   pStrides: *const VkDeviceSize,
 );
-
-/// Nullable pointer to [vkCmdSetBlendConstants](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetBlendConstants.html)
-pub type PFN_vkCmdSetBlendConstants = Option<vkCmdSetBlendConstants_t>;
-/// Non-nullable pointer to [vkCmdSetBlendConstants](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetBlendConstants.html)
-pub type vkCmdSetBlendConstants_t = unsafe extern "system" fn(commandBuffer: VkCommandBuffer, blendConstants: *const [float; 4]);
 
 /// Nullable pointer to [vkCmdSetCoarseSampleOrderNV](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetCoarseSampleOrderNV.html)
 pub type PFN_vkCmdSetCoarseSampleOrderNV = Option<vkCmdSetCoarseSampleOrderNV_t>;
@@ -807,17 +670,6 @@ pub type vkCmdSetCoarseSampleOrderNV_t = unsafe extern "system" fn(
 pub type PFN_vkCmdSetCullModeEXT = Option<vkCmdSetCullModeEXT_t>;
 /// Non-nullable pointer to [vkCmdSetCullModeEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetCullModeEXT.html)
 pub type vkCmdSetCullModeEXT_t = unsafe extern "system" fn(commandBuffer: VkCommandBuffer, cullMode: VkCullModeFlags);
-
-/// Nullable pointer to [vkCmdSetDepthBias](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetDepthBias.html)
-pub type PFN_vkCmdSetDepthBias = Option<vkCmdSetDepthBias_t>;
-/// Non-nullable pointer to [vkCmdSetDepthBias](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetDepthBias.html)
-pub type vkCmdSetDepthBias_t =
-  unsafe extern "system" fn(commandBuffer: VkCommandBuffer, depthBiasConstantFactor: float, depthBiasClamp: float, depthBiasSlopeFactor: float);
-
-/// Nullable pointer to [vkCmdSetDepthBounds](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetDepthBounds.html)
-pub type PFN_vkCmdSetDepthBounds = Option<vkCmdSetDepthBounds_t>;
-/// Non-nullable pointer to [vkCmdSetDepthBounds](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetDepthBounds.html)
-pub type vkCmdSetDepthBounds_t = unsafe extern "system" fn(commandBuffer: VkCommandBuffer, minDepthBounds: float, maxDepthBounds: float);
 
 /// Nullable pointer to [vkCmdSetDepthBoundsTestEnableEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetDepthBoundsTestEnableEXT.html)
 pub type PFN_vkCmdSetDepthBoundsTestEnableEXT = Option<vkCmdSetDepthBoundsTestEnableEXT_t>;
@@ -888,11 +740,6 @@ pub type PFN_vkCmdSetLineStippleEXT = Option<vkCmdSetLineStippleEXT_t>;
 pub type vkCmdSetLineStippleEXT_t =
   unsafe extern "system" fn(commandBuffer: VkCommandBuffer, lineStippleFactor: uint32_t, lineStipplePattern: uint16_t);
 
-/// Nullable pointer to [vkCmdSetLineWidth](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetLineWidth.html)
-pub type PFN_vkCmdSetLineWidth = Option<vkCmdSetLineWidth_t>;
-/// Non-nullable pointer to [vkCmdSetLineWidth](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetLineWidth.html)
-pub type vkCmdSetLineWidth_t = unsafe extern "system" fn(commandBuffer: VkCommandBuffer, lineWidth: float);
-
 /// Nullable pointer to [vkCmdSetPrimitiveTopologyEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetPrimitiveTopologyEXT.html)
 pub type PFN_vkCmdSetPrimitiveTopologyEXT = Option<vkCmdSetPrimitiveTopologyEXT_t>;
 /// Non-nullable pointer to [vkCmdSetPrimitiveTopologyEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetPrimitiveTopologyEXT.html)
@@ -904,23 +751,11 @@ pub type PFN_vkCmdSetSampleLocationsEXT = Option<vkCmdSetSampleLocationsEXT_t>;
 pub type vkCmdSetSampleLocationsEXT_t =
   unsafe extern "system" fn(commandBuffer: VkCommandBuffer, pSampleLocationsInfo: *const VkSampleLocationsInfoEXT);
 
-/// Nullable pointer to [vkCmdSetScissor](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetScissor.html)
-pub type PFN_vkCmdSetScissor = Option<vkCmdSetScissor_t>;
-/// Non-nullable pointer to [vkCmdSetScissor](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetScissor.html)
-pub type vkCmdSetScissor_t =
-  unsafe extern "system" fn(commandBuffer: VkCommandBuffer, firstScissor: uint32_t, scissorCount: uint32_t, pScissors: *const VkRect2D);
-
 /// Nullable pointer to [vkCmdSetScissorWithCountEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetScissorWithCountEXT.html)
 pub type PFN_vkCmdSetScissorWithCountEXT = Option<vkCmdSetScissorWithCountEXT_t>;
 /// Non-nullable pointer to [vkCmdSetScissorWithCountEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetScissorWithCountEXT.html)
 pub type vkCmdSetScissorWithCountEXT_t =
   unsafe extern "system" fn(commandBuffer: VkCommandBuffer, scissorCount: uint32_t, pScissors: *const VkRect2D);
-
-/// Nullable pointer to [vkCmdSetStencilCompareMask](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetStencilCompareMask.html)
-pub type PFN_vkCmdSetStencilCompareMask = Option<vkCmdSetStencilCompareMask_t>;
-/// Non-nullable pointer to [vkCmdSetStencilCompareMask](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetStencilCompareMask.html)
-pub type vkCmdSetStencilCompareMask_t =
-  unsafe extern "system" fn(commandBuffer: VkCommandBuffer, faceMask: VkStencilFaceFlags, compareMask: uint32_t);
 
 /// Nullable pointer to [vkCmdSetStencilOpEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetStencilOpEXT.html)
 pub type PFN_vkCmdSetStencilOpEXT = Option<vkCmdSetStencilOpEXT_t>;
@@ -934,26 +769,10 @@ pub type vkCmdSetStencilOpEXT_t = unsafe extern "system" fn(
   compareOp: VkCompareOp,
 );
 
-/// Nullable pointer to [vkCmdSetStencilReference](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetStencilReference.html)
-pub type PFN_vkCmdSetStencilReference = Option<vkCmdSetStencilReference_t>;
-/// Non-nullable pointer to [vkCmdSetStencilReference](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetStencilReference.html)
-pub type vkCmdSetStencilReference_t = unsafe extern "system" fn(commandBuffer: VkCommandBuffer, faceMask: VkStencilFaceFlags, reference: uint32_t);
-
 /// Nullable pointer to [vkCmdSetStencilTestEnableEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetStencilTestEnableEXT.html)
 pub type PFN_vkCmdSetStencilTestEnableEXT = Option<vkCmdSetStencilTestEnableEXT_t>;
 /// Non-nullable pointer to [vkCmdSetStencilTestEnableEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetStencilTestEnableEXT.html)
 pub type vkCmdSetStencilTestEnableEXT_t = unsafe extern "system" fn(commandBuffer: VkCommandBuffer, stencilTestEnable: VkBool32);
-
-/// Nullable pointer to [vkCmdSetStencilWriteMask](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetStencilWriteMask.html)
-pub type PFN_vkCmdSetStencilWriteMask = Option<vkCmdSetStencilWriteMask_t>;
-/// Non-nullable pointer to [vkCmdSetStencilWriteMask](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetStencilWriteMask.html)
-pub type vkCmdSetStencilWriteMask_t = unsafe extern "system" fn(commandBuffer: VkCommandBuffer, faceMask: VkStencilFaceFlags, writeMask: uint32_t);
-
-/// Nullable pointer to [vkCmdSetViewport](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetViewport.html)
-pub type PFN_vkCmdSetViewport = Option<vkCmdSetViewport_t>;
-/// Non-nullable pointer to [vkCmdSetViewport](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetViewport.html)
-pub type vkCmdSetViewport_t =
-  unsafe extern "system" fn(commandBuffer: VkCommandBuffer, firstViewport: uint32_t, viewportCount: uint32_t, pViewports: *const VkViewport);
 
 /// Nullable pointer to [vkCmdSetViewportShadingRatePaletteNV](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetViewportShadingRatePaletteNV.html)
 pub type PFN_vkCmdSetViewportShadingRatePaletteNV = Option<vkCmdSetViewportShadingRatePaletteNV_t>;
@@ -981,20 +800,10 @@ pub type PFN_vkCmdSetViewportWithCountEXT = Option<vkCmdSetViewportWithCountEXT_
 pub type vkCmdSetViewportWithCountEXT_t =
   unsafe extern "system" fn(commandBuffer: VkCommandBuffer, viewportCount: uint32_t, pViewports: *const VkViewport);
 
-/// Nullable pointer to [vkCmdEndRenderPass](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdEndRenderPass.html)
-pub type PFN_vkCmdEndRenderPass = Option<vkCmdEndRenderPass_t>;
-/// Non-nullable pointer to [vkCmdEndRenderPass](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdEndRenderPass.html)
-pub type vkCmdEndRenderPass_t = unsafe extern "system" fn(commandBuffer: VkCommandBuffer);
-
 /// Nullable pointer to [vkCmdEndRenderPass2](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdEndRenderPass2.html)
 pub type PFN_vkCmdEndRenderPass2 = Option<vkCmdEndRenderPass2_t>;
 /// Non-nullable pointer to [vkCmdEndRenderPass2](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdEndRenderPass2.html)
 pub type vkCmdEndRenderPass2_t = unsafe extern "system" fn(commandBuffer: VkCommandBuffer, pSubpassEndInfo: *const VkSubpassEndInfo);
-
-/// Nullable pointer to [vkCmdNextSubpass](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdNextSubpass.html)
-pub type PFN_vkCmdNextSubpass = Option<vkCmdNextSubpass_t>;
-/// Non-nullable pointer to [vkCmdNextSubpass](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdNextSubpass.html)
-pub type vkCmdNextSubpass_t = unsafe extern "system" fn(commandBuffer: VkCommandBuffer, contents: VkSubpassContents);
 
 /// Nullable pointer to [vkCmdNextSubpass2](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdNextSubpass2.html)
 pub type PFN_vkCmdNextSubpass2 = Option<vkCmdNextSubpass2_t>;
@@ -1024,46 +833,6 @@ pub type vkCmdEndTransformFeedbackEXT_t = unsafe extern "system" fn(
   pCounterBufferOffsets: *const VkDeviceSize,
 );
 
-/// Nullable pointer to [vkCmdClearAttachments](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdClearAttachments.html)
-pub type PFN_vkCmdClearAttachments = Option<vkCmdClearAttachments_t>;
-/// Non-nullable pointer to [vkCmdClearAttachments](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdClearAttachments.html)
-pub type vkCmdClearAttachments_t = unsafe extern "system" fn(
-  commandBuffer: VkCommandBuffer,
-  attachmentCount: uint32_t,
-  pAttachments: *const VkClearAttachment,
-  rectCount: uint32_t,
-  pRects: *const VkClearRect,
-);
-
-/// Nullable pointer to [vkCmdDraw](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdDraw.html)
-pub type PFN_vkCmdDraw = Option<vkCmdDraw_t>;
-/// Non-nullable pointer to [vkCmdDraw](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdDraw.html)
-pub type vkCmdDraw_t = unsafe extern "system" fn(
-  commandBuffer: VkCommandBuffer,
-  vertexCount: uint32_t,
-  instanceCount: uint32_t,
-  firstVertex: uint32_t,
-  firstInstance: uint32_t,
-);
-
-/// Nullable pointer to [vkCmdDrawIndexed](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdDrawIndexed.html)
-pub type PFN_vkCmdDrawIndexed = Option<vkCmdDrawIndexed_t>;
-/// Non-nullable pointer to [vkCmdDrawIndexed](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdDrawIndexed.html)
-pub type vkCmdDrawIndexed_t = unsafe extern "system" fn(
-  commandBuffer: VkCommandBuffer,
-  indexCount: uint32_t,
-  instanceCount: uint32_t,
-  firstIndex: uint32_t,
-  vertexOffset: int32_t,
-  firstInstance: uint32_t,
-);
-
-/// Nullable pointer to [vkCmdDrawIndexedIndirect](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdDrawIndexedIndirect.html)
-pub type PFN_vkCmdDrawIndexedIndirect = Option<vkCmdDrawIndexedIndirect_t>;
-/// Non-nullable pointer to [vkCmdDrawIndexedIndirect](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdDrawIndexedIndirect.html)
-pub type vkCmdDrawIndexedIndirect_t =
-  unsafe extern "system" fn(commandBuffer: VkCommandBuffer, buffer: VkBuffer, offset: VkDeviceSize, drawCount: uint32_t, stride: uint32_t);
-
 /// Nullable pointer to [vkCmdDrawIndexedIndirectCount](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdDrawIndexedIndirectCount.html)
 pub type PFN_vkCmdDrawIndexedIndirectCount = Option<vkCmdDrawIndexedIndirectCount_t>;
 /// Non-nullable pointer to [vkCmdDrawIndexedIndirectCount](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdDrawIndexedIndirectCount.html)
@@ -1076,12 +845,6 @@ pub type vkCmdDrawIndexedIndirectCount_t = unsafe extern "system" fn(
   maxDrawCount: uint32_t,
   stride: uint32_t,
 );
-
-/// Nullable pointer to [vkCmdDrawIndirect](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdDrawIndirect.html)
-pub type PFN_vkCmdDrawIndirect = Option<vkCmdDrawIndirect_t>;
-/// Non-nullable pointer to [vkCmdDrawIndirect](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdDrawIndirect.html)
-pub type vkCmdDrawIndirect_t =
-  unsafe extern "system" fn(commandBuffer: VkCommandBuffer, buffer: VkBuffer, offset: VkDeviceSize, drawCount: uint32_t, stride: uint32_t);
 
 /// Nullable pointer to [vkCmdDrawIndirectByteCountEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdDrawIndirectByteCountEXT.html)
 pub type PFN_vkCmdDrawIndirectByteCountEXT = Option<vkCmdDrawIndirectByteCountEXT_t>;
@@ -1133,12 +896,6 @@ pub type PFN_vkCmdDrawMeshTasksNV = Option<vkCmdDrawMeshTasksNV_t>;
 /// Non-nullable pointer to [vkCmdDrawMeshTasksNV](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdDrawMeshTasksNV.html)
 pub type vkCmdDrawMeshTasksNV_t = unsafe extern "system" fn(commandBuffer: VkCommandBuffer, taskCount: uint32_t, firstTask: uint32_t);
 
-/// Nullable pointer to [vkCmdBeginRenderPass](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBeginRenderPass.html)
-pub type PFN_vkCmdBeginRenderPass = Option<vkCmdBeginRenderPass_t>;
-/// Non-nullable pointer to [vkCmdBeginRenderPass](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBeginRenderPass.html)
-pub type vkCmdBeginRenderPass_t =
-  unsafe extern "system" fn(commandBuffer: VkCommandBuffer, pRenderPassBegin: *const VkRenderPassBeginInfo, contents: VkSubpassContents);
-
 /// Nullable pointer to [vkCmdBeginRenderPass2](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBeginRenderPass2.html)
 pub type PFN_vkCmdBeginRenderPass2 = Option<vkCmdBeginRenderPass2_t>;
 /// Non-nullable pointer to [vkCmdBeginRenderPass2](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBeginRenderPass2.html)
@@ -1148,49 +905,10 @@ pub type vkCmdBeginRenderPass2_t = unsafe extern "system" fn(
   pSubpassBeginInfo: *const VkSubpassBeginInfo,
 );
 
-/// Nullable pointer to [vkCmdBlitImage](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBlitImage.html)
-pub type PFN_vkCmdBlitImage = Option<vkCmdBlitImage_t>;
-/// Non-nullable pointer to [vkCmdBlitImage](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBlitImage.html)
-pub type vkCmdBlitImage_t = unsafe extern "system" fn(
-  commandBuffer: VkCommandBuffer,
-  srcImage: VkImage,
-  srcImageLayout: VkImageLayout,
-  dstImage: VkImage,
-  dstImageLayout: VkImageLayout,
-  regionCount: uint32_t,
-  pRegions: *const VkImageBlit,
-  filter: VkFilter,
-);
-
 /// Nullable pointer to [vkCmdBlitImage2KHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBlitImage2KHR.html)
 pub type PFN_vkCmdBlitImage2KHR = Option<vkCmdBlitImage2KHR_t>;
 /// Non-nullable pointer to [vkCmdBlitImage2KHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBlitImage2KHR.html)
 pub type vkCmdBlitImage2KHR_t = unsafe extern "system" fn(commandBuffer: VkCommandBuffer, pBlitImageInfo: *const VkBlitImageInfo2KHR);
-
-/// Nullable pointer to [vkCmdClearDepthStencilImage](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdClearDepthStencilImage.html)
-pub type PFN_vkCmdClearDepthStencilImage = Option<vkCmdClearDepthStencilImage_t>;
-/// Non-nullable pointer to [vkCmdClearDepthStencilImage](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdClearDepthStencilImage.html)
-pub type vkCmdClearDepthStencilImage_t = unsafe extern "system" fn(
-  commandBuffer: VkCommandBuffer,
-  image: VkImage,
-  imageLayout: VkImageLayout,
-  pDepthStencil: *const VkClearDepthStencilValue,
-  rangeCount: uint32_t,
-  pRanges: *const VkImageSubresourceRange,
-);
-
-/// Nullable pointer to [vkCmdResolveImage](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdResolveImage.html)
-pub type PFN_vkCmdResolveImage = Option<vkCmdResolveImage_t>;
-/// Non-nullable pointer to [vkCmdResolveImage](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdResolveImage.html)
-pub type vkCmdResolveImage_t = unsafe extern "system" fn(
-  commandBuffer: VkCommandBuffer,
-  srcImage: VkImage,
-  srcImageLayout: VkImageLayout,
-  dstImage: VkImage,
-  dstImageLayout: VkImageLayout,
-  regionCount: uint32_t,
-  pRegions: *const VkImageResolve,
-);
 
 /// Nullable pointer to [vkCmdResolveImage2KHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdResolveImage2KHR.html)
 pub type PFN_vkCmdResolveImage2KHR = Option<vkCmdResolveImage2KHR_t>;
@@ -1208,37 +926,11 @@ pub type PFN_vkCmdBeginDebugUtilsLabelEXT = Option<vkCmdBeginDebugUtilsLabelEXT_
 /// Non-nullable pointer to [vkCmdBeginDebugUtilsLabelEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBeginDebugUtilsLabelEXT.html)
 pub type vkCmdBeginDebugUtilsLabelEXT_t = unsafe extern "system" fn(commandBuffer: VkCommandBuffer, pLabelInfo: *const VkDebugUtilsLabelEXT);
 
-/// Nullable pointer to [vkCmdBeginQuery](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBeginQuery.html)
-pub type PFN_vkCmdBeginQuery = Option<vkCmdBeginQuery_t>;
-/// Non-nullable pointer to [vkCmdBeginQuery](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBeginQuery.html)
-pub type vkCmdBeginQuery_t =
-  unsafe extern "system" fn(commandBuffer: VkCommandBuffer, queryPool: VkQueryPool, query: uint32_t, flags: VkQueryControlFlags);
-
 /// Nullable pointer to [vkCmdBeginQueryIndexedEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBeginQueryIndexedEXT.html)
 pub type PFN_vkCmdBeginQueryIndexedEXT = Option<vkCmdBeginQueryIndexedEXT_t>;
 /// Non-nullable pointer to [vkCmdBeginQueryIndexedEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBeginQueryIndexedEXT.html)
 pub type vkCmdBeginQueryIndexedEXT_t =
   unsafe extern "system" fn(commandBuffer: VkCommandBuffer, queryPool: VkQueryPool, query: uint32_t, flags: VkQueryControlFlags, index: uint32_t);
-
-/// Nullable pointer to [vkCmdBindDescriptorSets](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBindDescriptorSets.html)
-pub type PFN_vkCmdBindDescriptorSets = Option<vkCmdBindDescriptorSets_t>;
-/// Non-nullable pointer to [vkCmdBindDescriptorSets](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBindDescriptorSets.html)
-pub type vkCmdBindDescriptorSets_t = unsafe extern "system" fn(
-  commandBuffer: VkCommandBuffer,
-  pipelineBindPoint: VkPipelineBindPoint,
-  layout: VkPipelineLayout,
-  firstSet: uint32_t,
-  descriptorSetCount: uint32_t,
-  pDescriptorSets: *const VkDescriptorSet,
-  dynamicOffsetCount: uint32_t,
-  pDynamicOffsets: *const uint32_t,
-);
-
-/// Nullable pointer to [vkCmdBindPipeline](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBindPipeline.html)
-pub type PFN_vkCmdBindPipeline = Option<vkCmdBindPipeline_t>;
-/// Non-nullable pointer to [vkCmdBindPipeline](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBindPipeline.html)
-pub type vkCmdBindPipeline_t =
-  unsafe extern "system" fn(commandBuffer: VkCommandBuffer, pipelineBindPoint: VkPipelineBindPoint, pipeline: VkPipeline);
 
 /// Nullable pointer to [vkCmdBindPipelineShaderGroupNV](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBindPipelineShaderGroupNV.html)
 pub type PFN_vkCmdBindPipelineShaderGroupNV = Option<vkCmdBindPipelineShaderGroupNV_t>;
@@ -1271,11 +963,6 @@ pub type PFN_vkCmdEndDebugUtilsLabelEXT = Option<vkCmdEndDebugUtilsLabelEXT_t>;
 /// Non-nullable pointer to [vkCmdEndDebugUtilsLabelEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdEndDebugUtilsLabelEXT.html)
 pub type vkCmdEndDebugUtilsLabelEXT_t = unsafe extern "system" fn(commandBuffer: VkCommandBuffer);
 
-/// Nullable pointer to [vkCmdEndQuery](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdEndQuery.html)
-pub type PFN_vkCmdEndQuery = Option<vkCmdEndQuery_t>;
-/// Non-nullable pointer to [vkCmdEndQuery](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdEndQuery.html)
-pub type vkCmdEndQuery_t = unsafe extern "system" fn(commandBuffer: VkCommandBuffer, queryPool: VkQueryPool, query: uint32_t);
-
 /// Nullable pointer to [vkCmdEndQueryIndexedEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdEndQueryIndexedEXT.html)
 pub type PFN_vkCmdEndQueryIndexedEXT = Option<vkCmdEndQueryIndexedEXT_t>;
 /// Non-nullable pointer to [vkCmdEndQueryIndexedEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdEndQueryIndexedEXT.html)
@@ -1286,18 +973,6 @@ pub type vkCmdEndQueryIndexedEXT_t =
 pub type PFN_vkCmdInsertDebugUtilsLabelEXT = Option<vkCmdInsertDebugUtilsLabelEXT_t>;
 /// Non-nullable pointer to [vkCmdInsertDebugUtilsLabelEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdInsertDebugUtilsLabelEXT.html)
 pub type vkCmdInsertDebugUtilsLabelEXT_t = unsafe extern "system" fn(commandBuffer: VkCommandBuffer, pLabelInfo: *const VkDebugUtilsLabelEXT);
-
-/// Nullable pointer to [vkCmdPushConstants](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdPushConstants.html)
-pub type PFN_vkCmdPushConstants = Option<vkCmdPushConstants_t>;
-/// Non-nullable pointer to [vkCmdPushConstants](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdPushConstants.html)
-pub type vkCmdPushConstants_t = unsafe extern "system" fn(
-  commandBuffer: VkCommandBuffer,
-  layout: VkPipelineLayout,
-  stageFlags: VkShaderStageFlags,
-  offset: uint32_t,
-  size: uint32_t,
-  pValues: *const c_void,
-);
 
 /// Nullable pointer to [vkCmdPushDescriptorSetKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdPushDescriptorSetKHR.html)
 pub type PFN_vkCmdPushDescriptorSetKHR = Option<vkCmdPushDescriptorSetKHR_t>;
@@ -1322,23 +997,6 @@ pub type vkCmdPushDescriptorSetWithTemplateKHR_t = unsafe extern "system" fn(
   pData: *const c_void,
 );
 
-/// Nullable pointer to [vkCmdWaitEvents](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdWaitEvents.html)
-pub type PFN_vkCmdWaitEvents = Option<vkCmdWaitEvents_t>;
-/// Non-nullable pointer to [vkCmdWaitEvents](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdWaitEvents.html)
-pub type vkCmdWaitEvents_t = unsafe extern "system" fn(
-  commandBuffer: VkCommandBuffer,
-  eventCount: uint32_t,
-  pEvents: *const VkEvent,
-  srcStageMask: VkPipelineStageFlags,
-  dstStageMask: VkPipelineStageFlags,
-  memoryBarrierCount: uint32_t,
-  pMemoryBarriers: *const VkMemoryBarrier,
-  bufferMemoryBarrierCount: uint32_t,
-  pBufferMemoryBarriers: *const VkBufferMemoryBarrier,
-  imageMemoryBarrierCount: uint32_t,
-  pImageMemoryBarriers: *const VkImageMemoryBarrier,
-);
-
 /// Nullable pointer to [vkCmdExecuteGeneratedCommandsNV](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdExecuteGeneratedCommandsNV.html)
 pub type PFN_vkCmdExecuteGeneratedCommandsNV = Option<vkCmdExecuteGeneratedCommandsNV_t>;
 /// Non-nullable pointer to [vkCmdExecuteGeneratedCommandsNV](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdExecuteGeneratedCommandsNV.html)
@@ -1351,48 +1009,6 @@ pub type PFN_vkCmdPreprocessGeneratedCommandsNV = Option<vkCmdPreprocessGenerate
 pub type vkCmdPreprocessGeneratedCommandsNV_t =
   unsafe extern "system" fn(commandBuffer: VkCommandBuffer, pGeneratedCommandsInfo: *const VkGeneratedCommandsInfoNV);
 
-/// Nullable pointer to [vkCmdResetEvent](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdResetEvent.html)
-pub type PFN_vkCmdResetEvent = Option<vkCmdResetEvent_t>;
-/// Non-nullable pointer to [vkCmdResetEvent](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdResetEvent.html)
-pub type vkCmdResetEvent_t = unsafe extern "system" fn(commandBuffer: VkCommandBuffer, event: VkEvent, stageMask: VkPipelineStageFlags);
-
-/// Nullable pointer to [vkCmdResetQueryPool](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdResetQueryPool.html)
-pub type PFN_vkCmdResetQueryPool = Option<vkCmdResetQueryPool_t>;
-/// Non-nullable pointer to [vkCmdResetQueryPool](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdResetQueryPool.html)
-pub type vkCmdResetQueryPool_t =
-  unsafe extern "system" fn(commandBuffer: VkCommandBuffer, queryPool: VkQueryPool, firstQuery: uint32_t, queryCount: uint32_t);
-
-/// Nullable pointer to [vkCmdSetEvent](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetEvent.html)
-pub type PFN_vkCmdSetEvent = Option<vkCmdSetEvent_t>;
-/// Non-nullable pointer to [vkCmdSetEvent](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetEvent.html)
-pub type vkCmdSetEvent_t = unsafe extern "system" fn(commandBuffer: VkCommandBuffer, event: VkEvent, stageMask: VkPipelineStageFlags);
-
-/// Nullable pointer to [vkCmdClearColorImage](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdClearColorImage.html)
-pub type PFN_vkCmdClearColorImage = Option<vkCmdClearColorImage_t>;
-/// Non-nullable pointer to [vkCmdClearColorImage](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdClearColorImage.html)
-pub type vkCmdClearColorImage_t = unsafe extern "system" fn(
-  commandBuffer: VkCommandBuffer,
-  image: VkImage,
-  imageLayout: VkImageLayout,
-  pColor: *const VkClearColorValue,
-  rangeCount: uint32_t,
-  pRanges: *const VkImageSubresourceRange,
-);
-
-/// Nullable pointer to [vkCmdCopyQueryPoolResults](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdCopyQueryPoolResults.html)
-pub type PFN_vkCmdCopyQueryPoolResults = Option<vkCmdCopyQueryPoolResults_t>;
-/// Non-nullable pointer to [vkCmdCopyQueryPoolResults](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdCopyQueryPoolResults.html)
-pub type vkCmdCopyQueryPoolResults_t = unsafe extern "system" fn(
-  commandBuffer: VkCommandBuffer,
-  queryPool: VkQueryPool,
-  firstQuery: uint32_t,
-  queryCount: uint32_t,
-  dstBuffer: VkBuffer,
-  dstOffset: VkDeviceSize,
-  stride: VkDeviceSize,
-  flags: VkQueryResultFlags,
-);
-
 /// Nullable pointer to [vkCmdSetCheckpointNV](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetCheckpointNV.html)
 pub type PFN_vkCmdSetCheckpointNV = Option<vkCmdSetCheckpointNV_t>;
 /// Non-nullable pointer to [vkCmdSetCheckpointNV](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetCheckpointNV.html)
@@ -1402,28 +1018,6 @@ pub type vkCmdSetCheckpointNV_t = unsafe extern "system" fn(commandBuffer: VkCom
 pub type PFN_vkCmdSetDeviceMask = Option<vkCmdSetDeviceMask_t>;
 /// Non-nullable pointer to [vkCmdSetDeviceMask](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetDeviceMask.html)
 pub type vkCmdSetDeviceMask_t = unsafe extern "system" fn(commandBuffer: VkCommandBuffer, deviceMask: uint32_t);
-
-/// Nullable pointer to [vkCmdExecuteCommands](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdExecuteCommands.html)
-pub type PFN_vkCmdExecuteCommands = Option<vkCmdExecuteCommands_t>;
-/// Non-nullable pointer to [vkCmdExecuteCommands](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdExecuteCommands.html)
-pub type vkCmdExecuteCommands_t =
-  unsafe extern "system" fn(commandBuffer: VkCommandBuffer, commandBufferCount: uint32_t, pCommandBuffers: *const VkCommandBuffer);
-
-/// Nullable pointer to [vkCmdPipelineBarrier](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdPipelineBarrier.html)
-pub type PFN_vkCmdPipelineBarrier = Option<vkCmdPipelineBarrier_t>;
-/// Non-nullable pointer to [vkCmdPipelineBarrier](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdPipelineBarrier.html)
-pub type vkCmdPipelineBarrier_t = unsafe extern "system" fn(
-  commandBuffer: VkCommandBuffer,
-  srcStageMask: VkPipelineStageFlags,
-  dstStageMask: VkPipelineStageFlags,
-  dependencyFlags: VkDependencyFlags,
-  memoryBarrierCount: uint32_t,
-  pMemoryBarriers: *const VkMemoryBarrier,
-  bufferMemoryBarrierCount: uint32_t,
-  pBufferMemoryBarriers: *const VkBufferMemoryBarrier,
-  imageMemoryBarrierCount: uint32_t,
-  pImageMemoryBarriers: *const VkImageMemoryBarrier,
-);
 
 /// Nullable pointer to [vkCmdWriteBufferMarkerAMD](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdWriteBufferMarkerAMD.html)
 pub type PFN_vkCmdWriteBufferMarkerAMD = Option<vkCmdWriteBufferMarkerAMD_t>;
@@ -1436,39 +1030,10 @@ pub type vkCmdWriteBufferMarkerAMD_t = unsafe extern "system" fn(
   marker: uint32_t,
 );
 
-/// Nullable pointer to [vkCmdWriteTimestamp](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdWriteTimestamp.html)
-pub type PFN_vkCmdWriteTimestamp = Option<vkCmdWriteTimestamp_t>;
-/// Non-nullable pointer to [vkCmdWriteTimestamp](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdWriteTimestamp.html)
-pub type vkCmdWriteTimestamp_t =
-  unsafe extern "system" fn(commandBuffer: VkCommandBuffer, pipelineStage: VkPipelineStageFlagBits, queryPool: VkQueryPool, query: uint32_t);
-
-/// Nullable pointer to [vkCmdCopyBuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdCopyBuffer.html)
-pub type PFN_vkCmdCopyBuffer = Option<vkCmdCopyBuffer_t>;
-/// Non-nullable pointer to [vkCmdCopyBuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdCopyBuffer.html)
-pub type vkCmdCopyBuffer_t = unsafe extern "system" fn(
-  commandBuffer: VkCommandBuffer,
-  srcBuffer: VkBuffer,
-  dstBuffer: VkBuffer,
-  regionCount: uint32_t,
-  pRegions: *const VkBufferCopy,
-);
-
 /// Nullable pointer to [vkCmdCopyBuffer2KHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdCopyBuffer2KHR.html)
 pub type PFN_vkCmdCopyBuffer2KHR = Option<vkCmdCopyBuffer2KHR_t>;
 /// Non-nullable pointer to [vkCmdCopyBuffer2KHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdCopyBuffer2KHR.html)
 pub type vkCmdCopyBuffer2KHR_t = unsafe extern "system" fn(commandBuffer: VkCommandBuffer, pCopyBufferInfo: *const VkCopyBufferInfo2KHR);
-
-/// Nullable pointer to [vkCmdCopyBufferToImage](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdCopyBufferToImage.html)
-pub type PFN_vkCmdCopyBufferToImage = Option<vkCmdCopyBufferToImage_t>;
-/// Non-nullable pointer to [vkCmdCopyBufferToImage](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdCopyBufferToImage.html)
-pub type vkCmdCopyBufferToImage_t = unsafe extern "system" fn(
-  commandBuffer: VkCommandBuffer,
-  srcBuffer: VkBuffer,
-  dstImage: VkImage,
-  dstImageLayout: VkImageLayout,
-  regionCount: uint32_t,
-  pRegions: *const VkBufferImageCopy,
-);
 
 /// Nullable pointer to [vkCmdCopyBufferToImage2KHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdCopyBufferToImage2KHR.html)
 pub type PFN_vkCmdCopyBufferToImage2KHR = Option<vkCmdCopyBufferToImage2KHR_t>;
@@ -1476,35 +1041,10 @@ pub type PFN_vkCmdCopyBufferToImage2KHR = Option<vkCmdCopyBufferToImage2KHR_t>;
 pub type vkCmdCopyBufferToImage2KHR_t =
   unsafe extern "system" fn(commandBuffer: VkCommandBuffer, pCopyBufferToImageInfo: *const VkCopyBufferToImageInfo2KHR);
 
-/// Nullable pointer to [vkCmdCopyImage](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdCopyImage.html)
-pub type PFN_vkCmdCopyImage = Option<vkCmdCopyImage_t>;
-/// Non-nullable pointer to [vkCmdCopyImage](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdCopyImage.html)
-pub type vkCmdCopyImage_t = unsafe extern "system" fn(
-  commandBuffer: VkCommandBuffer,
-  srcImage: VkImage,
-  srcImageLayout: VkImageLayout,
-  dstImage: VkImage,
-  dstImageLayout: VkImageLayout,
-  regionCount: uint32_t,
-  pRegions: *const VkImageCopy,
-);
-
 /// Nullable pointer to [vkCmdCopyImage2KHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdCopyImage2KHR.html)
 pub type PFN_vkCmdCopyImage2KHR = Option<vkCmdCopyImage2KHR_t>;
 /// Non-nullable pointer to [vkCmdCopyImage2KHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdCopyImage2KHR.html)
 pub type vkCmdCopyImage2KHR_t = unsafe extern "system" fn(commandBuffer: VkCommandBuffer, pCopyImageInfo: *const VkCopyImageInfo2KHR);
-
-/// Nullable pointer to [vkCmdCopyImageToBuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdCopyImageToBuffer.html)
-pub type PFN_vkCmdCopyImageToBuffer = Option<vkCmdCopyImageToBuffer_t>;
-/// Non-nullable pointer to [vkCmdCopyImageToBuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdCopyImageToBuffer.html)
-pub type vkCmdCopyImageToBuffer_t = unsafe extern "system" fn(
-  commandBuffer: VkCommandBuffer,
-  srcImage: VkImage,
-  srcImageLayout: VkImageLayout,
-  dstBuffer: VkBuffer,
-  regionCount: uint32_t,
-  pRegions: *const VkBufferImageCopy,
-);
 
 /// Nullable pointer to [vkCmdCopyImageToBuffer2KHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdCopyImageToBuffer2KHR.html)
 pub type PFN_vkCmdCopyImageToBuffer2KHR = Option<vkCmdCopyImageToBuffer2KHR_t>;
@@ -1512,53 +1052,10 @@ pub type PFN_vkCmdCopyImageToBuffer2KHR = Option<vkCmdCopyImageToBuffer2KHR_t>;
 pub type vkCmdCopyImageToBuffer2KHR_t =
   unsafe extern "system" fn(commandBuffer: VkCommandBuffer, pCopyImageToBufferInfo: *const VkCopyImageToBufferInfo2KHR);
 
-/// Nullable pointer to [vkCmdUpdateBuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdUpdateBuffer.html)
-pub type PFN_vkCmdUpdateBuffer = Option<vkCmdUpdateBuffer_t>;
-/// Non-nullable pointer to [vkCmdUpdateBuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdUpdateBuffer.html)
-pub type vkCmdUpdateBuffer_t = unsafe extern "system" fn(
-  commandBuffer: VkCommandBuffer,
-  dstBuffer: VkBuffer,
-  dstOffset: VkDeviceSize,
-  dataSize: VkDeviceSize,
-  pData: *const c_void,
-);
-
-/// Nullable pointer to [vkCmdFillBuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdFillBuffer.html)
-pub type PFN_vkCmdFillBuffer = Option<vkCmdFillBuffer_t>;
-/// Non-nullable pointer to [vkCmdFillBuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdFillBuffer.html)
-pub type vkCmdFillBuffer_t =
-  unsafe extern "system" fn(commandBuffer: VkCommandBuffer, dstBuffer: VkBuffer, dstOffset: VkDeviceSize, size: VkDeviceSize, data: uint32_t);
-
-/// Nullable pointer to [vkFreeDescriptorSets](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkFreeDescriptorSets.html)
-pub type PFN_vkFreeDescriptorSets = Option<vkFreeDescriptorSets_t>;
-/// Non-nullable pointer to [vkFreeDescriptorSets](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkFreeDescriptorSets.html)
-pub type vkFreeDescriptorSets_t = unsafe extern "system" fn(
-  device: VkDevice,
-  descriptorPool: VkDescriptorPool,
-  descriptorSetCount: uint32_t,
-  pDescriptorSets: *const VkDescriptorSet,
-) -> VkResult;
-
 /// Nullable pointer to [vkReleaseDisplayEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkReleaseDisplayEXT.html)
 pub type PFN_vkReleaseDisplayEXT = Option<vkReleaseDisplayEXT_t>;
 /// Non-nullable pointer to [vkReleaseDisplayEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkReleaseDisplayEXT.html)
 pub type vkReleaseDisplayEXT_t = unsafe extern "system" fn(physicalDevice: VkPhysicalDevice, display: VkDisplayKHR) -> VkResult;
-
-/// Nullable pointer to [vkResetDescriptorPool](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkResetDescriptorPool.html)
-pub type PFN_vkResetDescriptorPool = Option<vkResetDescriptorPool_t>;
-/// Non-nullable pointer to [vkResetDescriptorPool](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkResetDescriptorPool.html)
-pub type vkResetDescriptorPool_t =
-  unsafe extern "system" fn(device: VkDevice, descriptorPool: VkDescriptorPool, flags: VkDescriptorPoolResetFlags) -> VkResult;
-
-/// Nullable pointer to [vkResetCommandBuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkResetCommandBuffer.html)
-pub type PFN_vkResetCommandBuffer = Option<vkResetCommandBuffer_t>;
-/// Non-nullable pointer to [vkResetCommandBuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkResetCommandBuffer.html)
-pub type vkResetCommandBuffer_t = unsafe extern "system" fn(commandBuffer: VkCommandBuffer, flags: VkCommandBufferResetFlags) -> VkResult;
-
-/// Nullable pointer to [vkResetCommandPool](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkResetCommandPool.html)
-pub type PFN_vkResetCommandPool = Option<vkResetCommandPool_t>;
-/// Non-nullable pointer to [vkResetCommandPool](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkResetCommandPool.html)
-pub type vkResetCommandPool_t = unsafe extern "system" fn(device: VkDevice, commandPool: VkCommandPool, flags: VkCommandPoolResetFlags) -> VkResult;
 
 /// Nullable pointer to [vkCreateAccelerationStructureNV](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateAccelerationStructureNV.html)
 pub type PFN_vkCreateAccelerationStructureNV = Option<vkCreateAccelerationStructureNV_t>;
@@ -1773,17 +1270,6 @@ pub type vkCreateAccelerationStructureKHR_t = unsafe extern "system" fn(
   pAccelerationStructure: *mut VkAccelerationStructureKHR,
 ) -> VkResult;
 
-/// Nullable pointer to [vkAllocateCommandBuffers](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkAllocateCommandBuffers.html)
-pub type PFN_vkAllocateCommandBuffers = Option<vkAllocateCommandBuffers_t>;
-/// Non-nullable pointer to [vkAllocateCommandBuffers](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkAllocateCommandBuffers.html)
-pub type vkAllocateCommandBuffers_t =
-  unsafe extern "system" fn(device: VkDevice, pAllocateInfo: *const VkCommandBufferAllocateInfo, pCommandBuffers: *mut VkCommandBuffer) -> VkResult;
-
-/// Nullable pointer to [vkBeginCommandBuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkBeginCommandBuffer.html)
-pub type PFN_vkBeginCommandBuffer = Option<vkBeginCommandBuffer_t>;
-/// Non-nullable pointer to [vkBeginCommandBuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkBeginCommandBuffer.html)
-pub type vkBeginCommandBuffer_t = unsafe extern "system" fn(commandBuffer: VkCommandBuffer, pBeginInfo: *const VkCommandBufferBeginInfo) -> VkResult;
-
 /// Nullable pointer to [vkBindAccelerationStructureMemoryNV](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkBindAccelerationStructureMemoryNV.html)
 pub type PFN_vkBindAccelerationStructureMemoryNV = Option<vkBindAccelerationStructureMemoryNV_t>;
 /// Non-nullable pointer to [vkBindAccelerationStructureMemoryNV](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkBindAccelerationStructureMemoryNV.html)
@@ -1800,36 +1286,6 @@ pub type vkBindImageMemory2_t =
 pub type PFN_vkCompileDeferredNV = Option<vkCompileDeferredNV_t>;
 /// Non-nullable pointer to [vkCompileDeferredNV](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCompileDeferredNV.html)
 pub type vkCompileDeferredNV_t = unsafe extern "system" fn(device: VkDevice, pipeline: VkPipeline, shader: uint32_t) -> VkResult;
-
-/// Nullable pointer to [vkCreateBufferView](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateBufferView.html)
-pub type PFN_vkCreateBufferView = Option<vkCreateBufferView_t>;
-/// Non-nullable pointer to [vkCreateBufferView](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateBufferView.html)
-pub type vkCreateBufferView_t = unsafe extern "system" fn(
-  device: VkDevice,
-  pCreateInfo: *const VkBufferViewCreateInfo,
-  pAllocator: *const VkAllocationCallbacks,
-  pView: *mut VkBufferView,
-) -> VkResult;
-
-/// Nullable pointer to [vkCreateCommandPool](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateCommandPool.html)
-pub type PFN_vkCreateCommandPool = Option<vkCreateCommandPool_t>;
-/// Non-nullable pointer to [vkCreateCommandPool](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateCommandPool.html)
-pub type vkCreateCommandPool_t = unsafe extern "system" fn(
-  device: VkDevice,
-  pCreateInfo: *const VkCommandPoolCreateInfo,
-  pAllocator: *const VkAllocationCallbacks,
-  pCommandPool: *mut VkCommandPool,
-) -> VkResult;
-
-/// Nullable pointer to [vkCreateDescriptorSetLayout](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateDescriptorSetLayout.html)
-pub type PFN_vkCreateDescriptorSetLayout = Option<vkCreateDescriptorSetLayout_t>;
-/// Non-nullable pointer to [vkCreateDescriptorSetLayout](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateDescriptorSetLayout.html)
-pub type vkCreateDescriptorSetLayout_t = unsafe extern "system" fn(
-  device: VkDevice,
-  pCreateInfo: *const VkDescriptorSetLayoutCreateInfo,
-  pAllocator: *const VkAllocationCallbacks,
-  pSetLayout: *mut VkDescriptorSetLayout,
-) -> VkResult;
 
 /// Nullable pointer to [vkCreateDescriptorUpdateTemplate](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateDescriptorUpdateTemplate.html)
 pub type PFN_vkCreateDescriptorUpdateTemplate = Option<vkCreateDescriptorUpdateTemplate_t>;
@@ -1861,16 +1317,6 @@ pub type vkCreateDisplayPlaneSurfaceKHR_t = unsafe extern "system" fn(
   pSurface: *mut VkSurfaceKHR,
 ) -> VkResult;
 
-/// Nullable pointer to [vkCreateFramebuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateFramebuffer.html)
-pub type PFN_vkCreateFramebuffer = Option<vkCreateFramebuffer_t>;
-/// Non-nullable pointer to [vkCreateFramebuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateFramebuffer.html)
-pub type vkCreateFramebuffer_t = unsafe extern "system" fn(
-  device: VkDevice,
-  pCreateInfo: *const VkFramebufferCreateInfo,
-  pAllocator: *const VkAllocationCallbacks,
-  pFramebuffer: *mut VkFramebuffer,
-) -> VkResult;
-
 /// Nullable pointer to [vkCreateHeadlessSurfaceEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateHeadlessSurfaceEXT.html)
 pub type PFN_vkCreateHeadlessSurfaceEXT = Option<vkCreateHeadlessSurfaceEXT_t>;
 /// Non-nullable pointer to [vkCreateHeadlessSurfaceEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateHeadlessSurfaceEXT.html)
@@ -1879,16 +1325,6 @@ pub type vkCreateHeadlessSurfaceEXT_t = unsafe extern "system" fn(
   pCreateInfo: *const VkHeadlessSurfaceCreateInfoEXT,
   pAllocator: *const VkAllocationCallbacks,
   pSurface: *mut VkSurfaceKHR,
-) -> VkResult;
-
-/// Nullable pointer to [vkCreateImage](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateImage.html)
-pub type PFN_vkCreateImage = Option<vkCreateImage_t>;
-/// Non-nullable pointer to [vkCreateImage](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateImage.html)
-pub type vkCreateImage_t = unsafe extern "system" fn(
-  device: VkDevice,
-  pCreateInfo: *const VkImageCreateInfo,
-  pAllocator: *const VkAllocationCallbacks,
-  pImage: *mut VkImage,
 ) -> VkResult;
 
 /// Nullable pointer to [vkCreateImagePipeSurfaceFUCHSIA](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateImagePipeSurfaceFUCHSIA.html)
@@ -1901,16 +1337,6 @@ pub type vkCreateImagePipeSurfaceFUCHSIA_t = unsafe extern "system" fn(
   pSurface: *mut VkSurfaceKHR,
 ) -> VkResult;
 
-/// Nullable pointer to [vkCreateImageView](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateImageView.html)
-pub type PFN_vkCreateImageView = Option<vkCreateImageView_t>;
-/// Non-nullable pointer to [vkCreateImageView](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateImageView.html)
-pub type vkCreateImageView_t = unsafe extern "system" fn(
-  device: VkDevice,
-  pCreateInfo: *const VkImageViewCreateInfo,
-  pAllocator: *const VkAllocationCallbacks,
-  pView: *mut VkImageView,
-) -> VkResult;
-
 /// Nullable pointer to [vkCreateIndirectCommandsLayoutNV](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateIndirectCommandsLayoutNV.html)
 pub type PFN_vkCreateIndirectCommandsLayoutNV = Option<vkCreateIndirectCommandsLayoutNV_t>;
 /// Non-nullable pointer to [vkCreateIndirectCommandsLayoutNV](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateIndirectCommandsLayoutNV.html)
@@ -1921,36 +1347,6 @@ pub type vkCreateIndirectCommandsLayoutNV_t = unsafe extern "system" fn(
   pIndirectCommandsLayout: *mut VkIndirectCommandsLayoutNV,
 ) -> VkResult;
 
-/// Nullable pointer to [vkCreatePipelineCache](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreatePipelineCache.html)
-pub type PFN_vkCreatePipelineCache = Option<vkCreatePipelineCache_t>;
-/// Non-nullable pointer to [vkCreatePipelineCache](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreatePipelineCache.html)
-pub type vkCreatePipelineCache_t = unsafe extern "system" fn(
-  device: VkDevice,
-  pCreateInfo: *const VkPipelineCacheCreateInfo,
-  pAllocator: *const VkAllocationCallbacks,
-  pPipelineCache: *mut VkPipelineCache,
-) -> VkResult;
-
-/// Nullable pointer to [vkCreatePipelineLayout](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreatePipelineLayout.html)
-pub type PFN_vkCreatePipelineLayout = Option<vkCreatePipelineLayout_t>;
-/// Non-nullable pointer to [vkCreatePipelineLayout](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreatePipelineLayout.html)
-pub type vkCreatePipelineLayout_t = unsafe extern "system" fn(
-  device: VkDevice,
-  pCreateInfo: *const VkPipelineLayoutCreateInfo,
-  pAllocator: *const VkAllocationCallbacks,
-  pPipelineLayout: *mut VkPipelineLayout,
-) -> VkResult;
-
-/// Nullable pointer to [vkCreateRenderPass](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateRenderPass.html)
-pub type PFN_vkCreateRenderPass = Option<vkCreateRenderPass_t>;
-/// Non-nullable pointer to [vkCreateRenderPass](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateRenderPass.html)
-pub type vkCreateRenderPass_t = unsafe extern "system" fn(
-  device: VkDevice,
-  pCreateInfo: *const VkRenderPassCreateInfo,
-  pAllocator: *const VkAllocationCallbacks,
-  pRenderPass: *mut VkRenderPass,
-) -> VkResult;
-
 /// Nullable pointer to [vkCreateRenderPass2](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateRenderPass2.html)
 pub type PFN_vkCreateRenderPass2 = Option<vkCreateRenderPass2_t>;
 /// Non-nullable pointer to [vkCreateRenderPass2](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateRenderPass2.html)
@@ -1959,16 +1355,6 @@ pub type vkCreateRenderPass2_t = unsafe extern "system" fn(
   pCreateInfo: *const VkRenderPassCreateInfo2,
   pAllocator: *const VkAllocationCallbacks,
   pRenderPass: *mut VkRenderPass,
-) -> VkResult;
-
-/// Nullable pointer to [vkCreateSampler](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateSampler.html)
-pub type PFN_vkCreateSampler = Option<vkCreateSampler_t>;
-/// Non-nullable pointer to [vkCreateSampler](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateSampler.html)
-pub type vkCreateSampler_t = unsafe extern "system" fn(
-  device: VkDevice,
-  pCreateInfo: *const VkSamplerCreateInfo,
-  pAllocator: *const VkAllocationCallbacks,
-  pSampler: *mut VkSampler,
 ) -> VkResult;
 
 /// Nullable pointer to [vkCreateSamplerYcbcrConversion](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateSamplerYcbcrConversion.html)
@@ -2030,11 +1416,6 @@ pub type vkDebugMarkerSetObjectNameEXT_t = unsafe extern "system" fn(device: VkD
 pub type PFN_vkDebugMarkerSetObjectTagEXT = Option<vkDebugMarkerSetObjectTagEXT_t>;
 /// Non-nullable pointer to [vkDebugMarkerSetObjectTagEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDebugMarkerSetObjectTagEXT.html)
 pub type vkDebugMarkerSetObjectTagEXT_t = unsafe extern "system" fn(device: VkDevice, pTagInfo: *const VkDebugMarkerObjectTagInfoEXT) -> VkResult;
-
-/// Nullable pointer to [vkEndCommandBuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEndCommandBuffer.html)
-pub type PFN_vkEndCommandBuffer = Option<vkEndCommandBuffer_t>;
-/// Non-nullable pointer to [vkEndCommandBuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEndCommandBuffer.html)
-pub type vkEndCommandBuffer_t = unsafe extern "system" fn(commandBuffer: VkCommandBuffer) -> VkResult;
 
 /// Nullable pointer to [vkGetAccelerationStructureHandleNV](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetAccelerationStructureHandleNV.html)
 pub type PFN_vkGetAccelerationStructureHandleNV = Option<vkGetAccelerationStructureHandleNV_t>;
@@ -2101,12 +1482,6 @@ pub type vkGetRayTracingShaderGroupHandlesKHR_t = unsafe extern "system" fn(
   dataSize: size_t,
   pData: *mut c_void,
 ) -> VkResult;
-
-/// Nullable pointer to [vkMergePipelineCaches](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkMergePipelineCaches.html)
-pub type PFN_vkMergePipelineCaches = Option<vkMergePipelineCaches_t>;
-/// Non-nullable pointer to [vkMergePipelineCaches](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkMergePipelineCaches.html)
-pub type vkMergePipelineCaches_t =
-  unsafe extern "system" fn(device: VkDevice, dstCache: VkPipelineCache, srcCacheCount: uint32_t, pSrcCaches: *const VkPipelineCache) -> VkResult;
 
 /// Nullable pointer to [vkMergeValidationCachesEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkMergeValidationCachesEXT.html)
 pub type PFN_vkMergeValidationCachesEXT = Option<vkMergeValidationCachesEXT_t>;
@@ -2184,22 +1559,6 @@ pub type vkGetPhysicalDeviceImageFormatProperties2_t = unsafe extern "system" fn
   pImageFormatProperties: *mut VkImageFormatProperties2,
 ) -> VkResult;
 
-/// Nullable pointer to [vkCreateDescriptorPool](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateDescriptorPool.html)
-pub type PFN_vkCreateDescriptorPool = Option<vkCreateDescriptorPool_t>;
-/// Non-nullable pointer to [vkCreateDescriptorPool](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateDescriptorPool.html)
-pub type vkCreateDescriptorPool_t = unsafe extern "system" fn(
-  device: VkDevice,
-  pCreateInfo: *const VkDescriptorPoolCreateInfo,
-  pAllocator: *const VkAllocationCallbacks,
-  pDescriptorPool: *mut VkDescriptorPool,
-) -> VkResult;
-
-/// Nullable pointer to [vkAllocateDescriptorSets](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkAllocateDescriptorSets.html)
-pub type PFN_vkAllocateDescriptorSets = Option<vkAllocateDescriptorSets_t>;
-/// Non-nullable pointer to [vkAllocateDescriptorSets](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkAllocateDescriptorSets.html)
-pub type vkAllocateDescriptorSets_t =
-  unsafe extern "system" fn(device: VkDevice, pAllocateInfo: *const VkDescriptorSetAllocateInfo, pDescriptorSets: *mut VkDescriptorSet) -> VkResult;
-
 /// Nullable pointer to [vkCreateSharedSwapchainsKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateSharedSwapchainsKHR.html)
 pub type PFN_vkCreateSharedSwapchainsKHR = Option<vkCreateSharedSwapchainsKHR_t>;
 /// Non-nullable pointer to [vkCreateSharedSwapchainsKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateSharedSwapchainsKHR.html)
@@ -2232,26 +1591,6 @@ pub type PFN_vkBindBufferMemory2 = Option<vkBindBufferMemory2_t>;
 /// Non-nullable pointer to [vkBindBufferMemory2](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkBindBufferMemory2.html)
 pub type vkBindBufferMemory2_t =
   unsafe extern "system" fn(device: VkDevice, bindInfoCount: uint32_t, pBindInfos: *const VkBindBufferMemoryInfo) -> VkResult;
-
-/// Nullable pointer to [vkCreateBuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateBuffer.html)
-pub type PFN_vkCreateBuffer = Option<vkCreateBuffer_t>;
-/// Non-nullable pointer to [vkCreateBuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateBuffer.html)
-pub type vkCreateBuffer_t = unsafe extern "system" fn(
-  device: VkDevice,
-  pCreateInfo: *const VkBufferCreateInfo,
-  pAllocator: *const VkAllocationCallbacks,
-  pBuffer: *mut VkBuffer,
-) -> VkResult;
-
-/// Nullable pointer to [vkCreateShaderModule](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateShaderModule.html)
-pub type PFN_vkCreateShaderModule = Option<vkCreateShaderModule_t>;
-/// Non-nullable pointer to [vkCreateShaderModule](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateShaderModule.html)
-pub type vkCreateShaderModule_t = unsafe extern "system" fn(
-  device: VkDevice,
-  pCreateInfo: *const VkShaderModuleCreateInfo,
-  pAllocator: *const VkAllocationCallbacks,
-  pShaderModule: *mut VkShaderModule,
-) -> VkResult;
 
 /// Nullable pointer to [vkCreateAndroidSurfaceKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateAndroidSurfaceKHR.html)
 pub type PFN_vkCreateAndroidSurfaceKHR = Option<vkCreateAndroidSurfaceKHR_t>;
@@ -2611,12 +1950,6 @@ pub type vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV_t = u
   pCombinations: *mut VkFramebufferMixedSamplesCombinationNV,
 ) -> VkResult;
 
-/// Nullable pointer to [vkGetPipelineCacheData](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPipelineCacheData.html)
-pub type PFN_vkGetPipelineCacheData = Option<vkGetPipelineCacheData_t>;
-/// Non-nullable pointer to [vkGetPipelineCacheData](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPipelineCacheData.html)
-pub type vkGetPipelineCacheData_t =
-  unsafe extern "system" fn(device: VkDevice, pipelineCache: VkPipelineCache, pDataSize: *mut size_t, pData: *mut c_void) -> VkResult;
-
 /// Nullable pointer to [vkGetPipelineExecutableInternalRepresentationsKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPipelineExecutableInternalRepresentationsKHR.html)
 pub type PFN_vkGetPipelineExecutableInternalRepresentationsKHR = Option<vkGetPipelineExecutableInternalRepresentationsKHR_t>;
 /// Non-nullable pointer to [vkGetPipelineExecutableInternalRepresentationsKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPipelineExecutableInternalRepresentationsKHR.html)
@@ -2776,30 +2109,6 @@ pub type vkCreateRayTracingPipelinesKHR_t = unsafe extern "system" fn(
   pipelineCache: VkPipelineCache,
   createInfoCount: uint32_t,
   pCreateInfos: *const VkRayTracingPipelineCreateInfoKHR,
-  pAllocator: *const VkAllocationCallbacks,
-  pPipelines: *mut VkPipeline,
-) -> VkResult;
-
-/// Nullable pointer to [vkCreateComputePipelines](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateComputePipelines.html)
-pub type PFN_vkCreateComputePipelines = Option<vkCreateComputePipelines_t>;
-/// Non-nullable pointer to [vkCreateComputePipelines](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateComputePipelines.html)
-pub type vkCreateComputePipelines_t = unsafe extern "system" fn(
-  device: VkDevice,
-  pipelineCache: VkPipelineCache,
-  createInfoCount: uint32_t,
-  pCreateInfos: *const VkComputePipelineCreateInfo,
-  pAllocator: *const VkAllocationCallbacks,
-  pPipelines: *mut VkPipeline,
-) -> VkResult;
-
-/// Nullable pointer to [vkCreateGraphicsPipelines](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateGraphicsPipelines.html)
-pub type PFN_vkCreateGraphicsPipelines = Option<vkCreateGraphicsPipelines_t>;
-/// Non-nullable pointer to [vkCreateGraphicsPipelines](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateGraphicsPipelines.html)
-pub type vkCreateGraphicsPipelines_t = unsafe extern "system" fn(
-  device: VkDevice,
-  pipelineCache: VkPipelineCache,
-  createInfoCount: uint32_t,
-  pCreateInfos: *const VkGraphicsPipelineCreateInfo,
   pAllocator: *const VkAllocationCallbacks,
   pPipelines: *mut VkPipeline,
 ) -> VkResult;

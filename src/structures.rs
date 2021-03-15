@@ -1208,13 +1208,13 @@ pub struct VkEventCreateInfo {
 #[derive(Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(C)]
 pub struct VkQueryPoolCreateInfo {
-  /// 
+  ///
   /// * **Values:** [`VK_STRUCTURE_TYPE_QUERY_POOL_CREATE_INFO`]
   sType: VkStructureType,
-  /// 
+  ///
   /// * **Optional:** true
   pNext: *const c_void,
-  /// 
+  ///
   /// * **Optional:** true
   flags: VkQueryPoolCreateFlags,
   queryType: VkQueryType,
@@ -1223,4 +1223,1227 @@ pub struct VkQueryPoolCreateInfo {
   /// * **Optional:** true
   /// * **No Auto-validity:** true
   pipelineStatistics: VkQueryPipelineStatisticFlags,
+}
+
+/// [VkBufferCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBufferCreateInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkBufferCreateInfo {
+  ///
+  /// * **Values:** [`VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO`]
+  sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pNext: *const c_void,
+  /// Buffer creation flags
+  /// * **Optional:** true
+  flags: VkBufferCreateFlags,
+  /// Specified in bytes
+  size: VkDeviceSize,
+  /// Buffer usage flags
+  usage: VkBufferUsageFlags,
+  sharingMode: VkSharingMode,
+  ///
+  /// * **Optional:** true
+  queueFamilyIndexCount: uint32_t,
+  ///
+  /// * **No Auto-validity:** true
+  /// * **Len:** queueFamilyIndexCount
+  pQueueFamilyIndices: *const uint32_t,
+}
+
+/// [VkBufferViewCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBufferViewCreateInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkBufferViewCreateInfo {
+  ///
+  /// * **Values:** [`VK_STRUCTURE_TYPE_BUFFER_VIEW_CREATE_INFO`]
+  sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pNext: *const c_void,
+  ///
+  /// * **Optional:** true
+  flags: VkBufferViewCreateFlags,
+  buffer: VkBuffer,
+  /// Optionally specifies format of elements
+  format: VkFormat,
+  /// Specified in bytes
+  offset: VkDeviceSize,
+  /// View size specified in bytes
+  range: VkDeviceSize,
+}
+
+/// [VkImageCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageCreateInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkImageCreateInfo {
+  ///
+  /// * **Values:** [`VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO`]
+  sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pNext: *const c_void,
+  /// Image creation flags
+  /// * **Optional:** true
+  flags: VkImageCreateFlags,
+  imageType: VkImageType,
+  format: VkFormat,
+  extent: VkExtent3D,
+  mipLevels: uint32_t,
+  arrayLayers: uint32_t,
+  samples: VkSampleCountFlagBits,
+  tiling: VkImageTiling,
+  /// Image usage flags
+  usage: VkImageUsageFlags,
+  /// Cross-queue-family sharing mode
+  sharingMode: VkSharingMode,
+  /// Number of queue families to share across
+  /// * **Optional:** true
+  queueFamilyIndexCount: uint32_t,
+  /// Array of queue family indices to share across
+  /// * **No Auto-validity:** true
+  /// * **Len:** queueFamilyIndexCount
+  pQueueFamilyIndices: *const uint32_t,
+  /// Initial image layout for all subresources
+  initialLayout: VkImageLayout,
+}
+
+/// [VkSubresourceLayout](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSubresourceLayout.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkSubresourceLayout {
+  /// Specified in bytes
+  offset: VkDeviceSize,
+  /// Specified in bytes
+  size: VkDeviceSize,
+  /// Specified in bytes
+  rowPitch: VkDeviceSize,
+  /// Specified in bytes
+  arrayPitch: VkDeviceSize,
+  /// Specified in bytes
+  depthPitch: VkDeviceSize,
+}
+
+/// [VkComponentMapping](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkComponentMapping.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkComponentMapping {
+  r: VkComponentSwizzle,
+  g: VkComponentSwizzle,
+  b: VkComponentSwizzle,
+  a: VkComponentSwizzle,
+}
+
+/// [VkImageViewCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageViewCreateInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkImageViewCreateInfo {
+  ///
+  /// * **Values:** [`VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO`]
+  sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pNext: *const c_void,
+  ///
+  /// * **Optional:** true
+  flags: VkImageViewCreateFlags,
+  image: VkImage,
+  viewType: VkImageViewType,
+  format: VkFormat,
+  components: VkComponentMapping,
+  subresourceRange: VkImageSubresourceRange,
+}
+
+/// [VkShaderModuleCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkShaderModuleCreateInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkShaderModuleCreateInfo {
+  ///
+  /// * **Values:** [`VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO`]
+  sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pNext: *const c_void,
+  ///
+  /// * **Optional:** true
+  flags: VkShaderModuleCreateFlags,
+  /// Specified in bytes
+  codeSize: size_t,
+  /// Binary code of size `codeSize`
+  /// * **Len:** `codeSize / 4`
+  pCode: *const uint32_t,
+}
+
+/// [VkPipelineCacheCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineCacheCreateInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkPipelineCacheCreateInfo {
+  ///
+  /// * **Values:** [`VK_STRUCTURE_TYPE_PIPELINE_CACHE_CREATE_INFO`]
+  sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pNext: *const c_void,
+  ///
+  /// * **Optional:** true
+  flags: VkPipelineCacheCreateFlags,
+  /// Size of initial data to populate cache, in bytes
+  /// * **Optional:** true
+  initialDataSize: size_t,
+  /// Initial data to populate cache
+  /// * **Len:** initialDataSize
+  pInitialData: *const c_void,
+}
+
+/// [VkComputePipelineCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkComputePipelineCreateInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkComputePipelineCreateInfo {
+  ///
+  /// * **Values:** [`VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_CREATE_INFO`]
+  sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pNext: *const c_void,
+  /// Pipeline creation flags
+  /// * **Optional:** true
+  flags: VkPipelineCreateFlags,
+  stage: VkPipelineShaderStageCreateInfo,
+  /// Interface layout of the pipeline
+  layout: VkPipelineLayout,
+  /// If VK_PIPELINE_CREATE_DERIVATIVE_BIT is set and this value is nonzero, it
+  /// specifies the handle of the base pipeline this is a derivative of
+  /// * **Optional:** true
+  /// * **No Auto-validity:** true
+  basePipelineHandle: VkPipeline,
+  /// If VK_PIPELINE_CREATE_DERIVATIVE_BIT is set and this value is not -1, it
+  /// specifies an index into pCreateInfos of the base pipeline this is a
+  /// derivative of
+  basePipelineIndex: int32_t,
+}
+
+/// [VkGraphicsPipelineCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkGraphicsPipelineCreateInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkGraphicsPipelineCreateInfo {
+  ///
+  /// * **Values:** [`VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO`]
+  sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pNext: *const c_void,
+  /// Pipeline creation flags
+  /// * **Optional:** true
+  flags: VkPipelineCreateFlags,
+  stageCount: uint32_t,
+  /// One entry for each active shader stage
+  /// * **Len:** stageCount
+  pStages: *const VkPipelineShaderStageCreateInfo,
+  ///
+  /// * **Optional:** true
+  /// * **No Auto-validity:** true
+  pVertexInputState: *const VkPipelineVertexInputStateCreateInfo,
+  ///
+  /// * **Optional:** true
+  /// * **No Auto-validity:** true
+  pInputAssemblyState: *const VkPipelineInputAssemblyStateCreateInfo,
+  ///
+  /// * **Optional:** true
+  /// * **No Auto-validity:** true
+  pTessellationState: *const VkPipelineTessellationStateCreateInfo,
+  ///
+  /// * **Optional:** true
+  /// * **No Auto-validity:** true
+  pViewportState: *const VkPipelineViewportStateCreateInfo,
+  pRasterizationState: *const VkPipelineRasterizationStateCreateInfo,
+  ///
+  /// * **Optional:** true
+  /// * **No Auto-validity:** true
+  pMultisampleState: *const VkPipelineMultisampleStateCreateInfo,
+  ///
+  /// * **Optional:** true
+  /// * **No Auto-validity:** true
+  pDepthStencilState: *const VkPipelineDepthStencilStateCreateInfo,
+  ///
+  /// * **Optional:** true
+  /// * **No Auto-validity:** true
+  pColorBlendState: *const VkPipelineColorBlendStateCreateInfo,
+  ///
+  /// * **Optional:** true
+  pDynamicState: *const VkPipelineDynamicStateCreateInfo,
+  /// Interface layout of the pipeline
+  layout: VkPipelineLayout,
+  renderPass: VkRenderPass,
+  subpass: uint32_t,
+  /// If VK_PIPELINE_CREATE_DERIVATIVE_BIT is set and this value is nonzero, it
+  /// specifies the handle of the base pipeline this is a derivative of
+  /// * **Optional:** true
+  /// * **No Auto-validity:** true
+  basePipelineHandle: VkPipeline,
+  /// If VK_PIPELINE_CREATE_DERIVATIVE_BIT is set and this value is not -1, it
+  /// specifies an index into pCreateInfos of the base pipeline this is a
+  /// derivative of
+  basePipelineIndex: int32_t,
+}
+
+/// [VkPipelineColorBlendAttachmentState](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineColorBlendAttachmentState.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkPipelineColorBlendAttachmentState {
+  blendEnable: VkBool32,
+  srcColorBlendFactor: VkBlendFactor,
+  dstColorBlendFactor: VkBlendFactor,
+  colorBlendOp: VkBlendOp,
+  srcAlphaBlendFactor: VkBlendFactor,
+  dstAlphaBlendFactor: VkBlendFactor,
+  alphaBlendOp: VkBlendOp,
+  ///
+  /// * **Optional:** true
+  colorWriteMask: VkColorComponentFlags,
+}
+
+/// [VkPipelineColorBlendStateCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineColorBlendStateCreateInfo.html)
+#[derive(Clone, Copy, PartialEq)]
+#[repr(C)]
+pub struct VkPipelineColorBlendStateCreateInfo {
+  ///
+  /// * **Values:** [`VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO`]
+  sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pNext: *const c_void,
+  ///
+  /// * **Optional:** true
+  flags: VkPipelineColorBlendStateCreateFlags,
+  logicOpEnable: VkBool32,
+  ///
+  /// * **No Auto-validity:** true
+  logicOp: VkLogicOp,
+  /// # of pAttachments
+  /// * **Optional:** true
+  attachmentCount: uint32_t,
+  ///
+  /// * **Len:** attachmentCount
+  pAttachments: *const VkPipelineColorBlendAttachmentState,
+  blendConstants: [float; 4],
+}
+
+/// [VkPipelineDepthStencilStateCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineDepthStencilStateCreateInfo.html)
+#[derive(Clone, Copy, PartialEq)]
+#[repr(C)]
+pub struct VkPipelineDepthStencilStateCreateInfo {
+  ///
+  /// * **Values:**
+  ///   [`VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO`]
+  sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pNext: *const c_void,
+  ///
+  /// * **Optional:** true
+  flags: VkPipelineDepthStencilStateCreateFlags,
+  depthTestEnable: VkBool32,
+  depthWriteEnable: VkBool32,
+  depthCompareOp: VkCompareOp,
+  /// optional (depth_bounds_test)
+  depthBoundsTestEnable: VkBool32,
+  stencilTestEnable: VkBool32,
+  front: VkStencilOpState,
+  back: VkStencilOpState,
+  minDepthBounds: float,
+  maxDepthBounds: float,
+}
+
+/// [VkPipelineDynamicStateCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineDynamicStateCreateInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkPipelineDynamicStateCreateInfo {
+  ///
+  /// * **Values:** [`VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO`]
+  sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pNext: *const c_void,
+  ///
+  /// * **Optional:** true
+  flags: VkPipelineDynamicStateCreateFlags,
+  ///
+  /// * **Optional:** true
+  dynamicStateCount: uint32_t,
+  ///
+  /// * **Len:** dynamicStateCount
+  pDynamicStates: *const VkDynamicState,
+}
+
+/// [VkPipelineInputAssemblyStateCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineInputAssemblyStateCreateInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkPipelineInputAssemblyStateCreateInfo {
+  ///
+  /// * **Values:**
+  ///   [`VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO`]
+  sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pNext: *const c_void,
+  ///
+  /// * **Optional:** true
+  flags: VkPipelineInputAssemblyStateCreateFlags,
+  topology: VkPrimitiveTopology,
+  primitiveRestartEnable: VkBool32,
+}
+
+/// [VkPipelineMultisampleStateCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineMultisampleStateCreateInfo.html)
+#[derive(Clone, Copy, PartialEq)]
+#[repr(C)]
+pub struct VkPipelineMultisampleStateCreateInfo {
+  ///
+  /// * **Values:** [`VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO`]
+  sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pNext: *const c_void,
+  ///
+  /// * **Optional:** true
+  flags: VkPipelineMultisampleStateCreateFlags,
+  /// Number of samples used for rasterization
+  rasterizationSamples: VkSampleCountFlagBits,
+  /// optional (GL45)
+  sampleShadingEnable: VkBool32,
+  /// optional (GL45)
+  minSampleShading: float,
+  /// Array of sampleMask words
+  /// * **Optional:** true
+  /// * **Len:** latexmath:[\lceil{\mathit{rasterizationSamples} \over
+  ///   32}\rceil]
+  /// * **Alt Len:** (rasterizationSamples + 31) / 32
+  pSampleMask: *const VkSampleMask,
+  alphaToCoverageEnable: VkBool32,
+  alphaToOneEnable: VkBool32,
+}
+
+/// [VkPipelineRasterizationStateCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineRasterizationStateCreateInfo.html)
+#[derive(Clone, Copy, PartialEq)]
+#[repr(C)]
+pub struct VkPipelineRasterizationStateCreateInfo {
+  ///
+  /// * **Values:**
+  ///   [`VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO`]
+  sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pNext: *const c_void,
+  ///
+  /// * **Optional:** true
+  flags: VkPipelineRasterizationStateCreateFlags,
+  depthClampEnable: VkBool32,
+  rasterizerDiscardEnable: VkBool32,
+  /// optional (GL45)
+  polygonMode: VkPolygonMode,
+  ///
+  /// * **Optional:** true
+  cullMode: VkCullModeFlags,
+  frontFace: VkFrontFace,
+  depthBiasEnable: VkBool32,
+  depthBiasConstantFactor: float,
+  depthBiasClamp: float,
+  depthBiasSlopeFactor: float,
+  lineWidth: float,
+}
+
+/// [VkPipelineShaderStageCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineShaderStageCreateInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkPipelineShaderStageCreateInfo {
+  ///
+  /// * **Values:** [`VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO`]
+  sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pNext: *const c_void,
+  ///
+  /// * **Optional:** true
+  flags: VkPipelineShaderStageCreateFlags,
+  /// Shader stage
+  stage: VkShaderStageFlagBits,
+  /// Module containing entry point
+  module: VkShaderModule,
+  /// Null-terminated entry point name
+  /// * **Len:** null-terminated
+  pName: *const u8,
+  ///
+  /// * **Optional:** true
+  pSpecializationInfo: *const VkSpecializationInfo,
+}
+
+/// [VkPipelineTessellationStateCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineTessellationStateCreateInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkPipelineTessellationStateCreateInfo {
+  ///
+  /// * **Values:**
+  ///   [`VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_STATE_CREATE_INFO`]
+  sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pNext: *const c_void,
+  ///
+  /// * **Optional:** true
+  flags: VkPipelineTessellationStateCreateFlags,
+  patchControlPoints: uint32_t,
+}
+
+/// [VkPipelineVertexInputStateCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineVertexInputStateCreateInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkPipelineVertexInputStateCreateInfo {
+  ///
+  /// * **Values:**
+  ///   [`VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO`]
+  sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pNext: *const c_void,
+  ///
+  /// * **Optional:** true
+  flags: VkPipelineVertexInputStateCreateFlags,
+  /// number of bindings
+  /// * **Optional:** true
+  vertexBindingDescriptionCount: uint32_t,
+  ///
+  /// * **Len:** vertexBindingDescriptionCount
+  pVertexBindingDescriptions: *const VkVertexInputBindingDescription,
+  /// number of attributes
+  /// * **Optional:** true
+  vertexAttributeDescriptionCount: uint32_t,
+  ///
+  /// * **Len:** vertexAttributeDescriptionCount
+  pVertexAttributeDescriptions: *const VkVertexInputAttributeDescription,
+}
+
+/// [VkPipelineViewportStateCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineViewportStateCreateInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkPipelineViewportStateCreateInfo {
+  ///
+  /// * **Values:** [`VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO`]
+  sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pNext: *const c_void,
+  ///
+  /// * **Optional:** true
+  flags: VkPipelineViewportStateCreateFlags,
+  ///
+  /// * **Optional:** true
+  viewportCount: uint32_t,
+  ///
+  /// * **Optional:** true
+  /// * **No Auto-validity:** true
+  /// * **Len:** viewportCount
+  pViewports: *const VkViewport,
+  ///
+  /// * **Optional:** true
+  scissorCount: uint32_t,
+  ///
+  /// * **Optional:** true
+  /// * **No Auto-validity:** true
+  /// * **Len:** scissorCount
+  pScissors: *const VkRect2D,
+}
+
+/// [VkSpecializationInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSpecializationInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkSpecializationInfo {
+  /// Number of entries in the map
+  /// * **Optional:** true
+  mapEntryCount: uint32_t,
+  /// Array of map entries
+  /// * **Len:** mapEntryCount
+  pMapEntries: *const VkSpecializationMapEntry,
+  /// Size in bytes of pData
+  /// * **Optional:** true
+  dataSize: size_t,
+  /// Pointer to SpecConstant data
+  /// * **Len:** dataSize
+  pData: *const c_void,
+}
+
+/// [VkSpecializationMapEntry](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSpecializationMapEntry.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkSpecializationMapEntry {
+  /// The SpecConstant ID specified in the BIL
+  constantID: uint32_t,
+  /// Offset of the value in the data block
+  offset: uint32_t,
+  /// Size in bytes of the SpecConstant
+  /// * **No Auto-validity:** true
+  size: size_t,
+}
+
+/// [VkStencilOpState](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkStencilOpState.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkStencilOpState {
+  failOp: VkStencilOp,
+  passOp: VkStencilOp,
+  depthFailOp: VkStencilOp,
+  compareOp: VkCompareOp,
+  compareMask: uint32_t,
+  writeMask: uint32_t,
+  reference: uint32_t,
+}
+
+/// [VkVertexInputAttributeDescription](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkVertexInputAttributeDescription.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkVertexInputAttributeDescription {
+  /// location of the shader vertex attrib
+  location: uint32_t,
+  /// Vertex buffer binding id
+  binding: uint32_t,
+  /// format of source data
+  format: VkFormat,
+  /// Offset of first element in bytes from base of vertex
+  offset: uint32_t,
+}
+
+/// [VkVertexInputBindingDescription](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkVertexInputBindingDescription.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkVertexInputBindingDescription {
+  /// Vertex buffer binding id
+  binding: uint32_t,
+  /// Distance between vertices in bytes (0 = no advancement)
+  stride: uint32_t,
+  /// The rate at which the vertex data is consumed
+  inputRate: VkVertexInputRate,
+}
+
+/// [VkViewport](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkViewport.html)
+#[derive(Clone, Copy, PartialEq)]
+#[repr(C)]
+pub struct VkViewport {
+  x: float,
+  y: float,
+  width: float,
+  height: float,
+  minDepth: float,
+  maxDepth: float,
+}
+
+/// [VkPipelineLayoutCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineLayoutCreateInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkPipelineLayoutCreateInfo {
+  ///
+  /// * **Values:** [`VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO`]
+  sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pNext: *const c_void,
+  ///
+  /// * **Optional:** true
+  flags: VkPipelineLayoutCreateFlags,
+  /// Number of descriptor sets interfaced by the pipeline
+  /// * **Optional:** true
+  setLayoutCount: uint32_t,
+  /// Array of setCount number of descriptor set layout objects defining the
+  /// layout of the
+  /// * **Len:** setLayoutCount
+  pSetLayouts: *const VkDescriptorSetLayout,
+  /// Number of push-constant ranges used by the pipeline
+  /// * **Optional:** true
+  pushConstantRangeCount: uint32_t,
+  /// Array of pushConstantRangeCount number of ranges used by various shader
+  /// stages
+  /// * **Len:** pushConstantRangeCount
+  pPushConstantRanges: *const VkPushConstantRange,
+}
+
+/// [VkPushConstantRange](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPushConstantRange.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkPushConstantRange {
+  /// Which stages use the range
+  stageFlags: VkShaderStageFlags,
+  /// Start of the range, in bytes
+  offset: uint32_t,
+  /// Size of the range, in bytes
+  size: uint32_t,
+}
+
+/// [VkSamplerCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSamplerCreateInfo.html)
+#[derive(Clone, Copy, PartialEq)]
+#[repr(C)]
+pub struct VkSamplerCreateInfo {
+  ///
+  /// * **Values:** [`VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO`]
+  sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pNext: *const c_void,
+  ///
+  /// * **Optional:** true
+  flags: VkSamplerCreateFlags,
+  /// Filter mode for magnification
+  magFilter: VkFilter,
+  /// Filter mode for minifiation
+  minFilter: VkFilter,
+  /// Mipmap selection mode
+  mipmapMode: VkSamplerMipmapMode,
+  addressModeU: VkSamplerAddressMode,
+  addressModeV: VkSamplerAddressMode,
+  addressModeW: VkSamplerAddressMode,
+  mipLodBias: float,
+  anisotropyEnable: VkBool32,
+  maxAnisotropy: float,
+  compareEnable: VkBool32,
+  ///
+  /// * **No Auto-validity:** true
+  compareOp: VkCompareOp,
+  minLod: float,
+  maxLod: float,
+  ///
+  /// * **No Auto-validity:** true
+  borderColor: VkBorderColor,
+  unnormalizedCoordinates: VkBool32,
+}
+
+/// [VkCopyDescriptorSet](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCopyDescriptorSet.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkCopyDescriptorSet {
+  ///
+  /// * **Values:** [`VK_STRUCTURE_TYPE_COPY_DESCRIPTOR_SET`]
+  sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pNext: *const c_void,
+  /// Source descriptor set
+  srcSet: VkDescriptorSet,
+  /// Binding within the source descriptor set to copy from
+  srcBinding: uint32_t,
+  /// Array element within the source binding to copy from
+  srcArrayElement: uint32_t,
+  /// Destination descriptor set
+  dstSet: VkDescriptorSet,
+  /// Binding within the destination descriptor set to copy to
+  dstBinding: uint32_t,
+  /// Array element within the destination binding to copy to
+  dstArrayElement: uint32_t,
+  /// Number of descriptors to write (determines the size of the array pointed
+  /// by pDescriptors)
+  descriptorCount: uint32_t,
+}
+
+/// [VkDescriptorBufferInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorBufferInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkDescriptorBufferInfo {
+  /// Buffer used for this descriptor slot.
+  /// * **Optional:** true
+  buffer: VkBuffer,
+  /// Base offset from buffer start in bytes to update in the descriptor set.
+  offset: VkDeviceSize,
+  /// Size in bytes of the buffer resource for this descriptor update.
+  range: VkDeviceSize,
+}
+
+/// [VkDescriptorImageInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorImageInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkDescriptorImageInfo {
+  /// Sampler to write to the descriptor in case it is a SAMPLER or
+  /// COMBINED_IMAGE_SAMPLER descriptor. Ignored otherwise.
+  /// * **No Auto-validity:** true
+  sampler: VkSampler,
+  /// Image view to write to the descriptor in case it is a SAMPLED_IMAGE,
+  /// STORAGE_IMAGE, COMBINED_IMAGE_SAMPLER, or INPUT_ATTACHMENT descriptor.
+  /// Ignored otherwise.
+  /// * **No Auto-validity:** true
+  imageView: VkImageView,
+  /// Layout the image is expected to be in when accessed using this descriptor
+  /// (only used if imageView is not VK_NULL_HANDLE).
+  /// * **No Auto-validity:** true
+  imageLayout: VkImageLayout,
+}
+
+/// [VkDescriptorPoolCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorPoolCreateInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkDescriptorPoolCreateInfo {
+  ///
+  /// * **Values:** [`VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO`]
+  sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pNext: *const c_void,
+  ///
+  /// * **Optional:** true
+  flags: VkDescriptorPoolCreateFlags,
+  maxSets: uint32_t,
+  poolSizeCount: uint32_t,
+  ///
+  /// * **Len:** poolSizeCount
+  pPoolSizes: *const VkDescriptorPoolSize,
+}
+
+/// [VkDescriptorPoolSize](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorPoolSize.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkDescriptorPoolSize {
+  type_: VkDescriptorType,
+  descriptorCount: uint32_t,
+}
+
+/// [VkDescriptorSetAllocateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorSetAllocateInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkDescriptorSetAllocateInfo {
+  ///
+  /// * **Values:** [`VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO`]
+  sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pNext: *const c_void,
+  descriptorPool: VkDescriptorPool,
+  descriptorSetCount: uint32_t,
+  ///
+  /// * **Len:** descriptorSetCount
+  pSetLayouts: *const VkDescriptorSetLayout,
+}
+
+/// [VkDescriptorSetLayoutBinding](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorSetLayoutBinding.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkDescriptorSetLayoutBinding {
+  /// Binding number for this entry
+  binding: uint32_t,
+  /// Type of the descriptors in this binding
+  descriptorType: VkDescriptorType,
+  /// Number of descriptors in this binding
+  /// * **Optional:** true
+  descriptorCount: uint32_t,
+  /// Shader stages this binding is visible to
+  /// * **No Auto-validity:** true
+  stageFlags: VkShaderStageFlags,
+  /// Immutable samplers (used if descriptor type is SAMPLER or
+  /// COMBINED_IMAGE_SAMPLER, is either NULL or contains count number of
+  /// elements)
+  /// * **Optional:** true
+  /// * **No Auto-validity:** true
+  /// * **Len:** descriptorCount
+  pImmutableSamplers: *const VkSampler,
+}
+
+/// [VkWriteDescriptorSet](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkWriteDescriptorSet.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkWriteDescriptorSet {
+  ///
+  /// * **Values:** [`VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET`]
+  sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pNext: *const c_void,
+  /// Destination descriptor set
+  /// * **No Auto-validity:** true
+  dstSet: VkDescriptorSet,
+  /// Binding within the destination descriptor set to write
+  dstBinding: uint32_t,
+  /// Array element within the destination binding to write
+  dstArrayElement: uint32_t,
+  /// Number of descriptors to write (determines the size of the array pointed
+  /// by pDescriptors)
+  descriptorCount: uint32_t,
+  /// Descriptor type to write (determines which members of the array pointed by
+  /// pDescriptors are going to be used)
+  descriptorType: VkDescriptorType,
+  /// Sampler, image view, and layout for SAMPLER, COMBINED_IMAGE_SAMPLER,
+  /// {SAMPLED,STORAGE}_IMAGE, and INPUT_ATTACHMENT descriptor types.
+  /// * **No Auto-validity:** true
+  /// * **Len:** descriptorCount
+  pImageInfo: *const VkDescriptorImageInfo,
+  /// Raw buffer, size, and offset for {UNIFORM,STORAGE}_BUFFER{_DYNAMIC}
+  /// descriptor types.
+  /// * **No Auto-validity:** true
+  /// * **Len:** descriptorCount
+  pBufferInfo: *const VkDescriptorBufferInfo,
+  /// Buffer view to write to the descriptor for {UNIFORM,STORAGE}_TEXEL_BUFFER
+  /// descriptor types.
+  /// * **No Auto-validity:** true
+  /// * **Len:** descriptorCount
+  pTexelBufferView: *const VkBufferView,
+}
+
+/// [VkDescriptorSetLayoutCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorSetLayoutCreateInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkDescriptorSetLayoutCreateInfo {
+  ///
+  /// * **Values:** [`VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO`]
+  sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pNext: *const c_void,
+  ///
+  /// * **Optional:** true
+  flags: VkDescriptorSetLayoutCreateFlags,
+  /// Number of bindings in the descriptor set layout
+  /// * **Optional:** true
+  bindingCount: uint32_t,
+  /// Array of descriptor set layout bindings
+  /// * **Len:** bindingCount
+  pBindings: *const VkDescriptorSetLayoutBinding,
+}
+
+/// [VkAttachmentDescription](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkAttachmentDescription.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkAttachmentDescription {
+  ///
+  /// * **Optional:** true
+  flags: VkAttachmentDescriptionFlags,
+  format: VkFormat,
+  samples: VkSampleCountFlagBits,
+  /// Load operation for color or depth data
+  loadOp: VkAttachmentLoadOp,
+  /// Store operation for color or depth data
+  storeOp: VkAttachmentStoreOp,
+  /// Load operation for stencil data
+  stencilLoadOp: VkAttachmentLoadOp,
+  /// Store operation for stencil data
+  stencilStoreOp: VkAttachmentStoreOp,
+  initialLayout: VkImageLayout,
+  finalLayout: VkImageLayout,
+}
+
+/// [VkAttachmentReference](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkAttachmentReference.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkAttachmentReference {
+  attachment: uint32_t,
+  layout: VkImageLayout,
+}
+
+/// [VkFramebufferCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFramebufferCreateInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkFramebufferCreateInfo {
+  ///
+  /// * **Values:** [`VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO`]
+  sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pNext: *const c_void,
+  ///
+  /// * **Optional:** true
+  flags: VkFramebufferCreateFlags,
+  renderPass: VkRenderPass,
+  ///
+  /// * **Optional:** true
+  attachmentCount: uint32_t,
+  ///
+  /// * **No Auto-validity:** true
+  /// * **Len:** attachmentCount
+  pAttachments: *const VkImageView,
+  width: uint32_t,
+  height: uint32_t,
+  layers: uint32_t,
+}
+
+/// [VkRenderPassCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkRenderPassCreateInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkRenderPassCreateInfo {
+  ///
+  /// * **Values:** [`VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO`]
+  sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pNext: *const c_void,
+  ///
+  /// * **Optional:** true
+  flags: VkRenderPassCreateFlags,
+  ///
+  /// * **Optional:** true
+  attachmentCount: uint32_t,
+  ///
+  /// * **Len:** attachmentCount
+  pAttachments: *const VkAttachmentDescription,
+  subpassCount: uint32_t,
+  ///
+  /// * **Len:** subpassCount
+  pSubpasses: *const VkSubpassDescription,
+  ///
+  /// * **Optional:** true
+  dependencyCount: uint32_t,
+  ///
+  /// * **Len:** dependencyCount
+  pDependencies: *const VkSubpassDependency,
+}
+
+/// [VkSubpassDependency](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSubpassDependency.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkSubpassDependency {
+  srcSubpass: uint32_t,
+  dstSubpass: uint32_t,
+  srcStageMask: VkPipelineStageFlags,
+  dstStageMask: VkPipelineStageFlags,
+  /// Memory accesses from the source of the dependency to synchronize
+  /// * **Optional:** true
+  srcAccessMask: VkAccessFlags,
+  /// Memory accesses from the destination of the dependency to synchronize
+  /// * **Optional:** true
+  dstAccessMask: VkAccessFlags,
+  ///
+  /// * **Optional:** true
+  dependencyFlags: VkDependencyFlags,
+}
+
+/// [VkSubpassDescription](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSubpassDescription.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkSubpassDescription {
+  ///
+  /// * **Optional:** true
+  flags: VkSubpassDescriptionFlags,
+  /// Must be VK_PIPELINE_BIND_POINT_GRAPHICS for now
+  pipelineBindPoint: VkPipelineBindPoint,
+  ///
+  /// * **Optional:** true
+  inputAttachmentCount: uint32_t,
+  ///
+  /// * **Len:** inputAttachmentCount
+  pInputAttachments: *const VkAttachmentReference,
+  ///
+  /// * **Optional:** true
+  colorAttachmentCount: uint32_t,
+  ///
+  /// * **Len:** colorAttachmentCount
+  pColorAttachments: *const VkAttachmentReference,
+  ///
+  /// * **Optional:** true
+  /// * **Len:** colorAttachmentCount
+  pResolveAttachments: *const VkAttachmentReference,
+  ///
+  /// * **Optional:** true
+  pDepthStencilAttachment: *const VkAttachmentReference,
+  ///
+  /// * **Optional:** true
+  preserveAttachmentCount: uint32_t,
+  ///
+  /// * **Len:** preserveAttachmentCount
+  pPreserveAttachments: *const uint32_t,
+}
+
+/// [VkCommandPoolCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCommandPoolCreateInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkCommandPoolCreateInfo {
+  ///
+  /// * **Values:** [`VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO`]
+  sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pNext: *const c_void,
+  /// Command pool creation flags
+  /// * **Optional:** true
+  flags: VkCommandPoolCreateFlags,
+  queueFamilyIndex: uint32_t,
+}
+
+/// [VkCommandBufferAllocateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCommandBufferAllocateInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkCommandBufferAllocateInfo {
+  ///
+  /// * **Values:** [`VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO`]
+  sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pNext: *const c_void,
+  commandPool: VkCommandPool,
+  level: VkCommandBufferLevel,
+  commandBufferCount: uint32_t,
+}
+
+/// [VkCommandBufferBeginInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCommandBufferBeginInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkCommandBufferBeginInfo {
+  ///
+  /// * **Values:** [`VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO`]
+  sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pNext: *const c_void,
+  /// Command buffer usage flags
+  /// * **Optional:** true
+  flags: VkCommandBufferUsageFlags,
+  /// Pointer to inheritance info for secondary command buffers
+  /// * **Optional:** true
+  /// * **No Auto-validity:** true
+  pInheritanceInfo: *const VkCommandBufferInheritanceInfo,
+}
+
+/// [VkCommandBufferInheritanceInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCommandBufferInheritanceInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkCommandBufferInheritanceInfo {
+  ///
+  /// * **Values:** [`VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_INFO`]
+  sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pNext: *const c_void,
+  /// Render pass for secondary command buffers
+  /// * **Optional:** true
+  /// * **No Auto-validity:** true
+  renderPass: VkRenderPass,
+  subpass: uint32_t,
+  /// Framebuffer for secondary command buffers
+  /// * **Optional:** true
+  /// * **No Auto-validity:** true
+  framebuffer: VkFramebuffer,
+  /// Whether this secondary command buffer may be executed during an occlusion
+  /// query
+  occlusionQueryEnable: VkBool32,
+  /// Query flags used by this secondary command buffer, if executed during an
+  /// occlusion query
+  /// * **Optional:** true
+  /// * **No Auto-validity:** true
+  queryFlags: VkQueryControlFlags,
+  /// Pipeline statistics that may be counted for this secondary command buffer
+  /// * **Optional:** true
+  /// * **No Auto-validity:** true
+  pipelineStatistics: VkQueryPipelineStatisticFlags,
+}
+
+/// [VkBufferCopy](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBufferCopy.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkBufferCopy {
+  /// Specified in bytes
+  srcOffset: VkDeviceSize,
+  /// Specified in bytes
+  dstOffset: VkDeviceSize,
+  /// Specified in bytes
+  /// * **No Auto-validity:** true
+  size: VkDeviceSize,
+}
+
+/// [VkBufferImageCopy](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBufferImageCopy.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkBufferImageCopy {
+  /// Specified in bytes
+  bufferOffset: VkDeviceSize,
+  /// Specified in texels
+  bufferRowLength: uint32_t,
+  bufferImageHeight: uint32_t,
+  imageSubresource: VkImageSubresourceLayers,
+  /// Specified in pixels for both compressed and uncompressed images
+  imageOffset: VkOffset3D,
+  /// Specified in pixels for both compressed and uncompressed images
+  imageExtent: VkExtent3D,
+}
+
+/// [VkClearAttachment](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkClearAttachment.html)
+#[derive(Clone, Copy)]
+#[repr(C)]
+pub struct VkClearAttachment {
+  aspectMask: VkImageAspectFlags,
+  colorAttachment: uint32_t,
+  clearValue: VkClearValue,
+}
+
+/// [VkClearDepthStencilValue](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkClearDepthStencilValue.html)
+#[derive(Clone, Copy, PartialEq)]
+#[repr(C)]
+pub struct VkClearDepthStencilValue {
+  depth: float,
+  stencil: uint32_t,
+}
+
+/// [VkClearRect](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkClearRect.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkClearRect {
+  rect: VkRect2D,
+  baseArrayLayer: uint32_t,
+  layerCount: uint32_t,
+}
+
+/// [VkImageBlit](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageBlit.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkImageBlit {
+  srcSubresource: VkImageSubresourceLayers,
+  /// Specified in pixels for both compressed and uncompressed images
+  srcOffsets: [VkOffset3D; 2],
+  dstSubresource: VkImageSubresourceLayers,
+  /// Specified in pixels for both compressed and uncompressed images
+  dstOffsets: [VkOffset3D; 2],
+}
+
+/// [VkImageCopy](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageCopy.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkImageCopy {
+  srcSubresource: VkImageSubresourceLayers,
+  /// Specified in pixels for both compressed and uncompressed images
+  srcOffset: VkOffset3D,
+  dstSubresource: VkImageSubresourceLayers,
+  /// Specified in pixels for both compressed and uncompressed images
+  dstOffset: VkOffset3D,
+  /// Specified in pixels for both compressed and uncompressed images
+  extent: VkExtent3D,
+}
+
+/// [VkImageResolve](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageResolve.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkImageResolve {
+  srcSubresource: VkImageSubresourceLayers,
+  srcOffset: VkOffset3D,
+  dstSubresource: VkImageSubresourceLayers,
+  dstOffset: VkOffset3D,
+  extent: VkExtent3D,
+}
+
+/// [VkImageSubresourceLayers](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageSubresourceLayers.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkImageSubresourceLayers {
+  aspectMask: VkImageAspectFlags,
+  mipLevel: uint32_t,
+  baseArrayLayer: uint32_t,
+  layerCount: uint32_t,
+}
+
+/// [VkRenderPassBeginInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkRenderPassBeginInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkRenderPassBeginInfo {
+  ///
+  /// * **Values:** [`VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO`]
+  sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pNext: *const c_void,
+  renderPass: VkRenderPass,
+  framebuffer: VkFramebuffer,
+  renderArea: VkRect2D,
+  ///
+  /// * **Optional:** true
+  clearValueCount: uint32_t,
+  ///
+  /// * **Len:** clearValueCount
+  pClearValues: *const VkClearValue,
 }

@@ -98,10 +98,6 @@ impl From<VkBool32> for bool {
     vk_b.0 != 0
   }
 }
-
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[repr(transparent)]
-pub struct VkSampleMask(pub uint32_t);
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(transparent)]
 pub struct VkDeviceSize(pub uint64_t);

@@ -45,23 +45,6 @@ unionize! {
 }
 
 unionize! {
-  /// [VkClearColorValue](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkClearColorValue.html)
-  VkClearColorValue {
-    float32: [float; 4],
-    int32: [int32_t; 4],
-    uint32: [uint32_t; 4],
-  }
-}
-
-unionize! {
-  /// [VkClearValue](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkClearValue.html)
-  VkClearValue {
-    color: VkClearColorValue,
-    depthStencil: VkClearDepthStencilValue,
-  }
-}
-
-unionize! {
   /// [VkDeviceOrHostAddressConstKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceOrHostAddressConstKHR.html)
   VkDeviceOrHostAddressConstKHR {
     /// * **No Auto-validity:** true

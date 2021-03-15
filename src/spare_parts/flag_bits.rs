@@ -1,193 +1,6 @@
 use super::*;
 
 flag_bits! {
-  /// [VkCullModeFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCullModeFlagBits.html)
-  VkCullModeFlagBits = VkCullModeFlags {
-    VK_CULL_MODE_NONE = (1<<0),
-    VK_CULL_MODE_FRONT_BIT = (1<<0),
-    VK_CULL_MODE_BACK_BIT = (1<<1),
-  }
-}
-pub const VK_CULL_MODE_FRONT_AND_BACK: VkCullModeFlagBits = VkCullModeFlagBits(0x00000003);
-
-flag_bits! {
-  /// [VkRenderPassCreateFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkRenderPassCreateFlagBits.html)
-  ///
-  /// currently reserved for future use.
-  VkRenderPassCreateFlagBits = VkRenderPassCreateFlags {}
-}
-
-flag_bits! {
-  /// [VkBufferUsageFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBufferUsageFlagBits.html)
-  VkBufferUsageFlagBits = VkBufferUsageFlags {
-    /// Can be used as a source of transfer operations
-    VK_BUFFER_USAGE_TRANSFER_SRC_BIT = (1<<0),
-    /// Can be used as a destination of transfer operations
-    VK_BUFFER_USAGE_TRANSFER_DST_BIT = (1<<1),
-    /// Can be used as TBO
-    VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT = (1<<2),
-    /// Can be used as IBO
-    VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT = (1<<3),
-    /// Can be used as UBO
-    VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT = (1<<4),
-    /// Can be used as SSBO
-    VK_BUFFER_USAGE_STORAGE_BUFFER_BIT = (1<<5),
-    /// Can be used as source of fixed-function index fetch (index buffer)
-    VK_BUFFER_USAGE_INDEX_BUFFER_BIT = (1<<6),
-    /// Can be used as source of fixed-function vertex fetch (VBO)
-    VK_BUFFER_USAGE_VERTEX_BUFFER_BIT = (1<<7),
-    /// Can be the source of indirect parameters (e.g. indirect buffer, parameter buffer)
-    VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT = (1<<8),
-  }
-}
-
-flag_bits! {
-  /// [VkBufferCreateFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBufferCreateFlagBits.html)
-  VkBufferCreateFlagBits = VkBufferCreateFlags {
-    /// Buffer should support sparse backing
-    VK_BUFFER_CREATE_SPARSE_BINDING_BIT = (1<<0),
-    /// Buffer should support sparse backing with partial residency
-    VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT = (1<<1),
-    /// Buffer should support constant data access to physical memory ranges mapped into multiple locations of sparse buffers
-    VK_BUFFER_CREATE_SPARSE_ALIASED_BIT = (1<<2),
-  }
-}
-
-flag_bits! {
-  /// [VkShaderStageFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkShaderStageFlagBits.html)
-  VkShaderStageFlagBits = VkShaderStageFlags {
-    VK_SHADER_STAGE_VERTEX_BIT = (1<<0),
-    VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT = (1<<1),
-    VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT = (1<<2),
-    VK_SHADER_STAGE_GEOMETRY_BIT = (1<<3),
-    VK_SHADER_STAGE_FRAGMENT_BIT = (1<<4),
-    VK_SHADER_STAGE_COMPUTE_BIT = (1<<5),
-  }
-}
-pub const VK_SHADER_STAGE_ALL_GRAPHICS: VkShaderStageFlagBits = VkShaderStageFlagBits(0x0000001F);
-pub const VK_SHADER_STAGE_ALL: VkShaderStageFlagBits = VkShaderStageFlagBits(0x7FFFFFFF);
-
-flag_bits! {
-  /// [VkImageViewCreateFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageViewCreateFlagBits.html)
-  ///
-  /// currently reserved for future use.
-  VkImageViewCreateFlagBits = VkImageViewCreateFlags {}
-}
-
-flag_bits! {
-  /// [VkSamplerCreateFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSamplerCreateFlagBits.html)
-  ///
-  /// currently reserved for future use.
-  VkSamplerCreateFlagBits = VkSamplerCreateFlags {}
-}
-
-flag_bits! {
-  /// [VkPipelineCreateFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineCreateFlagBits.html)
-  VkPipelineCreateFlagBits = VkPipelineCreateFlags {
-    VK_PIPELINE_CREATE_DISABLE_OPTIMIZATION_BIT = (1<<0),
-    VK_PIPELINE_CREATE_ALLOW_DERIVATIVES_BIT = (1<<1),
-    VK_PIPELINE_CREATE_DERIVATIVE_BIT = (1<<2),
-  }
-}
-
-flag_bits! {
-  /// [VkPipelineShaderStageCreateFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineShaderStageCreateFlagBits.html)
-  VkPipelineShaderStageCreateFlagBits = VkPipelineShaderStageCreateFlags {}
-}
-
-flag_bits! {
-  /// [VkColorComponentFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkColorComponentFlagBits.html)
-  VkColorComponentFlagBits = VkColorComponentFlags {
-    VK_COLOR_COMPONENT_R_BIT = (1<<0),
-    VK_COLOR_COMPONENT_G_BIT = (1<<1),
-    VK_COLOR_COMPONENT_B_BIT = (1<<2),
-    VK_COLOR_COMPONENT_A_BIT = (1<<3),
-  }
-}
-
-flag_bits! {
-  /// [VkQueryControlFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueryControlFlagBits.html)
-  VkQueryControlFlagBits = VkQueryControlFlags {
-    /// Require precise results to be collected by the query
-    VK_QUERY_CONTROL_PRECISE_BIT = (1<<0),
-  }
-}
-
-flag_bits! {
-  /// [VkCommandBufferUsageFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCommandBufferUsageFlagBits.html)
-  VkCommandBufferUsageFlagBits = VkCommandBufferUsageFlags {
-    VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT = (1<<0),
-    VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT = (1<<1),
-    /// Command buffer may be submitted/executed more than once simultaneously
-    VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT = (1<<2),
-  }
-}
-
-flag_bits! {
-  /// [VkCommandPoolCreateFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCommandPoolCreateFlagBits.html)
-  VkCommandPoolCreateFlagBits = VkCommandPoolCreateFlags {
-    /// Command buffers have a short lifetime
-    VK_COMMAND_POOL_CREATE_TRANSIENT_BIT = (1<<0),
-    /// Command buffers may release their memory individually
-    VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT = (1<<1),
-  }
-}
-
-flag_bits! {
-  /// [VkCommandPoolResetFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCommandPoolResetFlagBits.html)
-  VkCommandPoolResetFlagBits = VkCommandPoolResetFlags {
-    /// Release resources owned by the pool
-    VK_COMMAND_POOL_RESET_RELEASE_RESOURCES_BIT = (1<<0),
-  }
-}
-
-flag_bits! {
-  /// [VkCommandBufferResetFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCommandBufferResetFlagBits.html)
-  VkCommandBufferResetFlagBits = VkCommandBufferResetFlags {
-    /// Release resources owned by the buffer
-    VK_COMMAND_BUFFER_RESET_RELEASE_RESOURCES_BIT = (1<<0),
-  }
-}
-
-flag_bits! {
-  /// [VkAttachmentDescriptionFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkAttachmentDescriptionFlagBits.html)
-  VkAttachmentDescriptionFlagBits = VkAttachmentDescriptionFlags {
-    /// The attachment may alias physical memory of another attachment in the same render pass
-    VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT = (1<<0),
-  }
-}
-
-flag_bits! {
-  /// [VkStencilFaceFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkStencilFaceFlagBits.html)
-  VkStencilFaceFlagBits = VkStencilFaceFlags {
-    /// Front face
-    VK_STENCIL_FACE_FRONT_BIT = (1<<0),
-    /// Back face
-    VK_STENCIL_FACE_BACK_BIT = (1<<1),
-  }
-}
-/// Front and back faces
-pub const VK_STENCIL_FACE_FRONT_AND_BACK: VkStencilFaceFlagBits = VkStencilFaceFlagBits(0x00000003);
-/// Alias for backwards compatibility
-pub const VK_STENCIL_FRONT_AND_BACK: VkStencilFaceFlagBits = VK_STENCIL_FACE_FRONT_AND_BACK;
-
-flag_bits! {
-  /// [VkDescriptorPoolCreateFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorPoolCreateFlagBits.html)
-  VkDescriptorPoolCreateFlagBits = VkDescriptorPoolCreateFlags {
-    /// Descriptor sets may be freed individually
-    VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT = (1<<0),
-  }
-}
-
-flag_bits! {
-  /// [VkDependencyFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDependencyFlagBits.html)
-  VkDependencyFlagBits = VkDependencyFlags {
-    /// Dependency is per pixel region
-    VK_DEPENDENCY_BY_REGION_BIT = (1<<0),
-  }
-}
-
-flag_bits! {
   /// [VkSemaphoreWaitFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSemaphoreWaitFlagBits.html)
   VkSemaphoreWaitFlagBits = VkSemaphoreWaitFlags {
     VK_SEMAPHORE_WAIT_ANY_BIT = (1<<0),
@@ -308,13 +121,6 @@ flag_bits! {
   ///
   /// currently reserved for future use.
   VkPrivateDataSlotCreateFlagBitsEXT = VkPrivateDataSlotCreateFlagsEXT {}
-}
-
-flag_bits! {
-  /// [VkDescriptorSetLayoutCreateFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorSetLayoutCreateFlagBits.html)
-  ///
-  /// currently reserved for future use.
-  VkDescriptorSetLayoutCreateFlagBits = VkDescriptorSetLayoutCreateFlags {}
 }
 
 flag_bits! {
@@ -445,13 +251,6 @@ flag_bits! {
 }
 
 flag_bits! {
-  /// [VkSubpassDescriptionFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSubpassDescriptionFlagBits.html)
-  ///
-  /// currently reserved for future use.
-  VkSubpassDescriptionFlagBits = VkSubpassDescriptionFlags {}
-}
-
-flag_bits! {
   /// [VkDebugUtilsMessageSeverityFlagBitsEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDebugUtilsMessageSeverityFlagBitsEXT.html)
   VkDebugUtilsMessageSeverityFlagBitsEXT {
     VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT = (1<<0),
@@ -535,11 +334,6 @@ flag_bits! {
 }
 
 flag_bits! {
-  /// [VkFramebufferCreateFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFramebufferCreateFlagBits.html)
-  VkFramebufferCreateFlagBits = VkFramebufferCreateFlags {}
-}
-
-flag_bits! {
   /// [VkDeviceDiagnosticsConfigFlagBitsNV](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceDiagnosticsConfigFlagBitsNV.html)
   VkDeviceDiagnosticsConfigFlagBitsNV = VkDeviceDiagnosticsConfigFlagsNV {
     VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_SHADER_DEBUG_INFO_BIT_NV = (1<<0),
@@ -586,13 +380,6 @@ flag_bits! {
 }
 
 flag_bits! {
-  /// [VkShaderModuleCreateFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkShaderModuleCreateFlagBits.html)
-  ///
-  /// currently reserved for future use.
-  VkShaderModuleCreateFlagBits = VkShaderModuleCreateFlags {}
-}
-
-flag_bits! {
   /// [VkPipelineCompilerControlFlagBitsAMD](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineCompilerControlFlagBitsAMD.html)
   VkPipelineCompilerControlFlagBitsAMD = VkPipelineCompilerControlFlagsAMD {}
 }
@@ -605,14 +392,6 @@ flag_bits! {
     VK_TOOL_PURPOSE_TRACING_BIT_EXT = (1<<2),
     VK_TOOL_PURPOSE_ADDITIONAL_FEATURES_BIT_EXT = (1<<3),
     VK_TOOL_PURPOSE_MODIFYING_FEATURES_BIT_EXT = (1<<4),
-  }
-}
-
-flag_bits! {
-  /// [VkPipelineCacheCreateFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineCacheCreateFlagBits.html)
-  VkPipelineCacheCreateFlagBits = VkPipelineCacheCreateFlags {
-    /// Provided by VK_EXT_pipeline_creation_cache_control
-    VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT_EXT = (1<<0),
   }
 }
 
@@ -633,12 +412,6 @@ flag_bits! {
   ///
   /// currently reserved for future use.
   VkAndroidSurfaceCreateFlagsKHR {}
-}
-flag_bits! {
-  /// [VkBufferViewCreateFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBufferViewCreateFlags.html)
-  ///
-  /// currently reserved for future use.
-  VkBufferViewCreateFlags {}
 }
 flag_bits! {
   /// [VkCompositeAlphaFlagsKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCompositeAlphaFlagsKHR.html)
@@ -809,12 +582,6 @@ flag_bits! {
   VkMetalSurfaceCreateFlagsEXT {}
 }
 flag_bits! {
-  /// [VkPipelineColorBlendStateCreateFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineColorBlendStateCreateFlags.html)
-  ///
-  /// currently reserved for future use.
-  VkPipelineColorBlendStateCreateFlags {}
-}
-flag_bits! {
   /// [VkPipelineCoverageModulationStateCreateFlagsNV](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineCoverageModulationStateCreateFlagsNV.html)
   ///
   /// currently reserved for future use.
@@ -833,40 +600,10 @@ flag_bits! {
   VkPipelineCoverageToColorStateCreateFlagsNV {}
 }
 flag_bits! {
-  /// [VkPipelineDepthStencilStateCreateFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineDepthStencilStateCreateFlags.html)
-  ///
-  /// currently reserved for future use.
-  VkPipelineDepthStencilStateCreateFlags {}
-}
-flag_bits! {
   /// [VkPipelineDiscardRectangleStateCreateFlagsEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineDiscardRectangleStateCreateFlagsEXT.html)
   ///
   /// currently reserved for future use.
   VkPipelineDiscardRectangleStateCreateFlagsEXT {}
-}
-flag_bits! {
-  /// [VkPipelineDynamicStateCreateFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineDynamicStateCreateFlags.html)
-  ///
-  /// currently reserved for future use.
-  VkPipelineDynamicStateCreateFlags {}
-}
-flag_bits! {
-  /// [VkPipelineInputAssemblyStateCreateFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineInputAssemblyStateCreateFlags.html)
-  ///
-  /// currently reserved for future use.
-  VkPipelineInputAssemblyStateCreateFlags {}
-}
-flag_bits! {
-  /// [VkPipelineLayoutCreateFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineLayoutCreateFlags.html)
-  ///
-  /// currently reserved for future use.
-  VkPipelineLayoutCreateFlags {}
-}
-flag_bits! {
-  /// [VkPipelineMultisampleStateCreateFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineMultisampleStateCreateFlags.html)
-  ///
-  /// currently reserved for future use.
-  VkPipelineMultisampleStateCreateFlags {}
 }
 flag_bits! {
   /// [VkPipelineRasterizationConservativeStateCreateFlagsEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineRasterizationConservativeStateCreateFlagsEXT.html)
@@ -881,34 +618,10 @@ flag_bits! {
   VkPipelineRasterizationDepthClipStateCreateFlagsEXT {}
 }
 flag_bits! {
-  /// [VkPipelineRasterizationStateCreateFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineRasterizationStateCreateFlags.html)
-  ///
-  /// currently reserved for future use.
-  VkPipelineRasterizationStateCreateFlags {}
-}
-flag_bits! {
   /// [VkPipelineRasterizationStateStreamCreateFlagsEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineRasterizationStateStreamCreateFlagsEXT.html)
   ///
   /// currently reserved for future use.
   VkPipelineRasterizationStateStreamCreateFlagsEXT {}
-}
-flag_bits! {
-  /// [VkPipelineTessellationStateCreateFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineTessellationStateCreateFlags.html)
-  ///
-  /// currently reserved for future use.
-  VkPipelineTessellationStateCreateFlags {}
-}
-flag_bits! {
-  /// [VkPipelineVertexInputStateCreateFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineVertexInputStateCreateFlags.html)
-  ///
-  /// currently reserved for future use.
-  VkPipelineVertexInputStateCreateFlags {}
-}
-flag_bits! {
-  /// [VkPipelineViewportStateCreateFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineViewportStateCreateFlags.html)
-  ///
-  /// currently reserved for future use.
-  VkPipelineViewportStateCreateFlags {}
 }
 flag_bits! {
   /// [VkPipelineViewportSwizzleStateCreateFlagsNV](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineViewportSwizzleStateCreateFlagsNV.html)
@@ -1011,12 +724,6 @@ flag_bits! {
   ///
   /// currently reserved for future use.
   VkCommandPoolTrimFlags {}
-}
-flag_bits! {
-  /// [VkXlibSurfaceCreateFlagsKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkXlibSurfaceCreateFlagsKHR.html)
-  ///
-  /// currently reserved for future use.
-  VkDescriptorPoolResetFlags {}
 }
 
 pub type VkSemaphoreWaitFlagBitsKHR = VkSemaphoreWaitFlagBits;
