@@ -52,3 +52,19 @@ pub struct VkFence(pub u64);
 #[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Hash)]
 #[repr(transparent)]
 pub struct VkDeviceMemory(pub u64);
+
+/// [VkEvent](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkEvent.html)
+///
+/// * Parent: [`VkDevice`]
+/// * ObjectTypeEnum: [`VK_OBJECT_TYPE_EVENT`]
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Hash)]
+#[repr(transparent)]
+pub struct VkEvent(pub u64);
+
+/// [VkQueryPool](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueryPool.html)
+///
+/// * Parent: [`VkDevice`]
+/// * ObjectTypeEnum: [`VK_OBJECT_TYPE_QUERY_POOL`]
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Hash)]
+#[repr(transparent)]
+pub struct VkQueryPool(pub u64);

@@ -75,22 +75,6 @@ define_non_dispatchable_handle!(
 define_non_dispatchable_handle!(
   ///
   /// * Parent: [`VkDevice`]
-  /// * ObjectTypeEnum: [`VK_OBJECT_TYPE_EVENT`]
-  ///
-  /// [VkEvent](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkEvent.html)
-  VkEvent
-);
-define_non_dispatchable_handle!(
-  ///
-  /// * Parent: [`VkDevice`]
-  /// * ObjectTypeEnum: [`VK_OBJECT_TYPE_QUERY_POOL`]
-  ///
-  /// [VkQueryPool](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueryPool.html)
-  VkQueryPool
-);
-define_non_dispatchable_handle!(
-  ///
-  /// * Parent: [`VkDevice`]
   /// * ObjectTypeEnum: [`VK_OBJECT_TYPE_FRAMEBUFFER`]
   ///
   /// [VkFramebuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFramebuffer.html)

@@ -112,11 +112,6 @@ pub type PFN_vkDestroyDescriptorUpdateTemplate = Option<vkDestroyDescriptorUpdat
 pub type vkDestroyDescriptorUpdateTemplate_t =
   unsafe extern "system" fn(device: VkDevice, descriptorUpdateTemplate: VkDescriptorUpdateTemplate, pAllocator: *const VkAllocationCallbacks);
 
-/// Nullable pointer to [vkDestroyEvent](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyEvent.html)
-pub type PFN_vkDestroyEvent = Option<vkDestroyEvent_t>;
-/// Non-nullable pointer to [vkDestroyEvent](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyEvent.html)
-pub type vkDestroyEvent_t = unsafe extern "system" fn(device: VkDevice, event: VkEvent, pAllocator: *const VkAllocationCallbacks);
-
 /// Nullable pointer to [vkDestroyFramebuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyFramebuffer.html)
 pub type PFN_vkDestroyFramebuffer = Option<vkDestroyFramebuffer_t>;
 /// Non-nullable pointer to [vkDestroyFramebuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyFramebuffer.html)
@@ -160,11 +155,6 @@ pub type PFN_vkDestroyPrivateDataSlotEXT = Option<vkDestroyPrivateDataSlotEXT_t>
 /// Non-nullable pointer to [vkDestroyPrivateDataSlotEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyPrivateDataSlotEXT.html)
 pub type vkDestroyPrivateDataSlotEXT_t =
   unsafe extern "system" fn(device: VkDevice, privateDataSlot: VkPrivateDataSlotEXT, pAllocator: *const VkAllocationCallbacks);
-
-/// Nullable pointer to [vkDestroyQueryPool](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyQueryPool.html)
-pub type PFN_vkDestroyQueryPool = Option<vkDestroyQueryPool_t>;
-/// Non-nullable pointer to [vkDestroyQueryPool](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyQueryPool.html)
-pub type vkDestroyQueryPool_t = unsafe extern "system" fn(device: VkDevice, queryPool: VkQueryPool, pAllocator: *const VkAllocationCallbacks);
 
 /// Nullable pointer to [vkDestroyRenderPass](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyRenderPass.html)
 pub type PFN_vkDestroyRenderPass = Option<vkDestroyRenderPass_t>;
@@ -1539,11 +1529,6 @@ pub type PFN_vkCmdFillBuffer = Option<vkCmdFillBuffer_t>;
 pub type vkCmdFillBuffer_t =
   unsafe extern "system" fn(commandBuffer: VkCommandBuffer, dstBuffer: VkBuffer, dstOffset: VkDeviceSize, size: VkDeviceSize, data: uint32_t);
 
-/// Nullable pointer to [vkGetEventStatus](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetEventStatus.html)
-pub type PFN_vkGetEventStatus = Option<vkGetEventStatus_t>;
-/// Non-nullable pointer to [vkGetEventStatus](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetEventStatus.html)
-pub type vkGetEventStatus_t = unsafe extern "system" fn(device: VkDevice, event: VkEvent) -> VkResult;
-
 /// Nullable pointer to [vkFreeDescriptorSets](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkFreeDescriptorSets.html)
 pub type PFN_vkFreeDescriptorSets = Option<vkFreeDescriptorSets_t>;
 /// Non-nullable pointer to [vkFreeDescriptorSets](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkFreeDescriptorSets.html)
@@ -1574,11 +1559,6 @@ pub type vkResetCommandBuffer_t = unsafe extern "system" fn(commandBuffer: VkCom
 pub type PFN_vkResetCommandPool = Option<vkResetCommandPool_t>;
 /// Non-nullable pointer to [vkResetCommandPool](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkResetCommandPool.html)
 pub type vkResetCommandPool_t = unsafe extern "system" fn(device: VkDevice, commandPool: VkCommandPool, flags: VkCommandPoolResetFlags) -> VkResult;
-
-/// Nullable pointer to [vkResetEvent](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkResetEvent.html)
-pub type PFN_vkResetEvent = Option<vkResetEvent_t>;
-/// Non-nullable pointer to [vkResetEvent](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkResetEvent.html)
-pub type vkResetEvent_t = unsafe extern "system" fn(device: VkDevice, event: VkEvent) -> VkResult;
 
 /// Nullable pointer to [vkCreateAccelerationStructureNV](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateAccelerationStructureNV.html)
 pub type PFN_vkCreateAccelerationStructureNV = Option<vkCreateAccelerationStructureNV_t>;
@@ -1881,16 +1861,6 @@ pub type vkCreateDisplayPlaneSurfaceKHR_t = unsafe extern "system" fn(
   pSurface: *mut VkSurfaceKHR,
 ) -> VkResult;
 
-/// Nullable pointer to [vkCreateEvent](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateEvent.html)
-pub type PFN_vkCreateEvent = Option<vkCreateEvent_t>;
-/// Non-nullable pointer to [vkCreateEvent](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateEvent.html)
-pub type vkCreateEvent_t = unsafe extern "system" fn(
-  device: VkDevice,
-  pCreateInfo: *const VkEventCreateInfo,
-  pAllocator: *const VkAllocationCallbacks,
-  pEvent: *mut VkEvent,
-) -> VkResult;
-
 /// Nullable pointer to [vkCreateFramebuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateFramebuffer.html)
 pub type PFN_vkCreateFramebuffer = Option<vkCreateFramebuffer_t>;
 /// Non-nullable pointer to [vkCreateFramebuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateFramebuffer.html)
@@ -1969,16 +1939,6 @@ pub type vkCreatePipelineLayout_t = unsafe extern "system" fn(
   pCreateInfo: *const VkPipelineLayoutCreateInfo,
   pAllocator: *const VkAllocationCallbacks,
   pPipelineLayout: *mut VkPipelineLayout,
-) -> VkResult;
-
-/// Nullable pointer to [vkCreateQueryPool](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateQueryPool.html)
-pub type PFN_vkCreateQueryPool = Option<vkCreateQueryPool_t>;
-/// Non-nullable pointer to [vkCreateQueryPool](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateQueryPool.html)
-pub type vkCreateQueryPool_t = unsafe extern "system" fn(
-  device: VkDevice,
-  pCreateInfo: *const VkQueryPoolCreateInfo,
-  pAllocator: *const VkAllocationCallbacks,
-  pQueryPool: *mut VkQueryPool,
 ) -> VkResult;
 
 /// Nullable pointer to [vkCreateRenderPass](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateRenderPass.html)
@@ -2167,11 +2127,6 @@ pub type vkSetDebugUtilsObjectNameEXT_t = unsafe extern "system" fn(device: VkDe
 pub type PFN_vkSetDebugUtilsObjectTagEXT = Option<vkSetDebugUtilsObjectTagEXT_t>;
 /// Non-nullable pointer to [vkSetDebugUtilsObjectTagEXT](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkSetDebugUtilsObjectTagEXT.html)
 pub type vkSetDebugUtilsObjectTagEXT_t = unsafe extern "system" fn(device: VkDevice, pTagInfo: *const VkDebugUtilsObjectTagInfoEXT) -> VkResult;
-
-/// Nullable pointer to [vkSetEvent](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkSetEvent.html)
-pub type PFN_vkSetEvent = Option<vkSetEvent_t>;
-/// Non-nullable pointer to [vkSetEvent](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkSetEvent.html)
-pub type vkSetEvent_t = unsafe extern "system" fn(device: VkDevice, event: VkEvent) -> VkResult;
 
 /// Nullable pointer to [vkSignalSemaphore](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkSignalSemaphore.html)
 pub type PFN_vkSignalSemaphore = Option<vkSignalSemaphore_t>;
@@ -2773,20 +2728,6 @@ pub type vkGetPhysicalDeviceSurfacePresentModesKHR_t = unsafe extern "system" fn
 pub type PFN_vkGetDeferredOperationResultKHR = Option<vkGetDeferredOperationResultKHR_t>;
 /// Non-nullable pointer to [vkGetDeferredOperationResultKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetDeferredOperationResultKHR.html)
 pub type vkGetDeferredOperationResultKHR_t = unsafe extern "system" fn(device: VkDevice, operation: VkDeferredOperationKHR) -> VkResult;
-
-/// Nullable pointer to [vkGetQueryPoolResults](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetQueryPoolResults.html)
-pub type PFN_vkGetQueryPoolResults = Option<vkGetQueryPoolResults_t>;
-/// Non-nullable pointer to [vkGetQueryPoolResults](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetQueryPoolResults.html)
-pub type vkGetQueryPoolResults_t = unsafe extern "system" fn(
-  device: VkDevice,
-  queryPool: VkQueryPool,
-  firstQuery: uint32_t,
-  queryCount: uint32_t,
-  dataSize: size_t,
-  pData: *mut c_void,
-  stride: VkDeviceSize,
-  flags: VkQueryResultFlags,
-) -> VkResult;
 
 /// Nullable pointer to [vkBuildAccelerationStructuresKHR](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkBuildAccelerationStructuresKHR.html)
 pub type PFN_vkBuildAccelerationStructuresKHR = Option<vkBuildAccelerationStructuresKHR_t>;

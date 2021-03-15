@@ -221,3 +221,25 @@ vk_enumeration! {
     VK_SYSTEM_ALLOCATION_SCOPE_INSTANCE = 4,
   }
 }
+
+vk_enumeration! {
+  /// [VkQueryType](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueryType.html)
+  VkQueryType {
+    VK_QUERY_TYPE_OCCLUSION = 0,
+    /// Optional
+    VK_QUERY_TYPE_PIPELINE_STATISTICS = 1,
+    VK_QUERY_TYPE_TIMESTAMP = 2,
+    //// Provided by `VK_EXT_transform_feedback`
+    VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT = 1000028004,
+    //// Provided by `VK_KHR_performance_query`
+    VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR = 1000116000,
+    //// Provided by `VK_KHR_acceleration_structure`
+    VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_KHR = 1000150000,
+    //// Provided by `VK_KHR_acceleration_structure`
+    VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_SIZE_KHR = 1000150001,
+    //// Provided by `VK_NV_ray_tracing`
+    VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_NV = 1000165000,
+    //// Provided by `VK_INTEL_performance_query`
+    VK_QUERY_TYPE_PERFORMANCE_QUERY_INTEL = 1000210000,
+  }
+}

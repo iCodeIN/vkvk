@@ -2112,19 +2112,6 @@ structure! {
 }
 
 structure! {
-  /// [VkEventCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkEventCreateInfo.html)
-  VkEventCreateInfo {
-    /// * **Values:** [`VK_STRUCTURE_TYPE_EVENT_CREATE_INFO`]
-    sType: VkStructureType,
-    /// * **Optional:** true
-    pNext: *const c_void,
-    /// Event creation flags
-    /// * **Optional:** true
-    flags: VkEventCreateFlags,
-  }
-}
-
-structure! {
   /// [VkExportFenceCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExportFenceCreateInfo.html)
   ///
   /// Struct Extends: [`VkFenceCreateInfo`]
@@ -6899,24 +6886,6 @@ structure! {
     offset: uint32_t,
     /// Size of the range, in bytes
     size: uint32_t,
-  }
-}
-
-structure! {
-  /// [VkQueryPoolCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueryPoolCreateInfo.html)
-  VkQueryPoolCreateInfo {
-    /// * **Values:** [`VK_STRUCTURE_TYPE_QUERY_POOL_CREATE_INFO`]
-    sType: VkStructureType,
-    /// * **Optional:** true
-    pNext: *const c_void,
-    /// * **Optional:** true
-    flags: VkQueryPoolCreateFlags,
-    queryType: VkQueryType,
-    queryCount: uint32_t,
-    /// Optional
-    /// * **Optional:** true
-    /// * **No Auto-validity:** true
-    pipelineStatistics: VkQueryPipelineStatisticFlags,
   }
 }
 

@@ -1178,13 +1178,49 @@ pub struct VkFenceCreateInfo {
 #[derive(Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(C)]
 pub struct VkSemaphoreCreateInfo {
-  /// 
+  ///
   /// * **Values:** [`VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO`]
   sType: VkStructureType,
-  /// 
+  ///
   /// * **Optional:** true
   pNext: *const c_void,
   /// Semaphore creation flags
   /// * **Optional:** true
   flags: VkSemaphoreCreateFlags,
+}
+
+/// [VkEventCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkEventCreateInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkEventCreateInfo {
+  ///
+  /// * **Values:** [`VK_STRUCTURE_TYPE_EVENT_CREATE_INFO`]
+  sType: VkStructureType,
+  ///
+  /// * **Optional:** true
+  pNext: *const c_void,
+  /// Event creation flags
+  /// * **Optional:** true
+  flags: VkEventCreateFlags,
+}
+
+/// [VkQueryPoolCreateInfo](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueryPoolCreateInfo.html)
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(C)]
+pub struct VkQueryPoolCreateInfo {
+  /// 
+  /// * **Values:** [`VK_STRUCTURE_TYPE_QUERY_POOL_CREATE_INFO`]
+  sType: VkStructureType,
+  /// 
+  /// * **Optional:** true
+  pNext: *const c_void,
+  /// 
+  /// * **Optional:** true
+  flags: VkQueryPoolCreateFlags,
+  queryType: VkQueryType,
+  queryCount: uint32_t,
+  /// Optional
+  /// * **Optional:** true
+  /// * **No Auto-validity:** true
+  pipelineStatistics: VkQueryPipelineStatisticFlags,
 }

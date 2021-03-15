@@ -198,27 +198,27 @@
             <!-- <command name="vkDestroySemaphore"/> -->
         </require>
         <require comment="Event commands">
-            <type name="VkEvent"/>
-            <type name="VkEventCreateFlags"/>
-            <type name="VkEventCreateInfo"/>
-            <command name="vkCreateEvent"/>
-            <command name="vkDestroyEvent"/>
-            <command name="vkGetEventStatus"/>
-            <command name="vkSetEvent"/>
-            <command name="vkResetEvent"/>
+            <!-- <type name="VkEvent"/> -->
+            <!-- <type name="VkEventCreateFlags"/> -->
+            <!-- <type name="VkEventCreateInfo"/> -->
+            <!-- <command name="vkCreateEvent"/> -->
+            <!-- <command name="vkDestroyEvent"/> -->
+            <!-- <command name="vkGetEventStatus"/> -->
+            <!-- <command name="vkSetEvent"/> -->
+            <!-- <command name="vkResetEvent"/> -->
         </require>
         <require comment="Query commands">
-            <type name="VkQueryPipelineStatisticFlagBits"/>
-            <type name="VkQueryPipelineStatisticFlags"/>
-            <type name="VkQueryPool"/>
-            <type name="VkQueryPoolCreateFlags"/>
-            <type name="VkQueryPoolCreateInfo"/>
-            <type name="VkQueryResultFlagBits"/>
-            <type name="VkQueryResultFlags"/>
-            <type name="VkQueryType"/>
-            <command name="vkCreateQueryPool"/>
-            <command name="vkDestroyQueryPool"/>
-            <command name="vkGetQueryPoolResults"/>
+            <!-- <type name="VkQueryPipelineStatisticFlagBits"/> -->
+            <!-- <type name="VkQueryPipelineStatisticFlags"/> -->
+            <!-- <type name="VkQueryPool"/> -->
+            <!-- <type name="VkQueryPoolCreateFlags"/> -->
+            <!-- <type name="VkQueryPoolCreateInfo"/> -->
+            <!-- <type name="VkQueryResultFlagBits"/> -->
+            <!-- <type name="VkQueryResultFlags"/> -->
+            <!-- <type name="VkQueryType"/> -->
+            <!-- <command name="vkCreateQueryPool"/> -->
+            <!-- <command name="vkDestroyQueryPool"/> -->
+            <!-- <command name="vkGetQueryPoolResults"/> -->
         </require>
         <require comment="Buffer commands">
             <type name="VkBuffer"/>

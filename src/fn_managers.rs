@@ -291,6 +291,14 @@ pub struct DeviceFns {
   vkWaitForFences_p: vkWaitForFences_t,
   vkCreateSemaphore_p: vkCreateSemaphore_t,
   vkDestroySemaphore_p: vkDestroySemaphore_t,
+  vkCreateEvent_p: vkCreateEvent_t,
+  vkDestroyEvent_p: vkDestroyEvent_t,
+  vkGetEventStatus_p: vkGetEventStatus_t,
+  vkSetEvent_p: vkSetEvent_t,
+  vkResetEvent_p: vkResetEvent_t,
+  vkCreateQueryPool_p: vkCreateQueryPool_t,
+  vkDestroyQueryPool_p: vkDestroyQueryPool_t,
+  vkGetQueryPoolResults_p: vkGetQueryPoolResults_t,
 }
 
 impl DeviceFns {
@@ -321,6 +329,14 @@ impl DeviceFns {
     let vkWaitForFences_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkWaitForFences\0".as_ptr()).ok_or("vkWaitForFences")?);
     let vkCreateSemaphore_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCreateSemaphore\0".as_ptr()).ok_or("vkCreateSemaphore")?);
     let vkDestroySemaphore_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkDestroySemaphore\0".as_ptr()).ok_or("vkDestroySemaphore")?);
+    let vkCreateEvent_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCreateEvent\0".as_ptr()).ok_or("vkCreateEvent")?);
+    let vkDestroyEvent_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkDestroyEvent\0".as_ptr()).ok_or("vkDestroyEvent")?);
+    let vkGetEventStatus_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkGetEventStatus\0".as_ptr()).ok_or("vkGetEventStatus")?);
+    let vkSetEvent_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkSetEvent\0".as_ptr()).ok_or("vkSetEvent")?);
+    let vkResetEvent_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkResetEvent\0".as_ptr()).ok_or("vkResetEvent")?);
+    let vkCreateQueryPool_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkCreateQueryPool\0".as_ptr()).ok_or("vkCreateQueryPool")?);
+    let vkDestroyQueryPool_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkDestroyQueryPool\0".as_ptr()).ok_or("vkDestroyQueryPool")?);
+    let vkGetQueryPoolResults_p = t::<NNF, _>(in_fns.GetDeviceProcAddr(device, b"vkGetQueryPoolResults\0".as_ptr()).ok_or("vkGetQueryPoolResults")?);
     Ok(Self {
       vkGetDeviceQueue_p,
       vkAllocateMemory_p,
@@ -342,6 +358,14 @@ impl DeviceFns {
       vkWaitForFences_p,
       vkCreateSemaphore_p,
       vkDestroySemaphore_p,
+      vkCreateEvent_p,
+      vkDestroyEvent_p,
+      vkGetEventStatus_p,
+      vkSetEvent_p,
+      vkResetEvent_p,
+      vkCreateQueryPool_p,
+      vkDestroyQueryPool_p,
+      vkGetQueryPoolResults_p,
     })
   }
 
@@ -458,6 +482,53 @@ impl DeviceFns {
   /// [vkDestroySemaphore](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroySemaphore.html)
   pub unsafe fn DestroySemaphore(&self, device: VkDevice, semaphore: VkSemaphore, pAllocator: Option<&VkAllocationCallbacks>) {
     (self.vkDestroySemaphore_p)(device, semaphore, pAllocator)
+  }
+
+  /// [vkCreateEvent](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateEvent.html)
+  pub unsafe fn CreateEvent(
+    &self, device: VkDevice, pCreateInfo: &VkEventCreateInfo, pAllocator: Option<&VkAllocationCallbacks>, pEvent: &mut VkEvent,
+  ) -> VkResult {
+    (self.vkCreateEvent_p)(device, pCreateInfo, pAllocator, pEvent)
+  }
+
+  /// [vkDestroyEvent](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyEvent.html)
+  pub unsafe fn DestroyEvent(&self, device: VkDevice, event: VkEvent, pAllocator: Option<&VkAllocationCallbacks>) {
+    (self.vkDestroyEvent_p)(device, event, pAllocator)
+  }
+
+  /// [vkGetEventStatus](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetEventStatus.html)
+  pub unsafe fn GetEventStatus(&self, device: VkDevice, event: VkEvent) -> VkResult {
+    (self.vkGetEventStatus_p)(device, event)
+  }
+
+  /// [vkSetEvent](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkSetEvent.html)
+  pub unsafe fn SetEvent(&self, device: VkDevice, event: VkEvent) -> VkResult {
+    (self.vkSetEvent_p)(device, event)
+  }
+
+  /// [vkResetEvent](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkResetEvent.html)
+  pub unsafe fn ResetEvent(&self, device: VkDevice, event: VkEvent) -> VkResult {
+    (self.vkResetEvent_p)(device, event)
+  }
+
+  /// [vkCreateQueryPool](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateQueryPool.html)
+  pub unsafe fn CreateQueryPool(
+    &self, device: VkDevice, pCreateInfo: &VkQueryPoolCreateInfo, pAllocator: Option<&VkAllocationCallbacks>, pQueryPool: &mut VkQueryPool,
+  ) -> VkResult {
+    (self.vkCreateQueryPool_p)(device, pCreateInfo, pAllocator, pQueryPool)
+  }
+
+  /// [vkDestroyQueryPool](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyQueryPool.html)
+  pub unsafe fn DestroyQueryPool(&self, device: VkDevice, queryPool: VkQueryPool, pAllocator: Option<&VkAllocationCallbacks>) {
+    (self.vkDestroyQueryPool_p)(device, queryPool, pAllocator)
+  }
+
+  /// [vkGetQueryPoolResults](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetQueryPoolResults.html)
+  pub unsafe fn GetQueryPoolResults(
+    &self, device: VkDevice, queryPool: VkQueryPool, firstQuery: uint32_t, queryCount: uint32_t, dataSize: size_t, pData: *mut c_void,
+    stride: VkDeviceSize, flags: VkQueryResultFlags,
+  ) -> VkResult {
+    (self.vkGetQueryPoolResults_p)(device, queryPool, firstQuery, queryCount, dataSize, pData, stride, flags)
   }
 }
 

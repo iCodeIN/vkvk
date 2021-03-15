@@ -201,3 +201,39 @@ pub(crate) type vkCreateSemaphore_t = unsafe extern "system" fn(
 
 pub(crate) type vkDestroySemaphore_t =
   unsafe extern "system" fn(device: VkDevice, semaphore: VkSemaphore, pAllocator: Option<&VkAllocationCallbacks>);
+
+pub(crate) type vkCreateEvent_t = unsafe extern "system" fn(
+  device: VkDevice,
+  pCreateInfo: &VkEventCreateInfo,
+  pAllocator: Option<&VkAllocationCallbacks>,
+  pEvent: &mut VkEvent,
+) -> VkResult;
+
+pub(crate) type vkDestroyEvent_t = unsafe extern "system" fn(device: VkDevice, event: VkEvent, pAllocator: Option<&VkAllocationCallbacks>);
+
+pub(crate) type vkGetEventStatus_t = unsafe extern "system" fn(device: VkDevice, event: VkEvent) -> VkResult;
+
+pub(crate) type vkSetEvent_t = unsafe extern "system" fn(device: VkDevice, event: VkEvent) -> VkResult;
+
+pub(crate) type vkResetEvent_t = unsafe extern "system" fn(device: VkDevice, event: VkEvent) -> VkResult;
+
+pub(crate) type vkCreateQueryPool_t = unsafe extern "system" fn(
+  device: VkDevice,
+  pCreateInfo: &VkQueryPoolCreateInfo,
+  pAllocator: Option<&VkAllocationCallbacks>,
+  pQueryPool: &mut VkQueryPool,
+) -> VkResult;
+
+pub(crate) type vkDestroyQueryPool_t =
+  unsafe extern "system" fn(device: VkDevice, queryPool: VkQueryPool, pAllocator: Option<&VkAllocationCallbacks>);
+
+pub(crate) type vkGetQueryPoolResults_t = unsafe extern "system" fn(
+  device: VkDevice,
+  queryPool: VkQueryPool,
+  firstQuery: uint32_t,
+  queryCount: uint32_t,
+  dataSize: size_t,
+  pData: *mut c_void,
+  stride: VkDeviceSize,
+  flags: VkQueryResultFlags,
+) -> VkResult;

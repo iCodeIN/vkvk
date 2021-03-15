@@ -114,54 +114,12 @@ flag_bits! {
 }
 
 flag_bits! {
-  /// [VkQueryResultFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueryResultFlagBits.html)
-  VkQueryResultFlagBits = VkQueryResultFlags {
-    /// Results of the queries are written to the destination buffer as 64-bit values
-    VK_QUERY_RESULT_64_BIT = (1<<0),
-    /// Results of the queries are waited on before proceeding with the result copy
-    VK_QUERY_RESULT_WAIT_BIT = (1<<1),
-    /// Besides the results of the query, the availability of the results is also written
-    VK_QUERY_RESULT_WITH_AVAILABILITY_BIT = (1<<2),
-    /// Copy the partial results of the query even if the final results are not available
-    VK_QUERY_RESULT_PARTIAL_BIT = (1<<3),
-  }
-}
-
-flag_bits! {
   /// [VkCommandBufferUsageFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCommandBufferUsageFlagBits.html)
   VkCommandBufferUsageFlagBits = VkCommandBufferUsageFlags {
     VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT = (1<<0),
     VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT = (1<<1),
     /// Command buffer may be submitted/executed more than once simultaneously
     VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT = (1<<2),
-  }
-}
-
-flag_bits! {
-  /// [VkQueryPipelineStatisticFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueryPipelineStatisticFlagBits.html)
-  VkQueryPipelineStatisticFlagBits = VkQueryPipelineStatisticFlags {
-    /// Optional
-    VK_QUERY_PIPELINE_STATISTIC_INPUT_ASSEMBLY_VERTICES_BIT = (1<<0),
-    /// Optional
-    VK_QUERY_PIPELINE_STATISTIC_INPUT_ASSEMBLY_PRIMITIVES_BIT = (1<<1),
-    /// Optional
-    VK_QUERY_PIPELINE_STATISTIC_VERTEX_SHADER_INVOCATIONS_BIT = (1<<2),
-    /// Optional
-    VK_QUERY_PIPELINE_STATISTIC_GEOMETRY_SHADER_INVOCATIONS_BIT = (1<<3),
-    /// Optional
-    VK_QUERY_PIPELINE_STATISTIC_GEOMETRY_SHADER_PRIMITIVES_BIT = (1<<4),
-    /// Optional
-    VK_QUERY_PIPELINE_STATISTIC_CLIPPING_INVOCATIONS_BIT = (1<<5),
-    /// Optional
-    VK_QUERY_PIPELINE_STATISTIC_CLIPPING_PRIMITIVES_BIT = (1<<6),
-    /// Optional
-    VK_QUERY_PIPELINE_STATISTIC_FRAGMENT_SHADER_INVOCATIONS_BIT = (1<<7),
-    /// Optional
-    VK_QUERY_PIPELINE_STATISTIC_TESSELLATION_CONTROL_SHADER_PATCHES_BIT = (1<<8),
-    /// Optional
-    VK_QUERY_PIPELINE_STATISTIC_TESSELLATION_EVALUATION_SHADER_INVOCATIONS_BIT = (1<<9),
-    /// Optional
-    VK_QUERY_PIPELINE_STATISTIC_COMPUTE_SHADER_INVOCATIONS_BIT = (1<<10),
   }
 }
 
@@ -761,12 +719,6 @@ flag_bits! {
   VkDisplaySurfaceCreateFlagsKHR {}
 }
 flag_bits! {
-  /// [VkEventCreateFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkEventCreateFlags.html)
-  ///
-  /// currently reserved for future use.
-  VkEventCreateFlags {}
-}
-flag_bits! {
   /// [VkExternalFenceFeatureFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExternalFenceFeatureFlags.html)
   ///
   /// currently reserved for future use.
@@ -963,12 +915,6 @@ flag_bits! {
   ///
   /// currently reserved for future use.
   VkPipelineViewportSwizzleStateCreateFlagsNV {}
-}
-flag_bits! {
-  /// [VkQueryPoolCreateFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueryPoolCreateFlags.html)
-  ///
-  /// currently reserved for future use.
-  VkQueryPoolCreateFlags {}
 }
 flag_bits! {
   /// [VkResolveModeFlags](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkResolveModeFlags.html)

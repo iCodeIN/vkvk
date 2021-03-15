@@ -69,16 +69,6 @@ enumeration! {
 }
 
 enumeration! {
-  /// [VkQueryType](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueryType.html)
-  VkQueryType {
-    VK_QUERY_TYPE_OCCLUSION = 0,
-    /// Optional
-    VK_QUERY_TYPE_PIPELINE_STATISTICS = 1,
-    VK_QUERY_TYPE_TIMESTAMP = 2,
-  }
-}
-
-enumeration! {
   /// [VkBorderColor](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBorderColor.html)
   VkBorderColor {
     VK_BORDER_COLOR_FLOAT_TRANSPARENT_BLACK = 0,
