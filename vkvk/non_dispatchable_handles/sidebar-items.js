@@ -1,1 +1,1 @@
-initSidebarItems({"struct":[["VkBuffer","VkBuffer"],["VkCommandPool","VkCommandPool"],["VkDeviceMemory","VkDeviceMemory"],["VkFence","VkFence"],["VkImage","VkImage"],["VkSemaphore","VkSemaphore"]]});
+initSidebarItems({"struct":[["VkBuffer","VkBuffer"],["VkCommandPool","VkCommandPool"],["VkDeviceMemory","VkDeviceMemory"],["VkEvent","VkEvent"],["VkFence","VkFence"],["VkImage","VkImage"],["VkQueryPool","VkQueryPool"],["VkSemaphore","VkSemaphore"]]});

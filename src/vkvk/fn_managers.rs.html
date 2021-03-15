@@ -476,6 +476,77 @@
 <span id="473">473</span>
 <span id="474">474</span>
 <span id="475">475</span>
+<span id="476">476</span>
+<span id="477">477</span>
+<span id="478">478</span>
+<span id="479">479</span>
+<span id="480">480</span>
+<span id="481">481</span>
+<span id="482">482</span>
+<span id="483">483</span>
+<span id="484">484</span>
+<span id="485">485</span>
+<span id="486">486</span>
+<span id="487">487</span>
+<span id="488">488</span>
+<span id="489">489</span>
+<span id="490">490</span>
+<span id="491">491</span>
+<span id="492">492</span>
+<span id="493">493</span>
+<span id="494">494</span>
+<span id="495">495</span>
+<span id="496">496</span>
+<span id="497">497</span>
+<span id="498">498</span>
+<span id="499">499</span>
+<span id="500">500</span>
+<span id="501">501</span>
+<span id="502">502</span>
+<span id="503">503</span>
+<span id="504">504</span>
+<span id="505">505</span>
+<span id="506">506</span>
+<span id="507">507</span>
+<span id="508">508</span>
+<span id="509">509</span>
+<span id="510">510</span>
+<span id="511">511</span>
+<span id="512">512</span>
+<span id="513">513</span>
+<span id="514">514</span>
+<span id="515">515</span>
+<span id="516">516</span>
+<span id="517">517</span>
+<span id="518">518</span>
+<span id="519">519</span>
+<span id="520">520</span>
+<span id="521">521</span>
+<span id="522">522</span>
+<span id="523">523</span>
+<span id="524">524</span>
+<span id="525">525</span>
+<span id="526">526</span>
+<span id="527">527</span>
+<span id="528">528</span>
+<span id="529">529</span>
+<span id="530">530</span>
+<span id="531">531</span>
+<span id="532">532</span>
+<span id="533">533</span>
+<span id="534">534</span>
+<span id="535">535</span>
+<span id="536">536</span>
+<span id="537">537</span>
+<span id="538">538</span>
+<span id="539">539</span>
+<span id="540">540</span>
+<span id="541">541</span>
+<span id="542">542</span>
+<span id="543">543</span>
+<span id="544">544</span>
+<span id="545">545</span>
+<span id="546">546</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
 
@@ -770,6 +841,14 @@
   <span class="ident">vkWaitForFences_p</span>: <span class="ident">vkWaitForFences_t</span>,
   <span class="ident">vkCreateSemaphore_p</span>: <span class="ident">vkCreateSemaphore_t</span>,
   <span class="ident">vkDestroySemaphore_p</span>: <span class="ident">vkDestroySemaphore_t</span>,
+  <span class="ident">vkCreateEvent_p</span>: <span class="ident">vkCreateEvent_t</span>,
+  <span class="ident">vkDestroyEvent_p</span>: <span class="ident">vkDestroyEvent_t</span>,
+  <span class="ident">vkGetEventStatus_p</span>: <span class="ident">vkGetEventStatus_t</span>,
+  <span class="ident">vkSetEvent_p</span>: <span class="ident">vkSetEvent_t</span>,
+  <span class="ident">vkResetEvent_p</span>: <span class="ident">vkResetEvent_t</span>,
+  <span class="ident">vkCreateQueryPool_p</span>: <span class="ident">vkCreateQueryPool_t</span>,
+  <span class="ident">vkDestroyQueryPool_p</span>: <span class="ident">vkDestroyQueryPool_t</span>,
+  <span class="ident">vkGetQueryPoolResults_p</span>: <span class="ident">vkGetQueryPoolResults_t</span>,
 }
 
 <span class="kw">impl</span> <span class="ident">DeviceFns</span> {
@@ -800,6 +879,14 @@
     <span class="kw">let</span> <span class="ident">vkWaitForFences_p</span> <span class="op">=</span> <span class="ident">t</span>::<span class="op">&lt;</span><span class="ident">NNF</span>, <span class="kw">_</span><span class="op">&gt;</span>(<span class="ident">in_fns</span>.<span class="ident">GetDeviceProcAddr</span>(<span class="ident">device</span>, <span class="string">b&quot;vkWaitForFences\0&quot;</span>.<span class="ident">as_ptr</span>()).<span class="ident">ok_or</span>(<span class="string">&quot;vkWaitForFences&quot;</span>)<span class="question-mark">?</span>);
     <span class="kw">let</span> <span class="ident">vkCreateSemaphore_p</span> <span class="op">=</span> <span class="ident">t</span>::<span class="op">&lt;</span><span class="ident">NNF</span>, <span class="kw">_</span><span class="op">&gt;</span>(<span class="ident">in_fns</span>.<span class="ident">GetDeviceProcAddr</span>(<span class="ident">device</span>, <span class="string">b&quot;vkCreateSemaphore\0&quot;</span>.<span class="ident">as_ptr</span>()).<span class="ident">ok_or</span>(<span class="string">&quot;vkCreateSemaphore&quot;</span>)<span class="question-mark">?</span>);
     <span class="kw">let</span> <span class="ident">vkDestroySemaphore_p</span> <span class="op">=</span> <span class="ident">t</span>::<span class="op">&lt;</span><span class="ident">NNF</span>, <span class="kw">_</span><span class="op">&gt;</span>(<span class="ident">in_fns</span>.<span class="ident">GetDeviceProcAddr</span>(<span class="ident">device</span>, <span class="string">b&quot;vkDestroySemaphore\0&quot;</span>.<span class="ident">as_ptr</span>()).<span class="ident">ok_or</span>(<span class="string">&quot;vkDestroySemaphore&quot;</span>)<span class="question-mark">?</span>);
+    <span class="kw">let</span> <span class="ident">vkCreateEvent_p</span> <span class="op">=</span> <span class="ident">t</span>::<span class="op">&lt;</span><span class="ident">NNF</span>, <span class="kw">_</span><span class="op">&gt;</span>(<span class="ident">in_fns</span>.<span class="ident">GetDeviceProcAddr</span>(<span class="ident">device</span>, <span class="string">b&quot;vkCreateEvent\0&quot;</span>.<span class="ident">as_ptr</span>()).<span class="ident">ok_or</span>(<span class="string">&quot;vkCreateEvent&quot;</span>)<span class="question-mark">?</span>);
+    <span class="kw">let</span> <span class="ident">vkDestroyEvent_p</span> <span class="op">=</span> <span class="ident">t</span>::<span class="op">&lt;</span><span class="ident">NNF</span>, <span class="kw">_</span><span class="op">&gt;</span>(<span class="ident">in_fns</span>.<span class="ident">GetDeviceProcAddr</span>(<span class="ident">device</span>, <span class="string">b&quot;vkDestroyEvent\0&quot;</span>.<span class="ident">as_ptr</span>()).<span class="ident">ok_or</span>(<span class="string">&quot;vkDestroyEvent&quot;</span>)<span class="question-mark">?</span>);
+    <span class="kw">let</span> <span class="ident">vkGetEventStatus_p</span> <span class="op">=</span> <span class="ident">t</span>::<span class="op">&lt;</span><span class="ident">NNF</span>, <span class="kw">_</span><span class="op">&gt;</span>(<span class="ident">in_fns</span>.<span class="ident">GetDeviceProcAddr</span>(<span class="ident">device</span>, <span class="string">b&quot;vkGetEventStatus\0&quot;</span>.<span class="ident">as_ptr</span>()).<span class="ident">ok_or</span>(<span class="string">&quot;vkGetEventStatus&quot;</span>)<span class="question-mark">?</span>);
+    <span class="kw">let</span> <span class="ident">vkSetEvent_p</span> <span class="op">=</span> <span class="ident">t</span>::<span class="op">&lt;</span><span class="ident">NNF</span>, <span class="kw">_</span><span class="op">&gt;</span>(<span class="ident">in_fns</span>.<span class="ident">GetDeviceProcAddr</span>(<span class="ident">device</span>, <span class="string">b&quot;vkSetEvent\0&quot;</span>.<span class="ident">as_ptr</span>()).<span class="ident">ok_or</span>(<span class="string">&quot;vkSetEvent&quot;</span>)<span class="question-mark">?</span>);
+    <span class="kw">let</span> <span class="ident">vkResetEvent_p</span> <span class="op">=</span> <span class="ident">t</span>::<span class="op">&lt;</span><span class="ident">NNF</span>, <span class="kw">_</span><span class="op">&gt;</span>(<span class="ident">in_fns</span>.<span class="ident">GetDeviceProcAddr</span>(<span class="ident">device</span>, <span class="string">b&quot;vkResetEvent\0&quot;</span>.<span class="ident">as_ptr</span>()).<span class="ident">ok_or</span>(<span class="string">&quot;vkResetEvent&quot;</span>)<span class="question-mark">?</span>);
+    <span class="kw">let</span> <span class="ident">vkCreateQueryPool_p</span> <span class="op">=</span> <span class="ident">t</span>::<span class="op">&lt;</span><span class="ident">NNF</span>, <span class="kw">_</span><span class="op">&gt;</span>(<span class="ident">in_fns</span>.<span class="ident">GetDeviceProcAddr</span>(<span class="ident">device</span>, <span class="string">b&quot;vkCreateQueryPool\0&quot;</span>.<span class="ident">as_ptr</span>()).<span class="ident">ok_or</span>(<span class="string">&quot;vkCreateQueryPool&quot;</span>)<span class="question-mark">?</span>);
+    <span class="kw">let</span> <span class="ident">vkDestroyQueryPool_p</span> <span class="op">=</span> <span class="ident">t</span>::<span class="op">&lt;</span><span class="ident">NNF</span>, <span class="kw">_</span><span class="op">&gt;</span>(<span class="ident">in_fns</span>.<span class="ident">GetDeviceProcAddr</span>(<span class="ident">device</span>, <span class="string">b&quot;vkDestroyQueryPool\0&quot;</span>.<span class="ident">as_ptr</span>()).<span class="ident">ok_or</span>(<span class="string">&quot;vkDestroyQueryPool&quot;</span>)<span class="question-mark">?</span>);
+    <span class="kw">let</span> <span class="ident">vkGetQueryPoolResults_p</span> <span class="op">=</span> <span class="ident">t</span>::<span class="op">&lt;</span><span class="ident">NNF</span>, <span class="kw">_</span><span class="op">&gt;</span>(<span class="ident">in_fns</span>.<span class="ident">GetDeviceProcAddr</span>(<span class="ident">device</span>, <span class="string">b&quot;vkGetQueryPoolResults\0&quot;</span>.<span class="ident">as_ptr</span>()).<span class="ident">ok_or</span>(<span class="string">&quot;vkGetQueryPoolResults&quot;</span>)<span class="question-mark">?</span>);
     <span class="prelude-val">Ok</span>(<span class="self">Self</span> {
       <span class="ident">vkGetDeviceQueue_p</span>,
       <span class="ident">vkAllocateMemory_p</span>,
@@ -821,6 +908,14 @@
       <span class="ident">vkWaitForFences_p</span>,
       <span class="ident">vkCreateSemaphore_p</span>,
       <span class="ident">vkDestroySemaphore_p</span>,
+      <span class="ident">vkCreateEvent_p</span>,
+      <span class="ident">vkDestroyEvent_p</span>,
+      <span class="ident">vkGetEventStatus_p</span>,
+      <span class="ident">vkSetEvent_p</span>,
+      <span class="ident">vkResetEvent_p</span>,
+      <span class="ident">vkCreateQueryPool_p</span>,
+      <span class="ident">vkDestroyQueryPool_p</span>,
+      <span class="ident">vkGetQueryPoolResults_p</span>,
     })
   }
 
@@ -937,6 +1032,53 @@
   <span class="doccomment">/// [vkDestroySemaphore](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroySemaphore.html)</span>
   <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">DestroySemaphore</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">device</span>: <span class="ident">VkDevice</span>, <span class="ident">semaphore</span>: <span class="ident">VkSemaphore</span>, <span class="ident">pAllocator</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">VkAllocationCallbacks</span><span class="op">&gt;</span>) {
     (<span class="self">self</span>.<span class="ident">vkDestroySemaphore_p</span>)(<span class="ident">device</span>, <span class="ident">semaphore</span>, <span class="ident">pAllocator</span>)
+  }
+
+  <span class="doccomment">/// [vkCreateEvent](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateEvent.html)</span>
+  <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">CreateEvent</span>(
+    <span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">device</span>: <span class="ident">VkDevice</span>, <span class="ident">pCreateInfo</span>: <span class="kw-2">&amp;</span><span class="ident">VkEventCreateInfo</span>, <span class="ident">pAllocator</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">VkAllocationCallbacks</span><span class="op">&gt;</span>, <span class="ident">pEvent</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">VkEvent</span>,
+  ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">VkResult</span> {
+    (<span class="self">self</span>.<span class="ident">vkCreateEvent_p</span>)(<span class="ident">device</span>, <span class="ident">pCreateInfo</span>, <span class="ident">pAllocator</span>, <span class="ident">pEvent</span>)
+  }
+
+  <span class="doccomment">/// [vkDestroyEvent](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyEvent.html)</span>
+  <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">DestroyEvent</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">device</span>: <span class="ident">VkDevice</span>, <span class="ident">event</span>: <span class="ident">VkEvent</span>, <span class="ident">pAllocator</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">VkAllocationCallbacks</span><span class="op">&gt;</span>) {
+    (<span class="self">self</span>.<span class="ident">vkDestroyEvent_p</span>)(<span class="ident">device</span>, <span class="ident">event</span>, <span class="ident">pAllocator</span>)
+  }
+
+  <span class="doccomment">/// [vkGetEventStatus](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetEventStatus.html)</span>
+  <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">GetEventStatus</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">device</span>: <span class="ident">VkDevice</span>, <span class="ident">event</span>: <span class="ident">VkEvent</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">VkResult</span> {
+    (<span class="self">self</span>.<span class="ident">vkGetEventStatus_p</span>)(<span class="ident">device</span>, <span class="ident">event</span>)
+  }
+
+  <span class="doccomment">/// [vkSetEvent](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkSetEvent.html)</span>
+  <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">SetEvent</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">device</span>: <span class="ident">VkDevice</span>, <span class="ident">event</span>: <span class="ident">VkEvent</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">VkResult</span> {
+    (<span class="self">self</span>.<span class="ident">vkSetEvent_p</span>)(<span class="ident">device</span>, <span class="ident">event</span>)
+  }
+
+  <span class="doccomment">/// [vkResetEvent](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkResetEvent.html)</span>
+  <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">ResetEvent</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">device</span>: <span class="ident">VkDevice</span>, <span class="ident">event</span>: <span class="ident">VkEvent</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">VkResult</span> {
+    (<span class="self">self</span>.<span class="ident">vkResetEvent_p</span>)(<span class="ident">device</span>, <span class="ident">event</span>)
+  }
+
+  <span class="doccomment">/// [vkCreateQueryPool](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateQueryPool.html)</span>
+  <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">CreateQueryPool</span>(
+    <span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">device</span>: <span class="ident">VkDevice</span>, <span class="ident">pCreateInfo</span>: <span class="kw-2">&amp;</span><span class="ident">VkQueryPoolCreateInfo</span>, <span class="ident">pAllocator</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">VkAllocationCallbacks</span><span class="op">&gt;</span>, <span class="ident">pQueryPool</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">VkQueryPool</span>,
+  ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">VkResult</span> {
+    (<span class="self">self</span>.<span class="ident">vkCreateQueryPool_p</span>)(<span class="ident">device</span>, <span class="ident">pCreateInfo</span>, <span class="ident">pAllocator</span>, <span class="ident">pQueryPool</span>)
+  }
+
+  <span class="doccomment">/// [vkDestroyQueryPool](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyQueryPool.html)</span>
+  <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">DestroyQueryPool</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">device</span>: <span class="ident">VkDevice</span>, <span class="ident">queryPool</span>: <span class="ident">VkQueryPool</span>, <span class="ident">pAllocator</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">VkAllocationCallbacks</span><span class="op">&gt;</span>) {
+    (<span class="self">self</span>.<span class="ident">vkDestroyQueryPool_p</span>)(<span class="ident">device</span>, <span class="ident">queryPool</span>, <span class="ident">pAllocator</span>)
+  }
+
+  <span class="doccomment">/// [vkGetQueryPoolResults](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetQueryPoolResults.html)</span>
+  <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">GetQueryPoolResults</span>(
+    <span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">device</span>: <span class="ident">VkDevice</span>, <span class="ident">queryPool</span>: <span class="ident">VkQueryPool</span>, <span class="ident">firstQuery</span>: <span class="ident">uint32_t</span>, <span class="ident">queryCount</span>: <span class="ident">uint32_t</span>, <span class="ident">dataSize</span>: <span class="ident">size_t</span>, <span class="ident">pData</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">c_void</span>,
+    <span class="ident">stride</span>: <span class="ident">VkDeviceSize</span>, <span class="ident">flags</span>: <span class="ident">VkQueryResultFlags</span>,
+  ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">VkResult</span> {
+    (<span class="self">self</span>.<span class="ident">vkGetQueryPoolResults_p</span>)(<span class="ident">device</span>, <span class="ident">queryPool</span>, <span class="ident">firstQuery</span>, <span class="ident">queryCount</span>, <span class="ident">dataSize</span>, <span class="ident">pData</span>, <span class="ident">stride</span>, <span class="ident">flags</span>)
   }
 }
 

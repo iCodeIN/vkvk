@@ -224,6 +224,28 @@
 <span id="221">221</span>
 <span id="222">222</span>
 <span id="223">223</span>
+<span id="224">224</span>
+<span id="225">225</span>
+<span id="226">226</span>
+<span id="227">227</span>
+<span id="228">228</span>
+<span id="229">229</span>
+<span id="230">230</span>
+<span id="231">231</span>
+<span id="232">232</span>
+<span id="233">233</span>
+<span id="234">234</span>
+<span id="235">235</span>
+<span id="236">236</span>
+<span id="237">237</span>
+<span id="238">238</span>
+<span id="239">239</span>
+<span id="240">240</span>
+<span id="241">241</span>
+<span id="242">242</span>
+<span id="243">243</span>
+<span id="244">244</span>
+<span id="245">245</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="doccomment">//! Vulkan types where you&#39;re supposed to use one among a list of possible</span>
 <span class="doccomment">//! variants.</span>
@@ -446,6 +468,28 @@
     <span class="ident">VK_SYSTEM_ALLOCATION_SCOPE_CACHE</span> <span class="op">=</span> <span class="number">2</span>,
     <span class="ident">VK_SYSTEM_ALLOCATION_SCOPE_DEVICE</span> <span class="op">=</span> <span class="number">3</span>,
     <span class="ident">VK_SYSTEM_ALLOCATION_SCOPE_INSTANCE</span> <span class="op">=</span> <span class="number">4</span>,
+  }
+}
+
+<span class="macro">vk_enumeration</span><span class="macro">!</span> {
+  <span class="doccomment">/// [VkQueryType](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueryType.html)</span>
+  <span class="ident">VkQueryType</span> {
+    <span class="ident">VK_QUERY_TYPE_OCCLUSION</span> <span class="op">=</span> <span class="number">0</span>,
+    <span class="doccomment">/// Optional</span>
+    <span class="ident">VK_QUERY_TYPE_PIPELINE_STATISTICS</span> <span class="op">=</span> <span class="number">1</span>,
+    <span class="ident">VK_QUERY_TYPE_TIMESTAMP</span> <span class="op">=</span> <span class="number">2</span>,
+    <span class="comment">//// Provided by `VK_EXT_transform_feedback`</span>
+    <span class="ident">VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT</span> <span class="op">=</span> <span class="number">1000028004</span>,
+    <span class="comment">//// Provided by `VK_KHR_performance_query`</span>
+    <span class="ident">VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</span> <span class="op">=</span> <span class="number">1000116000</span>,
+    <span class="comment">//// Provided by `VK_KHR_acceleration_structure`</span>
+    <span class="ident">VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_KHR</span> <span class="op">=</span> <span class="number">1000150000</span>,
+    <span class="comment">//// Provided by `VK_KHR_acceleration_structure`</span>
+    <span class="ident">VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_SIZE_KHR</span> <span class="op">=</span> <span class="number">1000150001</span>,
+    <span class="comment">//// Provided by `VK_NV_ray_tracing`</span>
+    <span class="ident">VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_NV</span> <span class="op">=</span> <span class="number">1000165000</span>,
+    <span class="comment">//// Provided by `VK_INTEL_performance_query`</span>
+    <span class="ident">VK_QUERY_TYPE_PERFORMANCE_QUERY_INTEL</span> <span class="op">=</span> <span class="number">1000210000</span>,
   }
 }
 </pre></div>
