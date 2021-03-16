@@ -4,7 +4,7 @@
 //! The difference from a Rust `enum` is that illegal bit patterns are *not*
 //! actually prohibited from existing.
 
-use super::*;
+use crate::prelude::*;
 
 mod vk_bool;
 pub use vk_bool::*;

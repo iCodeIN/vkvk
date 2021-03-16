@@ -4,7 +4,9 @@
 
 // TODO: double check all Default impls
 
-use super::*;
+use crate::prelude::*;
+
+use crate::str_from_null_terminated_byte_slice;
 
 use core::mem::zeroed;
 

@@ -1,5 +1,3 @@
-use super::*;
-
 /// A [`u32`] that encodes a vulkan API version.
 ///
 /// This is **not** an official Vulkan type, it's just a Rusty helper type.

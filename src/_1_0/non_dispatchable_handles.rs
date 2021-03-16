@@ -3,7 +3,9 @@
 //!
 //! A non-dispatchable handle is always a 64-bit value, regardless of platform.
 
-use super::*;
+// makes rustdoc find links correctly.
+#[allow(unused_imports)]
+use crate::prelude::*;
 
 /// [VkBuffer](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBuffer.html)
 ///

@@ -1,6 +1,6 @@
 #![allow(non_snake_case)]
 
-use super::*;
+use crate::prelude::*;
 
 use core::mem::transmute as t;
 

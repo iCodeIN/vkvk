@@ -1,4 +1,7 @@
-use super::*;
+use crate::prelude::*;
+
+#[cfg(feature = "alloc")]
+use alloc::vec::Vec;
 
 use core::{
   convert::TryInto,

@@ -5,8 +5,6 @@
 //! * Add a new flag to a base value: `base | new`
 //! * Remove a flag from a base value: `base & (!removal)`
 
-use super::*;
-
 vk_flag_bits! {
   /// [VkAccessFlagBits](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkAccessFlagBits.html)
   VkAccessFlagBits = VkAccessFlags {
