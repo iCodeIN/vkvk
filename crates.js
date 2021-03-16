@@ -1,1 +1,1 @@
-window.ALL_CRATES = ["chlorine","vkvk"];
+window.ALL_CRATES = ["vkvk"];

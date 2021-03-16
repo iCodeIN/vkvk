@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["VulkanVersion","A [`u32`] that encodes a vulkan API version."]]});
